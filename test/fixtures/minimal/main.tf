@@ -21,6 +21,11 @@ provider "google" {
 
 module "memorystore" {
   source  = "../../.."
-  name = "test-memorystore"
+
+  name    = "${var.name}"
+
   project = "${var.project_id}"
+  region  = "${var.region}"
+
+  memory_size_gb = "${var.memory_size_gb}"
 }

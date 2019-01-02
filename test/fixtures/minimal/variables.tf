@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The GCP project to use for integration tests"
-}
-
-variable "name" {
-  default = "pf-test-int-minimal"
-}
+variable "project_id" {}
 
 variable "credentials_path" {}
+
+variable "name" {
+  default = "test-minimal"
+}
+
+variable "region" {
+  default = "us-east1"
+}
+
+variable "memory_size_gb" {
+  default = 1
+}

@@ -14,18 +14,25 @@
  * limitations under the License.
  */
 
-variable "project_id" {}
+variable "project_id" {
+  description = "Google cloud project id to create redis instance"
+}
 
-variable "credentials_path" {}
+variable "credentials_path" {
+  description = "Path to service account key (usually credentials.json)"
+}
 
 variable "name" {
   default = "test-minimal"
+  description = "Name of redis instance"
 }
 
 variable "region" {
   default = "us-east1"
+  description = "Region to create test instance"
 }
 
 variable "memory_size_gb" {
   default = 1
+  description = "Memory size of test instance"
 }

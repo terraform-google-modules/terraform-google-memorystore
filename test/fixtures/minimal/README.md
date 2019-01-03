@@ -9,11 +9,11 @@ This test with create a new redis instance.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| credentials_path |  | string | - | yes |
-| memory_size_gb |  | string | `1` | no |
-| name |  | string | `test-minimal` | no |
-| project_id |  | string | - | yes |
-| region |  | string | `us-east1` | no |
+| credentials_path | Path to service account key (usually credentials.json) | string | - | yes |
+| memory_size_gb | Memory size of test instance | string | `1` | no |
+| name | Name of redis instance | string | `test-minimal` | no |
+| project_id | Google cloud project id to create redis instance | string | - | yes |
+| region | Region to create test instance | string | `us-east1` | no |
 
 ## Outputs
 

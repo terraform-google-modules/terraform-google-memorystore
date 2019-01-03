@@ -1,6 +1,6 @@
 # terraform-google-memorystore
 
-A Terraform module for creating a fully functional Google Memorystore instance.
+A Terraform module for creating a fully functional Google Memorystore (redis) instance.
 
 ## Usage
 
@@ -62,16 +62,17 @@ The project has the following folders and files:
 
 Tests are run inside of an existing google cloud project.
 
-1. Setup tfvars
+1. Create tfvars file for test:
 
 ```sh
 cp test/fixtures/minimal/terraform.tfvars.example test/fixtures/minimal/terraform.tfvars
-# Edit test/fixtures/minimal/terraform.tfvars with an existing google cloud project id.
 ```
 
-2. Copy a service account key (`credentials.json` file) into root of repo.
+2. Edit new `test/fixtures/minimal/terraform.tfvars` and add project id to run test in.
 
-3. Run `make test_integration_docker`
+3. Copy a service account key (`credentials.json` file) into root of this repo.
+
+4. Run `make test_integration_docker`.
 
 ## Autogeneration of documentation from .tf files
 

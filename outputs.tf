@@ -20,11 +20,11 @@ output "id" {
 }
 
 output "host" {
-  description = "the ip address of the instance"
+  description = "The IP address of the instance"
   value = "${google_redis_instance.default.host}"
 }
 
 output "region" {
-  description = "the region the instance lives in"
+  description = "The region the instance lives in"
   value = "${google_redis_instance.default.host}"
 }

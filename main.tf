@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-//provider "google" {
-//  region = "${var.region}"
-//}
-
 resource "google_redis_instance" "default" {
   project        = "${var.project}"
   name           = "${var.name}"

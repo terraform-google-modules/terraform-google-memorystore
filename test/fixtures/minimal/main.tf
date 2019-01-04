@@ -19,13 +19,14 @@ provider "google" {
   project     = "${var.project_id}"
 }
 
-module "memorystore" {
-  source  = "../../.."
+module "memstore" {
+  source = "../../.."
 
-  name    = "${var.name}"
+  name = "${var.name}"
 
-  project = "${var.project_id}"
-  region  = "${var.region}"
+  project     = "${var.project_id}"
+  region      = "${var.region}"
+  location_id = "${var.location_id}"
 
   memory_size_gb = "${var.memory_size_gb}"
 }

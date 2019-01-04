@@ -15,25 +15,46 @@
 project_id       = attribute('project_id')
 name             = attribute('name')
 region           = attribute('region')
+location_id      = attribute('location_id')
 credentials_path = attribute('credentials_path')
 memory_size_gb   = attribute('memory_size_gb')
 
+output_id                  = attribute('output_id')
+output_region              = attribute('output_region')
+output_host                = attribute('output_host')
+output_current_location_id = attribute('output_current_location_id')
+
 ENV['CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE'] = credentials_path
+
+describe 'Outputs' do
+  it 'should reflect inputted variables' do
+    expect(output_region).to eq region
+    expect(output_current_location_id).to eq location_id
+  end
+
+  it 'should have a valid host ip' do
+    expect(output_host).to match(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/)
+  end
+
+  it 'should have a valid id' do
+    expect(output_id).to end_with name
+  end
+end
 
 control 'redis-instance' do
   describe command("gcloud redis instances describe #{name} --project=#{project_id} --region=#{region} --format=json") do
     its('exit_status') { should eq 0 }
     its('stderr') { should eq '' }
 
-		let(:metadata) do
-  	  if subject.exit_status == 0
-  	    JSON.parse(subject.stdout, symbolize_names: true)
-  	  else
-  	    {}
-  	  end
-  	end
+    let(:metadata) do
+      if subject.exit_status == 0
+        JSON.parse(subject.stdout, symbolize_names: true)
+      else
+        {}
+      end
+    end
 
-		it { expect(metadata).to include(memorySizeGb: memory_size_gb.to_i) }
+    it { expect(metadata).to include(memorySizeGb: memory_size_gb.to_i) }
 
   end
 end

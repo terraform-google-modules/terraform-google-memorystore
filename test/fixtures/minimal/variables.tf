@@ -15,24 +15,29 @@
  */
 
 variable "project_id" {
-  description = "Google cloud project id to create redis instance"
+  description = "Google cloud project id to create redis instance."
 }
 
 variable "credentials_path" {
-  description = "Path to service account key (usually credentials.json)"
+  description = "Path to service account key (usually credentials.json)."
 }
 
 variable "name" {
-  default = "test-minimal"
-  description = "Name of redis instance"
+  default     = "test-minimal"
+  description = "Name of redis instance."
 }
 
 variable "region" {
-  default = "us-east1"
-  description = "Region to create test instance"
+  default     = "us-east1"
+  description = "Region to create test instance."
+}
+
+variable "location_id" {
+  default     = "us-east1-b"
+  description = "Zone to create test instance."
 }
 
 variable "memory_size_gb" {
-  default = 1
-  description = "Memory size of test instance"
+  default     = 1
+  description = "Memory size of test instance."
 }

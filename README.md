@@ -21,26 +21,27 @@ module "memorystore" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| alternative_location_id | The alternative zone where the instance will be provisioned | string | `us-east1-d` | no |
-| authorized_network | The name of the memorystore authorized network | string | `default` | no |
-| display_name | An arbitrary and optional user-provided name for the instance | string | `` | no |
-| labels | The resource labels to represent user provided metadata | string | `<map>` | no |
-| location_id | The zone where the instance will be provisioned | string | `us-east1-b` | no |
-| memory_size_gb | The memory size in GiB | string | `1` | no |
-| name | The name of the memorystore instance | string | - | yes |
-| project | The id of the project in which the resource belongs to | string | - | yes |
-| redis_version | The version of Redis software | string | `REDIS_3_2` | no |
-| region | The GCP region to use | string | `us-east1` | no |
-| reserved_ip_range | The CIDR range of internal addresses that are reserved for this instance | string | `192.168.0.0/29` | no |
-| tier | The service tier of the instance | string | `STANDARD_HA` | no |
+| alternative_location_id | The alternative zone where the instance will be provisioned. | string | `` | no |
+| authorized_network | The name of the memorystore authorized network. | string | `` | no |
+| display_name | An arbitrary and optional user-provided name for the instance. | string | `` | no |
+| labels | The resource labels to represent user provided metadata. | string | `<map>` | no |
+| location_id | The zone where the instance will be provisioned. | string | `` | no |
+| memory_size_gb | Redis memory size in GiB. | string | - | yes |
+| name | The ID of the instance or a fully qualified identifier for the instance. | string | - | yes |
+| project | The ID of the project in which the resource belongs to. | string | - | yes |
+| redis_version | The version of Redis software. | string | `` | no |
+| region | The GCP region to use. | string | `` | no |
+| reserved_ip_range | The CIDR range of internal addresses that are reserved for this instance. | string | `` | no |
+| tier | The service tier of the instance. | string | `STANDARD_HA` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| host | The IP address of the instance |
-| id | The memorystore instance id |
-| region | The region the instance lives in |
+| current_location_id | The current zone where the Redis endpoint is placed. |
+| host | The IP address of the instance. |
+| id | The memorystore instance ID. |
+| region | The region the instance lives in. |
 
 [^]: (autogen_docs_end)
 
@@ -63,6 +64,7 @@ The project has the following folders and files:
 ### Requirements
 
 - An existing google cloud project
+- The `redis.googleapis.com` API should be enabled
 - A service account key
 - Docker
 

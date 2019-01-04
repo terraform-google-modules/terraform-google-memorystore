@@ -15,59 +15,58 @@
  */
 
 variable "region" {
-  description = "The GCP region to use"
-  default     = "us-east1"
+  description = "The GCP region to use."
+  default     = ""
 }
 
 variable "project" {
-  description = "The id of the project in which the resource belongs to"
+  description = "The ID of the project in which the resource belongs to."
 }
 
 variable "name" {
-  description = "The name of the memorystore instance"
+  description = "The ID of the instance or a fully qualified identifier for the instance."
 }
 
 variable "authorized_network" {
-  description = "The name of the memorystore authorized network"
-  default = "default"
+  description = "The name of the memorystore authorized network."
+  default     = ""
 }
 
 variable "tier" {
-  description = "The service tier of the instance"
-  default = "STANDARD_HA"
+  description = "The service tier of the instance."
+  default     = "STANDARD_HA"
 }
 
 variable "memory_size_gb" {
-  description = "The memory size in GiB"
-  default = 1
+  description = "Redis memory size in GiB."
 }
 
 variable "location_id" {
-  description = "The zone where the instance will be provisioned"
-  default = "us-east1-b"
+  description = "The zone where the instance will be provisioned."
+  default     = ""
 }
 
 variable "alternative_location_id" {
-  description = "The alternative zone where the instance will be provisioned"
-  default = "us-east1-d"
+  description = "The alternative zone where the instance will be provisioned."
+  default     = ""
 }
 
 variable "redis_version" {
-  description = "The version of Redis software"
-  default = "REDIS_3_2"
+  description = "The version of Redis software."
+  default     = ""
 }
 
 variable "display_name" {
-  description = "An arbitrary and optional user-provided name for the instance"
-  default = ""
+  description = "An arbitrary and optional user-provided name for the instance."
+  default     = ""
 }
 
 variable "reserved_ip_range" {
-  description = "The CIDR range of internal addresses that are reserved for this instance"
-  default = "192.168.0.0/29"
+  description = "The CIDR range of internal addresses that are reserved for this instance."
+  default     = ""
 }
 
 variable "labels" {
-  description = "The resource labels to represent user provided metadata"
-  default = {}
+  description = "The resource labels to represent user provided metadata."
+  default     = {}
 }

@@ -70,3 +70,8 @@ variable "labels" {
   description = "The resource labels to represent user provided metadata."
   default     = {}
 }
+
+variable "enable_apis" {
+  description = "Enable required APIs for Cloud Memorystore."
+  default     = true
+}

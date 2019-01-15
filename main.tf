@@ -31,4 +31,14 @@ resource "google_redis_instance" "default" {
   reserved_ip_range = "${var.reserved_ip_range}"
 
   labels = "${var.labels}"
+
+  depends_on = ["google_project_service.redis"]
+}
+
+resource "google_project_service" "redis" {
+
+  count = "${var.enable_apis ? 1 : 0}"
+
+  project = "${var.project}"
+  service = "redis.googleapis.com"
 }

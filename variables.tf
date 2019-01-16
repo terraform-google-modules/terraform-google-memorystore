@@ -73,5 +73,5 @@ variable "labels" {
 
 variable "enable_apis" {
   description = "Enable required APIs for Cloud Memorystore."
-  default     = true
+  default     = "true"
 }

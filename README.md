@@ -16,29 +16,29 @@ module "memorystore" {
 
 [^]: (autogen_docs_start)
 
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| alternative_location_id | The alternative zone where the instance will be provisioned. | string | `` | no |
-| authorized_network | The name of the memorystore authorized network. | string | `` | no |
-| display_name | An arbitrary and optional user-provided name for the instance. | string | `` | no |
-| labels | The resource labels to represent user provided metadata. | string | `<map>` | no |
-| location_id | The zone where the instance will be provisioned. | string | `` | no |
-| memory_size_gb | Redis memory size in GiB. | string | - | yes |
+| alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `` | no |
+| authorized\_network | The name of the memorystore authorized network. | string | `` | no |
+| display\_name | An arbitrary and optional user-provided name for the instance. | string | `` | no |
+| enable\_apis | Enable required APIs for Cloud Memorystore. | string | `true` | no |
+| labels | The resource labels to represent user provided metadata. | map | `<map>` | no |
+| location\_id | The zone where the instance will be provisioned. | string | `` | no |
+| memory\_size\_gb | Redis memory size in GiB. | string | - | yes |
 | name | The ID of the instance or a fully qualified identifier for the instance. | string | - | yes |
 | project | The ID of the project in which the resource belongs to. | string | - | yes |
-| redis_version | The version of Redis software. | string | `` | no |
+| redis\_version | The version of Redis software. | string | `` | no |
 | region | The GCP region to use. | string | `` | no |
-| reserved_ip_range | The CIDR range of internal addresses that are reserved for this instance. | string | `` | no |
+| reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `` | no |
 | tier | The service tier of the instance. | string | `STANDARD_HA` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| current_location_id | The current zone where the Redis endpoint is placed. |
+| current\_location\_id | The current zone where the Redis endpoint is placed. |
 | host | The IP address of the instance. |
 | id | The memorystore instance ID. |
 | region | The region the instance lives in. |

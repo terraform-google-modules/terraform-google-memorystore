@@ -1,4 +1,4 @@
-# terraform-google-memorystore
+# [Google Cloud Memorystore Terraform Module](https://registry.terraform.io/modules/terraform-google-modules/memorystore/google/)
 
 A Terraform module for creating a fully functional Google Memorystore (redis) instance.
 

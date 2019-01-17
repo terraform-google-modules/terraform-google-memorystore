@@ -4,12 +4,14 @@ A Terraform module for creating a fully functional Google Memorystore (redis) in
 
 ## Usage
 
-Check the examples/ directory.
+Check the [examples/](./examples/) directory for more.
 
 ```hcl
 module "memorystore" {
-  source  = "git::ssh://git@github.com/terraform-google-modules/terraform-google-memorystore"
-  name = "my-memorystore"
+  source  = "terraform-google-modules/memorystore/google"
+  version = "0.1.0"
+
+  name    = "my-memorystore"
   project = "my-gcp-project"
 }
 ```

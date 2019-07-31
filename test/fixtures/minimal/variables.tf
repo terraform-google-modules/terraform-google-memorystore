@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,28 +16,35 @@
 
 variable "project_id" {
   description = "Google cloud project id to create redis instance."
+  type        = string
 }
 
 variable "credentials_path" {
   description = "Path to service account key (usually credentials.json)."
+  type        = string
 }
 
 variable "name" {
-  default     = "test-minimal"
   description = "Name of redis instance."
+  type        = string
+  default     = "test-minimal"
 }
 
 variable "region" {
-  default     = "us-east1"
   description = "Region to create test instance."
+  type        = string
+  default     = "us-east1"
 }
 
 variable "location_id" {
-  default     = "us-east1-b"
   description = "Zone to create test instance."
+  type        = string
+  default     = "us-east1-b"
 }
 
 variable "memory_size_gb" {
-  default     = 1
   description = "Memory size of test instance."
+  type        = number
+  default     = 1
 }
+

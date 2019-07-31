@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,20 @@
  */
 
 provider "google" {
-  credentials = "${file(var.credentials_path)}"
-  project     = "${var.project_id}"
+  version     = "~> 2.5.0"
+  credentials = file(var.credentials_path)
+  project     = var.project_id
 }
 
 module "memstore" {
   source = "../../.."
 
-  name = "${var.name}"
+  name = var.name
 
-  project     = "${var.project_id}"
-  region      = "${var.region}"
-  location_id = "${var.location_id}"
+  project     = var.project_id
+  region      = var.region
+  location_id = var.location_id
 
-  memory_size_gb = "${var.memory_size_gb}"
+  memory_size_gb = var.memory_size_gb
 }
+

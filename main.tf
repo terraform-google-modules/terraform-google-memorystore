@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,30 @@
  */
 
 resource "google_redis_instance" "default" {
-  project        = "${var.project}"
-  name           = "${var.name}"
-  tier           = "${var.tier}"
-  memory_size_gb = "${var.memory_size_gb}"
 
-  region                  = "${var.region}"
-  location_id             = "${var.location_id}"
-  alternative_location_id = "${var.alternative_location_id}"
+  project        = var.project
+  name           = var.name
+  tier           = var.tier
+  memory_size_gb = var.memory_size_gb
 
-  authorized_network = "${var.authorized_network}"
+  region                  = var.region
+  location_id             = var.location_id
+  alternative_location_id = var.alternative_location_id
 
-  redis_version     = "${var.redis_version}"
-  display_name      = "${var.display_name}"
-  reserved_ip_range = "${var.reserved_ip_range}"
+  authorized_network = var.authorized_network
 
-  labels = "${var.labels}"
+  redis_version     = var.redis_version
+  display_name      = var.display_name
+  reserved_ip_range = var.reserved_ip_range
 
-  depends_on = ["google_project_service.redis"]
+  labels = var.labels
+
+  depends_on = [google_project_service.redis]
 }
 
 resource "google_project_service" "redis" {
-  count = "${var.enable_apis ? 1 : 0}"
+  count = var.enable_apis ? 1 : 0
 
-  project = "${var.project}"
+  project = var.project
   service = "redis.googleapis.com"
 }

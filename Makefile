@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Make will use bash instead of sh
 SHELL := /usr/bin/env bash
 
 # Docker build config variables
@@ -21,39 +20,40 @@ DOCKER_ORG 				:= gcr.io/cloud-foundation-cicd
 DOCKER_TAG_BASE_KITCHEN_TERRAFORM 	?= 2.3.0
 DOCKER_REPO_BASE_KITCHEN_TERRAFORM 	:= ${DOCKER_ORG}/cft/kitchen-terraform:${DOCKER_TAG_BASE_KITCHEN_TERRAFORM}
 
-all: check_shell check_python check_golang check_terraform test_check_headers check_headers check_trailing_whitespace generate_docs ## Run all linters and update documentation
+# All is the first target in the file so it will get picked up when you just run 'make' on its own
+.PHONY: all
+all: check generate_docs
+
+# Run all available linters
+.PHONY: check
+check: check_shell check_python check_golang check_terraform check_base_files check_headers check_trailing_whitespace
 
 # The .PHONY directive tells make that this isn't a real target and so
 # the presence of a file named 'check_shell' won't cause this target to stop
 # working
 .PHONY: check_shell
-check_shell: ## Lint shell scripts
+check_shell:
 	@source test/make.sh && check_shell
 
 .PHONY: check_python
-check_python: ## Lint Python source files
+check_python:
 	@source test/make.sh && check_python
 
 .PHONY: check_golang
-check_golang: ## Lint Go source files
+check_golang:
 	@source test/make.sh && golang
 
 .PHONY: check_terraform
 check_terraform: ## Lint Terraform source files
 	@source test/make.sh && check_terraform
 
-.PHONY: check_shebangs
-check_shebangs: ## Check that scripts have correct shebangs
-	@source test/make.sh && check_bash
+.PHONY: check_base_files
+check_base_files:
+	@source test/make.sh && basefiles
 
 .PHONY: check_trailing_whitespace
 check_trailing_whitespace:
 	@source test/make.sh && check_trailing_whitespace
-
-.PHONY: test_check_headers
-test_check_headers:
-	@echo "Testing the validity of the header check"
-	@source test/make.sh && check_headers
 
 .PHONY: check_headers
 check_headers: ## Check that source files have appropriate boilerplate
@@ -61,72 +61,70 @@ check_headers: ## Check that source files have appropriate boilerplate
 
 # Integration tests
 .PHONY: test_integration
-test_integration: ## Run integration tests
-	bundle install
-	bundle exec kitchen create
-	bundle exec kitchen converge
-	bundle exec kitchen converge
-	bundle exec kitchen verify
-	bundle exec kitchen destroy
+test_integration:
+	test/ci_integration.sh
 
 .PHONY: generate_docs
-generate_docs: ## Update README documentation for Terraform variables and outputs
+generate_docs:
 	@source test/make.sh && generate_docs
 
 # Run docker
 .PHONY: docker_run
-docker_run: ## Launch a shell within the Docker test environment
+docker_run:
 	docker run --rm -it \
+		-e PROJECT_ID \
 		-e SERVICE_ACCOUNT_JSON \
-		-e CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE=${CREDENTIALS_PATH} \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
 		-v $(CURDIR):/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
-		/bin/bash
+		/bin/bash -c "source test/ci_integration.sh && setup_environment && exec /bin/bash"
 
 .PHONY: docker_create
-docker_create: ## Run `kitchen create` within the Docker test environment
+docker_create:
 	docker run --rm -it \
+		-e PROJECT_ID \
 		-e SERVICE_ACCOUNT_JSON \
-		-e CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE=${CREDENTIALS_PATH} \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
 		-v $(CURDIR):/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
-		/bin/bash -c "kitchen create"
+		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen create"
 
 .PHONY: docker_converge
-docker_converge: ## Run `kitchen converge` within the Docker test environment
+docker_converge:
 	docker run --rm -it \
+		-e PROJECT_ID \
 		-e SERVICE_ACCOUNT_JSON \
-		-e CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE=${CREDENTIALS_PATH} \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
 		-v $(CURDIR):/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
-		/bin/bash -c "kitchen converge && kitchen converge"
+		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen converge"
 
 .PHONY: docker_verify
-docker_verify: ## Run `kitchen verify` within the Docker test environment
+docker_verify:
 	docker run --rm -it \
+		-e PROJECT_ID \
 		-e SERVICE_ACCOUNT_JSON \
-		-e CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE=${CREDENTIALS_PATH} \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
 		-v $(CURDIR):/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
-		/bin/bash -c "kitchen verify"
+		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen verify"
 
 .PHONY: docker_destroy
-docker_destroy: ## Run `kitchen destroy` within the Docker test environment
+docker_destroy:
 	docker run --rm -it \
+		-e PROJECT_ID \
 		-e SERVICE_ACCOUNT_JSON \
-		-e CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE=${CREDENTIALS_PATH} \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
 		-v $(CURDIR):/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
-		/bin/bash -c "kitchen destroy"
+		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen destroy"
 
 .PHONY: test_integration_docker
-test_integration_docker: docker_create docker_converge docker_verify docker_destroy ## Run a full integration test cycle
-	@echo "Running test-kitchen tests in docker"
-
-help: ## Prints help for targets with comments
-	@grep -E '^[a-zA-Z._-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+test_integration_docker:
+	docker run --rm -it \
+		-e PROJECT_ID \
+		-e SERVICE_ACCOUNT_JSON \
+		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
+		-v $(CURDIR):/cft/workdir \
+		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
+		/bin/bash -c "source test/ci_integration.sh && setup_environment && make test_integration"

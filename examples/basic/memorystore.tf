@@ -19,8 +19,8 @@ provider "google" {
 }
 
 module "memorystore" {
-  source         = "git::ssh://git@github.com/terraform-google-modules/terraform-google-memorystore"
+  source         = "../../"
   name           = "memorystore"
   project        = "memorystore"
-  memory_size_gb = "1"
+  memory_size_gb = 1
 }

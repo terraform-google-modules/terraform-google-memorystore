@@ -18,15 +18,15 @@ This test with create a new redis instance.
 
 | Name | Description |
 |------|-------------|
-| credentials\_path |  |
-| location\_id |  |
-| memory\_size\_gb |  |
-| name |  |
-| output\_current\_location\_id |  |
-| output\_host |  |
-| output\_id |  |
-| output\_region |  |
-| project\_id |  |
-| region |  |
+| credentials\_path | Path to service account key (usually credentials.json). |
+| location\_id | Zone to create test instance. |
+| memory\_size\_gb | Memory size of test instance. |
+| name | Name of redis instance. |
+| output\_current\_location\_id | The current zone where the Redis endpoint is placed. |
+| output\_host | The memorystore instance ID. |
+| output\_id | The memorystore instance ID. |
+| output\_region | The region the instance lives in. |
+| project\_id | Google cloud project id to create redis instance. |
+| region | Region to create test instance. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

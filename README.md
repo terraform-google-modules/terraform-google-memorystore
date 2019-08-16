@@ -44,7 +44,7 @@ module "memorystore" {
 | Name | Description |
 |------|-------------|
 | current\_location\_id | The current zone where the Redis endpoint is placed. |
-| host | The IP address of the instance. |
+| host | The memorystore instance ID. |
 | id | The memorystore instance ID. |
 | region | The region the instance lives in. |
 

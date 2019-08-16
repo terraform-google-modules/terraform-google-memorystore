@@ -20,7 +20,7 @@ output "id" {
 }
 
 output "host" {
-  description = "The IP address of the instance."
+  description = "Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service."
   value       = google_redis_instance.default.host
 }
 
@@ -33,4 +33,3 @@ output "current_location_id" {
   description = "The current zone where the Redis endpoint is placed."
   value       = google_redis_instance.default.current_location_id
 }
-

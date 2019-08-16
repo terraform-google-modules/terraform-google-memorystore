@@ -15,42 +15,52 @@
  */
 
 output "project_id" {
-  value = var.project_id
+  description = "Google cloud project id to create redis instance."
+  value       = var.project_id
 }
 
 output "credentials_path" {
-  value = var.credentials_path
+  description = "Path to service account key (usually credentials.json)."
+  value       = var.credentials_path
 }
 
 output "name" {
-  value = var.name
+  description = "Name of redis instance."
+  value       = var.name
 }
 
 output "region" {
-  value = var.region
+  description = "Region to create test instance."
+  value       = var.region
 }
 
 output "location_id" {
-  value = var.location_id
+  description = "Zone to create test instance."
+  value       = var.location_id
 }
 
 output "memory_size_gb" {
-  value = var.memory_size_gb
+  description = "Memory size of test instance."
+  value       = var.memory_size_gb
 }
 
 output "output_id" {
-  value = module.memstore.id
+  description = "The memorystore instance ID."
+  value       = module.memstore.id
 }
 
 output "output_host" {
-  value = module.memstore.host
+  description = "The memorystore instance ID."
+  value       = module.memstore.host
 }
 
 output "output_region" {
-  value = module.memstore.region
+  description = "The region the instance lives in."
+  value       = module.memstore.region
 }
 
 output "output_current_location_id" {
-  value = module.memstore.current_location_id
+  description = "The current zone where the Redis endpoint is placed."
+  value       = module.memstore.current_location_id
 }
 

@@ -7,6 +7,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix linter warnings and related makefile bug [#11]
+- Standardize integration testing [#11]
+
 ## [1.0.0] - 2019-09-24
 
 ### Changed
@@ -20,5 +25,5 @@ project adheres to [Semantic Versioning](http://semver.org/).
 [Unreleased]: https://github.com/terraform-google-modules/terraform-google-memorystore/compare/1.0.0...HEAD
 [1.0.0]: https://github.com/terraform-google-modules/terraform-google-memorystore/compare/0.1.0...1.0.0
 [0.1.0]: https://github.com/terraform-google-modules/terraform-google-memorystore/releases/tag/0.1.0
-
 [#10]: https://github.com/terraform-google-modules/terraform-google-memorystore/pull/10
+[#11]: https://github.com/terraform-google-modules/terraform-google-memorystore/pull/11

@@ -23,6 +23,7 @@ find_files() {
     -path '*/.git' \
     -o -path '*/.terraform' \
     -o -path '*/.kitchen' \
+    -o -path '*/.idea' \
     ')' \
     -prune -o -type f "$@"
 }
@@ -43,6 +44,16 @@ compat_xargs() {
     echo "Warning: compat_xargs $* failed with exit code ${rval}" >&2
   fi
   return "${rval}"
+}
+
+# This function makes sure that the required files for
+# releasing to OSS are present
+function basefiles() {
+  local fn required_files="LICENSE README.md"
+  echo "Checking for required files ${required_files}"
+  for fn in ${required_files}; do
+    test -f "${fn}" || echo "Missing required file ${fn}"
+  done
 }
 
 # This function checks to make sure that every

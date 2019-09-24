@@ -7,13 +7,18 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.2.0] 2019-YY-ZZ
+## [1.0.0] 2019-09-24
 
 ### Changed
  - Supported version of Terraform is 0.12. [#10]
 
 ## [0.1.0]
-### ADDED
+
+### Added
 - Initial module release with basic functionality.
+
+[Unreleased]: https://github.com/terraform-google-modules/terraform-google-memorystore/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/terraform-google-modules/terraform-google-memorystore/compare/0.1.0...1.0.0
+[0.1.0]: https://github.com/terraform-google-modules/terraform-google-memorystore/releases/tag/0.1.0
 
 [#10]: https://github.com/terraform-google-modules/terraform-google-memorystore/pull/10

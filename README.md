@@ -13,7 +13,7 @@ Check the [examples/](./examples/) directory for more.
 ```hcl
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "0.1.0"
+  version = "1.0.0"
 
   name    = "my-memorystore"
   project = "my-gcp-project"

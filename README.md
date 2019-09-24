@@ -2,6 +2,10 @@
 
 A Terraform module for creating a fully functional Google Memorystore (redis) instance.
 
+## Compatibility
+This module is meant for use with Terraform 0.12. If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-12.html) and need a Terraform 0.11.x-compatible version of this module, the last released version intended for Terraform 0.11.x
+is [0.1.0](https://registry.terraform.io/modules/terraform-google-modules/memorystore/google/0.1.0).
+
 ## Usage
 
 Check the [examples/](./examples/) directory for more.
@@ -16,25 +20,24 @@ module "memorystore" {
 }
 ```
 
-[^]: (autogen_docs_start)
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `` | no |
-| authorized\_network | The name of the memorystore authorized network. | string | `` | no |
-| display\_name | An arbitrary and optional user-provided name for the instance. | string | `` | no |
-| enable\_apis | Enable required APIs for Cloud Memorystore. | string | `true` | no |
-| labels | The resource labels to represent user provided metadata. | map | `<map>` | no |
-| location\_id | The zone where the instance will be provisioned. | string | `` | no |
-| memory\_size\_gb | Redis memory size in GiB. | string | - | yes |
-| name | The ID of the instance or a fully qualified identifier for the instance. | string | - | yes |
-| project | The ID of the project in which the resource belongs to. | string | - | yes |
-| redis\_version | The version of Redis software. | string | `` | no |
-| region | The GCP region to use. | string | `` | no |
-| reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `` | no |
-| tier | The service tier of the instance. | string | `STANDARD_HA` | no |
+| alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `"null"` | no |
+| authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
+| display\_name | An arbitrary and optional user-provided name for the instance. | string | `"null"` | no |
+| enable\_apis | Enable required APIs for Cloud Memorystore. | bool | `"true"` | no |
+| labels | The resource labels to represent user provided metadata. | map(string) | `"null"` | no |
+| location\_id | The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]. | string | `"null"` | no |
+| memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | number | `"1"` | no |
+| name | The ID of the instance or a fully qualified identifier for the instance. | string | n/a | yes |
+| project | The ID of the project in which the resource belongs to. | string | n/a | yes |
+| redis\_version | The version of Redis software. | string | `"null"` | no |
+| region | The GCP region to use. | string | `"null"` | no |
+| reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `"null"` | no |
+| tier | The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier | string | `"STANDARD_HA"` | no |
 
 ## Outputs
 
@@ -45,7 +48,7 @@ module "memorystore" {
 | id | The memorystore instance ID. |
 | region | The region the instance lives in. |
 
-[^]: (autogen_docs_end)
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## File structure
 
@@ -65,10 +68,16 @@ The project has the following folders and files:
 
 ### Requirements
 
+- Terraform is [installed](#software-dependencies) on the machine where Terraform is executed.
 - An existing google cloud project
 - The `redis.googleapis.com` API should be enabled
 - A service account key
 - Docker
+
+### Software Dependencies
+### Terraform
+- [Terraform](https://www.terraform.io/downloads.html) >= 0.12.0
+- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) >= v2.5.0
 
 ### Running Integration Tests
 

@@ -7,12 +7,12 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [1.0.0] 2019-09-24
+## [1.0.0] - 2019-09-24
 
 ### Changed
  - Supported version of Terraform is 0.12. [#10]
 
-## [0.1.0]
+## [0.1.0] - 2019-01-17
 
 ### Added
 - Initial module release with basic functionality.

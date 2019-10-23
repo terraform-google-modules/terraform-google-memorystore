@@ -18,9 +18,17 @@ provider "google" {
   version = "~> 2.0"
 }
 
+resource "google_compute_network" "vpc_network" {
+  name    = "vpc-network"
+  project = var.project
+}
+
 module "memorystore" {
   source = "../.."
 
   project = var.project
   name    = var.name
+  region  = var.region
+
+  authorized_network = "${google_compute_network.vpc_network.self_link}"
 }

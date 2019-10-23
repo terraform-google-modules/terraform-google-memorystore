@@ -23,3 +23,8 @@ variable "name" {
   description = "The name of the memorystore instance to create."
   type        = string
 }
+
+variable "region" {
+  description = "The region where the memorystore instance will be created."
+  type        = string
+}

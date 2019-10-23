@@ -24,3 +24,9 @@ variable "name" {
   type        = string
   default     = "test-simple-example"
 }
+
+variable "region" {
+  description = "The region of redis instance."
+  type        = string
+  default     = "us-central1"
+}

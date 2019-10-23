@@ -19,4 +19,5 @@ module "example" {
 
   name    = var.name
   project = var.project
+  region  = var.region
 }

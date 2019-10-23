@@ -1,4 +1,4 @@
-# Minimal Test
+# Simple Example Test
 
 This test with create a new redis instance.
 

@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.5.0"
+output "project" {
+  value = var.project
 }
 
-module "memorystore" {
-  source         = "git::ssh://git@github.com/terraform-google-modules/terraform-google-memorystore"
-  name           = "memorystore"
-  project        = "memorystore"
-  memory_size_gb = "1"
+output "name" {
+  value = var.name
 }

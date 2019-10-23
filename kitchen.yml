@@ -13,22 +13,31 @@
 # limitations under the License.
 
 ---
+driver:
+  name: terraform
+
 provisioner:
-  name: "terraform"
+  name: terraform
+
+verifier:
+  name: terraform
 
 platforms:
-  - name: local
+  - name: default
 
 suites:
-  - name: "minimal"
+  - name: simple_example
     driver:
-      name: "terraform"
-      command_timeout: 1800
-      root_module_directory: test/fixtures/minimal
+      root_module_directory: test/fixtures/simple_example/
     verifier:
-      name: terraform
+      color: false
       systems:
-        - name: minimal
+        - name: simple_example local
           backend: local
-    provisioner:
-      name: terraform
+          controls:
+            - gcloud
+            - gsutil
+        - name: simple_example gcp
+          backend: gcp
+          controls:
+            - gcp

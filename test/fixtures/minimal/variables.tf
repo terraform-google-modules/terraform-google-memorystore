@@ -19,11 +19,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "credentials_path" {
-  description = "Path to service account key (usually credentials.json)."
-  type        = string
-}
-
 variable "name" {
   description = "Name of redis instance."
   type        = string

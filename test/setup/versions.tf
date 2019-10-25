@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-module "memstore" {
-  source = "../../.."
+terraform {
+  required_version = ">= 0.12"
+}
 
-  name = var.name
+provider "google" {
+  version = "~> 2.18.0"
+}
 
-  project     = var.project_id
-  region      = var.region
-  location_id = var.location_id
-  enable_apis = false
-
-  memory_size_gb = var.memory_size_gb
+provider "google-beta" {
+  version = "~> 2.18.0"
 }

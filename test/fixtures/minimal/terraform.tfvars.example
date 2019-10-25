@@ -1,6 +1,3 @@
 # The google cloud project id to create resources in.
 project_id=""
 
-# The path to look for google cloud credentials.
-# NOTE: /cftk/workdir is mapped to the repo root in docker.
-credentials_path="/cftk/workdir/credentials.json"

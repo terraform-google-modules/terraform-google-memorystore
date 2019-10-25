@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-module "memstore" {
-  source = "../../.."
+output "project_id" {
+  value = module.project.project_id
+}
 
-  name = var.name
+output "sa_key" {
+  value     = google_service_account_key.int_test.private_key
+  sensitive = true
+}
 
-  project     = var.project_id
-  region      = var.region
-  location_id = var.location_id
-  enable_apis = false
+output "sa_email" {
+  value = google_service_account.int_test.email
+}
 
-  memory_size_gb = var.memory_size_gb
+output "parent_id" {
+  value = var.org_id
 }

@@ -7,14 +7,9 @@ This example illustrates how to use the `memorystore` module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_name | The name of the bucket to create. | string | n/a | yes |
-| project\_id | The ID of the project in which to provision resources. | string | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| bucket\_name | The name of the bucket. |
+| name | The name of the memorystore instance to create. | string | n/a | yes |
+| project | The ID of the project in which to provision resources. | string | n/a | yes |
+| region | The region where the memorystore instance will be created. | string | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

@@ -7,3 +7,9 @@ attributes:
   - name: project
     required: true
     type: string
+  - name: name
+    required: true
+    type: string
+  - name: region
+    required: true
+    type: string

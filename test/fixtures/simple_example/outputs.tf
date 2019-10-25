@@ -21,3 +21,7 @@ output "project" {
 output "name" {
   value = var.name
 }
+
+output "region" {
+  value = var.region
+}

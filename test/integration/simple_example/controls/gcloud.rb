@@ -15,9 +15,15 @@
 control "gcloud" do
   title "gcloud"
 
-  describe command("gcloud --project=#{attribute("project_id")} services list --enabled") do
+  describe command("gcloud --project=#{attribute("project")} services list --enabled") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq "" }
-    its(:stdout) { should match "storage-api.googleapis.com" }
+    its(:stdout) { should match "redis.googleapis.com" }
+  end
+
+  describe command("gcloud --project=#{attribute("project")} redis instances list --region=#{attribute("region")}") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+    its(:stdout) { should match "#{attribute("name")}" }
   end
 end

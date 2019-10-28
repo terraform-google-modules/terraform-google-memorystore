@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source 'https://rubygems.org/' do
-  gem 'kitchen-terraform', '~> 4.1'
-end
+echo "#!/usr/bin/env bash" > ../source.sh
+
+project_id=$(terraform output project_id)
+echo "export TF_VAR_project_id='$project_id'" >> ../source.sh
+
+sa_json=$(terraform output sa_key)
+# shellcheck disable=SC2086
+echo "export SERVICE_ACCOUNT_JSON='$(echo $sa_json | base64 --decode)'" >> ../source.sh
+
+parent_id=$(terraform output parent_id)
+echo "export TF_VAR_parent_id='$parent_id'" >> ../source.sh
+echo "export TF_VAR_org_id='$parent_id'" >> ../source.sh

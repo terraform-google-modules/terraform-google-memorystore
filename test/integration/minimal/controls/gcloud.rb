@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,15 +16,12 @@ project_id       = attribute('project_id')
 name             = attribute('name')
 region           = attribute('region')
 location_id      = attribute('location_id')
-credentials_path = attribute('credentials_path')
 memory_size_gb   = attribute('memory_size_gb')
 
 output_id                  = attribute('output_id')
 output_region              = attribute('output_region')
 output_host                = attribute('output_host')
 output_current_location_id = attribute('output_current_location_id')
-
-ENV['CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE'] = credentials_path
 
 describe 'Outputs' do
   it 'should reflect inputted variables' do

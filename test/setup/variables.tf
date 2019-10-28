@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-module "memstore" {
-  source = "../../.."
+variable "org_id" {
+  description = "The numeric organization id"
+}
 
-  name = var.name
+variable "folder_id" {
+  description = "The folder to deploy in"
+}
 
-  project     = var.project_id
-  region      = var.region
-  location_id = var.location_id
-  enable_apis = false
-
-  memory_size_gb = var.memory_size_gb
+variable "billing_account" {
+  description = "The billing account id associated with the project, e.g. XXXXXX-YYYYYY-ZZZZZZ"
 }

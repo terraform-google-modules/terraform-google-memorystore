@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.5.0"
+variable "project" {
+  description = "The ID of the project in which the resource belongs to."
+  type        = string
 }
 
-module "memorystore" {
-  source         = "../../"
-  name           = "memorystore"
-  project        = "memorystore"
-  memory_size_gb = "1"
-  enable_apis    = "true"
+variable "enable_apis" {
+  description = "Flag for enabling redis.googleapis.com in your project"
+  default     = "false"
 }

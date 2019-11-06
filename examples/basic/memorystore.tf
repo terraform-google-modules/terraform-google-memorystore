@@ -19,8 +19,17 @@ provider "google" {
 }
 
 module "memorystore" {
-  source         = "../../"
-  name           = "memorystore"
-  project        = "memorystore"
-  memory_size_gb = "1"
+  source      = "../../"
+  project     = "memorystore"
+  enable_apis = true
+
+  instance_configs = [{
+    name                    = "memorystore",
+    memory_size_gb          = "1",
+    region                  = "us-central1",
+    location_id             = "us-central1-a",
+    display_name            = "memorystore",
+    alternative_location_id = null,
+    reserved_ip_range       = null,
+  }]
 }

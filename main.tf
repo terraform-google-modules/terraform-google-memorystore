@@ -23,13 +23,13 @@ resource "google_redis_instance" "default" {
   tier               = var.tier
   labels             = var.labels
 
-  name                    = var.instance_configs[count.index].name
-  display_name            = var.instance_configs[count.index].display_name
-  memory_size_gb          = var.instance_configs[count.index].memory_size_gb
-  region                  = var.instance_configs[count.index].region
-  location_id             = var.instance_configs[count.index].location_id
-  alternative_location_id = var.instance_configs[count.index].alternative_location_id
-  reserved_ip_range       = var.instance_configs[count.index].reserved_ip_range
+  name                    = var.instance_configs[count.index]["name"]
+  display_name            = var.instance_configs[count.index]["display_name"]
+  memory_size_gb          = var.instance_configs[count.index]["memory_size_gb"]
+  region                  = var.instance_configs[count.index]["region"]
+  location_id             = var.instance_configs[count.index]["location_id"]
+  alternative_location_id = var.instance_configs[count.index]["alternative_location_id"]
+  reserved_ip_range       = var.instance_configs[count.index]["reserved_ip_range"]
 
 
   depends_on = [google_project_service.redis]

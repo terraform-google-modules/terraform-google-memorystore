@@ -18,23 +18,23 @@ region           = attribute('region')
 location_id      = attribute('location_id')
 memory_size_gb   = attribute('memory_size_gb')
 
-output_id                  = attribute('output_id')
-output_region              = attribute('output_region')
-output_host                = attribute('output_host')
-output_current_location_id = attribute('output_current_location_id')
+output_ids                  = attribute('output_ids')
+output_regions              = attribute('output_regions')
+output_hosts                = attribute('output_hosts')
+output_current_location_ids = attribute('output_current_location_ids')
 
 describe 'Outputs' do
   it 'should reflect inputted variables' do
-    expect(output_region).to eq region
-    expect(output_current_location_id).to eq location_id
+    expect(output_regions[0]).to eq region
+    expect(output_current_location_ids[0]).to eq location_id
   end
 
   it 'should have a valid host ip' do
-    expect(output_host).to match(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/)
+    expect(output_hosts[0]).to match(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/)
   end
 
   it 'should have a valid id' do
-    expect(output_id).to end_with name
+    expect(output_id[0]).to end_with name
   end
 end
 

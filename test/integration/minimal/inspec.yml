@@ -15,15 +15,15 @@ attributes:
   - name: memory_size_gb
     required: true
     type: numeric
-  - name: output_id
+  - name: output_ids
     required: true
     type: string
-  - name: output_host
+  - name: output_hosts
     required: true
     type: string
-  - name: output_region
+  - name: output_regions
     required: true
     type: string
-  - name: output_current_location_id
+  - name: output_current_location_ids
     required: true
     type: string

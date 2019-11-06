@@ -14,48 +14,13 @@
  * limitations under the License.
  */
 
-variable "region" {
-  description = "The GCP region to use."
-  type        = string
-  default     = null
-}
-
 variable "project" {
   description = "The ID of the project in which the resource belongs to."
   type        = string
 }
 
-variable "name" {
-  description = "The ID of the instance or a fully qualified identifier for the instance."
-  type        = string
-}
-
 variable "authorized_network" {
   description = "The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used."
-  type        = string
-  default     = null
-}
-
-variable "tier" {
-  description = "The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier"
-  type        = string
-  default     = "STANDARD_HA"
-}
-
-variable "memory_size_gb" {
-  description = "Redis memory size in GiB. Defaulted to 1 GiB"
-  type        = number
-  default     = 1
-}
-
-variable "location_id" {
-  description = "The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]."
-  type        = string
-  default     = null
-}
-
-variable "alternative_location_id" {
-  description = "The alternative zone where the instance will be provisioned."
   type        = string
   default     = null
 }
@@ -66,16 +31,10 @@ variable "redis_version" {
   default     = null
 }
 
-variable "display_name" {
-  description = "An arbitrary and optional user-provided name for the instance."
+variable "tier" {
+  description = "The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier"
   type        = string
-  default     = null
-}
-
-variable "reserved_ip_range" {
-  description = "The CIDR range of internal addresses that are reserved for this instance."
-  type        = string
-  default     = null
+  default     = "STANDARD_HA"
 }
 
 variable "labels" {
@@ -88,4 +47,18 @@ variable "enable_apis" {
   description = "Enable required APIs for Cloud Memorystore."
   type        = bool
   default     = true
+}
+
+variable "instance_configs" {
+  description = "Array of configs for each Redis instance you want to create"
+  default     = []
+  type = list(object({
+    name                    = string,
+    display_name            = string,
+    memory_size_gb          = number,
+    region                  = string,
+    location_id             = string,
+    alternative_location_id = string,
+    reserved_ip_range       = string,
+  }))
 }

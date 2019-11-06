@@ -15,23 +15,22 @@
  */
 
 resource "google_redis_instance" "default" {
+  count = length(var.instance_configs)
 
-  project        = var.project
-  name           = var.name
-  tier           = var.tier
-  memory_size_gb = var.memory_size_gb
-
-  region                  = var.region
-  location_id             = var.location_id
-  alternative_location_id = var.alternative_location_id
-
+  project            = var.project
   authorized_network = var.authorized_network
+  redis_version      = var.redis_version
+  tier               = var.tier
+  labels             = var.labels
 
-  redis_version     = var.redis_version
-  display_name      = var.display_name
-  reserved_ip_range = var.reserved_ip_range
+  name                    = var.instance_configs[count.index].name
+  display_name            = var.instance_configs[count.index].display_name
+  memory_size_gb          = var.instance_configs[count.index].memory_size_gb
+  region                  = var.instance_configs[count.index].region
+  location_id             = var.instance_configs[count.index].location_id
+  alternative_location_id = var.instance_configs[count.index].alternative_location_id
+  reserved_ip_range       = var.instance_configs[count.index].reserved_ip_range
 
-  labels = var.labels
 
   depends_on = [google_project_service.redis]
 }

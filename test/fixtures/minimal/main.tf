@@ -20,13 +20,13 @@ module "memstore" {
   project     = var.project_id
   enable_apis = true
 
-	instance_configs = [{
-		name                    = var.name,
-		region                  = var.region,
-		location_id             = var.location_id,
-		memory_size_gb          = var.memory_size_gb,
-		display_name            = var.name,
-		alternative_location_id = null,
-		reserved_ip_range       = null,
-	}]
+  instance_configs = [{
+    name                    = var.name,
+    region                  = var.region,
+    location_id             = var.location_id,
+    memory_size_gb          = var.memory_size_gb,
+    display_name            = var.name,
+    alternative_location_id = null,
+    reserved_ip_range       = null,
+  }]
 }

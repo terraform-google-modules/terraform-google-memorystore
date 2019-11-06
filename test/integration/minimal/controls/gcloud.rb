@@ -34,7 +34,7 @@ describe 'Outputs' do
   end
 
   it 'should have a valid id' do
-    expect(output_id[0]).to end_with name
+    expect(output_ids[0]).to end_with name
   end
 end
 

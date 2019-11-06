@@ -17,13 +17,13 @@ attributes:
     type: numeric
   - name: output_ids
     required: true
-    type: string
+    type: array
   - name: output_hosts
     required: true
-    type: string
+    type: array
   - name: output_regions
     required: true
-    type: string
+    type: array
   - name: output_current_location_ids
     required: true
-    type: string
+    type: array

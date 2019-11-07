@@ -55,11 +55,11 @@ resource "google_project_service" "dns" {
 }
 
 data "google_dns_managed_zone" "main" {
-  count      = var.managed_zone_name == null ? 0 : 1
-  project    = local.dns_project_id
-  name       = var.managed_zone_name
+  count   = var.managed_zone_name == null ? 0 : 1
+  project = local.dns_project_id
+  name    = var.managed_zone_name
 
-	depends_on = [google_project_service.dns]
+  depends_on = [google_project_service.dns]
 }
 
 resource "google_dns_record_set" "main" {

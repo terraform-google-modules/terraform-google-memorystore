@@ -22,7 +22,7 @@ module "memorystore" {
   source            = "../../"
   project           = "memorystore"
   enable_apis       = true
-	managed_zone_name = "my-example-zone"
+  managed_zone_name = "my-example-zone"
 
   instance_configs = [{
     name                    = "memorystore-2",
@@ -33,7 +33,7 @@ module "memorystore" {
     alternative_location_id = null,
     reserved_ip_range       = null,
     dns_record_name         = "memorystore-1.foo.com",
-  },{
+    }, {
     name                    = "memorystore-2",
     memory_size_gb          = "1",
     region                  = "us-east1",

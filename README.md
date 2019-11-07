@@ -26,10 +26,15 @@ module "memorystore" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
+| dns\_project\_id | The project_id where we want to create redis DNS records. If not specified | string | `"null"` | no |
+| dns\_record\_prefix | The first part of a DNS record. The implementation here produces DNS records in the following format: `<dns_record_prefix>-<count.index>.<environment>.<zone_domain>.` | string | `"null"` | no |
 | enable\_apis | Enable required APIs for Cloud Memorystore. | bool | `"true"` | no |
 | instance\_configs | Array of configs for each Redis instance you want to create | object | `<list>` | no |
 | labels | The resource labels to represent user provided metadata. | map(string) | `"null"` | no |
+| managed\_zone\_name | Name of the DNS zone where the DNS records will be created. | string | `"null"` | no |
 | project | The ID of the project in which the resource belongs to. | string | n/a | yes |
+| record\_ttl | TTL on the DNS records. | number | `"300"` | no |
+| record\_type | DNS record type | string | `"A"` | no |
 | redis\_version | The version of Redis software. | string | `"null"` | no |
 | tier | The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier | string | `"STANDARD_HA"` | no |
 

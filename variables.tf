@@ -27,6 +27,8 @@ variable "project" {
 
 variable "enable_apis" {
   description = "Flag for enabling redis.googleapis.com in your project"
+  type        = bool
+  default     = true
 }
 
 variable "name" {

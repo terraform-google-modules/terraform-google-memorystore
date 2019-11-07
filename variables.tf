@@ -60,5 +60,36 @@ variable "instance_configs" {
     location_id             = string,
     alternative_location_id = string,
     reserved_ip_range       = string,
+    dns_record_name         = string,
   }))
+}
+
+variable "dns_project_id" {
+  description = "The project_id where we want to create redis DNS records. If not specified"
+  type        = string
+  default     = null
+}
+
+variable "dns_record_prefix" {
+  description = "The first part of a DNS record. The implementation here produces DNS records in the following format: `<dns_record_prefix>-<count.index>.<environment>.<zone_domain>.`"
+  type        = string
+  default     = null
+}
+
+variable "managed_zone_name" {
+  description = "Name of the DNS zone where the DNS records will be created."
+  type        = string
+  default     = null
+}
+
+variable "record_ttl" {
+  description = "TTL on the DNS records."
+  type        = number
+  default     = 300
+}
+
+variable "record_type" {
+  description = "DNS record type"
+  type        = string
+  default     = "A"
 }

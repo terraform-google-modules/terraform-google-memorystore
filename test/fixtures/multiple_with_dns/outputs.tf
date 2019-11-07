@@ -14,6 +14,39 @@
  * limitations under the License.
  */
 
-module "memstore" {
-  source = "../../../examples/basic"
+output "project_id" {
+  value = var.project_id
 }
+
+output "name" {
+  value = var.name
+}
+
+output "region" {
+  value = var.region
+}
+
+output "location_id" {
+  value = var.location_id
+}
+
+output "memory_size_gb" {
+  value = var.memory_size_gb
+}
+
+output "output_ids" {
+  value = module.memstore.ids
+}
+
+output "output_hosts" {
+  value = module.memstore.hosts
+}
+
+output "output_regions" {
+  value = module.memstore.regions
+}
+
+output "output_current_location_ids" {
+  value = module.memstore.current_location_ids
+}
+

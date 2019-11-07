@@ -14,8 +14,13 @@
  * limitations under the License.
  */
 
+locals {
+  instance_count = length(var.instance_configs)
+  dns_project_id = var.dns_project_id == null ? var.project : var.dns_project_id
+}
+
 resource "google_redis_instance" "default" {
-  count = length(var.instance_configs)
+  count = local.instance_count
 
   project            = var.project
   authorized_network = var.authorized_network
@@ -31,7 +36,6 @@ resource "google_redis_instance" "default" {
   alternative_location_id = var.instance_configs[count.index]["alternative_location_id"]
   reserved_ip_range       = var.instance_configs[count.index]["reserved_ip_range"]
 
-
   depends_on = [google_project_service.redis]
 }
 
@@ -40,4 +44,30 @@ resource "google_project_service" "redis" {
 
   project = var.project
   service = "redis.googleapis.com"
+}
+
+
+resource "google_project_service" "dns" {
+  count = var.enable_apis && var.managed_zone_name != null ? 1 : 0
+
+  project = local.dns_project_id
+  service = "dns.googleapis.com"
+}
+
+data "google_dns_managed_zone" "main" {
+  count      = var.managed_zone_name == null ? 0 : 1
+  project    = local.dns_project_id
+  name       = var.managed_zone_name
+
+	depends_on = [google_project_service.dns]
+}
+
+resource "google_dns_record_set" "main" {
+  count        = var.managed_zone_name == null ? 0 : local.instance_count
+  name         = var.instance_configs[count.index]["dns_record_name"] != null ? var.instance_configs[count.index]["dns_record_name"] : "${var.dns_record_prefix}-${count.index}.${data.google_dns_managed_zone.main.0.dns_name}"
+  type         = var.record_type
+  ttl          = var.record_ttl
+  managed_zone = var.managed_zone_name
+  project      = local.dns_project_id
+  rrdatas      = [google_redis_instance.default[count.index].host]
 }

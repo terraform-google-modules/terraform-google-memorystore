@@ -15,5 +15,5 @@
  */
 
 module "memstore" {
-  source = "../../../examples/basic"
+  source = "../../../examples/multiple_with_dns"
 }

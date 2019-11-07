@@ -19,18 +19,28 @@ provider "google" {
 }
 
 module "memorystore" {
-  source      = "../../"
-  project     = "memorystore"
-  enable_apis = true
+  source            = "../../"
+  project           = "memorystore"
+  enable_apis       = true
+	managed_zone_name = "my-example-zone"
 
   instance_configs = [{
-    name                    = "memorystore",
+    name                    = "memorystore-2",
     memory_size_gb          = "1",
     region                  = "us-central1",
     location_id             = "us-central1-a",
-    display_name            = "memorystore",
+    display_name            = "memorystore-1",
     alternative_location_id = null,
     reserved_ip_range       = null,
-    dns_record_name         = null,
+    dns_record_name         = "memorystore-1.foo.com",
+  },{
+    name                    = "memorystore-2",
+    memory_size_gb          = "1",
+    region                  = "us-east1",
+    location_id             = "us-east1-a",
+    display_name            = "memorystore-2",
+    alternative_location_id = null,
+    reserved_ip_range       = null,
+    dns_record_name         = "memorystore-2.foo.com",
   }]
 }

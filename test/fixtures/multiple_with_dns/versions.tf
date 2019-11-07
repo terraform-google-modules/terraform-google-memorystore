@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-module "memstore" {
-  source = "../../../examples/basic"
+terraform {
+  required_version = ">= 0.12"
 }

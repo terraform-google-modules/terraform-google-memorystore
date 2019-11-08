@@ -18,7 +18,7 @@ module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 3.0"
 
-  name                = "ci-memory-store"
+  name                = "ci-memorystore"
   random_project_id   = true
   org_id              = var.org_id
   folder_id           = var.folder_id
@@ -29,6 +29,7 @@ module "project" {
     "cloudresourcemanager.googleapis.com",
     "storage-api.googleapis.com",
     "serviceusage.googleapis.com",
+    "dns.googleapis.com",
     "redis.googleapis.com",
   ]
 }

@@ -28,7 +28,7 @@ module "memorystore" {
 | alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `"null"` | no |
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
 | display\_name | An arbitrary and optional user-provided name for the instance. | string | `"null"` | no |
-| enable\_apis | Flag for enabling redis.googleapis.com in your project | string | n/a | yes |
+| enable\_apis | Flag for enabling redis.googleapis.com in your project | bool | `"true"` | no |
 | labels | The resource labels to represent user provided metadata. | map(string) | `"null"` | no |
 | location\_id | The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]. | string | `"null"` | no |
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | number | `"1"` | no |

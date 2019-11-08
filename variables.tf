@@ -25,6 +25,12 @@ variable "project" {
   type        = string
 }
 
+variable "enable_apis" {
+  description = "Flag for enabling redis.googleapis.com in your project"
+  type        = bool
+  default     = true
+}
+
 variable "name" {
   description = "The ID of the instance or a fully qualified identifier for the instance."
   type        = string
@@ -82,10 +88,4 @@ variable "labels" {
   description = "The resource labels to represent user provided metadata."
   type        = map(string)
   default     = null
-}
-
-variable "enable_apis" {
-  description = "Enable required APIs for Cloud Memorystore."
-  type        = bool
-  default     = true
 }

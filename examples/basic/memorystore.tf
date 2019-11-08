@@ -23,4 +23,5 @@ module "memorystore" {
   name           = "memorystore"
   project        = "memorystore"
   memory_size_gb = "1"
+  enable_apis    = "true"
 }

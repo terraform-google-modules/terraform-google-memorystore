@@ -20,7 +20,8 @@ locals {
 }
 
 resource "google_redis_instance" "default" {
-  count = local.instance_count
+  depends_on = [module.enable_redis_api]
+  count      = local.instance_count
 
   project            = var.project
   authorized_network = var.authorized_network
@@ -35,23 +36,31 @@ resource "google_redis_instance" "default" {
   location_id             = var.instance_configs[count.index]["location_id"]
   alternative_location_id = var.instance_configs[count.index]["alternative_location_id"]
   reserved_ip_range       = var.instance_configs[count.index]["reserved_ip_range"]
-
-  depends_on = [google_project_service.redis]
 }
 
-resource "google_project_service" "redis" {
-  count = var.enable_apis ? 1 : 0
+module "enable_redis_api" {
+  source  = "terraform-google-modules/project-factory/google//modules/project_services"
+  version = "4.0.1"
 
-  project = var.project
-  service = "redis.googleapis.com"
+  project_id  = "${var.project}"
+  enable_apis = "${var.enable_apis}"
+
+  activate_apis = [
+    "redis.googleapis.com",
+  ]
 }
 
 
-resource "google_project_service" "dns" {
-  count = var.enable_apis && var.managed_zone_name != null ? 1 : 0
+module "enable_dns_api" {
+  source  = "terraform-google-modules/project-factory/google//modules/project_services"
+  version = "4.0.1"
 
-  project = local.dns_project_id
-  service = "dns.googleapis.com"
+  project_id  = "${var.project}"
+  enable_apis = var.enable_apis && var.managed_zone_name != null ? "true" : "false"
+
+  activate_apis = [
+    "dns.googleapis.com",
+  ]
 }
 
 data "google_dns_managed_zone" "main" {
@@ -59,10 +68,11 @@ data "google_dns_managed_zone" "main" {
   project = local.dns_project_id
   name    = var.managed_zone_name
 
-  depends_on = [google_project_service.dns]
+  depends_on = [module.enable_dns_api]
 }
 
 resource "google_dns_record_set" "main" {
+  depends_on   = [module.enable_dns_api]
   count        = var.managed_zone_name == null ? 0 : local.instance_count
   name         = var.instance_configs[count.index]["dns_record_name"] != null ? var.instance_configs[count.index]["dns_record_name"] : "${var.dns_record_prefix}-${count.index}.${data.google_dns_managed_zone.main.0.dns_name}"
   type         = var.record_type

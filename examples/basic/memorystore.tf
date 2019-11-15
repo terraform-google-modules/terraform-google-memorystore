@@ -21,7 +21,7 @@ provider "google" {
 module "memorystore" {
   source      = "../../"
   project     = "memorystore"
-  enable_apis = true
+  enable_apis = false
 
   instance_configs = [{
     name                    = "memorystore",

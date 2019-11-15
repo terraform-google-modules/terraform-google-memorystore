@@ -21,7 +21,7 @@ provider "google" {
 module "memorystore" {
   source            = "../../"
   project           = "memorystore"
-  enable_apis       = true
+  enable_apis       = false
   managed_zone_name = "my-example-zone"
 
   instance_configs = [{

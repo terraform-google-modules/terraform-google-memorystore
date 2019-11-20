@@ -26,7 +26,7 @@ module "memorystore" {
 
   instance_configs = [{
     name                    = "memorystore-2",
-    memory_size_gb          = "1",
+    memory_size_gb          = 1,
     region                  = "us-central1",
     location_id             = "us-central1-a",
     display_name            = "memorystore-1",
@@ -35,7 +35,7 @@ module "memorystore" {
     dns_record_name         = "memorystore-1.foo.com",
     }, {
     name                    = "memorystore-2",
-    memory_size_gb          = "1",
+    memory_size_gb          = 1,
     region                  = "us-east1",
     location_id             = "us-east1-a",
     display_name            = "memorystore-2",

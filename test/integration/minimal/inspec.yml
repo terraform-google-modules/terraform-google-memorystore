@@ -15,15 +15,6 @@ attributes:
   - name: memory_size_gb
     required: true
     type: numeric
-  - name: output_ids
+  - name: outputs
     required: true
-    type: array
-  - name: output_hosts
-    required: true
-    type: array
-  - name: output_regions
-    required: true
-    type: array
-  - name: output_current_location_ids
-    required: true
-    type: array
+    type: object

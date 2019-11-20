@@ -34,19 +34,6 @@ output "memory_size_gb" {
   value = var.memory_size_gb
 }
 
-output "output_ids" {
-  value = module.memstore.ids
+output "outputs" {
+  value = module.memstore
 }
-
-output "output_hosts" {
-  value = module.memstore.hosts
-}
-
-output "output_regions" {
-  value = module.memstore.regions
-}
-
-output "output_current_location_ids" {
-  value = module.memstore.current_location_ids
-}
-

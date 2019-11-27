@@ -20,10 +20,7 @@ This test with create a new redis instance.
 | location\_id |  |
 | memory\_size\_gb |  |
 | name |  |
-| output\_current\_location\_ids |  |
-| output\_hosts |  |
-| output\_ids |  |
-| output\_regions |  |
+| outputs |  |
 | project\_id |  |
 | region |  |
 

@@ -27,6 +27,7 @@ module "memorystore" {
 |------|-------------|:----:|:-----:|:-----:|
 | alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `"null"` | no |
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
+| connect\_mode | The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING. | string | `"null"` | no |
 | display\_name | An arbitrary and optional user-provided name for the instance. | string | `"null"` | no |
 | enable\_apis | Flag for enabling redis.googleapis.com in your project | bool | `"true"` | no |
 | labels | The resource labels to represent user provided metadata. | map(string) | `"null"` | no |

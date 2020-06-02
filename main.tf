@@ -21,6 +21,7 @@ resource "google_redis_instance" "default" {
   name           = var.name
   tier           = var.tier
   memory_size_gb = var.memory_size_gb
+  connect_mode   = var.connect_mode
 
   region                  = var.region
   location_id             = var.location_id

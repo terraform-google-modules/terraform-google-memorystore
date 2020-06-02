@@ -84,6 +84,12 @@ variable "reserved_ip_range" {
   default     = null
 }
 
+variable "connect_mode" {
+  description = "The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING."
+  type        = string
+  default     = null
+}
+
 variable "labels" {
   description = "The resource labels to represent user provided metadata."
   type        = map(string)

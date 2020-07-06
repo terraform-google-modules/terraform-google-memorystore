@@ -15,6 +15,7 @@
  */
 
 resource "google_redis_instance" "default" {
+
   project        = var.project
   name           = var.name
   tier           = var.tier

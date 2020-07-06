@@ -25,12 +25,6 @@ variable "project" {
   type        = string
 }
 
-variable "enable_apis" {
-  description = "Flag for enabling redis.googleapis.com in your project"
-  type        = bool
-  default     = true
-}
-
 variable "name" {
   description = "The ID of the instance or a fully qualified identifier for the instance."
   type        = string

@@ -22,7 +22,6 @@ module "memstore" {
   project     = var.project_id
   region      = var.region
   location_id = var.location_id
-  enable_apis = true
 
   memory_size_gb = var.memory_size_gb
 }

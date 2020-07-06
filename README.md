@@ -29,7 +29,6 @@ module "memorystore" {
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
 | connect\_mode | The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING. | string | `"null"` | no |
 | display\_name | An arbitrary and optional user-provided name for the instance. | string | `"null"` | no |
-| enable\_apis | Flag for enabling redis.googleapis.com in your project | bool | `"true"` | no |
 | labels | The resource labels to represent user provided metadata. | map(string) | `"null"` | no |
 | location\_id | The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]. | string | `"null"` | no |
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | number | `"1"` | no |
@@ -50,6 +49,15 @@ module "memorystore" {
 | region | The region the instance lives in. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Requirements
+
+### APIs
+
+A project with the following APIs enabled must be used to host the
+resources of this module:
+
+- Google Cloud Memorystore API: `redis.googleapis.com`
 
 ## File structure
 

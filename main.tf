@@ -15,8 +15,6 @@
  */
 
 resource "google_redis_instance" "default" {
-  depends_on = [module.enable_apis]
-
   project        = var.project
   name           = var.name
   tier           = var.tier
@@ -34,16 +32,4 @@ resource "google_redis_instance" "default" {
   reserved_ip_range = var.reserved_ip_range
 
   labels = var.labels
-}
-
-module "enable_apis" {
-  source  = "terraform-google-modules/project-factory/google//modules/project_services"
-  version = "4.0.1"
-
-  project_id  = "${var.project}"
-  enable_apis = "${var.enable_apis}"
-
-  activate_apis = [
-    "redis.googleapis.com",
-  ]
 }

@@ -18,12 +18,13 @@ module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 8.1.0"
 
-  name                = "ci-memory-store"
-  random_project_id   = true
-  org_id              = var.org_id
-  folder_id           = var.folder_id
-  billing_account     = var.billing_account
-  auto_create_network = true
+  name                    = "ci-memory-store"
+  random_project_id       = true
+  org_id                  = var.org_id
+  folder_id               = var.folder_id
+  billing_account         = var.billing_account
+  default_service_account = "delete"
+  auto_create_network     = true
 
   activate_apis = [
     "cloudresourcemanager.googleapis.com",

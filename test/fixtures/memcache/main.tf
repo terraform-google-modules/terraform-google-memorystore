@@ -14,14 +14,33 @@
  * limitations under the License.
  */
 
+data "google_compute_network" "peering_network" {
+  project = var.project_id
+  name    = "default"
+}
+
+resource "google_compute_global_address" "private_ip_alloc" {
+  project       = var.project_id
+  name          = "private-ip-alloc"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 16
+  network       = data.google_compute_network.peering_network.self_link
+}
+
+resource "google_service_networking_connection" "ci-memory-store" {
+  network                 = data.google_compute_network.peering_network.self_link
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.private_ip_alloc.name]
+}
+
+
 module "memcache" {
-  source = "../../../modules/memcache"
-
-  name = var.name
-
+  source         = "../../../examples/memcache"
+  name           = "test-memcache"
   project        = var.project_id
-  region         = var.region
-  memory_size_mb = var.memory_size_mb
-  cpu_count      = var.cpu_count
+  region         = "us-esast1"
+  memory_size_mb = 1024
+  cpu_count      = 1
   enable_apis    = true
 }

@@ -22,7 +22,7 @@ module "memcache" {
   source         = "../../modules/memcache"
   name           = "memcache"
   project        = "memcache"
-  memory_size_mb = "1024"
-  enable_apis    = "true"
-  cpu_count      = "1"
+  memory_size_mb = 1024
+  enable_apis    = true
+  cpu_count      = 1
 }

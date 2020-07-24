@@ -34,22 +34,4 @@ module "project" {
   ]
 }
 
-data "google_compute_network" "peering_network" {
-  project = module.project.project_id
-  name    = "default"
-}
 
-resource "google_compute_global_address" "private_ip_alloc" {
-  project       = module.project.project_id
-  name          = "private-ip-alloc"
-  purpose       = "VPC_PEERING"
-  address_type  = "INTERNAL"
-  prefix_length = 16
-  network       = data.google_compute_network.peering_network.self_link
-}
-
-resource "google_service_networking_connection" "ci-memory-store" {
-  network                 = data.google_compute_network.peering_network.self_link
-  service                 = "servicenetworking.googleapis.com"
-  reserved_peering_ranges = [google_compute_global_address.private_ip_alloc.name]
-}

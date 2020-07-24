@@ -23,7 +23,7 @@ resource "google_memcache_instance" "self" {
   region             = var.region
   authorized_network = var.authorized_network
   node_count         = var.node_count
-  display_name       = var.display_name
+  display_name       = var.display_name == null ? var.display_name : var.name
   labels             = var.labels
 
   node_config {

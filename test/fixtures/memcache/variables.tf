@@ -18,27 +18,3 @@ variable "project_id" {
   description = "Google cloud project id to create memcache instance."
   type        = string
 }
-
-variable "name" {
-  description = "Name of memcache instance."
-  type        = string
-  default     = "test-memcache"
-}
-
-variable "region" {
-  description = "Region to create test instance."
-  type        = string
-  default     = "us-east1"
-}
-
-variable "memory_size_mb" {
-  description = "Memory size of test instance."
-  type        = number
-  default     = 1024
-}
-
-variable "cpu_count" {
-  description = "Number of cpu's for test instance."
-  type        = number
-  default     = 1
-}

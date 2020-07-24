@@ -17,7 +17,6 @@
 variable "region" {
   description = "The GCP region to use."
   type        = string
-  default     = null
 }
 
 variable "project" {
@@ -82,7 +81,7 @@ variable "reserved_ip_range" {
 variable "labels" {
   description = "The resource labels to represent user provided metadata."
   type        = map(string)
-  default     = null
+  default     = {}
 }
 
 variable "params" {

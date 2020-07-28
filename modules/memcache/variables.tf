@@ -88,9 +88,3 @@ variable "params" {
   type        = map(string)
   default     = null
 }
-
-variable "module_depends_on" {
-  description = "Workaround to delay module initialization until private service access connection is available"
-  type        = list(any)
-  default     = []
-}

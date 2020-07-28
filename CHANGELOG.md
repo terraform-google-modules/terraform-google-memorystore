@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v1.1.0...v1.2.0) (2020-07-28)
+
+
+### Features
+
+* Added submodule for cloud memorystore (memcache) ([#22](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/22)) ([6067568](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/606756829c01d3b15b583debd1e156911f09ae36))
+
 ## [1.1.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v1.0.0...v1.1.0) (2020-06-11)
 
 

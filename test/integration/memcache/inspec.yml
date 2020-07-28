@@ -1,0 +1,27 @@
+name: memcache
+attributes:
+  - name: project_id
+    required: true
+    type: string
+  - name: name
+    required: true
+    type: string
+  - name: region
+    required: true
+    type: string
+  - name: cpu_count
+    required: true
+    type: numeric
+  - name: memory_size_mb
+    required: true
+    type: numeric
+  - name: node_count
+    required: true
+    type: numeric
+  - name: output_id
+    required: true
+    type: string
+  - name: output_region
+    required: true
+    type: string
+

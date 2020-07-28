@@ -14,24 +14,31 @@
  * limitations under the License.
  */
 
-module "project" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 8.1.0"
 
-  name                    = "ci-memory-store"
-  random_project_id       = true
-  org_id                  = var.org_id
-  folder_id               = var.folder_id
-  billing_account         = var.billing_account
-  default_service_account = "delete"
-  auto_create_network     = true
-
-  activate_apis = [
-    "cloudresourcemanager.googleapis.com",
-    "serviceusage.googleapis.com",
-    "redis.googleapis.com",
-    "memcache.googleapis.com",
-  ]
+output "project_id" {
+  value = var.project_id
 }
 
+output "name" {
+  value = module.memcache.name
+}
 
+output "region" {
+  value = module.memcache.region
+}
+
+output "cpu_count" {
+  value = module.memcache.cpu_count
+}
+
+output "memory_size_mb" {
+  value = module.memcache.memory_size_mb
+}
+
+output "output_id" {
+  value = module.memcache.output_id
+}
+
+output "output_region" {
+  value = module.memcache.output_region
+}

@@ -14,24 +14,12 @@
  * limitations under the License.
  */
 
-module "project" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 8.1.0"
-
-  name                    = "ci-memory-store"
-  random_project_id       = true
-  org_id                  = var.org_id
-  folder_id               = var.folder_id
-  billing_account         = var.billing_account
-  default_service_account = "delete"
-  auto_create_network     = true
-
-  activate_apis = [
-    "cloudresourcemanager.googleapis.com",
-    "serviceusage.googleapis.com",
-    "redis.googleapis.com",
-    "memcache.googleapis.com",
-  ]
+output "id" {
+  description = "The memorystore instance ID."
+  value       = google_memcache_instance.self.id
 }
 
-
+output "region" {
+  description = "The region the instance lives in."
+  value       = google_memcache_instance.self.region
+}

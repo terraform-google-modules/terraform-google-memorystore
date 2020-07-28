@@ -1,0 +1,3 @@
+# The google cloud project id to create resources in.
+project_id=""
+

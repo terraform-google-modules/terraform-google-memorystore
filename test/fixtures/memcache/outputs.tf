@@ -14,30 +14,31 @@
  * limitations under the License.
  */
 
+
 output "project_id" {
   value = var.project_id
 }
 
 output "name" {
-  value = var.name
+  value = module.memcache.name
 }
 
 output "region" {
-  value = var.region
+  value = module.memcache.region
+}
+
+output "cpu_count" {
+  value = module.memcache.cpu_count
 }
 
 output "memory_size_mb" {
-  value = var.memory_size_mb
+  value = module.memcache.memory_size_mb
 }
 
-
-output "cpu_count" {
-  value = var.cpu_count
-}
 output "output_id" {
-  value = module.memcache.id
+  value = module.memcache.output_id
 }
 
 output "output_region" {
-  value = module.memcache.region
+  value = module.memcache.output_region
 }

@@ -14,15 +14,31 @@
  * limitations under the License.
  */
 
-provider "google-beta" {
-  version = "~> 3.31.0"
+
+output "project_id" {
+  value = var.project
 }
 
-module "memcache" {
-  source         = "../../modules/memcache"
-  name           = "memcache"
-  project        = "memcache"
-  memory_size_mb = 1024
-  enable_apis    = true
-  cpu_count      = 1
+output "name" {
+  value = var.name
+}
+
+output "region" {
+  value = var.region
+}
+
+output "cpu_count" {
+  value = var.cpu_count
+}
+
+output "memory_size_mb" {
+  value = var.memory_size_mb
+}
+
+output "output_id" {
+  value = module.memcache.id
+}
+
+output "output_region" {
+  value = module.memcache.region
 }

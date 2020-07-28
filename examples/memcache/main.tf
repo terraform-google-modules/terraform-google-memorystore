@@ -14,7 +14,24 @@
  * limitations under the License.
  */
 
+provider "google-beta" {
+  version = "~> 3.31.0"
+}
+
+module "private-service-access" {
+  source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
+  version     = "3.2.0"
+  project_id  = var.project
+  vpc_network = "default"
+}
+
 module "memcache" {
-  source  = "../../../examples/memcache"
-  project = var.project_id
+  source            = "../../modules/memcache"
+  name              = var.name
+  project           = var.project
+  memory_size_mb    = var.memory_size_mb
+  enable_apis       = var.enable_apis
+  cpu_count         = var.cpu_count
+  region            = var.region
+  module_depends_on = [module.private-service-access.peering_completed]
 }

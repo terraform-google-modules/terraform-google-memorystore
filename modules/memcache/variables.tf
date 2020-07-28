@@ -77,7 +77,6 @@ variable "reserved_ip_range" {
   default     = null
 }
 
-
 variable "labels" {
   description = "The resource labels to represent user provided metadata."
   type        = map(string)
@@ -90,3 +89,8 @@ variable "params" {
   default     = null
 }
 
+variable "module_depends_on" {
+  description = "Workaround to delay module initialization until private service access connection is available"
+  type        = list(any)
+  default     = []
+}

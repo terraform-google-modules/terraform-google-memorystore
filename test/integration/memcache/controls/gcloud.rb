@@ -44,8 +44,12 @@ control 'memcache-instance' do
       end
     end
 
-    it { expect(metadata['nodeConfig']['cpuCount']).to eq(cpu_count) }
-    it { expect(metadata['nodeConfig']['memorySizeMb']).to eq(memory_size_mb) }
+    it "nodeConfig.cpucount matches var.cpu_count" do
+       expect(metadata['nodeConfig']['cpuCount']).to eq(cpu_count)
+    end
+    it "nodeConfig.memorySizeMb matches var.memory_size_mb" do
+      expect(metadata['nodeConfig']['memorySizeMb']).to eq(memory_size_mb)
+    end
 
   end
 end

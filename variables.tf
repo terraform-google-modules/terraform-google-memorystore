@@ -73,7 +73,7 @@ variable "redis_version" {
 }
 
 variable "redis_configs" {
-  description = "The Redis configuration parameters."
+  description = "The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs)"
   type        = map
   default     = {}
 }

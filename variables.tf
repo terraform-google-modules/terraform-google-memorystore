@@ -72,6 +72,12 @@ variable "redis_version" {
   default     = null
 }
 
+variable "redis_configs" {
+  description = "The Redis configuration parameters."
+  type        = map
+  default     = {}
+}
+
 variable "display_name" {
   description = "An arbitrary and optional user-provided name for the instance."
   type        = string

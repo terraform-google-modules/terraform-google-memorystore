@@ -36,6 +36,7 @@ module "memorystore" {
 | name | The ID of the instance or a fully qualified identifier for the instance. | string | n/a | yes |
 | project | The ID of the project in which the resource belongs to. | string | n/a | yes |
 | redis\_version | The version of Redis software. | string | `"null"` | no |
+| redis\_configs | The Redis configuration parameters. | map | `"null"` | no |
 | region | The GCP region to use. | string | `"null"` | no |
 | reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `"null"` | no |
 | tier | The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier | string | `"STANDARD_HA"` | no |

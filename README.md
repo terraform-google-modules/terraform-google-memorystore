@@ -35,6 +35,7 @@ module "memorystore" {
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | number | `"1"` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. | string | n/a | yes |
 | project | The ID of the project in which the resource belongs to. | string | n/a | yes |
+| redis\_configs | The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs) | map | `<map>` | no |
 | redis\_version | The version of Redis software. | string | `"null"` | no |
 | region | The GCP region to use. | string | `"null"` | no |
 | reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `"null"` | no |

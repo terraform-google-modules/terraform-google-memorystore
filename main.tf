@@ -41,8 +41,8 @@ module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
   version = "4.0.1"
 
-  project_id  = "${var.project}"
-  enable_apis = "${var.enable_apis}"
+  project_id  = var.project
+  enable_apis = var.enable_apis
 
   activate_apis = [
     "redis.googleapis.com",

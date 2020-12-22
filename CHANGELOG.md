@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.3.1](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v1.3.0...v1.3.1) (2020-12-22)
+
+
+### Bug Fixes
+
+* Remove interpolation-only expressions ([#32](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/32)) ([f4896f6](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/f4896f6b339e98c93937ea71397683847525677d))
+
 ## [1.3.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v1.2.0...v1.3.0) (2020-08-14)
 
 

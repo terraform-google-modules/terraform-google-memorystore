@@ -34,3 +34,7 @@ output "current_location_id" {
   value       = google_redis_instance.default.current_location_id
 }
 
+output "persistence_iam_identity" {
+  description = "Cloud IAM identity used by import/export operations. Format is 'serviceAccount:'. May change over time"
+  value       = google_redis_instance.default.persistence_iam_identity
+}

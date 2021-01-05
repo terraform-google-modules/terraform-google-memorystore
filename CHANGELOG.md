@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.3.2](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v1.3.1...v1.3.2) (2021-01-05)
+
+
+### Bug Fixes
+
+* Upgrade version of project_services module to 9.2.0 ([#35](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/35)) ([a582a36](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/a582a36746d2eb3570b8c91be6302a343bfc8554))
+
 ### [1.3.1](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v1.3.0...v1.3.1) (2020-12-22)
 
 

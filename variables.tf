@@ -86,8 +86,6 @@ variable "display_name" {
 
 variable "reserved_ip_range" {
   description = "The CIDR range of internal addresses that are reserved for this instance."
-  type        = string
-  default     = null
 }
 
 variable "connect_mode" {

@@ -35,6 +35,10 @@ resource "google_redis_instance" "default" {
   reserved_ip_range = var.reserved_ip_range
 
   labels = var.labels
+
+  lifecycle {
+    ignore_changes = ["redis_version"]
+  }
 }
 
 module "enable_apis" {

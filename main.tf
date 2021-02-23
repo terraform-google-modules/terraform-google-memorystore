@@ -35,6 +35,9 @@ resource "google_redis_instance" "default" {
   reserved_ip_range = var.reserved_ip_range
 
   labels = var.labels
+
+  auth_enabled = var.auth_enabled
+  auth_string  = var.auth_string
 }
 
 module "enable_apis" {

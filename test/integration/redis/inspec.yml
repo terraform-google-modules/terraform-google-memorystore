@@ -1,0 +1,35 @@
+name: redis
+attributes:
+  - name: project_id
+    required: true
+    type: string
+  - name: name
+    required: true
+    type: string
+  - name: region
+    required: true
+    type: string
+  - name: location_id
+    required: true
+    type: string
+  - name: alternative_location_id
+    required: true
+    type: string
+  - name: memory_size_gb
+    required: true
+    type: numeric
+  - name: output_id
+    required: true
+    type: string
+  - name: output_host
+    required: true
+    type: string
+  - name: output_region
+    required: true
+    type: string
+  - name: output_current_location_id
+    required: true
+    type: string
+  - name: auth_enabled
+    required: true
+    type: boolean

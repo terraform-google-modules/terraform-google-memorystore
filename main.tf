@@ -35,14 +35,18 @@ resource "google_redis_instance" "default" {
   reserved_ip_range = var.reserved_ip_range
 
   labels = var.labels
+
+  auth_enabled = var.auth_enabled
+  auth_string  = var.auth_string
 }
 
 module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
   version = "9.2.0"
 
-  project_id  = var.project
-  enable_apis = var.enable_apis
+  project_id                  = var.project
+  enable_apis                 = var.enable_apis
+  disable_services_on_destroy = false
 
   activate_apis = [
     "redis.googleapis.com",

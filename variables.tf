@@ -74,7 +74,7 @@ variable "redis_version" {
 
 variable "redis_configs" {
   description = "The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs)"
-  type        = map
+  type        = map(any)
   default     = {}
 }
 
@@ -99,5 +99,17 @@ variable "connect_mode" {
 variable "labels" {
   description = "The resource labels to represent user provided metadata."
   type        = map(string)
+  default     = null
+}
+
+variable "auth_enabled" {
+  description = "Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance."
+  type        = bool
+  default     = false
+}
+
+variable "auth_string" {
+  description = "AUTH String set on the instance. This field will only be populated if auth_enabled is true"
+  type        = string
   default     = null
 }

@@ -22,7 +22,7 @@ variable "project_id" {
 variable "name" {
   description = "Name of redis instance."
   type        = string
-  default     = "test-minimal"
+  default     = "test-redis"
 }
 
 variable "region" {
@@ -37,14 +37,26 @@ variable "location_id" {
   default     = "us-east1-b"
 }
 
+variable "alternative_location_id" {
+  description = "Alternate Zone to create test instance."
+  type        = string
+  default     = "us-east1-d"
+}
+
 variable "memory_size_gb" {
   description = "Memory size of test instance."
   type        = number
   default     = 1
 }
 
-variable "tier" {
-  description = "The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier"
+variable "auth_enabled" {
+  description = "Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance."
+  type        = bool
+  default     = true
+}
+
+variable "auth_string" {
+  description = "AUTH String set on the instance. This field will only be populated if auth_enabled is true"
   type        = string
-  default     = "BASIC"
+  default     = null
 }

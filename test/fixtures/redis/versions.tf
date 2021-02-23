@@ -14,14 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.52.0"
-}
-
-module "memorystore" {
-  source         = "../../"
-  name           = "memorystore"
-  project        = "memorystore"
-  memory_size_gb = "1"
-  enable_apis    = "true"
+terraform {
+  required_version = ">= 0.12"
 }

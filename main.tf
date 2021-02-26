@@ -41,7 +41,7 @@ resource "google_redis_instance" "default" {
 
 module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
-  version = "9.2.0"
+  version = "~> 10.0"
 
   project_id                  = var.project
   enable_apis                 = var.enable_apis

@@ -34,6 +34,9 @@ resource "google_redis_instance" "default" {
   display_name      = var.display_name
   reserved_ip_range = var.reserved_ip_range
 
+  auth_enabled = var.auth_enabled
+  auth_string = var.auth_string
+
   labels = var.labels
 }
 

@@ -40,6 +40,8 @@ module "memorystore" {
 | region | The GCP region to use. | string | `"null"` | no |
 | reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `"null"` | no |
 | tier | The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier | string | `"STANDARD_HA"` | no |
+| auth_enabled | Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled. | bool | `false` | no |
+| auth_string | AUTH String set on the instance. This field will only be populated if auth_enabled is true. | string | `"null"` | no |
 
 ## Outputs
 

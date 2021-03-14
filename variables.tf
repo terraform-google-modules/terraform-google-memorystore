@@ -101,3 +101,15 @@ variable "labels" {
   type        = map(string)
   default     = null
 }
+
+variable "auth_enabled" {
+  description = "Indicates whether OSS Redis AUTH is enabled for the instance."
+  type        = bool
+  default     = false
+}
+
+variable "auth_string" {
+  description = "AUTH String set on the instance. This field will only be populated if auth_enabled is true."
+  type        = string
+  default     = null
+}

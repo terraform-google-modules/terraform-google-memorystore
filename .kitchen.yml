@@ -44,3 +44,15 @@ suites:
           backend: local
     provisioner:
       name: terraform
+  - name: "redis"
+    driver:
+      name: "terraform"
+      command_timeout: 1800
+      root_module_directory: test/fixtures/redis
+    verifier:
+      name: terraform
+      systems:
+        - name: redis
+          backend: local
+    provisioner:
+      name: terraform

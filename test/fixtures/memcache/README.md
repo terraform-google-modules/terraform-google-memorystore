@@ -1,6 +1,6 @@
 # Minimal Test
 
-This test with create a new memcache instance.
+This test will create a new memcache instance.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs

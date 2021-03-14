@@ -26,6 +26,8 @@ module "memorystore" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `"null"` | no |
+| auth\_enabled | Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance. | bool | `"false"` | no |
+| auth\_string | AUTH String set on the instance. This field will only be populated if auth_enabled is true | string | `"null"` | no |
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
 | connect\_mode | The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING. | string | `"null"` | no |
 | display\_name | An arbitrary and optional user-provided name for the instance. | string | `"null"` | no |
@@ -35,7 +37,7 @@ module "memorystore" {
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | number | `"1"` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. | string | n/a | yes |
 | project | The ID of the project in which the resource belongs to. | string | n/a | yes |
-| redis\_configs | The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs) | map | `<map>` | no |
+| redis\_configs | The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs) | map(any) | `<map>` | no |
 | redis\_version | The version of Redis software. | string | `"null"` | no |
 | region | The GCP region to use. | string | `"null"` | no |
 | reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | string | `"null"` | no |

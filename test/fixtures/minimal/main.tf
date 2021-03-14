@@ -23,6 +23,7 @@ module "memstore" {
   region      = var.region
   location_id = var.location_id
   enable_apis = true
+  tier        = var.tier
 
   memory_size_gb = var.memory_size_gb
 }

@@ -1,4 +1,4 @@
-# Minimal Test
+# Redis Test
 
 This test will create a new redis instance.
 
@@ -7,17 +7,22 @@ This test will create a new redis instance.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| alternative\_location\_id | Alternate Zone to create test instance. | string | `"us-east1-d"` | no |
+| auth\_enabled | Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance. | bool | `"true"` | no |
+| auth\_string | AUTH String set on the instance. This field will only be populated if auth_enabled is true | string | `"null"` | no |
 | location\_id | Zone to create test instance. | string | `"us-east1-b"` | no |
 | memory\_size\_gb | Memory size of test instance. | number | `"1"` | no |
-| name | Name of redis instance. | string | `"test-minimal"` | no |
+| name | Name of redis instance. | string | `"test-redis"` | no |
 | project\_id | Google cloud project id to create redis instance. | string | n/a | yes |
 | region | Region to create test instance. | string | `"us-east1"` | no |
-| tier | The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier | string | `"BASIC"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| alternative\_location\_id |  |
+| auth\_enabled |  |
+| auth\_string |  |
 | location\_id |  |
 | memory\_size\_gb |  |
 | name |  |

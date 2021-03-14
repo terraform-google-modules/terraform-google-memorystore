@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.52.0"
-}
+module "memstore" {
+  source = "../../.."
 
-module "memorystore" {
-  source         = "../../"
-  name           = "memorystore"
-  project        = "memorystore"
-  memory_size_gb = "1"
-  enable_apis    = "true"
+  name = var.name
+
+  project                 = var.project_id
+  region                  = var.region
+  location_id             = var.location_id
+  alternative_location_id = var.alternative_location_id
+  enable_apis             = true
+  auth_enabled            = var.auth_enabled
+
+  memory_size_gb = var.memory_size_gb
 }

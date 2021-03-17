@@ -107,9 +107,3 @@ variable "auth_enabled" {
   type        = bool
   default     = false
 }
-
-variable "auth_string" {
-  description = "AUTH String set on the instance. This field will only be populated if auth_enabled is true"
-  type        = string
-  default     = null
-}

@@ -15,6 +15,7 @@
 ---
 provisioner:
   name: "terraform"
+  verify_version: false
 
 platforms:
   - name: local

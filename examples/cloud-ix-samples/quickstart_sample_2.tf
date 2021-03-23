@@ -16,7 +16,7 @@
 
 # [START memorystore_redis_quickstart_sample_1]
 output "host" {
- description = "The IP address of the instance."
- value = "${google_redis_instance.my_memorystore_redis_instance.host}"
+  description = "The IP address of the instance."
+  value       = "${google_redis_instance.my_memorystore_redis_instance.host}"
 }
 # [END memorystore_redis_quickstart_sample_1]

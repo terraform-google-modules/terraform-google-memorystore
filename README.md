@@ -27,7 +27,6 @@ module "memorystore" {
 |------|-------------|:----:|:-----:|:-----:|
 | alternative\_location\_id | The alternative zone where the instance will be provisioned. | string | `"null"` | no |
 | auth\_enabled | Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance. | bool | `"false"` | no |
-| auth\_string | AUTH String set on the instance. This field will only be populated if auth_enabled is true | string | `"null"` | no |
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | string | `"null"` | no |
 | connect\_mode | The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING. | string | `"null"` | no |
 | display\_name | An arbitrary and optional user-provided name for the instance. | string | `"null"` | no |

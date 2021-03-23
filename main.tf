@@ -37,7 +37,6 @@ resource "google_redis_instance" "default" {
   labels = var.labels
 
   auth_enabled = var.auth_enabled
-  auth_string  = var.auth_string
 }
 
 module "enable_apis" {

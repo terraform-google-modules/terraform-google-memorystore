@@ -15,12 +15,12 @@
  */
 
 provider "google-beta" {
-  version = "~> 3.38.0"
+  version = "~> 3.53"
 }
 
 module "private-service-access" {
   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
-  version     = "3.2.0"
+  version     = "4.5.0"
   project_id  = var.project
   vpc_network = "default"
 }

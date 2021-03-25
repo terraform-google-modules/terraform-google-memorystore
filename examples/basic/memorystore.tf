@@ -15,7 +15,6 @@
  */
 
 provider "google" {
-  version = "~> 3.52.0"
 }
 
 module "memorystore" {

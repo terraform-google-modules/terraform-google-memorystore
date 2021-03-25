@@ -16,7 +16,7 @@
 
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 8.1.0"
+  version = "~> 10.2"
 
   name                    = "ci-memory-store"
   random_project_id       = true

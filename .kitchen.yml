@@ -16,6 +16,11 @@
 provisioner:
   name: "terraform"
 
+driver:
+  name: "terraform"
+  command_timeout: 1800
+  verify_version: false
+
 platforms:
   - name: local
 

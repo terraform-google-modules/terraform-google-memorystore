@@ -22,10 +22,18 @@ terraform {
       source  = "hashicorp/google"
       version = "~> 3.53"
     }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = "~> 3.53"
+    }
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore/v1.0.0"
+    module_name = "blueprints/terraform/terraform-google-memorystore:memcache/v2.0.0"
+  }
+
+  provider_meta "google-beta" {
+    module_name = "blueprints/terraform/terraform-google-memorystore:memcache/v2.0.0"
   }
 
 }

@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-provider "google-beta" {
-  version = "~> 3.53"
-}
-
 module "memcache" {
   source  = "../../../examples/memcache"
   project = var.project_id

@@ -22,4 +22,4 @@ resource "google_redis_instance" "my_memorystore_redis_instance" {
   region         = "us-central1"
   redis_version  = "REDIS_5_0"
 }
-# [END memorystore_redis_quickstart_sample_1] 
+# [END memorystore_redis_quickstart_sample_1]

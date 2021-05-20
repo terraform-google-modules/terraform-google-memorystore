@@ -23,3 +23,8 @@ output "region" {
   description = "The region the instance lives in."
   value       = google_memcache_instance.self.region
 }
+
+output "nodes" {
+  description = "Data about the memcache nodes"
+  value       = google_memcache_instance.self.memcache_nodes
+}

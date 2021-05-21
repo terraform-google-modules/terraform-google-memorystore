@@ -24,4 +24,7 @@ attributes:
   - name: output_region
     required: true
     type: string
+  - name: output_nodes
+    required: true
+    type: hash
 

@@ -42,3 +42,7 @@ output "output_id" {
 output "output_region" {
   value = module.memcache.region
 }
+
+output "output_nodes" {
+  value = module.memcache.nodes
+}

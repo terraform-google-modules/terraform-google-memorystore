@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v3.0.0...v3.1.0) (2021-05-21)
+
+
+### Features
+
+* Add node outputs to the memcache module ([#57](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/57)) ([8fe3f81](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/8fe3f81869d62305e0c251c0b93f4735cd8c3c4b))
+
 ## [3.0.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v2.0.0...v3.0.0) (2021-03-25)
 
 

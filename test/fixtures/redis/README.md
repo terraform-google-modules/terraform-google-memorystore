@@ -15,6 +15,7 @@ This test will create a new redis instance.
 | name | Name of redis instance. | `string` | `"test-redis"` | no |
 | project\_id | Google cloud project id to create redis instance. | `string` | n/a | yes |
 | region | Region to create test instance. | `string` | `"us-east1"` | no |
+| transit\_encryption\_mode | The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. | `string` | `"SERVER_AUTHENTICATION"` | no |
 
 ## Outputs
 
@@ -32,5 +33,6 @@ This test will create a new redis instance.
 | output\_region | n/a |
 | project\_id | n/a |
 | region | n/a |
+| transit\_encryption\_mode | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

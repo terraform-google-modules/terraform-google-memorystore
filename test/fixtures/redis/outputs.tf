@@ -46,6 +46,10 @@ output "auth_string" {
   value = var.auth_string
 }
 
+output "transit_encryption_mode" {
+  value = var.transit_encryption_mode
+}
+
 output "output_id" {
   value = module.memstore.id
 }

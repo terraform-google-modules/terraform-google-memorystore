@@ -19,6 +19,7 @@ location_id             = attribute('location_id')
 alternative_location_id = attribute('alternative_location_id')
 memory_size_gb          = attribute('memory_size_gb')
 auth_enabled            = attribute('auth_enabled')
+transit_encryption_mode = attribute('transit_encryption_mode')
 
 output_id                  = attribute('output_id')
 output_region              = attribute('output_region')
@@ -60,6 +61,8 @@ control 'redis-instance' do
     it "authEnabled matches var.auth_enabled" do
       expect(metadata).to include(authEnabled: auth_enabled)
     end
-
+    it "transitEncryptionMode matches var.transit_encryption_mode" do
+      expect(metadata).to include(transitEncryptionMode: transit_encryption_mode)
+    end
   end
 end

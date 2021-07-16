@@ -37,6 +37,8 @@ resource "google_redis_instance" "default" {
   labels = var.labels
 
   auth_enabled = var.auth_enabled
+
+  transit_encryption_mode = var.transit_encryption_mode
 }
 
 module "enable_apis" {

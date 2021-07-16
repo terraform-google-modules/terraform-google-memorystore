@@ -25,6 +25,7 @@ module "memstore" {
   alternative_location_id = var.alternative_location_id
   enable_apis             = true
   auth_enabled            = var.auth_enabled
+  transit_encryption_mode = var.transit_encryption_mode
 
   memory_size_gb = var.memory_size_gb
 }

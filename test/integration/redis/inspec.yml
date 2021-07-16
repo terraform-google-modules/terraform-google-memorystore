@@ -33,3 +33,6 @@ attributes:
   - name: auth_enabled
     required: true
     type: boolean
+  - name: transit_encryption_mode
+    required: true
+    type: string

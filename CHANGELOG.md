@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v3.1.0...v4.0.0) (2021-07-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Transit encryption is now the default for Redis instances. Set `transit_encryption_mode = "DISABLED"` to restore the old default.
+
+### Features
+
+* add redis TLS support ([#60](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/60)) ([75c7033](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/75c7033713621aa18b7b5057711bd70e41e0325d))
+
 ## [3.1.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v3.0.0...v3.1.0) (2021-05-21)
 
 

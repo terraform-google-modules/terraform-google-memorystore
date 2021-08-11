@@ -31,5 +31,5 @@ output "nodes" {
 
 output "discovery" {
   description = "The memorystore discovery endpoint."
-  value = google_memcache_instance.self.discovery_endpoint
+  value       = google_memcache_instance.self.discovery_endpoint
 }

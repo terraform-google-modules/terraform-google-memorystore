@@ -28,5 +28,6 @@ A Terraform module for creating a fully functional Google Memorystore (memcache)
 | id | The memorystore instance ID. |
 | nodes | Data about the memcache nodes |
 | region | The region the instance lives in. |
+| discovery | The memorystore discovery endpoint. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

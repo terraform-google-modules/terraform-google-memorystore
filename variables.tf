@@ -109,7 +109,7 @@ variable "auth_enabled" {
 }
 
 variable "transit_encryption_mode" {
-  description = "The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance."
+  description = "The TLS mode of the Redis instance, If not provided, TLS is enabled for the instance."
   type        = string
   default     = "SERVER_AUTHENTICATION"
 }

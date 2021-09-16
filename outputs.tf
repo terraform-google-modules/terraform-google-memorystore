@@ -24,6 +24,11 @@ output "host" {
   value       = google_redis_instance.default.host
 }
 
+output "port" {
+  description = "The port number of the exposed Redis endpoint."
+  value       = google_redis_instance.default.port
+}
+
 output "region" {
   description = "The region the instance lives in."
   value       = google_redis_instance.default.region

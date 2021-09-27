@@ -41,4 +41,6 @@ attributes:
   - name: output_nodes
     required: true
     type: hash
-
+  - name: output_discovery
+    required: true
+    type: string

@@ -44,3 +44,6 @@ test/fixtures/*/terraform.tfvars
 terraform.tfstate.d/
 *.auto.tfvars
 credentials.json
+
+# tf lock file
+.terraform.lock.hcl

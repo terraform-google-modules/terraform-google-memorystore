@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.1.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.0.0...v4.1.0) (2021-09-27)
+
+
+### Features
+
+* Add discovery endpoint output to memcache module ([#62](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/62)) ([4639ace](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/4639aceb534178fedfcc7f306a6d4ec173e5c318))
+* Added port to output ([#67](https://www.github.com/terraform-google-modules/terraform-google-memorystore/issues/67)) ([0335deb](https://www.github.com/terraform-google-modules/terraform-google-memorystore/commit/0335deb3445f5f6b946c3c3ef9cbb343e2f78e53))
+
 ## [4.0.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v3.1.0...v4.0.0) (2021-07-16)
 
 

@@ -33,6 +33,30 @@ steps:
 - id: destroy
   name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
   args: ['/bin/bash', '-c', 'source /usr/local/bin/task_helper_functions.sh && kitchen_do destroy']
+
+- id: go-init-minimal
+    waitFor:
+      - prepare
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cd test/integration && RUN_STAGE=init go test -v -run TestMinimalModule ./... -p 1']
+- id: go-apply-minimal
+  waitFor:
+    - go-init-minimal
+  name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+  args: ['/bin/bash', '-c', 'cd test/integration && RUN_STAGE=apply go test -v -run TestMinimalModule ./... -p 1']
+  timeout: 3600s
+- id: go-verify-minimal
+  waitFor:
+    - go-apply-minimal
+  name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+  args: ['/bin/bash', '-c', 'cd test/integration && RUN_STAGE=verify go test -v -run TestMinimalModule ./... -p 1']
+- id: go-destroy-minimal
+  waitFor:
+    - go-verify-minimal
+  name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+  args: ['/bin/bash', '-c', 'cd test/integration && RUN_STAGE=teardown go test -v -run TestMinimalModule ./... -p 1']
+  timeout: 1800s
+
 tags:
 - 'ci'
 - 'integration'

@@ -15,6 +15,7 @@
  */
 
 provider "google-beta" {
+  version = "~> 3.0"
 }
 
 module "private-service-access" {

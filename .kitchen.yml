@@ -25,18 +25,6 @@ platforms:
   - name: local
 
 suites:
-  - name: "minimal"
-    driver:
-      name: "terraform"
-      command_timeout: 1800
-      root_module_directory: test/fixtures/minimal
-    verifier:
-      name: terraform
-      systems:
-        - name: minimal
-          backend: local
-    provisioner:
-      name: terraform
   - name: "memcache"
     driver:
       name: "terraform"

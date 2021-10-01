@@ -24,7 +24,7 @@ driver:
 platforms:
   - name: local
 
-suites:  
+suites:
   - name: "memcache"
     driver:
       name: "terraform"

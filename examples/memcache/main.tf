@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-provider "google-beta" {
-  version = "~> 3.0"
-}
-
 module "private-service-access" {
   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
   version     = "~> 4.5"

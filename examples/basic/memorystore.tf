@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-}
-
 module "memorystore" {
   source         = "../../"
   name           = "memorystore"

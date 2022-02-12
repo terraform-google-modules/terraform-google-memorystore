@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.1.0...v4.2.0) (2022-02-01)
+
+
+### Features
+
+* update TPG version constraints to allow 4.0 ([#73](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/73)) ([7c009e6](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/7c009e6fcaafa544a3cfacdd7764cac76a70ae24))
+
 ## [4.1.0](https://www.github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.0.0...v4.1.0) (2021-09-27)
 
 

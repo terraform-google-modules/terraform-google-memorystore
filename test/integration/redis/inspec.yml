@@ -56,9 +56,6 @@ attributes:
   - name: maintenance_policy_day
     required: true
     type: string
-  - name: maintenance_policy_duration
-    required: true
-    type: string
   - name: maintenance_policy_start_time_hours
     required: true
     type: number

@@ -48,8 +48,7 @@ resource "google_redis_instance" "default" {
     dynamic "weekly_maintenance_window" {
       for_each = local.maintenance_policy_is_defined
       content {
-        day      = var.maintenance_policy_day
-        duration = var.maintenance_policy_duration
+        day = var.maintenance_policy_day
         start_time {
           hours   = var.maintenance_policy_start_time_hours
           minutes = var.maintenance_policy_start_time_minutes

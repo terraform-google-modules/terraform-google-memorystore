@@ -77,12 +77,6 @@ variable "maintenance_policy_day" {
   }
 }
 
-variable "maintenance_policy_duration" {
-  description = "Duration of the maintenance window. The current window is fixed at 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: \"3.5s\"."
-  type        = string
-  default     = "1h"
-}
-
 variable "maintenance_policy_start_time_hours" {
   description = "Start time of the window in UTC time. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."
   type        = number

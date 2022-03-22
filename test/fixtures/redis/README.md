@@ -12,7 +12,6 @@ This test will create a new redis instance.
 | auth\_string | AUTH String set on the instance. This field will only be populated if auth\_enabled is true | `string` | `null` | no |
 | location\_id | Zone to create test instance. | `string` | `"us-east1-b"` | no |
 | maintenance\_policy\_day | The day of week that maintenance updates occur.<br>(days are are "DAY\_OF\_WEEK\_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY" or "SUNDAY") | `string` | `"DAY_OF_WEEK_UNSPECIFIED"` | no |
-| maintenance\_policy\_duration | Duration of the maintenance window. The current window is fixed at 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". | `string` | `"1h"` | no |
 | maintenance\_policy\_start\_time\_hours | Start time of the window in UTC time. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. | `number` | `1` | no |
 | maintenance\_policy\_start\_time\_minutes | Start time of the window in UTC time. Minutes of hour of day. Must be from 0 to 59. | `number` | `0` | no |
 | maintenance\_policy\_start\_time\_nanos | Start time of the window in UTC time. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999 | `number` | `0` | no |

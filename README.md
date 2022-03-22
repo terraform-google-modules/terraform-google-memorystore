@@ -50,6 +50,7 @@ module "memorystore" {
 
 | Name | Description |
 |------|-------------|
+| auth\_string | AUTH String set on the instance. This field will only be populated if auth_enabled is true. |
 | current\_location\_id | The current zone where the Redis endpoint is placed. |
 | host | The IP address of the instance. |
 | id | The memorystore instance ID. |

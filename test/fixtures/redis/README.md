@@ -27,6 +27,7 @@ This test will create a new redis instance.
 | location\_id | n/a |
 | memory\_size\_gb | n/a |
 | name | n/a |
+| output\_auth\_string | n/a |
 | output\_current\_location\_id | n/a |
 | output\_host | n/a |
 | output\_id | n/a |

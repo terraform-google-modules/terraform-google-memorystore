@@ -28,4 +28,11 @@ module "memstore" {
   transit_encryption_mode = "SERVER_AUTHENTICATION"
   authorized_network      = module.test-vpc-module.network_id
   memory_size_gb          = 1
+
+  maintenance_policy_day                = "DAY_OF_WEEK_UNSPECIFIED"
+  maintenance_policy_duration           = 1
+  maintenance_policy_start_time_hours   = 0
+  maintenance_policy_start_time_minutes = 0
+  maintenance_policy_start_time_seconds = 0
+  maintenance_policy_start_time_nanos   = 0
 }

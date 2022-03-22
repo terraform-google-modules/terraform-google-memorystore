@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+locals {
+  maintenance_policy_is_defined = var.maintenance_policy_day != "" && var.maintenance_policy_start_time_hours != null ? [1] : []
+}
+
 resource "google_redis_instance" "default" {
   depends_on = [module.enable_apis]
 
@@ -39,6 +43,22 @@ resource "google_redis_instance" "default" {
   auth_enabled = var.auth_enabled
 
   transit_encryption_mode = var.transit_encryption_mode
+
+  maintenance_policy {
+    dynamic "weekly_maintenance_window" {
+      for_each = local.maintenance_policy_is_defined
+      content {
+        day      = var.maintenance_policy_day
+        duration = var.maintenance_policy_duration
+        start_time {
+          hours   = var.maintenance_policy_start_time_hours
+          minutes = var.maintenance_policy_start_time_minutes
+          seconds = var.maintenance_policy_start_time_seconds
+          nanos   = var.maintenance_policy_start_time_nanos
+        }
+      }
+    }
+  }
 }
 
 module "enable_apis" {

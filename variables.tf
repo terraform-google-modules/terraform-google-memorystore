@@ -113,3 +113,43 @@ variable "transit_encryption_mode" {
   type        = string
   default     = "SERVER_AUTHENTICATION"
 }
+
+variable "maintenance_policy_day" {
+  description = "The day of week that maintenance updates occur.\n(days are are \"DAY_OF_WEEK_UNSPECIFIED\", \"MONDAY\", \"TUESDAY\", \"WEDNESDAY\", \"THURSDAY\", \"FRIDAY\", \"SATURDAY\" or \"SUNDAY\")"
+  type        = string
+  default     = ""
+  validation {
+    condition     = contains(["", "DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"], var.maintenance_policy_day)
+    error_message = "Allowed values for maintenance_policy_day are \"DAY_OF_WEEK_UNSPECIFIED\", \"MONDAY\", \"TUESDAY\", \"WEDNESDAY\", \"THURSDAY\", \"FRIDAY\", \"SATURDAY\" or \"SUNDAY\"."
+  }
+}
+
+variable "maintenance_policy_duration" {
+  description = "Duration of the maintenance window. The current window is fixed at 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: \"3.5s\"."
+  type        = string
+  default     = null
+}
+
+variable "maintenance_policy_start_time_hours" {
+  description = "Start time of the window in UTC time. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."
+  type        = number
+  default     = null
+}
+
+variable "maintenance_policy_start_time_minutes" {
+  description = "Start time of the window in UTC time. Minutes of hour of day. Must be from 0 to 59."
+  type        = number
+  default     = 0
+}
+
+variable "maintenance_policy_start_time_seconds" {
+  description = "Start time of the window in UTC time. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."
+  type        = number
+  default     = 0
+}
+
+variable "maintenance_policy_start_time_nanos" {
+  description = "Start time of the window in UTC time. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999"
+  type        = number
+  default     = 0
+}

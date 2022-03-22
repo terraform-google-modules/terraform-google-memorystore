@@ -66,3 +66,6 @@ output "output_current_location_id" {
   value = module.memstore.current_location_id
 }
 
+output "output_auth_string" {
+  value = module.memstore.auth_string
+}

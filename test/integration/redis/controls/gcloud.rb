@@ -25,6 +25,7 @@ output_id                  = attribute('output_id')
 output_region              = attribute('output_region')
 output_host                = attribute('output_host')
 output_current_location_id = attribute('output_current_location_id')
+output_auth_string         = attribute('output_auth_string')
 
 describe 'Outputs' do
   it 'should reflect inputted variables' do
@@ -39,6 +40,10 @@ describe 'Outputs' do
 
   it 'should have a valid id' do
     expect(output_id).to end_with name
+  end
+
+  it 'should have a valid auth string' do
+    expect(output_auth_string).to match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/)
   end
 end
 

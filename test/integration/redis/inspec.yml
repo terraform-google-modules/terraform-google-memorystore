@@ -44,6 +44,9 @@ attributes:
   - name: output_current_location_id
     required: true
     type: string
+  - name: output_auth_string
+    required: true
+    type: string
   - name: auth_enabled
     required: true
     type: boolean

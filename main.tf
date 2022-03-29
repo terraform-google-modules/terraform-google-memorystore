@@ -54,10 +54,10 @@ resource "google_redis_instance" "default" {
       weekly_maintenance_window {
         day = var.maintenance_policy_day
         start_time {
-          hours   = local.maintenance_policy_start_time_hours
-          minutes = local.maintenance_policy_start_time_minutes
-          seconds = local.maintenance_policy_start_time_seconds
-          nanos   = local.maintenance_policy_start_time_nanos
+          hours   = tonumber(local.maintenance_policy_start_time_hours)
+          minutes = tonumber(local.maintenance_policy_start_time_minutes)
+          seconds = tonumber(local.maintenance_policy_start_time_seconds)
+          nanos   = tonumber(local.maintenance_policy_start_time_nanos)
         }
       }
     }

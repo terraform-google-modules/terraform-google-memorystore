@@ -25,13 +25,13 @@ module "private-service-access" {
 }
 
 module "memcache" {
-  source         = "../../modules/memcache"
-  name           = "example-memcache"
-  project        = var.project_id
-  memory_size_mb = "1024"
-  enable_apis    = true
-  cpu_count      = "1"
-  region         = "us-east1"
+  source             = "../../modules/memcache"
+  name               = "example-memcache"
+  project            = var.project_id
+  memory_size_mb     = "1024"
+  enable_apis        = true
+  cpu_count          = "1"
+  region             = "us-east1"
   authorized_network = module.test-vpc-module.network_id
   depends_on = [
     module.private-service-access.peering_completed

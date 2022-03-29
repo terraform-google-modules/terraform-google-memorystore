@@ -26,6 +26,6 @@ module "memstore" {
   enable_apis             = true
   auth_enabled            = true
   transit_encryption_mode = "SERVER_AUTHENTICATION"
-authorized_network = module.test-vpc-module.network_id
-  memory_size_gb = 1
+  authorized_network      = module.test-vpc-module.network_id
+  memory_size_gb          = 1
 }

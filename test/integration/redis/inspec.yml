@@ -56,7 +56,7 @@ attributes:
   - name: maintenance_policy_day
     required: true
     type: string
-  - name: maintenance_policy_start
+  - name: maintenance_policy_start_time
     required: true
     type: string
   - name: maintenance_schedule

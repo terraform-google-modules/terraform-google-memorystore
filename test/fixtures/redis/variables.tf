@@ -77,26 +77,13 @@ variable "maintenance_policy_day" {
   }
 }
 
-variable "maintenance_policy_start_time_hours" {
-  description = "Start time of the window in UTC time. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."
-  type        = number
-  default     = 1
-}
+variable "maintenance_policy_start_time" {
+  description = "Start time of the window in UTC time. Format \"hh:mm:ss.nnnnn\"."
+  type        = string
+  default     = "02:34:56.789"
 
-variable "maintenance_policy_start_time_minutes" {
-  description = "Start time of the window in UTC time. Minutes of hour of day. Must be from 0 to 59."
-  type        = number
-  default     = 0
-}
-
-variable "maintenance_policy_start_time_seconds" {
-  description = "Start time of the window in UTC time. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."
-  type        = number
-  default     = 0
-}
-
-variable "maintenance_policy_start_time_nanos" {
-  description = "Start time of the window in UTC time. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999"
-  type        = number
-  default     = 0
+  validation {
+    condition     = can(regex("(^$|^[0-9]+:[0-9]+:[0-9]+.[0-9]+$)", var.maintenance_policy_start_time))
+    error_message = "Allowed value format for maintenance_policy_start_time is \"hh:mm:ss.nnnnn\"."
+  }
 }

@@ -29,9 +29,6 @@ module "memstore" {
 
   memory_size_gb = var.memory_size_gb
 
-  maintenance_policy_day                = var.maintenance_policy_day
-  maintenance_policy_start_time_hours   = var.maintenance_policy_start_time_hours
-  maintenance_policy_start_time_minutes = var.maintenance_policy_start_time_minutes
-  maintenance_policy_start_time_seconds = var.maintenance_policy_start_time_seconds
-  maintenance_policy_start_time_nanos   = var.maintenance_policy_start_time_nanos
+  maintenance_policy_day        = var.maintenance_policy_day
+  maintenance_policy_start_time = var.maintenance_policy_start_time
 }

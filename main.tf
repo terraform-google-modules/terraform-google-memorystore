@@ -15,7 +15,11 @@
  */
 
 locals {
-  maintenance_policy_is_defined = var.maintenance_policy_day != "" && var.maintenance_policy_start_time_hours != null ? [1] : []
+  maintenance_policy_is_defined         = var.maintenance_policy_day != "" && var.maintenance_policy_start_time != "" ? [1] : []
+  maintenance_policy_start_time_hours   = element(split(":", var.maintenance_policy_start_time), 0)
+  maintenance_policy_start_time_minutes = element(split(":", var.maintenance_policy_start_time), 1)
+  maintenance_policy_start_time_seconds = element(split(":", var.maintenance_policy_start_time), 2)
+  maintenance_policy_start_time_nanos   = element(split(".", var.maintenance_policy_start_time), 1)
 }
 
 resource "google_redis_instance" "default" {
@@ -50,10 +54,10 @@ resource "google_redis_instance" "default" {
       content {
         day = var.maintenance_policy_day
         start_time {
-          hours   = var.maintenance_policy_start_time_hours
-          minutes = var.maintenance_policy_start_time_minutes
-          seconds = var.maintenance_policy_start_time_seconds
-          nanos   = var.maintenance_policy_start_time_nanos
+          hours   = local.maintenance_policy_start_time_hours
+          minutes = local.maintenance_policy_start_time_minutes
+          seconds = local.maintenance_policy_start_time_seconds
+          nanos   = local.maintenance_policy_start_time_nanos
         }
       }
     }

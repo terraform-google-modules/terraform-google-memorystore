@@ -37,10 +37,7 @@ module "memorystore" {
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `null` | no |
 | location\_id | The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD\_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]. | `string` | `null` | no |
 | maintenance\_policy\_day | The day of week that maintenance updates occur.<br>(days are are "DAY\_OF\_WEEK\_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY" or "SUNDAY") | `string` | `""` | no |
-| maintenance\_policy\_start\_time\_hours | Start time of the window in UTC time. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. | `number` | `null` | no |
-| maintenance\_policy\_start\_time\_minutes | Start time of the window in UTC time. Minutes of hour of day. Must be from 0 to 59. | `number` | `0` | no |
-| maintenance\_policy\_start\_time\_nanos | Start time of the window in UTC time. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999 | `number` | `0` | no |
-| maintenance\_policy\_start\_time\_seconds | Start time of the window in UTC time. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds. | `number` | `0` | no |
+| maintenance\_policy\_start\_time | Start time of the window in UTC time. Format "hh:mm:ss.nnnnn". | `string` | `""` | no |
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | `number` | `1` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. | `string` | n/a | yes |
 | project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |

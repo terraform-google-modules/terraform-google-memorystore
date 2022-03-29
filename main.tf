@@ -48,10 +48,10 @@ resource "google_redis_instance" "default" {
 
   transit_encryption_mode = var.transit_encryption_mode
 
-  maintenance_policy {
-    dynamic "weekly_maintenance_window" {
-      for_each = local.maintenance_policy_is_defined
-      content {
+  dynamic "maintenance_policy" {
+    for_each = local.maintenance_policy_is_defined
+    content {
+      weekly_maintenance_window {
         day = var.maintenance_policy_day
         start_time {
           hours   = local.maintenance_policy_start_time_hours

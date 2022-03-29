@@ -14,23 +14,16 @@
  * limitations under the License.
  */
 
+module "memstore" {
+  source = "../.."
 
-output "project_id" {
-  value = var.project_id
-}
+  name = "test-minimal"
+  project     = var.project_id
+  region      = "us-east1"
+  location_id = "us-east1-b"
+  enable_apis = true
+  tier        = "BASIC"
+  authorized_network = module.test-vpc-module.network_id
 
-output "output_id" {
-  value = module.memcache.id
-}
-
-output "output_region" {
-  value = module.memcache.region
-}
-
-output "output_nodes" {
-  value = module.memcache.nodes
-}
-
-output "output_discovery" {
-  value = module.memcache.discovery
+  memory_size_gb = 1
 }

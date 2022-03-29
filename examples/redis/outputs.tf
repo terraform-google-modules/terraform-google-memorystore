@@ -18,38 +18,6 @@ output "project_id" {
   value = var.project_id
 }
 
-output "name" {
-  value = var.name
-}
-
-output "region" {
-  value = var.region
-}
-
-output "location_id" {
-  value = var.location_id
-}
-
-output "alternative_location_id" {
-  value = var.alternative_location_id
-}
-
-output "memory_size_gb" {
-  value = var.memory_size_gb
-}
-
-output "auth_enabled" {
-  value = var.auth_enabled
-}
-
-output "auth_string" {
-  value = var.auth_string
-}
-
-output "transit_encryption_mode" {
-  value = var.transit_encryption_mode
-}
-
 output "output_id" {
   value = module.memstore.id
 }
@@ -68,4 +36,5 @@ output "output_current_location_id" {
 
 output "output_auth_string" {
   value = module.memstore.auth_string
+  sensitive = true
 }

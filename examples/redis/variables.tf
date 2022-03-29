@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-module "memstore" {
-  source = "../../.."
-
-  name = var.name
-
-  project     = var.project_id
-  region      = var.region
-  location_id = var.location_id
-  enable_apis = true
-  tier        = var.tier
-
-  memory_size_gb = var.memory_size_gb
+variable "project_id" {
+  description = "Google cloud project id to create redis instance."
+  type        = string
 }

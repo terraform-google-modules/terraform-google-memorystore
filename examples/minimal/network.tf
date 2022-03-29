@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,18 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "Google cloud project id to create memcache instance."
-  type        = string
+module "test-vpc-module" {
+  source       = "terraform-google-modules/network/google"
+  version      = "~> 4"
+  project_id   = var.project_id
+  network_name = "test-net-minimal"
+  mtu          = 1460
+
+  subnets = [
+    {
+      subnet_name   = "subnet-01"
+      subnet_ip     = "10.10.10.0/24"
+      subnet_region = "us-east1"
+    },
+  ]
 }

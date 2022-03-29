@@ -14,39 +14,18 @@
  * limitations under the License.
  */
 
-output "project_id" {
-  value = var.project_id
-}
+module "memstore" {
+  source = "../.."
 
-output "name" {
-  value = var.name
-}
+  name = "test-redis"
 
-output "region" {
-  value = var.region
+  project                 = var.project_id
+  region                  = "us-east1"
+  location_id             = "us-east1-b"
+  alternative_location_id = "us-east1-d"
+  enable_apis             = true
+  auth_enabled            = true
+  transit_encryption_mode = "SERVER_AUTHENTICATION"
+authorized_network = module.test-vpc-module.network_id
+  memory_size_gb = 1
 }
-
-output "location_id" {
-  value = var.location_id
-}
-
-output "memory_size_gb" {
-  value = var.memory_size_gb
-}
-
-output "output_id" {
-  value = module.memstore.id
-}
-
-output "output_host" {
-  value = module.memstore.host
-}
-
-output "output_region" {
-  value = module.memstore.region
-}
-
-output "output_current_location_id" {
-  value = module.memstore.current_location_id
-}
-

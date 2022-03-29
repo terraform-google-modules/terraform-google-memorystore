@@ -14,37 +14,7 @@
  * limitations under the License.
  */
 
-variable "project" {
+variable "project_id" {
   description = "The ID of the project in which the resource belongs to."
   type        = string
-}
-
-variable "name" {
-  description = "Name of memcache instance."
-  type        = string
-  default     = "example-memcache"
-}
-
-variable "region" {
-  description = "Region to create test instance."
-  type        = string
-  default     = "us-east1"
-}
-
-variable "memory_size_mb" {
-  description = "Memory size of test instance."
-  type        = number
-  default     = 1024
-}
-
-variable "cpu_count" {
-  description = "Number of cpu's for test instance."
-  type        = number
-  default     = 1
-}
-
-variable "enable_apis" {
-  description = "Flag for enabling memcache.googleapis.com in your project"
-  type        = bool
-  default     = true
 }

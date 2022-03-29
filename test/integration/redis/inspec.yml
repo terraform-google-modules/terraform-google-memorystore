@@ -68,3 +68,6 @@ attributes:
   - name: maintenance_policy_start_time_nanos
     required: true
     type: number
+  - name: maintenance_schedule
+    required: true
+    type: list

@@ -36,6 +36,7 @@ This test will create a new redis instance.
 | output\_current\_location\_id | n/a |
 | output\_host | n/a |
 | output\_id | n/a |
+| output\_maintenance\_schedule | n/a |
 | output\_region | n/a |
 | project\_id | n/a |
 | region | n/a |

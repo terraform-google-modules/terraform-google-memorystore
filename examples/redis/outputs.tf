@@ -38,3 +38,7 @@ output "output_auth_string" {
   value     = module.memstore.auth_string
   sensitive = true
 }
+
+output "output_maintenance_schedule" {
+  value = module.memstore.maintenance_schedule
+}

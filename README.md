@@ -59,6 +59,7 @@ module "memorystore" {
 | current\_location\_id | The current zone where the Redis endpoint is placed. |
 | host | The IP address of the instance. |
 | id | The memorystore instance ID. |
+| maintenance\_schedule | Upcoming maintenance schedule. |
 | persistence\_iam\_identity | Cloud IAM identity used by import/export operations. Format is 'serviceAccount:'. May change over time |
 | port | The port number of the exposed Redis endpoint. |
 | region | The region the instance lives in. |

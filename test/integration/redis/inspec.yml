@@ -61,4 +61,4 @@ attributes:
     type: string
   - name: output_maintenance_schedule
     required: true
-    type: object
+    type: list

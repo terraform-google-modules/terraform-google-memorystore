@@ -70,7 +70,7 @@ variable "transit_encryption_mode" {
 variable "maintenance_policy_day" {
   description = "The day of week that maintenance updates occur.\n(days are are \"DAY_OF_WEEK_UNSPECIFIED\", \"MONDAY\", \"TUESDAY\", \"WEDNESDAY\", \"THURSDAY\", \"FRIDAY\", \"SATURDAY\" or \"SUNDAY\")"
   type        = string
-  default     = "DAY_OF_WEEK_UNSPECIFIED"
+  default     = "MONDAY"
   validation {
     condition     = contains(["", "DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"], var.maintenance_policy_day)
     error_message = "Allowed values for maintenance_policy_day are \"DAY_OF_WEEK_UNSPECIFIED\", \"MONDAY\", \"TUESDAY\", \"WEDNESDAY\", \"THURSDAY\", \"FRIDAY\", \"SATURDAY\" or \"SUNDAY\"."

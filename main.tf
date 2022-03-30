@@ -18,7 +18,7 @@ locals {
   maintenance_policy_is_defined         = var.maintenance_policy_day != "" && var.maintenance_policy_start_time != "" ? [1] : []
   maintenance_policy_start_time_hours   = element(split(":", var.maintenance_policy_start_time), 0)
   maintenance_policy_start_time_minutes = element(split(":", var.maintenance_policy_start_time), 1)
-  maintenance_policy_start_time_seconds = element(split(":", var.maintenance_policy_start_time), 2)
+  maintenance_policy_start_time_seconds = element(split(".", element(split(":", var.maintenance_policy_start_time), 2)), 0)
   maintenance_policy_start_time_nanos   = element(split(".", var.maintenance_policy_start_time), 1)
 }
 

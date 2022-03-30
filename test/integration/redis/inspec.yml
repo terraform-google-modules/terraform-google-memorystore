@@ -59,6 +59,6 @@ attributes:
   - name: maintenance_policy_start_time
     required: true
     type: string
-  - name: maintenance_schedule
+  - name: output_maintenance_schedule
     required: true
-    type: list
+    type: object

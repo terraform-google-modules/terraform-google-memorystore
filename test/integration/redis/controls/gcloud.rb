@@ -23,11 +23,12 @@ transit_encryption_mode       = attribute('transit_encryption_mode')
 maintenance_policy_day        = attribute('maintenance_policy_day')
 maintenance_policy_start_time = attribute('maintenance_policy_start_time')
 
-output_id                  = attribute('output_id')
-output_region              = attribute('output_region')
-output_host                = attribute('output_host')
-output_current_location_id = attribute('output_current_location_id')
-output_auth_string         = attribute('output_auth_string')
+output_id                   = attribute('output_id')
+output_region               = attribute('output_region')
+output_host                 = attribute('output_host')
+output_current_location_id  = attribute('output_current_location_id')
+output_auth_string          = attribute('output_auth_string')
+output_maintenance_schedule = attribute('output_maintenance_schedule')
 
 describe 'Outputs' do
   it 'should reflect inputted variables' do

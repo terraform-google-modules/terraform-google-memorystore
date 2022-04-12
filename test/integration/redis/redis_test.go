@@ -32,8 +32,8 @@ func TestRedis(t *testing.T) {
 
 		op := gcloud.Runf(t, "redis instances describe test-redis --project=%s --region=us-east1", projectId)
 		assert.True(op.Get("authEnabled").Bool())
-		assert.Contains(op.Get("memorySizeGb").String(), "1")
-		assert.Contains(op.Get("transitEncryptionMode").String(), "SERVER_AUTHENTICATION")
+		assert.Equal(op.Get("memorySizeGb").String(), "1")
+		assert.Equal(op.Get("transitEncryptionMode").String(), "SERVER_AUTHENTICATION")
 	})
 
 	bpt.Test()

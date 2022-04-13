@@ -12,14 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package test
+package redis
 
 import (
 	"testing"
 
+	"github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test/pkg/gcloud"
 	"github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test/pkg/tft"
+	"github.com/stretchr/testify/assert"
 )
 
-func TestAll(t *testing.T) {
-	tft.AutoDiscoverAndTest(t)
+func TestRedis(t *testing.T) {
+	bpt := tft.NewTFBlueprintTest(t)
+
+	bpt.DefineVerify(func(assert *assert.Assertions) {
+		bpt.DefaultVerify(assert)
+
+		projectId := bpt.GetStringOutput("project_id")
+
+		op := gcloud.Runf(t, "redis instances describe test-redis --project=%s --region=us-east1", projectId)
+		assert.True(op.Get("authEnabled").Bool())
+		assert.Equal(op.Get("memorySizeGb").String(), "1")
+		assert.Equal(op.Get("transitEncryptionMode").String(), "SERVER_AUTHENTICATION")
+	})
+
+	bpt.Test()
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,31 +14,18 @@
  * limitations under the License.
  */
 
+module "test-vpc-module" {
+  source       = "terraform-google-modules/network/google"
+  version      = "~> 4"
+  project_id   = var.project_id
+  network_name = "test-net-redis"
+  mtu          = 1460
 
-output "project_id" {
-  value = var.project_id
-}
-
-output "name" {
-  value = module.memcache.name
-}
-
-output "region" {
-  value = module.memcache.region
-}
-
-output "cpu_count" {
-  value = module.memcache.cpu_count
-}
-
-output "memory_size_mb" {
-  value = module.memcache.memory_size_mb
-}
-
-output "output_id" {
-  value = module.memcache.output_id
-}
-
-output "output_region" {
-  value = module.memcache.output_region
+  subnets = [
+    {
+      subnet_name   = "subnet-03"
+      subnet_ip     = "10.10.10.0/24"
+      subnet_region = "us-east1"
+    },
+  ]
 }

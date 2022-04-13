@@ -16,17 +16,24 @@
 
 module "private-service-access" {
   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
-  version     = "~> 4.5"
-  project_id  = var.project
-  vpc_network = "default"
+  version     = "~> 10"
+  project_id  = var.project_id
+  vpc_network = module.test-vpc-module.network_name
+  depends_on = [
+    module.test-vpc-module
+  ]
 }
 
 module "memcache" {
-  source         = "../../modules/memcache"
-  name           = var.name
-  project        = can(module.private-service-access.peering_completed) ? var.project : ""
-  memory_size_mb = var.memory_size_mb
-  enable_apis    = var.enable_apis
-  cpu_count      = var.cpu_count
-  region         = var.region
+  source             = "../../modules/memcache"
+  name               = "example-memcache"
+  project            = var.project_id
+  memory_size_mb     = "1024"
+  enable_apis        = true
+  cpu_count          = "1"
+  region             = "us-east1"
+  authorized_network = module.test-vpc-module.network_id
+  depends_on = [
+    module.private-service-access.peering_completed
+  ]
 }

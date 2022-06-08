@@ -57,7 +57,7 @@ variable "memory_size_gb" {
 variable "replica_count" {
   description = "The number of replicas. can"
   type        = number
-  default     = 1
+  default     = null
 }
 
 variable "read_replicas_mode" {

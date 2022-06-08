@@ -43,7 +43,7 @@ module "memorystore" {
 | redis\_configs | The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs) | `map(any)` | `{}` | no |
 | redis\_version | The version of Redis software. | `string` | `null` | no |
 | region | The GCP region to use. | `string` | `null` | no |
-| replica\_count | The number of replicas. can | `number` | `1` | no |
+| replica\_count | The number of replicas. can | `number` | `null` | no |
 | reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | `string` | `null` | no |
 | tier | The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier | `string` | `"STANDARD_HA"` | no |
 | transit\_encryption\_mode | The TLS mode of the Redis instance, If not provided, TLS is enabled for the instance. | `string` | `"SERVER_AUTHENTICATION"` | no |

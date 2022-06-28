@@ -54,6 +54,18 @@ variable "memory_size_gb" {
   default     = 1
 }
 
+variable "replica_count" {
+  description = "The number of replicas. can"
+  type        = number
+  default     = null
+}
+
+variable "read_replicas_mode" {
+  description = "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
+  type        = string
+  default     = "READ_REPLICAS_DISABLED"
+}
+
 variable "location_id" {
   description = "The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]."
   type        = string

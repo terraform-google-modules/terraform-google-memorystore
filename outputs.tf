@@ -47,4 +47,5 @@ output "persistence_iam_identity" {
 output "auth_string" {
   description = "AUTH String set on the instance. This field will only be populated if auth_enabled is true."
   value       = google_redis_instance.default.auth_string
+  sensitive   = true
 }

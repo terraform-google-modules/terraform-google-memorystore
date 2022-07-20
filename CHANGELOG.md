@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.4.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.4.0...v4.4.1) (2022-07-20)
+
+
+### Bug Fixes
+
+* add sensitive true flag to output auth_string ([#93](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/93)) ([20b4c61](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/20b4c61b3d9d29e108d410b171a84f0e297fa744))
+
 ## [4.4.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.3.0...v4.4.0) (2022-06-28)
 
 

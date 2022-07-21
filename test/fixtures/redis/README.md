@@ -21,22 +21,6 @@ This test will create a new redis instance.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| alternative\_location\_id | n/a |
-| auth\_enabled | n/a |
-| auth\_string | n/a |
-| location\_id | n/a |
-| memory\_size\_gb | n/a |
-| name | n/a |
-| output\_auth\_string | n/a |
-| output\_current\_location\_id | n/a |
-| output\_host | n/a |
-| output\_id | n/a |
-| output\_maintenance\_schedule | n/a |
-| output\_region | n/a |
-| project\_id | n/a |
-| region | n/a |
-| transit\_encryption\_mode | n/a |
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

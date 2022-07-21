@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.4.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.3.0...v4.4.0) (2022-06-28)
+
+
+### Features
+
+* added replica_count and replicas_mode functionality ([#88](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/88)) ([3fcdba5](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/3fcdba540997abb0ddef3826e97b3c397daf038e))
+
+## [4.3.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.2.0...v4.3.0) (2022-04-13)
+
+
+### Features
+
+* Add missing auth_string output. ([#77](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/77)) ([2a3dc41](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/2a3dc41936090cbd270f550dfab598708e29be84))
+
 ## [4.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.1.0...v4.2.0) (2022-02-01)
 
 

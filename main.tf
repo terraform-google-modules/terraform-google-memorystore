@@ -25,11 +25,13 @@ locals {
 resource "google_redis_instance" "default" {
   depends_on = [module.enable_apis]
 
-  project        = var.project
-  name           = var.name
-  tier           = var.tier
-  memory_size_gb = var.memory_size_gb
-  connect_mode   = var.connect_mode
+  project            = var.project
+  name               = var.name
+  tier               = var.tier
+  replica_count      = var.tier == "STANDARD_HA" ? var.replica_count : null
+  read_replicas_mode = var.tier == "STANDARD_HA" ? var.read_replicas_mode : null
+  memory_size_gb     = var.memory_size_gb
+  connect_mode       = var.connect_mode
 
   region                  = var.region
   location_id             = var.location_id

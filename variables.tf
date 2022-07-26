@@ -140,8 +140,8 @@ variable "maintenance_policy" {
   default = {
     day = "SATURDAY"
     start_time = {
-      hours   = 0
-      minutes = 0
+      hours   = 4
+      minutes = 30
       seconds = 0
       nanos   = 0
     }

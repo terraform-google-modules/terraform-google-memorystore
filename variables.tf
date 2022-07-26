@@ -138,7 +138,7 @@ variable "maintenance_policy" {
     })
   })
   default = {
-    day = null
+    day = "DAY_OF_WEEK_UNSPECIFIED"
     start_time = {
       hours   = null
       minutes = null

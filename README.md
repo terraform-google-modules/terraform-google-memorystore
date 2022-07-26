@@ -36,7 +36,7 @@ module "memorystore" {
 | enable\_apis | Flag for enabling redis.googleapis.com in your project | `bool` | `true` | no |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `null` | no |
 | location\_id | The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD\_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId]. | `string` | `null` | no |
-| maintenance\_policy | The maintenance policy for an instance. | <pre>object({<br>    day = string<br>    start_time = object({<br>      hours   = number<br>      minutes = number<br>      seconds = number<br>      nanos   = number<br>    })<br>  })</pre> | <pre>{<br>  "day": "DAY_OF_WEEK_UNSPECIFIED",<br>  "start_time": {<br>    "hours": null,<br>    "minutes": null,<br>    "nanos": null,<br>    "seconds": null<br>  }<br>}</pre> | no |
+| maintenance\_policy | The maintenance policy for an instance. | <pre>object({<br>    day = string<br>    start_time = object({<br>      hours   = number<br>      minutes = number<br>      seconds = number<br>      nanos   = number<br>    })<br>  })</pre> | <pre>{<br>  "day": "SATURDAY",<br>  "start_time": {<br>    "hours": 0,<br>    "minutes": 0,<br>    "nanos": 0,<br>    "seconds": 0<br>  }<br>}</pre> | no |
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | `number` | `1` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. | `string` | n/a | yes |
 | project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |

@@ -147,6 +147,3 @@ variable "maintenance_policy" {
     }
   }
 }
-
-
-

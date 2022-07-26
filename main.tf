@@ -41,6 +41,18 @@ resource "google_redis_instance" "default" {
   auth_enabled = var.auth_enabled
 
   transit_encryption_mode = var.transit_encryption_mode
+
+  maintenance_policy {
+    weekly_maintenance_window {
+      day = var.maintenance_policy.day
+      start_time {
+        hours   = var.maintenance_policy.start_time.hours
+        minutes = var.maintenance_policy.start_time.minutes
+        seconds = var.maintenance_policy.start_time.seconds
+        nanos   = var.maintenance_policy.start_time.nanos
+      }
+    }
+  }
 }
 
 module "enable_apis" {

@@ -125,3 +125,28 @@ variable "transit_encryption_mode" {
   type        = string
   default     = "SERVER_AUTHENTICATION"
 }
+
+variable "maintenance_policy" {
+  description = "The maintenance policy for an instance."
+  type = object({
+    day = string
+    start_time = object({
+      hours   = number
+      minutes = number
+      seconds = number
+      nanos   = number
+    })
+  })
+  default = {
+    day = null
+    start_time = {
+      hours   = null
+      minutes = null
+      seconds = null
+      nanos   = null
+    }
+  }
+}
+
+
+

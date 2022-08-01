@@ -42,7 +42,7 @@ resource "google_redis_instance" "default" {
 
   transit_encryption_mode = var.transit_encryption_mode
 
-  dynamic maintenance_policy {
+  dynamic "maintenance_policy" {
     for_each = var.maintenance_policy != null ? [var.maintenance_policy] : []
     content {
       weekly_maintenance_window {
@@ -55,7 +55,7 @@ resource "google_redis_instance" "default" {
         }
       }
     }
-    
+
   }
 }
 

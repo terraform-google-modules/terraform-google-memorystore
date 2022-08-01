@@ -128,6 +128,7 @@ variable "transit_encryption_mode" {
 
 variable "maintenance_policy" {
   description = "The maintenance policy for an instance."
+  # type = object(any)
   type = object({
     day = string
     start_time = object({
@@ -137,13 +138,5 @@ variable "maintenance_policy" {
       nanos   = number
     })
   })
-  default = {
-    day = "SATURDAY"
-    start_time = {
-      hours   = 4
-      minutes = 30
-      seconds = 0
-      nanos   = 0
-    }
-  }
+  default = null
 }

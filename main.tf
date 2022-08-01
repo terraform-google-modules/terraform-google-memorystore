@@ -42,16 +42,20 @@ resource "google_redis_instance" "default" {
 
   transit_encryption_mode = var.transit_encryption_mode
 
-  maintenance_policy {
-    weekly_maintenance_window {
-      day = var.maintenance_policy.day
-      start_time {
-        hours   = var.maintenance_policy.start_time.hours
-        minutes = var.maintenance_policy.start_time.minutes
-        seconds = var.maintenance_policy.start_time.seconds
-        nanos   = var.maintenance_policy.start_time.nanos
+  dynamic maintenance_policy {
+    for_each = var.maintenance_policy != null ? [var.maintenance_policy] : []
+    content {
+      weekly_maintenance_window {
+        day = maintenance_policy.value["day"]
+        start_time {
+          hours   = maintenance_policy.value["start_time"]["hours"]
+          minutes = maintenance_policy.value["start_time"]["minutes"]
+          seconds = maintenance_policy.value["start_time"]["seconds"]
+          nanos   = maintenance_policy.value["start_time"]["nanos"]
+        }
       }
     }
+    
   }
 }
 

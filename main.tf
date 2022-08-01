@@ -55,7 +55,6 @@ resource "google_redis_instance" "default" {
         }
       }
     }
-
   }
 }
 

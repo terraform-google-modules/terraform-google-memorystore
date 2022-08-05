@@ -88,3 +88,18 @@ variable "params" {
   type        = map(string)
   default     = null
 }
+
+variable "maintenance_policy" {
+  description = "The maintenance policy for an instance."
+  # type = object(any)
+  type = object({
+    day = string
+    start_time = object({
+      hours   = number
+      minutes = number
+      seconds = number
+      nanos   = number
+    })
+  })
+  default = null
+}

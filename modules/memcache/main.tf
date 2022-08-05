@@ -42,7 +42,7 @@ resource "google_memcache_instance" "self" {
     for_each = var.maintenance_policy != null ? [var.maintenance_policy] : []
     content {
       weekly_maintenance_window {
-        day = maintenance_policy.value["day"]
+        day      = maintenance_policy.value["day"]
         duration = maintenance_policy.value["duration"]
         start_time {
           hours   = maintenance_policy.value["start_time"]["hours"]

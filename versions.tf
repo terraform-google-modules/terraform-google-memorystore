@@ -25,7 +25,7 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore/v4.4.1"
+    module_name = "blueprints/terraform/terraform-google-memorystore/v5.0.0"
   }
 
 }

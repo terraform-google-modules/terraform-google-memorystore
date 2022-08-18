@@ -10,7 +10,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ### ⚠ BREAKING CHANGES
 
-* Minimum Google provider versions increased to v4.10.0 ([#95](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/95)) ([561af25](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/561af254750e403928c99e7c9af96ac64671a14c))
+* Minimum Google provider version increased to v4.10.0 ([#95](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/95)) ([561af25](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/561af254750e403928c99e7c9af96ac64671a14c))
 
 ### Features
 

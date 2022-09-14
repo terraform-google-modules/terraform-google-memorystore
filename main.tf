@@ -56,6 +56,7 @@ resource "google_redis_instance" "default" {
       }
     }
   }
+    customer_managed_key = var.customer_managed_key
 }
 
 module "enable_apis" {

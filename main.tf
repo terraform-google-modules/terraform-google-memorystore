@@ -28,6 +28,7 @@ resource "google_redis_instance" "default" {
   region                  = var.region
   location_id             = var.location_id
   alternative_location_id = var.alternative_location_id
+  customer_managed_key    = var.customer_managed_key
 
   authorized_network = var.authorized_network
 

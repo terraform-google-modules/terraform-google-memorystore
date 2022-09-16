@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v5.0.0...v5.1.0) (2022-09-16)
+
+
+### Features
+
+* add server_ca_certs list to outputs ([#99](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/99)) ([f590182](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/f5901828cad5cf7d3347828e5b4e62aecd4d9268))
+
 ## [5.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v4.4.1...v5.0.0) (2022-08-05)
 
 

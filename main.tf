@@ -29,7 +29,8 @@ resource "google_redis_instance" "default" {
   location_id             = var.location_id
   alternative_location_id = var.alternative_location_id
 
-  authorized_network = var.authorized_network
+  authorized_network   = var.authorized_network
+  customer_managed_key = var.customer_managed_key
 
   redis_version     = var.redis_version
   redis_configs     = var.redis_configs

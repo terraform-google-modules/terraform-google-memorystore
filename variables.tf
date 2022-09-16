@@ -140,3 +140,10 @@ variable "maintenance_policy" {
   })
   default = null
 }
+
+
+variable "customer_managed_key" {
+  description = "Default encryption key to apply to the Redis instance. Defaults to null (Google-managed)."
+  type        = string
+  default     = null
+}

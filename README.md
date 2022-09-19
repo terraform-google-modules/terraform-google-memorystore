@@ -61,6 +61,7 @@ module "memorystore" {
 | persistence\_iam\_identity | Cloud IAM identity used by import/export operations. Format is 'serviceAccount:'. May change over time |
 | port | The port number of the exposed Redis endpoint. |
 | region | The region the instance lives in. |
+| server\_ca\_certs | List of server CA certificates for the instance |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

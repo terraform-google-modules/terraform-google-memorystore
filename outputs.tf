@@ -49,3 +49,9 @@ output "auth_string" {
   value       = google_redis_instance.default.auth_string
   sensitive   = true
 }
+
+output "server_ca_certs" {
+  description = "List of server CA certificates for the instance"
+  value       = google_redis_instance.default.server_ca_certs
+  sensitive   = false
+}

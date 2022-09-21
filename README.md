@@ -32,6 +32,7 @@ module "memorystore" {
 | auth\_enabled | Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance. | `bool` | `false` | no |
 | authorized\_network | The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used. | `string` | `null` | no |
 | connect\_mode | The connection mode of the Redis instance. Can be either DIRECT\_PEERING or PRIVATE\_SERVICE\_ACCESS. The default connect mode if not provided is DIRECT\_PEERING. | `string` | `null` | no |
+| customer\_managed\_key | Default encryption key to apply to the Redis instance. Defaults to null (Google-managed). | `string` | `null` | no |
 | display\_name | An arbitrary and optional user-provided name for the instance. | `string` | `null` | no |
 | enable\_apis | Flag for enabling redis.googleapis.com in your project | `bool` | `true` | no |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `null` | no |

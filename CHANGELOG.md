@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v5.1.0...v6.0.0) (2022-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Minimum Google provider version increased to v4.28.0 (#103)
+
+* Updated CMEK attribute (#103)
+
+### Features
+
+* Updated CMEK attribute ([#103](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/103)) ([3fbeb7e](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/3fbeb7e11515647189b2d3c9001b2d44cf49a93a))
+
 ## [5.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v5.0.0...v5.1.0) (2022-09-16)
 
 

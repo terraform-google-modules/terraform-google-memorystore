@@ -10,6 +10,8 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ### ⚠ BREAKING CHANGES
 
+* Minimum Google provider version increased to v4.28.0 (#103)
+
 * Updated CMEK attribute (#103)
 
 ### Features

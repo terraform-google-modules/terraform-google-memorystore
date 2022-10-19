@@ -93,9 +93,8 @@ variable "redis_configs" {
 variable "persistence_config" {
   description = "The Redis persistence configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig)"
   type = object({
-    persistence_mode        = string
-    rdb_snapshot_period     = string
-    rdb_snapshot_start_time = optional(string)
+    persistence_mode    = string
+    rdb_snapshot_period = string
   })
   default = null
 }

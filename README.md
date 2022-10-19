@@ -40,7 +40,7 @@ module "memorystore" {
 | maintenance\_policy | The maintenance policy for an instance. | <pre>object({<br>    day = string<br>    start_time = object({<br>      hours   = number<br>      minutes = number<br>      seconds = number<br>      nanos   = number<br>    })<br>  })</pre> | `null` | no |
 | memory\_size\_gb | Redis memory size in GiB. Defaulted to 1 GiB | `number` | `1` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. | `string` | n/a | yes |
-| persistence\_config | The Redis persistence configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig) | <pre>object({<br>    persistence_mode        = string<br>    rdb_snapshot_period     = string<br>    rdb_snapshot_start_time = optional(string)<br>  })</pre> | `null` | no |
+| persistence\_config | The Redis persistence configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig) | <pre>object({<br>    persistence_mode    = string<br>    rdb_snapshot_period = string<br>  })</pre> | `null` | no |
 | project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
 | read\_replicas\_mode | Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode | `string` | `"READ_REPLICAS_DISABLED"` | no |
 | redis\_configs | The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs) | `map(any)` | `{}` | no |

@@ -39,9 +39,9 @@ resource "google_redis_instance" "default" {
   dynamic "persistence_config" {
     for_each = var.persistence_config != null ? [var.persistence_config] : []
     content {
-        persistence_mode = persistence_config.value["persistence_mode"]
-        rdb_snapshot_period = persistence_config.value["rdb_snapshot_period"]
-        rdb_snapshot_start_time = persistence_config.value["rdb_snapshot_start_time"]
+      persistence_mode        = persistence_config.value["persistence_mode"]
+      rdb_snapshot_period     = persistence_config.value["rdb_snapshot_period"]
+      rdb_snapshot_start_time = persistence_config.value["rdb_snapshot_start_time"]
     }
   }
 

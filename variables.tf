@@ -90,6 +90,16 @@ variable "redis_configs" {
   default     = {}
 }
 
+variable "persistence_config" {
+  description = "The Redis persistence configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig)"
+  type = object({
+    persistence_mode = string
+    rdb_snapshot_period = string
+    rdb_snapshot_start_time = optional(string)
+  })
+  default = null
+}
+
 variable "display_name" {
   description = "An arbitrary and optional user-provided name for the instance."
   type        = string

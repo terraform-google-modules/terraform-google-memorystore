@@ -36,6 +36,14 @@ resource "google_redis_instance" "default" {
   redis_configs     = var.redis_configs
   display_name      = var.display_name
   reserved_ip_range = var.reserved_ip_range
+  dynamic "persistence_config" {
+    for_each = var.persistence_config != null ? [var.persistence_config] : []
+    content {
+        persistence_mode = persistence_config.value["persistence_mode"]
+        rdb_snapshot_period = persistence_config.value["rdb_snapshot_period"]
+        rdb_snapshot_start_time = persistence_config.value["rdb_snapshot_start_time"]
+    }
+  }
 
   labels = var.labels
 

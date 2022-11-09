@@ -16,7 +16,7 @@
 
 module "test-vpc-module" {
   source       = "terraform-google-modules/network/google"
-  version      = "~> 4"
+  version      = "~> 5.2.0"
   project_id   = var.project_id
   network_name = "test-net-minimal"
   mtu          = 1460

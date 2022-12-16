@@ -1,0 +1,124 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-memorystore
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  title: ""
+  source:
+    repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
+    sourceType: git
+  version: 6.0.0
+  actuationTool:
+    type: Terraform
+    version: '>= 0.13'
+  examples:
+  - name: basic
+    location: examples/basic
+  - name: memcache
+    location: examples/memcache
+  - name: minimal
+    location: examples/minimal
+  - name: redis
+    location: examples/redis
+  variables:
+  - name: authorized_network
+    description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
+    type: string
+    required: false
+  - name: cpu_count
+    description: Number of CPUs per node
+    type: number
+    default: 1
+    required: false
+  - name: display_name
+    description: An arbitrary and optional user-provided name for the instance.
+    type: string
+    required: false
+  - name: enable_apis
+    description: Flag for enabling memcache.googleapis.com in your project
+    type: bool
+    default: true
+    required: false
+  - name: labels
+    description: The resource labels to represent user provided metadata.
+    type: map(string)
+    default: {}
+    required: false
+  - name: maintenance_policy
+    description: The maintenance policy for an instance.
+    type: |-
+      object({
+          day      = string
+          duration = number
+          start_time = object({
+            hours   = number
+            minutes = number
+            seconds = number
+            nanos   = number
+          })
+        })
+    required: false
+  - name: memory_size_mb
+    description: Memcache memory size in MiB. Defaulted to 1024
+    type: number
+    default: 1024
+    required: false
+  - name: name
+    description: The ID of the instance or a fully qualified identifier for the instance.
+    type: string
+    required: true
+  - name: node_count
+    description: Number of nodes in the memcache instance.
+    type: number
+    default: 1
+    required: false
+  - name: params
+    description: Parameters for the memcache process
+    type: map(string)
+    required: false
+  - name: project
+    description: The ID of the project in which the resource belongs to.
+    type: string
+    required: true
+  - name: region
+    description: The GCP region to use.
+    type: string
+    required: true
+  - name: zones
+    description: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+    type: list(string)
+    required: false
+  outputs:
+  - name: discovery
+    description: The memorystore discovery endpoint.
+  - name: id
+    description: The memorystore instance ID.
+  - name: nodes
+    description: Data about the memcache nodes
+  - name: region
+    description: The region the instance lives in.
+  roles:
+  - level: Project
+    roles:
+    - roles/owner
+  services:
+  - cloudresourcemanager.googleapis.com
+  - serviceusage.googleapis.com
+  - redis.googleapis.com
+  - memcache.googleapis.com

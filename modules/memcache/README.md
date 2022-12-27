@@ -19,7 +19,6 @@ A Terraform module for creating a fully functional Google Memorystore (memcache)
 | params | Parameters for the memcache process | `map(string)` | `null` | no |
 | project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
 | region | The GCP region to use. | `string` | n/a | yes |
-| reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | `string` | `null` | no |
 | zones | Zones where memcache nodes should be provisioned. If not provided, all zones will be used. | `list(string)` | `null` | no |
 
 ## Outputs

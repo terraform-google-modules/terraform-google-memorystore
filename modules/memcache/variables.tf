@@ -71,12 +71,6 @@ variable "display_name" {
   default     = null
 }
 
-variable "reserved_ip_range" {
-  description = "The CIDR range of internal addresses that are reserved for this instance."
-  type        = string
-  default     = null
-}
-
 variable "labels" {
   description = "The resource labels to represent user provided metadata."
   type        = map(string)

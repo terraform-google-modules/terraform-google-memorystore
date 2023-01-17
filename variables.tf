@@ -102,6 +102,12 @@ variable "reserved_ip_range" {
   default     = null
 }
 
+variable "secondary_ip_range" {
+  description = "Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance."
+  type        = string
+  default     = null
+}
+
 variable "connect_mode" {
   description = "The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING."
   type        = string

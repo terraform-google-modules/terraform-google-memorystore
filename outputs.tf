@@ -29,6 +29,11 @@ output "port" {
   value       = google_redis_instance.default.port
 }
 
+output "read_endpoint" {
+  description = " The IP address of the exposed readonly Redis endpoint."
+  value       = google_redis_instance.default.read_endpoint
+}
+
 output "region" {
   description = "The region the instance lives in."
   value       = google_redis_instance.default.region

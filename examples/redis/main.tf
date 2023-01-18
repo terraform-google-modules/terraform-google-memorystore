@@ -28,4 +28,8 @@ module "memstore" {
   transit_encryption_mode = "SERVER_AUTHENTICATION"
   authorized_network      = module.test-vpc-module.network_id
   memory_size_gb          = 1
+  persistence_config = {
+    persistence_mode    = "RDB"
+    rdb_snapshot_period = "ONE_HOUR"
+  }
 }

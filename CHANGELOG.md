@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v6.0.0...v7.0.0) (2023-01-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update tf modules ([#115](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/115))
+
+### Bug Fixes
+
+* fixes lint issues and generates metadata ([#122](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/122)) ([766842a](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/766842a2a1366d92ec90f056a33cbc03710599db))
+
+
+### Miscellaneous Chores
+
+* **deps:** update tf modules ([#115](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/115)) ([d78bbdf](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/d78bbdfc9a0079c16eb833cf5d1c7b840af1646e))
+
 ## [6.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v5.1.0...v6.0.0) (2022-09-21)
 
 

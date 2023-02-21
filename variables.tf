@@ -141,9 +141,17 @@ variable "maintenance_policy" {
   default = null
 }
 
-
 variable "customer_managed_key" {
   description = "Default encryption key to apply to the Redis instance. Defaults to null (Google-managed)."
   type        = string
   default     = null
+}
+
+variable "persistence_config" {
+  description = "The Redis persistence configuration parameters. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig"
+  type = object({
+    persistence_mode    = string
+    rdb_snapshot_period = string
+  })
+  default = null
 }

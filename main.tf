@@ -32,10 +32,11 @@ resource "google_redis_instance" "default" {
   authorized_network   = var.authorized_network
   customer_managed_key = var.customer_managed_key
 
-  redis_version     = var.redis_version
-  redis_configs     = var.redis_configs
-  display_name      = var.display_name
-  reserved_ip_range = var.reserved_ip_range
+  redis_version      = var.redis_version
+  redis_configs      = var.redis_configs
+  display_name       = var.display_name
+  reserved_ip_range  = var.reserved_ip_range
+  secondary_ip_range = var.secondary_ip_range
 
   labels = var.labels
 

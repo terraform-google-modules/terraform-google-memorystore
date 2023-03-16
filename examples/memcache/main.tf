@@ -33,6 +33,16 @@ module "memcache" {
   cpu_count          = "1"
   region             = "us-east1"
   authorized_network = module.test-vpc-module.network_id
+  maintenance_policy = {
+    day = "MONDAY"
+    duration = "10800s"
+    start_time = {
+      hours   = 8
+      minutes = 0
+      seconds = 0
+      nanos   = 0
+    }
+  }
   depends_on = [
     module.private-service-access.peering_completed
   ]

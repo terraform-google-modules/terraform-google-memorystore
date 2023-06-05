@@ -26,7 +26,7 @@ module "private-service-access" {
 
 module "memcache" {
   source             = "../../modules/memcache"
-  name               = "example-memcache"
+  name               = "exammple-memcache"
   project            = var.project_id
   memory_size_mb     = "1024"
   enable_apis        = true
@@ -34,7 +34,7 @@ module "memcache" {
   region             = "us-east1"
   authorized_network = module.test-vpc-module.network_id
   maintenance_policy = {
-    day = "MONDAY"
+    day      = "MONDAY"
     duration = "10800s"
     start_time = {
       hours   = 8

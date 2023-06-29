@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.1.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.0...v7.1.1) (2023-06-20)
+
+
+### Bug Fixes
+
+* Change memcached's maintenance_policy duration attribute type. ([#145](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/145)) ([0ab8c11](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/0ab8c1175ca2b50bc3401385f1eb71a508399f93))
+
 ## [7.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.0.0...v7.1.0) (2023-02-27)
 
 

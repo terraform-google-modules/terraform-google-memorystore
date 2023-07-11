@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.1.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.1...v7.1.2) (2023-07-11)
+
+
+### Bug Fixes
+
+* Ignore maintenance_schedule plan changes ([#152](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/152)) ([969a116](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/969a1167f0478638747dd78c95bfaf5fa3cb51c2))
+
 ## [7.1.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.0...v7.1.1) (2023-06-20)
 
 

@@ -38,3 +38,7 @@ output "output_auth_string" {
   value     = module.memstore.auth_string
   sensitive = true
 }
+
+output "output_name" {
+  value = module.memstore.name
+}

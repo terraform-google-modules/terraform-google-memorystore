@@ -60,3 +60,8 @@ output "server_ca_certs" {
   value       = google_redis_instance.default.server_ca_certs
   sensitive   = false
 }
+
+output "name" {
+  description = "The name of the instance"
+  value       = google_redis_instance.default.name
+}

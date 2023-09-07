@@ -17,8 +17,10 @@ main:
   - collectInfos:
       assign:
         - backupTime: $${string(int(sys.now()))}
+        - statusMessage: false
+        - statusResult: "start"
 
-  - create new export:
+  - createExport:
       call: http.post
       args:
         url: https://redis.googleapis.com/v1/projects/${project}/locations/${region}/instances/${instanceName}:export
@@ -28,3 +30,32 @@ main:
           outputConfig:
             gcsDestination:
               uri: $${"${gcsBucket}/${instanceName}-" + backupTime + ".rdb"}
+      result: createResult
+      next: checkCondition
+
+  - checkCondition:
+      switch:
+        - condition: $${statusMessage == false}
+          next: checkExportStatus
+      next: returnResult
+
+  - returnResult:
+      return: 'Export process finished'
+  
+  - checkExportStatus:
+      steps:
+        - wait:
+            call: sys.sleep
+            args:
+                seconds: 30
+        - callExportStatus:
+            call: http.get
+            args:
+              url: $${"https://redis.googleapis.com/v1/" + createResult.body.name}
+              auth:
+                type: OAuth2
+            result: statusResult
+        - assignStatus:
+            assign:
+              - statusMessage: $${statusResult.body.done}
+            next: checkCondition

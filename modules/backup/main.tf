@@ -63,10 +63,10 @@ resource "google_workflows_workflow" "redis_export" {
   project         = var.project_id
   service_account = local.service_account
   source_contents = templatefile("${path.module}/templates/export.yaml.tftpl", {
-    project                = var.project_id
-    region                 = var.region
-    instanceName           = var.redis_instance
-    gcsBucket              = var.export_uri
+    project      = var.project_id
+    region       = var.region
+    instanceName = var.redis_instance
+    gcsBucket    = var.export_uri
   })
 }
 

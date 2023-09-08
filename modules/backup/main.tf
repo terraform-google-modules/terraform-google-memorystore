@@ -93,3 +93,10 @@ resource "google_storage_bucket_iam_member" "redis_instance_account" {
   member = data.google_redis_instance.backup_instance.persistence_iam_identity
   role   = "roles/storage.objectCreator"
 }
+
+# mandatory to allow export to distinct project than the redis instance one
+resource "google_storage_bucket_iam_member" "redis_instance_account_bis" {
+  bucket = split("/", var.export_uri)[2] #Get the name of the bucket out of the URI
+  member = data.google_redis_instance.backup_instance.persistence_iam_identity
+  role   = "roles/storage.legacyBucketReader"
+}

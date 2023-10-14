@@ -68,7 +68,7 @@ resource "google_redis_instance" "default" {
   }
 
   lifecycle {
-    ignore_changes = [maintenance_schedule]
+    ignore_changes = []
   }
 }
 

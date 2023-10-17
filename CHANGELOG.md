@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.1.3](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.2...v7.1.3) (2023-10-17)
+
+
+### Bug Fixes
+
+* upgraded versions.tf to include minor bumps from tpg v5 ([#170](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/170)) ([66add77](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/66add7715c15fa86f4d346a4c988fdaa2667f12b))
+
 ## [7.1.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.1...v7.1.2) (2023-07-11)
 
 

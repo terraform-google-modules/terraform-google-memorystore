@@ -21,6 +21,7 @@ resource "google_memcache_instance" "self" {
   zones              = var.zones
   name               = var.name
   region             = var.region
+  memcache_version   = var.memcache_version
   authorized_network = var.authorized_network
   node_count         = var.node_count
   display_name       = var.display_name == null ? var.name : var.display_name

@@ -37,7 +37,7 @@ variable "name" {
 
 variable "memcache_version" {
   description = "The major version of Memcached software."
-  type        = 
+  type        = string
   default     = null
 }
 

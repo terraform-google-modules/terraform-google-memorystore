@@ -15,7 +15,9 @@
  */
 
 module "memorystore" {
-  source         = "../../"
+  source  = "terraform-google-modules/memorystore/google"
+  version = "~> 7.0"
+
   name           = "memorystore"
   project        = "memorystore"
   memory_size_gb = "1"

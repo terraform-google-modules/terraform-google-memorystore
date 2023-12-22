@@ -20,12 +20,12 @@ terraform {
 
     google = {
       source  = "hashicorp/google"
-      version = ">= 4.38.0, < 5.0"
+      version = ">= 4.38.0, < 6"
     }
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore/v7.1.2"
+    module_name = "blueprints/terraform/terraform-google-memorystore/v7.1.3"
   }
 
 }

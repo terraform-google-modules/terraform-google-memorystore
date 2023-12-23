@@ -13,6 +13,7 @@ A Terraform module for creating a fully functional Google Memorystore (memcache)
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `true` | no |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | maintenance\_policy | The maintenance policy for an instance. | <pre>object({<br>    day      = string<br>    duration = string<br>    start_time = object({<br>      hours   = number<br>      minutes = number<br>      seconds = number<br>      nanos   = number<br>    })<br>  })</pre> | `null` | no |
+| memcache\_version | The major version of Memcached software. | `string` | `null` | no |
 | memory\_size\_mb | Memcache memory size in MiB. Defaulted to 1024 | `number` | `1024` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. | `string` | n/a | yes |
 | node\_count | Number of nodes in the memcache instance. | `number` | `1` | no |

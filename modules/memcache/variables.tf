@@ -35,6 +35,12 @@ variable "name" {
   type        = string
 }
 
+variable "memcache_version" {
+  description = "The major version of Memcached software."
+  type        = string
+  default     = null
+}
+
 variable "authorized_network" {
   description = "The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used."
   type        = string

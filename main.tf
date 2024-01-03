@@ -66,10 +66,6 @@ resource "google_redis_instance" "default" {
       rdb_snapshot_period = persistence_config.value["rdb_snapshot_period"]
     }
   }
-
-  lifecycle {
-    ignore_changes = [maintenance_schedule]
-  }
 }
 
 module "enable_apis" {

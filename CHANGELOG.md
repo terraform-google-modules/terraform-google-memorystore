@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [8.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.3...v8.0.0) (2024-01-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG >=4.74:** remove ignore maintenance_schedule. Added redis cluster sub-module ([#195](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/195))
+
+### Features
+
+* add memcache_version parameter ([#185](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/185)) ([bfaa989](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/bfaa98943fdc50cc087d0ecde453a0843efd44a8))
+
+
+### Bug Fixes
+
+* **TPG >=4.74:** remove ignore maintenance_schedule. Added redis cluster sub-module ([#195](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/195)) ([10c10ba](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/10c10ba22365d56e4e034167f0e32f56a4ce9069))
+
 ## [7.1.3](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.2...v7.1.3) (2023-10-17)
 
 

@@ -16,7 +16,7 @@
 
 module "memstore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 7.0"
+  version = "~> 8.0"
 
   name = "test-redis"
 

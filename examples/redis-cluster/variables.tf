@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2024 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,7 @@
  * limitations under the License.
  */
 
-terraform {
-  required_version = ">= 0.13"
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-    }
-    google-beta = {
-      source = "hashicorp/google-beta"
-    }
-  }
+variable "project_id" {
+  description = "Google cloud project id to create redis cluster."
+  type        = string
 }

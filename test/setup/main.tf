@@ -31,6 +31,9 @@ module "project" {
     "serviceusage.googleapis.com",
     "redis.googleapis.com",
     "memcache.googleapis.com",
+    "serviceconsumermanagement.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "compute.googleapis.com",
   ]
 }
 

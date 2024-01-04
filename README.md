@@ -1,13 +1,19 @@
 # [Google Cloud Memorystore Terraform Module](https://registry.terraform.io/modules/terraform-google-modules/memorystore/google/)
 
-A Terraform module for creating a fully functional Google Memorystore (redis) instance.
+A Terraform module for creating a fully functional Google Memorystore Redis instance. For Memcache and Redis Cluster see [sub-modules](./modules/)
 
 ## Compatibility
-This module is meant for use with Terraform 0.13+ and tested using Terraform 1.0+. If you find incompatibilities using Terraform >=0.13, please open an issue.
+This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+. If you find incompatibilities using Terraform >=1.3, please open an issue.
  If you haven't
 [upgraded](https://www.terraform.io/upgrade-guides/0-13.html) and need a Terraform
 0.12.x-compatible version of this module, the last released version
 intended for Terraform 0.12.x is [v2.0.0](https://registry.terraform.io/modules/terraform-google-modules/-memorystore/google/v2.0.0).
+
+## Version
+
+Current version is 8.0. Upgrade guides:
+
+- [7.X -> 8.0](/docs/upgrading_to_v8.0.md)
 
 ## Usage
 
@@ -16,10 +22,12 @@ Check the [examples/](./examples/) directory for more.
 ```hcl
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "4.0.0"
+  version = "~> 8.0"
 
-  name    = "my-memorystore"
-  project = "my-gcp-project"
+  name           = "memorystore"
+  project        = "memorystore"
+  memory_size_gb = "1"
+  enable_apis    = "true"
 }
 ```
 
@@ -68,16 +76,28 @@ module "memorystore" {
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-## File structure
+## Requirements
 
-The project has the following folders and files:
+These sections describe requirements for using this module.
 
-- /: root folder
-- /examples: examples for using this module
-- /scripts: Scripts for specific tasks on module (see Infrastructure section on this file)
-- /test: Folders with files for testing the module (see Testing section on this file)
-- /helpers: Optional helper scripts for ease of use
-- /main.tf: main file for this module, contains all the resources to create
-- /variables.tf: all the variables for the module
-- /output.tf: the outputs of the module
-- /readme.md: this file
+### Software
+
+The following dependencies must be available:
+
+- [Terraform][terraform] v1.3+
+- [Terraform Provider for GCP][terraform-provider-gcp] plugin v4.74+
+
+### Service Account
+
+Following roles contain permissions to deploy resource.
+
+- Cloud Memorystore Redis Admin: `roles/redis.admin`
+
+### Enable API's
+In order to operate with the Service Account you must activate the following API on the project where the Service Account was created:
+
+- Compute Engine API - `redis.googleapis.com`
+
+## Contributing
+
+Refer to the [contribution guidelines](./CONTRIBUTING.md) for information on contributing to this module.

@@ -1,6 +1,6 @@
 # [Google Cloud Memorystore Terraform Module](https://registry.terraform.io/modules/terraform-google-modules/memorystore/google/)
 
-A Terraform module for creating a fully functional Google Memorystore (redis) instance.
+A Terraform module for creating a fully functional Google Memorystore Redis instance. For Memcache and Redis Cluster see [sub-modules](./modules/)
 
 ## Compatibility
 This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+. If you find incompatibilities using Terraform >=1.3, please open an issue.
@@ -9,6 +9,12 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 0.12.x-compatible version of this module, the last released version
 intended for Terraform 0.12.x is [v2.0.0](https://registry.terraform.io/modules/terraform-google-modules/-memorystore/google/v2.0.0).
 
+## Version
+
+Current version is 8.0. Upgrade guides:
+
+- [7.X -> 8.0](/docs/upgrading_to_v8.0.md)
+
 ## Usage
 
 Check the [examples/](./examples/) directory for more.
@@ -16,10 +22,12 @@ Check the [examples/](./examples/) directory for more.
 ```hcl
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "8.0"
+  version = "~> 8.0"
 
-  name    = "my-memorystore"
-  project = "my-gcp-project"
+  name           = "memorystore"
+  project        = "memorystore"
+  memory_size_gb = "1"
+  enable_apis    = "true"
 }
 ```
 

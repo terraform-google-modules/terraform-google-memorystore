@@ -2,7 +2,33 @@
 
 A Terraform module for creating Google [Memorystore Redis Cluster](https://cloud.google.com/memorystore/docs/cluster/memorystore-for-redis-cluster-overview). It can also create [service connection policies](https://cloud.google.com/vpc/docs/about-service-connection-policies). You can also create service connection policy outside of this module. If you are not creating service connection policy as part of this module then make sure they exist before creating redis cluster. You can find more details [here](https://cloud.google.com/memorystore/docs/cluster/networking)
 
-## 
+## Compatibility
+This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+. If you find incompatibilities using Terraform >=1.3, please open an issue.
+
+## Usage
+
+```
+module "redis_cluster" {
+  source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
+  version = "~> 8.0"
+
+  name    = "test-redis-cluster"
+  project = var.project_id
+  region  = "us-central1"
+  network = ["projects/${var.project_id}/global/networks/${local.network_name}"]
+
+  service_connection_policies = {
+    test-net-redis-cluster-scp = {
+      network_name    = local.network_name
+      network_project = var.project_id
+      subnet_names = [
+        "subnet-100",
+        "subnet-101",
+      ]
+    }
+  }
+}
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs

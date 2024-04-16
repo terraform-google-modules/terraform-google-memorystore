@@ -45,6 +45,7 @@ module "redis_cluster" {
 | service\_connection\_policies | The Service Connection Policies to create | <pre>map(object({<br>    description     = optional(string)<br>    network_name    = string<br>    network_project = string<br>    subnet_names    = list(string)<br>    limit           = optional(number)<br>    labels          = optional(map(string), {})<br>  }))</pre> | `{}` | no |
 | shard\_count | Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards | `number` | `3` | no |
 | transit\_encryption\_mode | The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT\_ENCRYPTION\_MODE\_DISABLED. Possible values are: TRANSIT\_ENCRYPTION\_MODE\_UNSPECIFIED, TRANSIT\_ENCRYPTION\_MODE\_DISABLED, TRANSIT\_ENCRYPTION\_MODE\_SERVER\_AUTHENTICATION | `string` | `"TRANSIT_ENCRYPTION_MODE_DISABLED"` | no |
+| node\_type | The nodeType for the Redis cluster. If not provided, REDIS\_HIGHMEM\_MEDIUM will be used as default Possible values are: REDIS\_SHARED\_CORE\_NANO, REDIS\_HIGHMEM\_MEDIUM, REDIS\_HIGHMEM\_XLARGE, REDIS\_STANDARD\_SMALL. | `string` | `"REDIS_HIGHMEM_MEDIUM"` | no |
 
 ## Outputs
 

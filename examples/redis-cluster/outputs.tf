@@ -58,3 +58,8 @@ output "authorization_mode" {
   description = "The redis cluster authorization mode"
   value       = module.redis_cluster.redis_cluster.authorization_mode
 }
+
+output "node_type" {
+  description = "The redis cluster node type"
+  value       = module.redis_cluster.redis_cluster.node_type
+}

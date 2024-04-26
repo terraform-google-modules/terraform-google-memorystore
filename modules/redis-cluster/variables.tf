@@ -81,4 +81,5 @@ variable "service_connection_policies" {
 variable "node_type" {
   description = "The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values are: REDIS_SHARED_CORE_NANO, REDIS_HIGHMEM_MEDIUM, REDIS_HIGHMEM_XLARGE, REDIS_STANDARD_SMALL."
   type        = string
+  default     = null
 }

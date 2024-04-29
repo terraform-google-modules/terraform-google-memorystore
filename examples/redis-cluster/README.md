@@ -17,6 +17,7 @@ This test will create a new redis cluster.
 | cluster\_id | The redis cluster instance ID |
 | cluster\_name | The redis cluster name |
 | cluster\_region | The redis cluster region |
+| node\_type | The redis cluster node type |
 | project\_id | The redis cluster Project ID |
 | replica\_count | The redis cluster replica count |
 | shard\_count | The redis cluster shard count |

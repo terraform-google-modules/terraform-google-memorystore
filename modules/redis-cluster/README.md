@@ -39,6 +39,7 @@ module "redis_cluster" {
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `true` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. must be 1 to 63 characters and use only lowercase letters, numbers, or hyphens. It must start with a lowercase letter and end with a lowercase letter or number | `string` | n/a | yes |
 | network | List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network\_project\_id\_or\_number}/global/networks/{network\_id}. Currently, only one item is supported | `list(string)` | n/a | yes |
+| node\_type | The nodeType for the Redis cluster. If not provided, REDIS\_HIGHMEM\_MEDIUM will be used as default Possible values are: REDIS\_SHARED\_CORE\_NANO, REDIS\_HIGHMEM\_MEDIUM, REDIS\_HIGHMEM\_XLARGE, REDIS\_STANDARD\_SMALL. | `string` | `null` | no |
 | project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
 | region | The name of the region of the Redis cluster | `string` | n/a | yes |
 | replica\_count | The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones | `number` | `0` | no |

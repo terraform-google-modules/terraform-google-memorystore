@@ -22,6 +22,7 @@ resource "google_redis_cluster" "redis_cluster" {
   replica_count           = var.replica_count
   transit_encryption_mode = var.transit_encryption_mode
   authorization_mode      = var.authorization_mode
+  node_type               = var.node_type
 
   dynamic "psc_configs" {
     for_each = var.network

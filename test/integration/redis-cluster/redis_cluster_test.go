@@ -36,6 +36,7 @@ func TestRedisCluster(t *testing.T) {
 		transitEncryptionMode := rc.GetStringOutput("transit_encryption_mode")
 		replicaCount := rc.GetStringOutput("replica_count")
 		authorizationMode := rc.GetStringOutput("authorization_mode")
+		nodeType := rc.GetStringOutput("node_type")
 
 
 		op := gcloud.Runf(t, "redis clusters describe %s --project %s --region %s",clusterName, projectId, clusterRegion)
@@ -44,6 +45,7 @@ func TestRedisCluster(t *testing.T) {
 		assert.Equal(op.Get("transitEncryptionMode").String(), transitEncryptionMode)
 		assert.Equal(op.Get("replicaCount").String(), replicaCount)
 		assert.Equal(op.Get("authorizationMode").String(), authorizationMode)
+		assert.Equal(op.Get("nodeType").String(), nodeType)
 	})
 
 	rc.Test()

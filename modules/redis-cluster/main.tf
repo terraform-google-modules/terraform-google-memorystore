@@ -23,6 +23,7 @@ resource "google_redis_cluster" "redis_cluster" {
   transit_encryption_mode = var.transit_encryption_mode
   authorization_mode      = var.authorization_mode
   node_type               = var.node_type
+  redis_configs           = var.redis_configs
 
   dynamic "psc_configs" {
     for_each = var.network

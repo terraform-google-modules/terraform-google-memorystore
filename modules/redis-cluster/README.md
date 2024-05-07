@@ -10,23 +10,18 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   name    = "test-redis-cluster"
   project = var.project_id
   region  = "us-central1"
-  network = ["projects/${var.project_id}/global/networks/${local.network_name}"]
+  network = ["projects/${var.project_id}/global/networks/${var.network_name}"]
+  node_type = "REDIS_STANDARD_SMALL"
 
-  service_connection_policies = {
-    test-net-redis-cluster-scp = {
-      network_name    = local.network_name
-      network_project = var.project_id
-      subnet_names = [
-        "subnet-100",
-        "subnet-101",
-      ]
-    }
+  redis_configs = {
+    maxmemory-policy	= "volatile-ttl"
   }
+
 }
 ```
 
@@ -41,6 +36,7 @@ module "redis_cluster" {
 | network | List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network\_project\_id\_or\_number}/global/networks/{network\_id}. Currently, only one item is supported | `list(string)` | n/a | yes |
 | node\_type | The nodeType for the Redis cluster. If not provided, REDIS\_HIGHMEM\_MEDIUM will be used as default Possible values are: REDIS\_SHARED\_CORE\_NANO, REDIS\_HIGHMEM\_MEDIUM, REDIS\_HIGHMEM\_XLARGE, REDIS\_STANDARD\_SMALL. | `string` | `null` | no |
 | project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
+| redis\_configs | Configure Redis Cluster behavior using a subset of native Redis configuration parameters | <pre>object({<br>    maxmemory-clients       = optional(string)<br>    maxmemory               = optional(string)<br>    maxmemory-policy        = optional(string)<br>    notify-keyspace-events  = optional(string)<br>    slowlog-log-slower-than = optional(number)<br>    maxclients              = optional(number)<br>  })</pre> | `null` | no |
 | region | The name of the region of the Redis cluster | `string` | n/a | yes |
 | replica\_count | The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones | `number` | `0` | no |
 | service\_connection\_policies | The Service Connection Policies to create | <pre>map(object({<br>    description     = optional(string)<br>    network_name    = string<br>    network_project = string<br>    subnet_names    = list(string)<br>    limit           = optional(number)<br>    labels          = optional(map(string), {})<br>  }))</pre> | `{}` | no |
@@ -67,7 +63,7 @@ These sections describe requirements for using this module.
 The following dependencies must be available:
 
 - [Terraform][terraform] v1.3+
-- [Terraform Provider for GCP][terraform-provider-gcp] plugin v4.74+
+- [Terraform Provider for GCP][terraform-provider-gcp] plugin v5.28+
 
 ### Service Account
 

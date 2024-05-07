@@ -83,3 +83,16 @@ variable "node_type" {
   type        = string
   default     = null
 }
+
+variable "redis_configs" {
+  description = "Configure Redis Cluster behavior using a subset of native Redis configuration parameters"
+  type = object({
+    maxmemory-clients       = optional(string)
+    maxmemory               = optional(string)
+    maxmemory-policy        = optional(string)
+    notify-keyspace-events  = optional(string)
+    slowlog-log-slower-than = optional(number)
+    maxclients              = optional(number)
+  })
+  default = null
+}

@@ -46,6 +46,7 @@ func TestRedisCluster(t *testing.T) {
 		assert.Equal(op.Get("replicaCount").String(), replicaCount)
 		assert.Equal(op.Get("authorizationMode").String(), authorizationMode)
 		assert.Equal(op.Get("nodeType").String(), nodeType)
+		assert.Equal(op.Get("redisConfigs.maxmemory-policy").String(), "volatile-ttl")
 	})
 
 	rc.Test()

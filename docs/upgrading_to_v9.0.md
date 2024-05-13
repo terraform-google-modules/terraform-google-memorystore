@@ -1,5 +1,6 @@
-# Upgrading to v9.0.0
+# Upgrading to v9.0
 
 The v9.0 release contains backwards-incompatible changes.
 
-This update requires upgrading the minimum provider version to `5.24`.
+# Min Provider Version
+This update requires upgrading the minimum provider version to `5.28.` to support `node_type` and `redis_configs` parameters.

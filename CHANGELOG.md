@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [9.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v8.0.0...v9.0.0) (2024-05-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG>5.28:** add redis_configs in redis cluster ([#213](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/213))
+* **TPG >=5.24:** Allow modifying of node type in redis cluster sub-module ([#206](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/206))
+
+### Features
+
+* **TPG >=5.24:** Allow modifying of node type in redis cluster sub-module ([#206](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/206)) ([f30de6f](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/f30de6fd43ce4efd124fe6d6230fe55f4df75005))
+* **TPG>5.28:** add redis_configs in redis cluster ([#213](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/213)) ([30d5433](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/30d54338e661c1a244808349ec8125e60363f86f))
+
 ## [8.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v7.1.3...v8.0.0) (2024-01-04)
 
 

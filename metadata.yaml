@@ -53,6 +53,12 @@ spec:
     description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
     type: string
     required: false
+    connections:
+    - source:
+        source: https://github.com/terraform-google-modules/terraform-google-network//modules/vpc
+        version: v9.1.0
+      spec:
+        output_expr: network_name
   - name: connect_mode
     description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
     type: string

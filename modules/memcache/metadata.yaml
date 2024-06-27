@@ -1,4 +1,4 @@
-# Copyright 2022 Google LLC
+# Copyright 2024 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,106 +19,109 @@ metadata:
   annotations:
     config.kubernetes.io/local-config: "true"
 spec:
-  title: ""
-  source:
-    repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
-    sourceType: git
-  version: 9.0.0
-  actuationTool:
-    type: Terraform
-    version: '>= 0.13'
-  examples:
-  - name: basic
-    location: examples/basic
-  - name: memcache
-    location: examples/memcache
-  - name: minimal
-    location: examples/minimal
-  - name: redis
-    location: examples/redis
-  variables:
-  - name: authorized_network
-    description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
-    type: string
-    required: false
-  - name: cpu_count
-    description: Number of CPUs per node
-    type: number
-    default: 1
-    required: false
-  - name: display_name
-    description: An arbitrary and optional user-provided name for the instance.
-    type: string
-    required: false
-  - name: enable_apis
-    description: Flag for enabling memcache.googleapis.com in your project
-    type: bool
-    default: true
-    required: false
-  - name: labels
-    description: The resource labels to represent user provided metadata.
-    type: map(string)
-    default: {}
-    required: false
-  - name: maintenance_policy
-    description: The maintenance policy for an instance.
-    type: |-
-      object({
-          day      = string
-          duration = number
-          start_time = object({
-            hours   = number
-            minutes = number
-            seconds = number
-            nanos   = number
-          })
-        })
-    required: false
-  - name: memory_size_mb
-    description: Memcache memory size in MiB. Defaulted to 1024
-    type: number
-    default: 1024
-    required: false
-  - name: name
-    description: The ID of the instance or a fully qualified identifier for the instance.
-    type: string
-    required: true
-  - name: node_count
-    description: Number of nodes in the memcache instance.
-    type: number
-    default: 1
-    required: false
-  - name: params
-    description: Parameters for the memcache process
-    type: map(string)
-    required: false
-  - name: project
-    description: The ID of the project in which the resource belongs to.
-    type: string
-    required: true
-  - name: region
-    description: The GCP region to use.
-    type: string
-    required: true
-  - name: zones
-    description: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
-    type: list(string)
-    required: false
-  outputs:
-  - name: discovery
-    description: The memorystore discovery endpoint.
-  - name: id
-    description: The memorystore instance ID.
-  - name: nodes
-    description: Data about the memcache nodes
-  - name: region
-    description: The region the instance lives in.
-  roles:
-  - level: Project
+  info:
+    source:
+      repo: https://github.com/q2w/terraform-google-memorystore.git
+      sourceType: git
+      dir: /modules/memcache
+    version: 9.0.0
+    actuationTool:
+      flavor: Terraform
+      version: ">= 0.13"
+    description: {}
+  content:
+    examples:
+      - name: basic
+        location: examples/basic
+      - name: memcache
+        location: examples/memcache
+      - name: minimal
+        location: examples/minimal
+      - name: redis
+        location: examples/redis
+      - name: redis-cluster
+        location: examples/redis-cluster
+  interfaces:
+    variables:
+      - name: authorized_network
+        description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
+        varType: string
+      - name: cpu_count
+        description: Number of CPUs per node
+        varType: number
+        defaultValue: 1
+      - name: display_name
+        description: An arbitrary and optional user-provided name for the instance.
+        varType: string
+      - name: enable_apis
+        description: Flag for enabling memcache.googleapis.com in your project
+        varType: bool
+        defaultValue: true
+      - name: labels
+        description: The resource labels to represent user provided metadata.
+        varType: map(string)
+        defaultValue: {}
+      - name: maintenance_policy
+        description: The maintenance policy for an instance.
+        varType: |-
+          object({
+              day      = string
+              duration = string
+              start_time = object({
+                hours   = number
+                minutes = number
+                seconds = number
+                nanos   = number
+              })
+            })
+      - name: memcache_version
+        description: The major version of Memcached software.
+        varType: string
+      - name: memory_size_mb
+        description: Memcache memory size in MiB. Defaulted to 1024
+        varType: number
+        defaultValue: 1024
+      - name: name
+        description: The ID of the instance or a fully qualified identifier for the instance.
+        varType: string
+        required: true
+      - name: node_count
+        description: Number of nodes in the memcache instance.
+        varType: number
+        defaultValue: 1
+      - name: params
+        description: Parameters for the memcache process
+        varType: map(string)
+      - name: project
+        description: The ID of the project in which the resource belongs to.
+        varType: string
+        required: true
+      - name: region
+        description: The GCP region to use.
+        varType: string
+        required: true
+      - name: zones
+        description: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        varType: list(string)
+    outputs:
+      - name: discovery
+        description: The memorystore discovery endpoint.
+      - name: id
+        description: The memorystore instance ID.
+      - name: nodes
+        description: Data about the memcache nodes
+      - name: region
+        description: The region the instance lives in.
+  requirements:
     roles:
-    - roles/owner
-  services:
-  - cloudresourcemanager.googleapis.com
-  - serviceusage.googleapis.com
-  - redis.googleapis.com
-  - memcache.googleapis.com
+      - level: Project
+        roles:
+          - roles/owner
+    services:
+      - cloudresourcemanager.googleapis.com
+      - serviceusage.googleapis.com
+      - redis.googleapis.com
+      - memcache.googleapis.com
+      - serviceconsumermanagement.googleapis.com
+      - networkconnectivity.googleapis.com
+      - compute.googleapis.com

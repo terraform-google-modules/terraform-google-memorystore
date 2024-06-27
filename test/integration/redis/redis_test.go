@@ -29,11 +29,14 @@ func TestRedis(t *testing.T) {
 		bpt.DefaultVerify(assert)
 
 		projectId := bpt.GetStringOutput("project_id")
+		envVars := bpt.GetStringOutput("output_env_vars")
 
 		op := gcloud.Runf(t, "redis instances describe test-redis --project=%s --region=us-east1", projectId)
 		assert.True(op.Get("authEnabled").Bool())
 		assert.Equal(op.Get("memorySizeGb").String(), "1")
 		assert.Equal(op.Get("transitEncryptionMode").String(), "SERVER_AUTHENTICATION")
+		assert.Contains(envVars, "REDIS_HOST")
+		assert.Contains(envVars, "REDIS_PORT")
 	})
 
 	bpt.Test()

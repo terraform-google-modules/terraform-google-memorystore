@@ -17,7 +17,7 @@
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
   version = "~> 9.0"
-  
+
   name      = "test-redis-cluster"
   project   = var.project_id
   region    = "us-central1"

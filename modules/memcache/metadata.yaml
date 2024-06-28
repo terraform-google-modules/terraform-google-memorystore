@@ -21,7 +21,7 @@ metadata:
 spec:
   info:
     source:
-      repo: https://github.com/q2w/terraform-google-memorystore.git
+      repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
       dir: /modules/memcache
     version: 9.0.0

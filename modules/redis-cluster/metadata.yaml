@@ -22,7 +22,7 @@ spec:
   info:
     title: Memorystore Redis Cluster Terraform Module
     source:
-      repo: https://github.com/q2w/terraform-google-memorystore.git
+      repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
       dir: /modules/redis-cluster
     version: 9.0.0

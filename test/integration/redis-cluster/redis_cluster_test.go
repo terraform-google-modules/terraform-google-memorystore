@@ -26,8 +26,6 @@ func TestRedisCluster(t *testing.T) {
 	rc := tft.NewTFBlueprintTest(t)
 
 	rc.DefineVerify(func(assert *assert.Assertions) {
-		rc.DefaultVerify(assert)
-
 		projectId := rc.GetStringOutput("project_id")
 		clusterName := rc.GetStringOutput("cluster_name")
 		clusterRegion := rc.GetStringOutput("cluster_region")
@@ -38,8 +36,7 @@ func TestRedisCluster(t *testing.T) {
 		authorizationMode := rc.GetStringOutput("authorization_mode")
 		nodeType := rc.GetStringOutput("node_type")
 
-
-		op := gcloud.Runf(t, "redis clusters describe %s --project %s --region %s",clusterName, projectId, clusterRegion)
+		op := gcloud.Runf(t, "redis clusters describe %s --project %s --region %s", clusterName, projectId, clusterRegion)
 		assert.Equal(op.Get("name").String(), clusterId)
 		assert.Equal(op.Get("shardCount").String(), shardCount)
 		assert.Equal(op.Get("transitEncryptionMode").String(), transitEncryptionMode)

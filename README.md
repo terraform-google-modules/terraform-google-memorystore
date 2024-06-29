@@ -66,6 +66,7 @@ module "memorystore" {
 |------|-------------|
 | auth\_string | AUTH String set on the instance. This field will only be populated if auth\_enabled is true. |
 | current\_location\_id | The current zone where the Redis endpoint is placed. |
+| env\_vars | Exported environment variables |
 | host | The IP address of the instance. |
 | id | The memorystore instance ID. |
 | persistence\_iam\_identity | Cloud IAM identity used by import/export operations. Format is 'serviceAccount:'. May change over time |

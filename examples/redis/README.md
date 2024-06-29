@@ -15,6 +15,7 @@ This test will create a new redis instance.
 |------|-------------|
 | output\_auth\_string | n/a |
 | output\_current\_location\_id | n/a |
+| output\_env\_vars | n/a |
 | output\_host | n/a |
 | output\_id | n/a |
 | output\_region | n/a |

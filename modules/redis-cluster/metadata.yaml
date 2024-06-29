@@ -1,0 +1,130 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-memorystore
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Memorystore Redis Cluster Terraform Module
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
+      sourceType: git
+      dir: /modules/redis-cluster
+    version: 9.0.0
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.3"
+    description: {}
+  content:
+    examples:
+      - name: basic
+        location: examples/basic
+      - name: memcache
+        location: examples/memcache
+      - name: minimal
+        location: examples/minimal
+      - name: redis
+        location: examples/redis
+      - name: redis-cluster
+        location: examples/redis-cluster
+  interfaces:
+    variables:
+      - name: authorization_mode
+        description: "The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH_MODE_DISABLED. Possible values are: AUTH_MODE_UNSPECIFIED, AUTH_MODE_IAM_AUTH, AUTH_MODE_DISABLED"
+        varType: string
+        defaultValue: AUTH_MODE_DISABLED
+      - name: enable_apis
+        description: Flag for enabling memcache.googleapis.com in your project
+        varType: bool
+        defaultValue: true
+      - name: name
+        description: The ID of the instance or a fully qualified identifier for the instance. must be 1 to 63 characters and use only lowercase letters, numbers, or hyphens. It must start with a lowercase letter and end with a lowercase letter or number
+        varType: string
+        required: true
+      - name: network
+        description: List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network_project_id_or_number}/global/networks/{network_id}. Currently, only one item is supported
+        varType: list(string)
+        required: true
+      - name: node_type
+        description: "The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values are: REDIS_SHARED_CORE_NANO, REDIS_HIGHMEM_MEDIUM, REDIS_HIGHMEM_XLARGE, REDIS_STANDARD_SMALL."
+        varType: string
+      - name: project
+        description: The ID of the project in which the resource belongs to.
+        varType: string
+        required: true
+      - name: redis_configs
+        description: Configure Redis Cluster behavior using a subset of native Redis configuration parameters
+        varType: |-
+          object({
+              maxmemory-clients       = optional(string)
+              maxmemory               = optional(string)
+              maxmemory-policy        = optional(string)
+              notify-keyspace-events  = optional(string)
+              slowlog-log-slower-than = optional(number)
+              maxclients              = optional(number)
+            })
+      - name: region
+        description: The name of the region of the Redis cluster
+        varType: string
+        required: true
+      - name: replica_count
+        description: The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones
+        varType: number
+        defaultValue: 0
+      - name: service_connection_policies
+        description: The Service Connection Policies to create
+        varType: |-
+          map(object({
+              description     = optional(string)
+              network_name    = string
+              network_project = string
+              subnet_names    = list(string)
+              limit           = optional(number)
+              labels          = optional(map(string), {})
+            }))
+        defaultValue: {}
+      - name: shard_count
+        description: Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards
+        varType: number
+        defaultValue: 3
+      - name: transit_encryption_mode
+        description: "The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT_ENCRYPTION_MODE_DISABLED. Possible values are: TRANSIT_ENCRYPTION_MODE_UNSPECIFIED, TRANSIT_ENCRYPTION_MODE_DISABLED, TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
+        varType: string
+        defaultValue: TRANSIT_ENCRYPTION_MODE_DISABLED
+    outputs:
+      - name: discovery_endpoints
+        description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
+      - name: id
+        description: The redis cluster instance ID
+      - name: psc_connections
+        description: PSC connections for discovery of the cluster topology and accessing the cluster
+      - name: redis_cluster
+        description: The redis cluster created
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/owner
+    services:
+      - cloudresourcemanager.googleapis.com
+      - serviceusage.googleapis.com
+      - redis.googleapis.com
+      - memcache.googleapis.com
+      - serviceconsumermanagement.googleapis.com
+      - networkconnectivity.googleapis.com
+      - compute.googleapis.com

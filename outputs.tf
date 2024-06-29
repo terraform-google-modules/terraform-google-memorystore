@@ -60,3 +60,11 @@ output "server_ca_certs" {
   value       = google_redis_instance.default.server_ca_certs
   sensitive   = false
 }
+
+output "env_vars" {
+  description = "Exported environment variables"
+  value = {
+    "REDIS_HOST" : google_redis_instance.default.host,
+    "REDIS_PORT" : google_redis_instance.default.port
+  }
+}

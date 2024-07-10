@@ -32,6 +32,10 @@ resource "google_redis_cluster" "redis_cluster" {
     }
   }
 
+  zone_distribution_config {
+    mode = var.zone_distribution_config_mode
+  }
+
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,

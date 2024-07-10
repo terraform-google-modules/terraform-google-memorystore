@@ -96,3 +96,9 @@ variable "redis_configs" {
   })
   default = null
 }
+
+variable "zone_distribution_config_mode" {
+  description = "The mode for zone distribution for Memorystore Redis cluster (Immutable). If not provided, MULTI_ZONE will be used as default value. Possible values are: MULTI_ZONE, SINGLE_ZONE"
+  type        = string
+  default     = "MULTI_ZONE"
+}

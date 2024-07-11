@@ -16,7 +16,7 @@
 
 module "memstore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   name               = "test-minimal"
   project            = var.project_id

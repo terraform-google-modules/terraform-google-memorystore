@@ -16,7 +16,7 @@
 
 module "private-service-access" {
   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
-  version     = "~> 18.0"
+  version     = "~> 20.0"
   project_id  = var.project_id
   vpc_network = module.test-vpc-module.network_name
   depends_on = [
@@ -26,7 +26,7 @@ module "private-service-access" {
 
 module "memcache" {
   source  = "terraform-google-modules/memorystore/google//modules/memcache"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   name               = "example-memcache"
   project            = var.project_id

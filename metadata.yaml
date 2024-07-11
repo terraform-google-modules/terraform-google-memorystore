@@ -153,8 +153,7 @@ spec:
         type: string
       - name: env_vars
         description: Exported environment variables
-        type:  |
-        [
+        type: [
           "object",
           {
             "REDIS_HOST": "string",
@@ -181,8 +180,7 @@ spec:
         type: string
       - name: server_ca_certs
         description: List of server CA certificates for the instance
-        type: |
-        [
+        type: [
           "list",
           [
             "object",
@@ -198,7 +196,7 @@ spec:
   requirements:
     provider_versions:
       - source: hashicorp/google
-        version: >= 4.74.0, < 6
+        version: ">= 4.74.0, < 6"
     roles:
       - level: Project
         roles:

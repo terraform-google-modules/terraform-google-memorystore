@@ -32,8 +32,11 @@ resource "google_redis_cluster" "redis_cluster" {
     }
   }
 
-  zone_distribution_config {
-    mode = var.zone_distribution_config_mode
+  dynamic "zone_distribution_config" {
+    for_each = var.zone_distribution_config_mode != "" ? [1] : []
+    content {
+      mode = var.zone_distribution_config_mode
+    }
   }
 
   depends_on = [

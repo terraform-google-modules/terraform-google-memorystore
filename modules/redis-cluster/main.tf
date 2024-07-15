@@ -33,7 +33,7 @@ resource "google_redis_cluster" "redis_cluster" {
   }
 
   dynamic "zone_distribution_config" {
-    for_each = var.zone_distribution_config_mode != "" ? [1] : []
+    for_each = var.zone_distribution_config_mode != null ? [1] : []
     content {
       mode = var.zone_distribution_config_mode
       zone = var.zone_distribution_config_mode == "SINGLE_ZONE" ? var.zone_distribution_config_zone : null

@@ -102,3 +102,9 @@ variable "zone_distribution_config_mode" {
   type        = string
   default     = "MULTI_ZONE"
 }
+
+variable "zone_distribution_config_zone" {
+  description = "The zone for single zone Memorystore Redis cluster (Immutable)"
+  type        = string
+  default     = null
+}

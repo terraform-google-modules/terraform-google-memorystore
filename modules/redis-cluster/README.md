@@ -43,6 +43,7 @@ module "redis_cluster" {
 | shard\_count | Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards | `number` | `3` | no |
 | transit\_encryption\_mode | The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT\_ENCRYPTION\_MODE\_DISABLED. Possible values are: TRANSIT\_ENCRYPTION\_MODE\_UNSPECIFIED, TRANSIT\_ENCRYPTION\_MODE\_DISABLED, TRANSIT\_ENCRYPTION\_MODE\_SERVER\_AUTHENTICATION | `string` | `"TRANSIT_ENCRYPTION_MODE_DISABLED"` | no |
 | zone\_distribution\_config\_mode | The mode for zone distribution for Memorystore Redis cluster (Immutable). If not provided, MULTI\_ZONE will be used as default value. Possible values are: MULTI\_ZONE, SINGLE\_ZONE | `string` | `"MULTI_ZONE"` | no |
+| zone\_distribution\_config\_zone | The zone for single zone Memorystore Redis cluster (Immutable) | `string` | `null` | no |
 
 ## Outputs
 

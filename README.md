@@ -22,7 +22,7 @@ Check the [examples/](./examples/) directory for more.
 ```hcl
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 9.0"
+  version = "~> 10.0"
 
   name           = "memorystore"
   project        = "memorystore"

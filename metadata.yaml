@@ -20,6 +20,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
+    title: Google Cloud Memorystore Terraform Module
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
@@ -62,7 +63,7 @@ spec:
             source: https://github.com/terraform-google-modules/terraform-google-network//modules/vpc
             version: v9.1.0
           spec:
-            output_expr: network_name        
+            outputExpr: network_name
       - name: connect_mode
         description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
         varType: string
@@ -194,9 +195,6 @@ spec:
           ]
         ]
   requirements:
-    provider_versions:
-      - source: hashicorp/google
-        version: ">= 4.74.0, < 6"
     roles:
       - level: Project
         roles:

@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [10.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v9.0.0...v10.0.0) (2024-07-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG >=5.33:** zone_distribution_config force recreation ([#222](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/222))
+* **deps:** Update Terraform terraform-google-modules/project-factory/google to v15 ([#215](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/215))
+
+### Features
+
+* Add new output called env_vars for Redis ([#219](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/219)) ([c1190ee](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/c1190ee7aad05d4814a2379e0efdb67990564656))
+* **TPG >=5.33:** zone_distribution_config force recreation ([#222](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/222)) ([c49bdbf](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/c49bdbfb62385c33b075165f4399f1924a8e8c29))
+
+
+### Bug Fixes
+
+* **deps:** Update Terraform terraform-google-modules/project-factory/google to v15 ([#215](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/215)) ([5901c46](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/5901c463b65af15f99e837a244bc5bce6e728b0e))
+
 ## [9.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v8.0.0...v9.0.0) (2024-05-13)
 
 

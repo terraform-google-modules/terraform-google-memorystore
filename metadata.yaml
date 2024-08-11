@@ -60,7 +60,7 @@ spec:
         varType: string
         connections:
         - source:
-            source: https://github.com/terraform-google-modules/terraform-google-network//modules/vpc
+            source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
             version: v9.1.0
           spec:
             outputExpr: network_name

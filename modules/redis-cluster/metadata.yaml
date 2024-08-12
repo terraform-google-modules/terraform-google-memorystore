@@ -106,6 +106,13 @@ spec:
         description: "The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT_ENCRYPTION_MODE_DISABLED. Possible values are: TRANSIT_ENCRYPTION_MODE_UNSPECIFIED, TRANSIT_ENCRYPTION_MODE_DISABLED, TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
         varType: string
         defaultValue: TRANSIT_ENCRYPTION_MODE_DISABLED
+      - name: zone_distribution_config_mode
+        description: "The mode for zone distribution for Memorystore Redis cluster (Immutable). If not provided, MULTI_ZONE will be used as default value. Possible values are: MULTI_ZONE, SINGLE_ZONE"
+        varType: string
+        defaultValue: MULTI_ZONE
+      - name: zone_distribution_config_zone
+        description: The zone for single zone Memorystore Redis cluster (Immutable)
+        varType: string
     outputs:
       - name: discovery_endpoints
         description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported

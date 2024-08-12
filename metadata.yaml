@@ -20,6 +20,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
+    title: Google Cloud Memorystore Terraform Module
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
@@ -57,6 +58,12 @@ spec:
       - name: authorized_network
         description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
         varType: string
+        connections:
+        - source:
+            source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
+            version: v9.1.0
+          spec:
+            outputExpr: network_name
       - name: connect_mode
         description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
         varType: string
@@ -141,24 +148,52 @@ spec:
     outputs:
       - name: auth_string
         description: AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+        type: string
       - name: current_location_id
         description: The current zone where the Redis endpoint is placed.
+        type: string
       - name: env_vars
         description: Exported environment variables
+        type: [
+          "object",
+          {
+            "REDIS_HOST": "string",
+            "REDIS_PORT": "number"
+          }
+        ]
       - name: host
         description: The IP address of the instance.
+        type: string
       - name: id
         description: The memorystore instance ID.
+        type: string
       - name: persistence_iam_identity
         description: Cloud IAM identity used by import/export operations. Format is 'serviceAccount:'. May change over time
+        type: string
       - name: port
         description: The port number of the exposed Redis endpoint.
+        type: number
       - name: read_endpoint
         description: " The IP address of the exposed readonly Redis endpoint."
+        type: string
       - name: region
         description: The region the instance lives in.
+        type: string
       - name: server_ca_certs
         description: List of server CA certificates for the instance
+        type: [
+          "list",
+          [
+            "object",
+            {
+              "cert": "string",
+              "create_time": "string",
+              "expire_time": "string",
+              "serial_number": "string",
+              "sha1_fingerprint": "string"
+            }
+          ]
+        ]
   requirements:
     roles:
       - level: Project

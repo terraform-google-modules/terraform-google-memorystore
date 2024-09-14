@@ -15,15 +15,16 @@
  */
 
 resource "google_redis_cluster" "redis_cluster" {
-  project                 = var.project
-  name                    = var.name
-  shard_count             = var.shard_count
-  region                  = var.region
-  replica_count           = var.replica_count
-  transit_encryption_mode = var.transit_encryption_mode
-  authorization_mode      = var.authorization_mode
-  node_type               = var.node_type
-  redis_configs           = var.redis_configs
+  project                     = var.project
+  name                        = var.name
+  shard_count                 = var.shard_count
+  region                      = var.region
+  replica_count               = var.replica_count
+  transit_encryption_mode     = var.transit_encryption_mode
+  authorization_mode          = var.authorization_mode
+  node_type                   = var.node_type
+  redis_configs               = var.redis_configs
+  deletion_protection_enabled = var.deletion_protection_enabled
 
   dynamic "psc_configs" {
     for_each = var.network
@@ -39,6 +40,7 @@ resource "google_redis_cluster" "redis_cluster" {
       zone = var.zone_distribution_config_mode == "SINGLE_ZONE" ? var.zone_distribution_config_zone : null
     }
   }
+
 
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,

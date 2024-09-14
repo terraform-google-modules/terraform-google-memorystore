@@ -10,7 +10,7 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 10.0"
+  version = "~> 11.0"
 
   name    = "test-redis-cluster"
   project = var.project_id
@@ -31,6 +31,7 @@ module "redis_cluster" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | authorization\_mode | The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH\_MODE\_DISABLED. Possible values are: AUTH\_MODE\_UNSPECIFIED, AUTH\_MODE\_IAM\_AUTH, AUTH\_MODE\_DISABLED | `string` | `"AUTH_MODE_DISABLED"` | no |
+| deletion\_protection\_enabled | Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true | `bool` | `true` | no |
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `true` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. must be 1 to 63 characters and use only lowercase letters, numbers, or hyphens. It must start with a lowercase letter and end with a lowercase letter or number | `string` | n/a | yes |
 | network | List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network\_project\_id\_or\_number}/global/networks/{network\_id}. Currently, only one item is supported | `list(string)` | n/a | yes |
@@ -65,7 +66,7 @@ These sections describe requirements for using this module.
 The following dependencies must be available:
 
 - [Terraform][terraform] v1.3+
-- [Terraform Provider for GCP][terraform-provider-gcp] plugin v5.28+
+- [Terraform Provider for GCP][terraform-provider-gcp] plugin v6.0+
 
 ### Service Account
 

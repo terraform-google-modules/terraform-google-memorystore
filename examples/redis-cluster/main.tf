@@ -16,13 +16,15 @@
 
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 9.0"
+  version = "~> 11.0"
 
-  name      = "test-redis-cluster"
-  project   = var.project_id
-  region    = "us-central1"
-  network   = ["projects/${var.project_id}/global/networks/${local.network_name}"]
-  node_type = "REDIS_STANDARD_SMALL"
+  name                        = "test-redis-cluster"
+  project                     = var.project_id
+  region                      = "us-central1"
+  network                     = ["projects/${var.project_id}/global/networks/${local.network_name}"]
+  node_type                   = "REDIS_STANDARD_SMALL"
+  deletion_protection_enabled = false
+
 
   service_connection_policies = {
     test-net-redis-cluster-scp = {

@@ -108,3 +108,9 @@ variable "zone_distribution_config_zone" {
   type        = string
   default     = null
 }
+
+variable "deletion_protection_enabled" {
+  description = " Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true"
+  type        = bool
+  default     = true
+}

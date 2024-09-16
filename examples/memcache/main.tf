@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2024 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 module "private-service-access" {
   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
-  version     = "~> 20.0"
+  version     = "~> 22.0"
   project_id  = var.project_id
   vpc_network = module.test-vpc-module.network_name
   depends_on = [
@@ -26,7 +26,7 @@ module "private-service-access" {
 
 module "memcache" {
   source  = "terraform-google-modules/memorystore/google//modules/memcache"
-  version = "~> 9.0"
+  version = "~> 11.0"
 
   name               = "example-memcache"
   project            = var.project_id

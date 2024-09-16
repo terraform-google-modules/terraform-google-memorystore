@@ -15,15 +15,16 @@
  */
 
 resource "google_redis_cluster" "redis_cluster" {
-  project                 = var.project
-  name                    = var.name
-  shard_count             = var.shard_count
-  region                  = var.region
-  replica_count           = var.replica_count
-  transit_encryption_mode = var.transit_encryption_mode
-  authorization_mode      = var.authorization_mode
-  node_type               = var.node_type
-  redis_configs           = var.redis_configs
+  project                     = var.project
+  name                        = var.name
+  shard_count                 = var.shard_count
+  region                      = var.region
+  replica_count               = var.replica_count
+  transit_encryption_mode     = var.transit_encryption_mode
+  authorization_mode          = var.authorization_mode
+  node_type                   = var.node_type
+  redis_configs               = var.redis_configs
+  deletion_protection_enabled = var.deletion_protection_enabled
 
   dynamic "psc_configs" {
     for_each = var.network
@@ -44,7 +45,6 @@ resource "google_redis_cluster" "redis_cluster" {
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,
   ]
-
 }
 
 resource "google_network_connectivity_service_connection_policy" "service_connection_policies" {
@@ -64,10 +64,9 @@ resource "google_network_connectivity_service_connection_policy" "service_connec
 
 }
 
-
 module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
-  version = "~> 15.0"
+  version = "~> 17.0"
 
   project_id  = var.project
   enable_apis = var.enable_apis

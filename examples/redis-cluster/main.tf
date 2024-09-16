@@ -14,15 +14,37 @@
  * limitations under the License.
  */
 
+module "enable_apis" {
+  source  = "terraform-google-modules/project-factory/google//modules/project_services"
+  version = "~> 17.0"
+
+  project_id  = var.project_id
+  enable_apis = true
+
+  disable_services_on_destroy = false
+  disable_dependent_services  = false
+
+  activate_apis = [
+    "redis.googleapis.com",
+    "serviceconsumermanagement.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "compute.googleapis.com",
+  ]
+}
+
+
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 9.0"
+  version = "~> 11.0"
 
-  name      = "test-redis-cluster"
-  project   = var.project_id
-  region    = "us-central1"
-  network   = ["projects/${var.project_id}/global/networks/${local.network_name}"]
-  node_type = "REDIS_STANDARD_SMALL"
+  name                        = "test-redis-cluster"
+  project                     = var.project_id
+  region                      = "us-central1"
+  network                     = ["projects/${var.project_id}/global/networks/${local.network_name}"]
+  node_type                   = "REDIS_STANDARD_SMALL"
+  deletion_protection_enabled = false
+  enable_apis                 = false
+
 
   service_connection_policies = {
     test-net-redis-cluster-scp = {

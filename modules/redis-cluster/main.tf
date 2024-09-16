@@ -41,12 +41,10 @@ resource "google_redis_cluster" "redis_cluster" {
     }
   }
 
-
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,
   ]
-
 }
 
 resource "google_network_connectivity_service_connection_policy" "service_connection_policies" {

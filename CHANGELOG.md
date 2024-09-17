@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [11.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v10.0.0...v11.0.0) (2024-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG>=6.0:** Added deletion protection support in Redis cluster ([#233](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/233))
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v6 (major) ([#229](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/229)) ([bbbda1e](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/bbbda1e7b31cbcbb91a408166372af343ab2f160))
+* **TPG>=6.0:** Added deletion protection support in Redis cluster ([#233](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/233)) ([77c0207](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/77c02075ac6145162d2bc979b151858bb471c8a4))
+
 ## [10.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v9.0.0...v10.0.0) (2024-07-16)
 
 

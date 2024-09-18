@@ -20,79 +20,53 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: Google Cloud Memorystore Terraform Module
+    title: Memorystore Redis Cluster Terraform Module
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
+      dir: /modules/redis-cluster
   ui:
     input:
       variables:
-        alternative_location_id:
-          name: alternative_location_id
-          title: Alternative Location Id
-        auth_enabled:
-          name: auth_enabled
-          title: Auth Enabled
-        authorized_network:
-          name: authorized_network
-          title: Authorized Network
-        connect_mode:
-          name: connect_mode
-          title: Connect Mode
-        customer_managed_key:
-          name: customer_managed_key
-          title: Customer Managed Key
-        display_name:
-          name: display_name
-          title: Display Name
+        authorization_mode:
+          name: authorization_mode
+          title: Authorization Mode
         enable_apis:
           name: enable_apis
           title: Enable Apis
-        labels:
-          name: labels
-          title: Labels
-        location_id:
-          name: location_id
-          title: Location Id
-        maintenance_policy:
-          name: maintenance_policy
-          title: Maintenance Policy
-        memory_size_gb:
-          name: memory_size_gb
-          title: Memory Size Gb
         name:
           name: name
           title: Name
-        persistence_config:
-          name: persistence_config
-          title: Persistence Config
+        network:
+          name: network
+          title: Network
+        node_type:
+          name: node_type
+          title: Node Type
         project:
           name: project
           title: Project
-        read_replicas_mode:
-          name: read_replicas_mode
-          title: Read Replicas Mode
         redis_configs:
           name: redis_configs
           title: Redis Configs
-        redis_version:
-          name: redis_version
-          title: Redis Version
         region:
           name: region
           title: Region
         replica_count:
           name: replica_count
           title: Replica Count
-        reserved_ip_range:
-          name: reserved_ip_range
-          title: Reserved Ip Range
-        secondary_ip_range:
-          name: secondary_ip_range
-          title: Secondary Ip Range
-        tier:
-          name: tier
-          title: Tier
+        service_connection_policies:
+          name: service_connection_policies
+          title: Service Connection Policies
+        shard_count:
+          name: shard_count
+          title: Shard Count
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
+        zone_distribution_config_mode:
+          name: zone_distribution_config_mode
+          title: Zone Distribution Config Mode
+        zone_distribution_config_zone:
+          name: zone_distribution_config_zone
+          title: Zone Distribution Config Zone

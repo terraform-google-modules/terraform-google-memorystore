@@ -48,6 +48,10 @@ spec:
         description: "The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH_MODE_DISABLED. Possible values are: AUTH_MODE_UNSPECIFIED, AUTH_MODE_IAM_AUTH, AUTH_MODE_DISABLED"
         varType: string
         defaultValue: AUTH_MODE_DISABLED
+      - name: deletion_protection_enabled
+        description: " Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true"
+        varType: bool
+        defaultValue: true
       - name: enable_apis
         description: Flag for enabling memcache.googleapis.com in your project
         varType: bool
@@ -135,3 +139,6 @@ spec:
       - serviceconsumermanagement.googleapis.com
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 4.74.0, < 7"

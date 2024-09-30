@@ -60,7 +60,7 @@ resource "google_memcache_instance" "self" {
 
 module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
-  version = "~> 15.0"
+  version = "~> 17.0"
 
   project_id  = var.project
   enable_apis = var.enable_apis

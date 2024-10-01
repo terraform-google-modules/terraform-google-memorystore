@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [11.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v11.0.0...v11.0.1) (2024-10-01)
+
+
+### Bug Fixes
+
+* update enable api module version in redis instance and memcache sub-module ([#237](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/237)) ([9294ace](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/9294acee38c00841cc279af6051f9af3ee4349e2))
+
 ## [11.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v10.0.0...v11.0.0) (2024-09-17)
 
 

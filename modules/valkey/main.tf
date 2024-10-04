@@ -65,7 +65,8 @@ resource "google_memorystore_instance" "valkey_cluster" {
   labels = var.labels
 
   depends_on = [
-    google_network_connectivity_service_connection_policy.service_connection_policies
+    google_network_connectivity_service_connection_policy.service_connection_policies,
+    module.enable_apis,
   ]
 }
 

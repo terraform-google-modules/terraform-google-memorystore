@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [11.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v11.0.1...v11.1.0) (2024-10-07)
+
+
+### Features
+
+* add sub-module memorystore for Valkey ([#239](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/239)) ([9c3c3f3](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/9c3c3f358eb408be03b632bba6f822f5872eb871))
+
 ## [11.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v11.0.0...v11.0.1) (2024-10-01)
 
 

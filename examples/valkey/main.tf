@@ -25,7 +25,7 @@ module "enable_apis" {
   disable_dependent_services  = false
 
   activate_apis = [
-    "redis.googleapis.com",
+    "memorystore.googleapis.com",
     "serviceconsumermanagement.googleapis.com",
     "networkconnectivity.googleapis.com",
     "compute.googleapis.com",
@@ -33,31 +33,38 @@ module "enable_apis" {
 }
 
 
-module "redis_cluster" {
-  source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
+module "valkey_cluster" {
+  source  = "terraform-google-modules/memorystore/google//modules/valkey"
   version = "~> 11.0"
 
-  name                        = "test-redis-cluster"
-  project                     = var.project_id
-  region                      = "us-central1"
-  network                     = ["projects/${var.project_id}/global/networks/${local.network_name}"]
-  node_type                   = "REDIS_STANDARD_SMALL"
-  deletion_protection_enabled = false
-  enable_apis                 = false
 
+  instance_id                 = "test-valkey-cluster"
+  project_id                  = var.project_id
+  location                    = "us-central1"
+  node_type                   = "HIGHMEM_MEDIUM"
+  deletion_protection_enabled = false
+  engine_version              = "VALKEY_8_0"
+
+  network = local.network_name
 
   service_connection_policies = {
-    test-net-redis-cluster-scp = {
-      network_name    = local.network_name
-      network_project = var.project_id
+    test-net-valkey-cluster-scp = {
       subnet_names = [
-        "subnet-100",
-        "subnet-101",
+        "valkey-subnet-100",
+        "valkey-subnet-101",
       ]
     }
   }
 
-  redis_configs = {
+  persistence_config = {
+    mode = "RDB"
+    rdb_config = {
+      rdb_snapshot_period     = "ONE_HOUR"
+      rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+    }
+  }
+
+  engine_configs = {
     maxmemory-policy = "volatile-ttl"
   }
 

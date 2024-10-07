@@ -53,7 +53,7 @@ module "valkey_cluster" {
 | network\_project | project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host | `string` | `null` | no |
 | node\_type | The nodeType for the valkey cluster. Possible values are: SHARED\_CORE\_NANO, HIGHMEM\_MEDIUM, HIGHMEM\_XLARGE, STANDARD\_SMALL | `string` | `null` | no |
 | persistence\_config | User-provided persistence configurations for the instance | <pre>object({<br>    mode = optional(string)<br>    rdb_config = optional(object({<br>      rdb_snapshot_period     = optional(string)<br>      rdb_snapshot_start_time = optional(string)<br>    }), null)<br>    aof_config = optional(object({<br>      append_fsync = string<br>    }), null)<br>  })</pre> | `{}` | no |
-| project | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
+| project\_id | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
 | replica\_count | Number of replica nodes per shard. If omitted the default is 0 replicas | `number` | `0` | no |
 | service\_connection\_policies | The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist | <pre>map(object({<br>    subnet_names = list(string)<br>    description  = optional(string)<br>    limit        = optional(number)<br>    labels       = optional(map(string), {})<br>  }))</pre> | `{}` | no |
 | shard\_count | Number of shards for the instance | `number` | `3` | no |

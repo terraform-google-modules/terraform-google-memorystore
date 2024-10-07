@@ -16,13 +16,13 @@
 
 resource "google_memorystore_instance" "valkey_cluster" {
   provider    = google-beta
-  project     = var.project
+  project     = var.project_id
   instance_id = var.instance_id
   shard_count = var.shard_count
 
   desired_psc_auto_connections {
-    network    = "projects/${coalesce(var.network_project, var.project)}/global/networks/${var.network}"
-    project_id = var.project
+    network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
+    project_id = var.project_id
   }
 
   location                = var.location
@@ -72,16 +72,16 @@ resource "google_memorystore_instance" "valkey_cluster" {
 
 resource "google_network_connectivity_service_connection_policy" "service_connection_policies" {
   for_each      = var.service_connection_policies
-  project       = coalesce(var.network_project, var.project)
+  project       = coalesce(var.network_project, var.project_id)
   name          = each.key
   location      = var.location
   service_class = "gcp-memorystore"
   description   = lookup(each.value, "description", null)
-  network       = "projects/${coalesce(var.network_project, var.project)}/global/networks/${var.network}"
+  network       = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
   labels        = each.value.labels
 
   psc_config {
-    subnetworks = [for x in each.value.subnet_names : "projects/${coalesce(var.network_project, var.project)}/regions/${var.location}/subnetworks/${x}"]
+    subnetworks = [for x in each.value.subnet_names : "projects/${coalesce(var.network_project, var.project_id)}/regions/${var.location}/subnetworks/${x}"]
     limit       = lookup(each.value, "limit", null)
   }
 
@@ -91,7 +91,7 @@ module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
   version = "~> 17.0"
 
-  project_id  = var.project
+  project_id  = var.project_id
   enable_apis = var.enable_apis
 
   disable_services_on_destroy = false

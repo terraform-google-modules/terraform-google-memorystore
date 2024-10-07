@@ -34,13 +34,12 @@ module "enable_apis" {
 
 
 module "valkey_cluster" {
-  # source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  # version = "~> 11.0"
+  source  = "terraform-google-modules/memorystore/google//modules/valkey"
+  version = "~> 11.0"
 
-  source = "../../modules/valkey"
 
   instance_id                 = "test-valkey-cluster"
-  project                     = var.project_id
+  project_id                  = var.project_id
   location                    = "us-central1"
   node_type                   = "HIGHMEM_MEDIUM"
   deletion_protection_enabled = false

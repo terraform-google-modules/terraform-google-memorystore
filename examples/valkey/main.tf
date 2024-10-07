@@ -72,5 +72,6 @@ module "valkey_cluster" {
   depends_on = [
     module.test_vpc,
     module.enable_apis,
+    google_project_iam_member.network_connectivity_sa,
   ]
 }

@@ -27,15 +27,61 @@ steps:
   - id: create
     name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
     args: ['/bin/bash', '-c', 'cft test run all --stage init --verbose --test-dir test/integration']
-  - id: converge
+  - id: converge-TestMinimalModule
+    waitFor:
+      - create
     name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
-    args: ['/bin/bash', '-c', 'cft test run all --stage apply --verbose --test-dir test/integration']
-  - id: verify
+    args: ['/bin/bash', '-c', 'cft test run TestMinimalModule --stage apply --verbose --test-dir test/integration']
+  - id: verify-TestMinimalModule
     name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
-    args: ['/bin/bash', '-c', 'cft test run all --stage verify --verbose --test-dir test/integration']
-  - id: destroy
+    args: ['/bin/bash', '-c', 'cft test run TestMinimalModule --stage verify --verbose --test-dir test/integration']
+  - id: destroy-TestMinimalModule
     name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
-    args: ['/bin/bash', '-c', 'cft test run all --stage teardown --verbose --test-dir test/integration']
+    args: ['/bin/bash', '-c', 'cft test run TestMinimalModule --stage teardown --verbose --test-dir test/integration']
+  - id: converge-TestMemcache
+    waitFor:
+      - create
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestMemcache --stage apply --verbose --test-dir test/integration']
+  - id: verify-TestMemcache
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestMemcache --stage verify --verbose --test-dir test/integration']
+  - id: destroy-TestMemcache
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestMemcache --stage teardown --verbose --test-dir test/integration']
+  - id: converge-TestRedis
+    waitFor:
+      - create
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestRedis --stage apply --verbose --test-dir test/integration']
+  - id: verify-TestRedis
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestRedis --stage verify --verbose --test-dir test/integration']
+  - id: destroy-TestRedis
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestRedis --stage teardown --verbose --test-dir test/integration']
+  - id: converge-TestRedisCluster
+    waitFor:
+      - create
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestRedisCluster --stage apply --verbose --test-dir test/integration']
+  - id: verify-TestRedisCluster
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestRedisCluster --stage verify --verbose --test-dir test/integration']
+  - id: destroy-TestRedisCluster
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestRedisCluster --stage teardown --verbose --test-dir test/integration']
+  - id: converge-TestValkeyCluster
+    waitFor:
+      - destroy-TestRedisCluster
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestValkeyCluster --stage apply --verbose --test-dir test/integration']
+  - id: verify-TestValkeyCluster
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestValkeyCluster --stage verify --verbose --test-dir test/integration']
+  - id: destroy-TestValkeyCluster
+    name: 'gcr.io/cloud-foundation-cicd/$_DOCKER_IMAGE_DEVELOPER_TOOLS:$_DOCKER_TAG_VERSION_DEVELOPER_TOOLS'
+    args: ['/bin/bash', '-c', 'cft test run TestValkeyCluster --stage teardown --verbose --test-dir test/integration']
 tags:
   - 'ci'
   - 'integration'

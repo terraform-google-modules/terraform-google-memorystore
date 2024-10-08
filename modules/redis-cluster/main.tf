@@ -15,7 +15,7 @@
  */
 
 resource "google_redis_cluster" "redis_cluster" {
-  project                     = var.project
+  project                     = var.project_id
   name                        = var.name
   shard_count                 = var.shard_count
   region                      = var.region
@@ -68,7 +68,7 @@ module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
   version = "~> 17.0"
 
-  project_id  = var.project
+  project_id  = var.project_id
   enable_apis = var.enable_apis
 
   disable_services_on_destroy = false

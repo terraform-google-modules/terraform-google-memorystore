@@ -61,7 +61,7 @@ spec:
         connections:
         - source:
             source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
-            version: v9.1.0
+            version: ">= 9.1.0"
           spec:
             outputExpr: network_name
       - name: connect_mode

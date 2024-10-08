@@ -17,7 +17,7 @@
 resource "google_memcache_instance" "self" {
   depends_on         = [module.enable_apis]
   provider           = google-beta
-  project            = var.project
+  project            = var.project_id
   zones              = var.zones
   name               = var.name
   region             = var.region
@@ -62,7 +62,7 @@ module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
   version = "~> 17.0"
 
-  project_id  = var.project
+  project_id  = var.project_id
   enable_apis = var.enable_apis
 
   disable_services_on_destroy = false

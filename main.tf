@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+locals {
+  env_vars = {
+    REDIS_HOST = google_redis_instance.default.host,
+    REDIS_PORT = google_redis_instance.default.port
+  }
+}
+
 resource "google_redis_instance" "default" {
   depends_on = [module.enable_apis]
 

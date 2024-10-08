@@ -27,7 +27,7 @@ spec:
     version: 11.0.1
     actuationTool:
       flavor: Terraform
-      version: ">= 0.13"
+      version: ">= 1.3"
     description: {}
   content:
     subBlueprints:
@@ -35,6 +35,8 @@ spec:
         location: modules/memcache
       - name: redis-cluster
         location: modules/redis-cluster
+      - name: valkey
+        location: modules/valkey
     examples:
       - name: basic
         location: examples/basic
@@ -46,6 +48,8 @@ spec:
         location: examples/redis
       - name: redis-cluster
         location: examples/redis-cluster
+      - name: valkey
+        location: examples/valkey
   interfaces:
     variables:
       - name: alternative_location_id
@@ -110,7 +114,7 @@ spec:
               persistence_mode    = string
               rdb_snapshot_period = string
             })
-      - name: project
+      - name: project_id
         description: The ID of the project in which the resource belongs to.
         varType: string
         required: true

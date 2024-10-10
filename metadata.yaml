@@ -55,7 +55,7 @@ spec:
       - name: region
         description: The GCP region to use.
         varType: string
-      - name: project
+      - name: project_id
         description: The ID of the project in which the resource belongs to.
         varType: string
         required: true

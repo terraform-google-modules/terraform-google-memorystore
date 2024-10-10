@@ -17,7 +17,7 @@
 resource "google_redis_instance" "default" {
   depends_on = [module.enable_apis]
 
-  project            = var.project
+  project            = var.project_id
   name               = var.name
   tier               = var.tier
   replica_count      = var.tier == "STANDARD_HA" ? var.replica_count : null
@@ -72,7 +72,7 @@ module "enable_apis" {
   source  = "terraform-google-modules/project-factory/google//modules/project_services"
   version = "~> 17.0"
 
-  project_id                  = var.project
+  project_id                  = var.project_id
   enable_apis                 = var.enable_apis
   disable_services_on_destroy = false
   disable_dependent_services  = false

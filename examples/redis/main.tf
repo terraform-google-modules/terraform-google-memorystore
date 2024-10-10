@@ -20,7 +20,7 @@ module "memstore" {
 
   name = "test-redis"
 
-  project                 = var.project_id
+  project_id              = var.project_id
   region                  = "us-east1"
   location_id             = "us-east1-b"
   alternative_location_id = "us-east1-d"

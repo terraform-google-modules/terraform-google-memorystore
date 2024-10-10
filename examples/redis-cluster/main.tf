@@ -38,7 +38,7 @@ module "redis_cluster" {
   version = "~> 11.0"
 
   name                        = "test-redis-cluster"
-  project                     = var.project_id
+  project_id                  = var.project_id
   region                      = "us-central1"
   network                     = ["projects/${var.project_id}/global/networks/${local.network_name}"]
   node_type                   = "REDIS_STANDARD_SMALL"

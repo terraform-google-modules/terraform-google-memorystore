@@ -19,7 +19,7 @@ module "memstore" {
   version = "~> 11.0"
 
   name               = "test-minimal"
-  project            = var.project_id
+  project_id         = var.project_id
   region             = "us-east1"
   location_id        = "us-east1-b"
   enable_apis        = true

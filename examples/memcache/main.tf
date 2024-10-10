@@ -29,7 +29,7 @@ module "memcache" {
   version = "~> 11.0"
 
   name               = "example-memcache"
-  project            = var.project_id
+  project_id         = var.project_id
   memory_size_mb     = "1024"
   enable_apis        = true
   cpu_count          = "1"

@@ -96,3 +96,9 @@ spec:
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
+    runtime:
+      outputs:
+        host:
+          visibility: VISIBILITY_ROOT
+        port:
+          visibility: VISIBILITY_ROOT

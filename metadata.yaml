@@ -161,7 +161,7 @@ spec:
         type:
           - object
           - REDIS_HOST: string
-            REDIS_PORT: number
+            REDIS_PORT: string
       - name: host
         description: The IP address of the instance.
         type: string

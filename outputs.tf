@@ -65,6 +65,6 @@ output "env_vars" {
   description = "Exported environment variables"
   value = {
     "REDIS_HOST" : google_redis_instance.default.host,
-    "REDIS_PORT" : google_redis_instance.default.port
+    "REDIS_PORT" : tostring(google_redis_instance.default.port)
   }
 }

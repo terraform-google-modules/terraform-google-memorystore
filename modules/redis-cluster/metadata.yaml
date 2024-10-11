@@ -42,12 +42,18 @@ spec:
         location: examples/redis
       - name: redis-cluster
         location: examples/redis-cluster
+      - name: valkey
+        location: examples/valkey
   interfaces:
     variables:
       - name: authorization_mode
         description: "The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH_MODE_DISABLED. Possible values are: AUTH_MODE_UNSPECIFIED, AUTH_MODE_IAM_AUTH, AUTH_MODE_DISABLED"
         varType: string
         defaultValue: AUTH_MODE_DISABLED
+      - name: deletion_protection_enabled
+        description: " Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true"
+        varType: bool
+        defaultValue: true
       - name: enable_apis
         description: Flag for enabling memcache.googleapis.com in your project
         varType: bool
@@ -63,7 +69,7 @@ spec:
       - name: node_type
         description: "The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values are: REDIS_SHARED_CORE_NANO, REDIS_HIGHMEM_MEDIUM, REDIS_HIGHMEM_XLARGE, REDIS_STANDARD_SMALL."
         varType: string
-      - name: project
+      - name: project_id
         description: The ID of the project in which the resource belongs to.
         varType: string
         required: true

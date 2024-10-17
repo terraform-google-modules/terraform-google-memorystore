@@ -70,7 +70,7 @@ output "env_vars" {
 }
 
 output "apphub_service_uri" {
-  value       = {
+  value = {
     service_uri = "//memorystore.googleapis.com/${google_redis_instance.default.id}"
     service_id  = google_redis_instance.default.id
   }

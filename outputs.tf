@@ -71,7 +71,7 @@ output "env_vars" {
 
 output "apphub_service_uri" {
   value = {
-    service_uri = "//memorystore.googleapis.com/${google_redis_instance.default.id}"
+    service_uri = "//redis.googleapis.com/${google_redis_instance.default.id}"
     service_id  = google_redis_instance.default.id
   }
   description = "Service URI in CAIS style to be used by Apphub."

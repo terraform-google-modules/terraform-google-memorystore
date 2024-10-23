@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [12.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v11.1.0...v12.0.0) (2024-10-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* Rename project input variable to project_id ([#243](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/243))
+
+### Features
+
+* Rename project input variable to project_id ([#243](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/243)) ([04cef76](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/04cef768b0ad530d9f8b886f1829971ce5bbfd01))
+
+
+### Bug Fixes
+
+* Add Apphub URI output to Redis ([#245](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/245)) ([dc74494](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/dc74494c631e8aa216379949dedbb70dffd2855b))
+
 ## [11.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v11.0.1...v11.1.0) (2024-10-07)
 
 

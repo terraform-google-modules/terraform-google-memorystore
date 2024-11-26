@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
-variable "region" {
-  description = "The GCP region to use."
-  type        = string
-  default     = null
-}
-
 variable "project_id" {
   description = "The ID of the project in which the resource belongs to."
   type        = string
 }
 
-variable "enable_apis" {
-  description = "Flag for enabling redis.googleapis.com in your project"
-  type        = bool
-  default     = true
+variable "region" {
+  description = "The GCP region to use."
+  type        = string
+  default     = null
 }
 
 variable "name" {
@@ -36,8 +30,8 @@ variable "name" {
   type        = string
 }
 
-variable "authorized_network" {
-  description = "The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used."
+variable "display_name" {
+  description = "An arbitrary and optional user-provided name for the instance."
   type        = string
   default     = null
 }
@@ -55,9 +49,33 @@ variable "memory_size_gb" {
 }
 
 variable "replica_count" {
-  description = "The number of replicas. can"
+  description = "The number of replicas."
   type        = number
   default     = null
+}
+
+variable "authorized_network" {
+  description = "The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used."
+  type        = string
+  default     = null
+}
+
+variable "redis_version" {
+  description = "The version of Redis software."
+  type        = string
+  default     = null
+}
+
+variable "connect_mode" {
+  description = "The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING."
+  type        = string
+  default     = null
+}
+
+variable "enable_apis" {
+  description = "Flag for enabling redis.googleapis.com in your project"
+  type        = bool
+  default     = true
 }
 
 variable "read_replicas_mode" {
@@ -78,22 +96,10 @@ variable "alternative_location_id" {
   default     = null
 }
 
-variable "redis_version" {
-  description = "The version of Redis software."
-  type        = string
-  default     = null
-}
-
 variable "redis_configs" {
   description = "The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs)"
   type        = map(any)
   default     = {}
-}
-
-variable "display_name" {
-  description = "An arbitrary and optional user-provided name for the instance."
-  type        = string
-  default     = null
 }
 
 variable "reserved_ip_range" {
@@ -104,12 +110,6 @@ variable "reserved_ip_range" {
 
 variable "secondary_ip_range" {
   description = "Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance."
-  type        = string
-  default     = null
-}
-
-variable "connect_mode" {
-  description = "The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING."
   type        = string
   default     = null
 }

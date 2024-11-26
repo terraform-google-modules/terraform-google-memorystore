@@ -36,15 +36,18 @@ spec:
         authorized_network:
           name: authorized_network
           title: Authorized Network
+          invisible: false
         connect_mode:
           name: connect_mode
           title: Connect Mode
+          invisible: false
         customer_managed_key:
           name: customer_managed_key
           title: Customer Managed Key
         display_name:
           name: display_name
           title: Display Name
+          invisible: false
         enable_apis:
           name: enable_apis
           title: Enable Apis
@@ -60,9 +63,12 @@ spec:
         memory_size_gb:
           name: memory_size_gb
           title: Memory Size Gb
+          invisible: false
         name:
           name: name
           title: Name
+          regexValidation: ^[a-z][a-z0-9-]{0,38}[a-z0-9]$
+          validation: Use lowercase letters, numbers, and hyphens. Start with a letter and end with letter/number. Must be 40 characters or fewer.
         persistence_config:
           name: persistence_config
           title: Persistence Config
@@ -78,12 +84,15 @@ spec:
         redis_version:
           name: redis_version
           title: Redis Version
+          invisible: false
         region:
           name: region
           title: Region
+          invisible: false
         replica_count:
           name: replica_count
           title: Replica Count
+          invisible: false
         reserved_ip_range:
           name: reserved_ip_range
           title: Reserved Ip Range
@@ -93,6 +102,12 @@ spec:
         tier:
           name: tier
           title: Tier
+          invisible: false
+          enumValueLabels:
+            - label: STANDARD_HA
+              value: STANDARD_HA
+            - label: BASIC
+              value: BASIC
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode

@@ -35,7 +35,7 @@ module "enable_apis" {
 
 module "valkey_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  version = "~> 11.0"
+  version = "~> 12.0"
 
 
   instance_id                 = "test-valkey-cluster"

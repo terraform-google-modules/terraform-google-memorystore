@@ -35,7 +35,7 @@ module "enable_apis" {
 
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 11.0"
+  version = "~> 12.0"
 
   name                        = "test-redis-cluster"
   project_id                  = var.project_id

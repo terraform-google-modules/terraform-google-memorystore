@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [12.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v12.0.0...v12.0.1) (2024-11-27)
+
+
+### Bug Fixes
+
+* Broken module due to apphub_service_uri output ([#251](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/251)) ([ebef4be](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/ebef4beb36716fcde167e692375e3336da5111b7))
+
 ## [12.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v11.1.0...v12.0.0) (2024-10-23)
 
 

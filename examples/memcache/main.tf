@@ -26,7 +26,7 @@ module "private-service-access" {
 
 module "memcache" {
   source  = "terraform-google-modules/memorystore/google//modules/memcache"
-  version = "~> 11.0"
+  version = "~> 12.0"
 
   name               = "example-memcache"
   project_id         = var.project_id

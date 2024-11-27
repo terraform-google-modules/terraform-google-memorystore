@@ -46,18 +46,77 @@ spec:
         location: examples/valkey
   interfaces:
     variables:
+      - name: project_id
+        description: The ID of the project in which the resource belongs to.
+        varType: string
+        required: true
+      - name: instance_id
+        description: The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location
+        varType: string
+        required: true
+      - name: shard_count
+        description: Number of shards for the instance
+        varType: number
+        defaultValue: 3
+      - name: location
+        description: The region where valkey cluster will be created
+        varType: string
+        required: true
+      - name: labels
+        description: The resource labels to represent user provided metadata.
+        varType: map(string)
+        defaultValue: {}
+      - name: replica_count
+        description: Number of replica nodes per shard. If omitted the default is 0 replicas
+        varType: number
+        defaultValue: 0
       - name: authorization_mode
         description: "The Immutable. Authorization mode of the instance. Possible values: AUTH_DISABLED IAM_AUTH"
         varType: string
         defaultValue: AUTH_DISABLED
+      - name: transit_encryption_mode
+        description: "Immutable. In-transit encryption mode of the instance. Possible values: TRANSIT_ENCRYPTION_DISABLED SERVER_AUTHENTICATION"
+        varType: string
+        defaultValue: TRANSIT_ENCRYPTION_DISABLED
+      - name: node_type
+        description: "The nodeType for the valkey cluster. Possible values are: SHARED_CORE_NANO, HIGHMEM_MEDIUM, HIGHMEM_XLARGE, STANDARD_SMALL"
+        varType: string
       - name: deletion_protection_enabled
         description: If set to true deletion of the instance will fail
         varType: bool
         defaultValue: true
+      - name: zone_distribution_config_mode
+        description: "The mode for zone distribution for Memorystore valkey cluster (Immutable). If not provided, MULTI_ZONE will be used as default value. Possible values are: MULTI_ZONE, SINGLE_ZONE"
+        varType: string
+        defaultValue: MULTI_ZONE
+      - name: zone_distribution_config_zone
+        description: The zone for single zone Memorystore valkey cluster (Immutable)
+        varType: string
+      - name: engine_version
+        description: Immutable. Engine version of the instance
+        varType: string
+        defaultValue: VALKEY_8_0
       - name: enable_apis
         description: Flag for enabling memcache.googleapis.com in your project
         varType: bool
         defaultValue: false
+      - name: network
+        description: Name of the consumer network where the network address of the discovery endpoint will be reserved
+        varType: string
+        required: true
+      - name: network_project
+        description: project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host
+        varType: string
+      - name: service_connection_policies
+        description: The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist
+        varType: |-
+          map(object({
+              subnet_names = list(string)
+              description  = optional(string)
+              limit        = optional(number)
+              labels       = optional(map(string), {})
+            }))
+        defaultValue: {}
       - name: engine_configs
         description: User-provided engine configurations for the instance
         varType: |-
@@ -69,32 +128,6 @@ spec:
               slowlog-log-slower-than = optional(number)
               maxclients              = optional(number)
             })
-      - name: engine_version
-        description: Immutable. Engine version of the instance
-        varType: string
-        defaultValue: VALKEY_8_0
-      - name: instance_id
-        description: The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location
-        varType: string
-        required: true
-      - name: labels
-        description: The resource labels to represent user provided metadata.
-        varType: map(string)
-        defaultValue: {}
-      - name: location
-        description: The region where valkey cluster will be created
-        varType: string
-        required: true
-      - name: network
-        description: Name of the consumer network where the network address of the discovery endpoint will be reserved
-        varType: string
-        required: true
-      - name: network_project
-        description: project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host
-        varType: string
-      - name: node_type
-        description: "The nodeType for the valkey cluster. Possible values are: SHARED_CORE_NANO, HIGHMEM_MEDIUM, HIGHMEM_XLARGE, STANDARD_SMALL"
-        varType: string
       - name: persistence_config
         description: User-provided persistence configurations for the instance
         varType: |-
@@ -109,39 +142,6 @@ spec:
               }), null)
             })
         defaultValue: {}
-      - name: project_id
-        description: The ID of the project in which the resource belongs to.
-        varType: string
-        required: true
-      - name: replica_count
-        description: Number of replica nodes per shard. If omitted the default is 0 replicas
-        varType: number
-        defaultValue: 0
-      - name: service_connection_policies
-        description: The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist
-        varType: |-
-          map(object({
-              subnet_names = list(string)
-              description  = optional(string)
-              limit        = optional(number)
-              labels       = optional(map(string), {})
-            }))
-        defaultValue: {}
-      - name: shard_count
-        description: Number of shards for the instance
-        varType: number
-        defaultValue: 3
-      - name: transit_encryption_mode
-        description: "Immutable. In-transit encryption mode of the instance. Possible values: TRANSIT_ENCRYPTION_DISABLED SERVER_AUTHENTICATION"
-        varType: string
-        defaultValue: TRANSIT_ENCRYPTION_DISABLED
-      - name: zone_distribution_config_mode
-        description: "The mode for zone distribution for Memorystore valkey cluster (Immutable). If not provided, MULTI_ZONE will be used as default value. Possible values are: MULTI_ZONE, SINGLE_ZONE"
-        varType: string
-        defaultValue: MULTI_ZONE
-      - name: zone_distribution_config_zone
-        description: The zone for single zone Memorystore valkey cluster (Immutable)
-        varType: string
     outputs:
       - name: discovery_endpoints
         description: Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported
@@ -164,3 +164,8 @@ spec:
       - serviceconsumermanagement.googleapis.com
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 6.3, < 7"
+      - source: hashicorp/google-beta
+        version: ">= 6.3, < 7"

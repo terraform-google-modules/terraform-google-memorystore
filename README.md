@@ -70,7 +70,6 @@ module "memorystore" {
 
 | Name | Description |
 |------|-------------|
-| apphub\_service\_uri | Service URI in CAIS style to be used by Apphub. |
 | auth\_string | AUTH String set on the instance. This field will only be populated if auth\_enabled is true. |
 | current\_location\_id | The current zone where the Redis endpoint is placed. |
 | env\_vars | Exported environment variables |

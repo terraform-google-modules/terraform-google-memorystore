@@ -36,18 +36,18 @@ spec:
         authorized_network:
           name: authorized_network
           title: Authorized Network
-          invisible: false
+          level: 1
         connect_mode:
           name: connect_mode
           title: Connect Mode
-          invisible: false
+          level: 1
         customer_managed_key:
           name: customer_managed_key
           title: Customer Managed Key
         display_name:
           name: display_name
           title: Display Name
-          invisible: false
+          level: 1
         enable_apis:
           name: enable_apis
           title: Enable Apis
@@ -63,7 +63,7 @@ spec:
         memory_size_gb:
           name: memory_size_gb
           title: Memory Size Gb
-          invisible: false
+          level: 1
         name:
           name: name
           title: Name
@@ -84,15 +84,15 @@ spec:
         redis_version:
           name: redis_version
           title: Redis Version
-          invisible: false
+          level: 1
         region:
           name: region
           title: Region
-          invisible: false
+          level: 1
         replica_count:
           name: replica_count
           title: Replica Count
-          invisible: false
+          level: 1
         reserved_ip_range:
           name: reserved_ip_range
           title: Reserved Ip Range
@@ -102,7 +102,7 @@ spec:
         tier:
           name: tier
           title: Tier
-          invisible: false
+          level: 1
           enumValueLabels:
             - label: STANDARD_HA
               value: STANDARD_HA

@@ -72,9 +72,9 @@ spec:
         persistence_config:
           name: persistence_config
           title: Persistence Config
-        project:
-          name: project
-          title: Project
+        project_id:
+          name: project_id
+          title: Project Id
         read_replicas_mode:
           name: read_replicas_mode
           title: Read Replicas Mode
@@ -84,11 +84,20 @@ spec:
         redis_version:
           name: redis_version
           title: Redis Version
+          enumValueLabels:
+            - label: REDIS_5_0
+              value: REDIS_5_0
+            - label: REDIS_6_X
+              value: REDIS_6_X
+            - label: REDIS_7_0
+              value: REDIS_7_0
           level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: REDIS_7_0
         region:
           name: region
           title: Region
-          level: 1
         replica_count:
           name: replica_count
           title: Replica Count
@@ -102,12 +111,12 @@ spec:
         tier:
           name: tier
           title: Tier
-          level: 1
           enumValueLabels:
             - label: STANDARD_HA
               value: STANDARD_HA
             - label: BASIC
               value: BASIC
+          level: 1
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode

@@ -59,6 +59,7 @@ spec:
       - name: region
         description: The GCP region to use.
         varType: string
+        required: true
       - name: name
         description: The ID of the instance or a fully qualified identifier for the instance.
         varType: string

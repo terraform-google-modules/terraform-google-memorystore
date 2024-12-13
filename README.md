@@ -59,7 +59,7 @@ module "memorystore" {
 | read\_replicas\_mode | Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode | `string` | `"READ_REPLICAS_DISABLED"` | no |
 | redis\_configs | The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs) | `map(any)` | `{}` | no |
 | redis\_version | The version of Redis software. | `string` | `null` | no |
-| region | The GCP region to use. | `string` | `null` | no |
+| region | The GCP region to use. | `string` | n/a | yes |
 | replica\_count | The number of replicas. | `number` | `null` | no |
 | reserved\_ip\_range | The CIDR range of internal addresses that are reserved for this instance. | `string` | `null` | no |
 | secondary\_ip\_range | Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. | `string` | `null` | no |

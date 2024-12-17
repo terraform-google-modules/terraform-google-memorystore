@@ -22,4 +22,5 @@ module "memorystore" {
   project_id     = "memorystore"
   memory_size_gb = "1"
   enable_apis    = "true"
+  region         = "us-central1"
 }

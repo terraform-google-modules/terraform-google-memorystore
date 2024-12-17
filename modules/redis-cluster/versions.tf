@@ -25,11 +25,11 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v12.0.1"
+    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v13.0.0"
   }
 
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v12.0.1"
+    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v13.0.0"
   }
 
 }

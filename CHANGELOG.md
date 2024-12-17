@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [13.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v12.0.1...v13.0.0) (2024-12-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* make region a required input variable ([#259](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/259))
+* remove apphub_service_uri output and update metadata display yaml ([#257](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/257))
+
+### Bug Fixes
+
+* make region a required input variable ([#259](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/259)) ([9f9ebb9](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/9f9ebb95a2ac2cd33ad22410f876e0ca52c098c4))
+* remove apphub_service_uri output and update metadata display yaml ([#257](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/257)) ([cbd2fd6](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/cbd2fd6b9e92c6cc17b0718d8d5ae89a9b3ae0ba))
+
 ## [12.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v12.0.0...v12.0.1) (2024-11-27)
 
 

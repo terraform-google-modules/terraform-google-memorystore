@@ -196,6 +196,15 @@ spec:
       - level: Project
         roles:
           - roles/owner
+    module_roles:
+      root:
+          - roles/redis.admin
+      memcache:
+          - roles/memcache.admin
+      redis-cluster:
+          - roles/redis.admin
+      valkey:
+          - roles/memorystore.admin
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
@@ -204,6 +213,15 @@ spec:
       - serviceconsumermanagement.googleapis.com
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
+    module_services:
+      root:
+          - redis.googleapis.com
+      memcache:
+          - memcache.googleapis.com
+      redis-cluster:
+          - redis.googleapis.com
+      valkey:
+          - memorystore.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 4.74.0, < 7"

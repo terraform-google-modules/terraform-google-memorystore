@@ -14,24 +14,6 @@
  * limitations under the License.
  */
 
-locals {
-  root_module_services = [
-    "redis.googleapis.com"
-  ]
-
-  memcache_module_services = [
-    "memcache.googleapis.com"
-  ]
-
-  redis-cluster_module_services = [
-    "redis.googleapis.com"
-  ]
-
-  valkey_module_services = [
-    "memorystore.googleapis.com"
-  ]
-}
-
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 17.0"
@@ -52,6 +34,7 @@ module "project" {
     "serviceconsumermanagement.googleapis.com",
     "networkconnectivity.googleapis.com",
     "compute.googleapis.com",
+    "memorystore.googleapis.com",
   ]
 }
 

@@ -16,25 +16,12 @@
 
 locals {
   int_required_roles = [
-    "roles/owner"
+    "roles/memorystore.admin",
+    "roles/redis.admin",
+    "roles/memcache.admin",
+    "roles/compute.networkAdmin",
+    "roles/resourcemanager.projectIamAdmin"
   ]
-
-  root_module_roles = [
-    "roles/redis.admin"
-  ]
-
-  memcache_module_roles = [
-    "roles/memcache.admin"
-  ]
-  
-  redis-cluster_module_roles = [
-    "roles/redis.admin"
-  ]
-
-  valkey_module_roles = [
-    "roles/memorystore.admin"
-  ]
-
 }
 
 resource "google_service_account" "int_test" {

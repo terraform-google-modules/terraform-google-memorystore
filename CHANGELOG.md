@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [13.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.0.0...v13.0.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* use less privilege roles for ci service account ([#264](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/264)) ([36c20c0](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/36c20c0cf1581e32a2fcba29f5dae6301cafc3d4))
+
 ## [13.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v12.0.1...v13.0.0) (2024-12-17)
 
 

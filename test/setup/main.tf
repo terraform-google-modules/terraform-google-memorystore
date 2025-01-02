@@ -34,6 +34,7 @@ module "project" {
     "serviceconsumermanagement.googleapis.com",
     "networkconnectivity.googleapis.com",
     "compute.googleapis.com",
+    "memorystore.googleapis.com",
   ]
 }
 

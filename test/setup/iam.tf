@@ -16,7 +16,11 @@
 
 locals {
   int_required_roles = [
-    "roles/owner"
+    "roles/memorystore.admin",
+    "roles/redis.admin",
+    "roles/memcache.admin",
+    "roles/compute.networkAdmin",
+    "roles/resourcemanager.projectIamAdmin"
   ]
 }
 

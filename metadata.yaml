@@ -195,7 +195,11 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/owner
+          - roles/memorystore.admin
+          - roles/redis.admin
+          - roles/memcache.admin
+          - roles/compute.networkAdmin
+          - roles/resourcemanager.projectIamAdmin
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
@@ -204,6 +208,7 @@ spec:
       - serviceconsumermanagement.googleapis.com
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
+      - memorystore.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 4.74.0, < 7"

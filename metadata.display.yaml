@@ -78,6 +78,12 @@ spec:
         read_replicas_mode:
           name: read_replicas_mode
           title: Read Replicas Mode
+          level: 1
+          enumValueLabels:
+            - label: READ_REPLICAS_DISABLED
+              value: READ_REPLICAS_DISABLED
+            - label: READ_REPLICAS_ENABLED
+              value: READ_REPLICAS_ENABLED
         redis_configs:
           name: redis_configs
           title: Redis Configs

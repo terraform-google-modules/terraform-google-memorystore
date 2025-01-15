@@ -1,4 +1,4 @@
-# Copyright 2024 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -75,6 +75,16 @@ spec:
         description: Redis memory size in GiB. Defaulted to 1 GiB
         varType: number
         defaultValue: 1
+      - name: redis_version
+        description: The version of Redis software.
+        varType: string
+      - name: connect_mode
+        description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
+        varType: string
+      - name: read_replicas_mode
+        description: "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
+        varType: string
+        defaultValue: READ_REPLICAS_DISABLED
       - name: replica_count
         description: The number of replicas.
         varType: number
@@ -87,20 +97,10 @@ spec:
               version: ">= 9.1.0"
             spec:
               outputExpr: network_name
-      - name: redis_version
-        description: The version of Redis software.
-        varType: string
-      - name: connect_mode
-        description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
-        varType: string
       - name: enable_apis
         description: Flag for enabling redis.googleapis.com in your project
         varType: bool
         defaultValue: true
-      - name: read_replicas_mode
-        description: "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
-        varType: string
-        defaultValue: READ_REPLICAS_DISABLED
       - name: location_id
         description: The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId].
         varType: string

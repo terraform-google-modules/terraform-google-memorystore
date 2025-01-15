@@ -33,14 +33,25 @@ spec:
         auth_enabled:
           name: auth_enabled
           title: Auth Enabled
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: true
         authorized_network:
           name: authorized_network
           title: Authorized Network
-          level: 1
         connect_mode:
           name: connect_mode
           title: Connect Mode
           level: 1
+          enumValueLabels:
+            - label: DIRECT_PEERING
+              value: DIRECT_PEERING
+            - label: PRIVATE_SERVICE_ACCESS
+              value: PRIVATE_SERVICE_ACCESS
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: DIRECT_PEERING
         customer_managed_key:
           name: customer_managed_key
           title: Customer Managed Key
@@ -91,12 +102,12 @@ spec:
           name: redis_version
           title: Redis Version
           enumValueLabels:
-            - label: REDIS_5_0
-              value: REDIS_5_0
-            - label: REDIS_6_X
-              value: REDIS_6_X
             - label: REDIS_7_0
               value: REDIS_7_0
+            - label: REDIS_6_X
+              value: REDIS_6_X
+            - label: REDIS_5_0
+              value: REDIS_5_0
           level: 1
           altDefaults:
             - type: ALTERNATE_TYPE_DC
@@ -126,6 +137,12 @@ spec:
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
+          level: 1
+          enumValueLabels:
+            - label: SERVER_AUTHENTICATION
+              value: SERVER_AUTHENTICATION
+            - label: DISABLED
+              value: DISABLED
     runtime:
       outputs:
         host:

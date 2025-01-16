@@ -47,18 +47,6 @@ variable "memory_size_gb" {
   default     = 1
 }
 
-variable "replica_count" {
-  description = "The number of replicas."
-  type        = number
-  default     = null
-}
-
-variable "authorized_network" {
-  description = "The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used."
-  type        = string
-  default     = null
-}
-
 variable "redis_version" {
   description = "The version of Redis software."
   type        = string
@@ -71,16 +59,28 @@ variable "connect_mode" {
   default     = null
 }
 
-variable "enable_apis" {
-  description = "Flag for enabling redis.googleapis.com in your project"
-  type        = bool
-  default     = true
-}
-
 variable "read_replicas_mode" {
   description = "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
   type        = string
   default     = "READ_REPLICAS_DISABLED"
+}
+
+variable "replica_count" {
+  description = "The number of replicas."
+  type        = number
+  default     = null
+}
+
+variable "authorized_network" {
+  description = "The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used."
+  type        = string
+  default     = null
+}
+
+variable "enable_apis" {
+  description = "Flag for enabling redis.googleapis.com in your project"
+  type        = bool
+  default     = true
 }
 
 variable "location_id" {

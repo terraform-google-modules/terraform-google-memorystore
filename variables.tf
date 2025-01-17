@@ -135,6 +135,7 @@ variable "maintenance_policy" {
   description = "The maintenance policy for an instance."
   # type = object(any)
   type = object({
+    description = optional(string)
     day = string
     start_time = object({
       hours   = number

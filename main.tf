@@ -47,6 +47,7 @@ resource "google_redis_instance" "default" {
   dynamic "maintenance_policy" {
     for_each = var.maintenance_policy != null ? [var.maintenance_policy] : []
     content {
+      description = maintenance_policy.value["description"]
       weekly_maintenance_window {
         day = maintenance_policy.value["day"]
         start_time {

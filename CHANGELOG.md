@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [13.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.0.2...v13.1.0) (2025-01-24)
+
+
+### Features
+
+* allows setting a description for the maintenance policy ([#272](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/272)) ([e2519d4](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/e2519d4666a7903e7e42e746dcccf2fb654f5968))
+
 ## [13.0.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.0.1...v13.0.2) (2025-01-16)
 
 

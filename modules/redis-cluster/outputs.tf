@@ -29,6 +29,11 @@ output "psc_connections" {
   value       = google_redis_cluster.redis_cluster.psc_connections
 }
 
+output "psc_service_attachments" {
+  description = "The PSC service attachments of the cluster"
+  value       = google_redis_cluster.redis_cluster.psc_service_attachments
+}
+
 output "redis_cluster" {
   description = "The redis cluster created"
   value       = google_redis_cluster.redis_cluster

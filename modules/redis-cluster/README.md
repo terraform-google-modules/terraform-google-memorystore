@@ -53,6 +53,7 @@ module "redis_cluster" {
 | discovery\_endpoints | Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported |
 | id | The redis cluster instance ID |
 | psc\_connections | PSC connections for discovery of the cluster topology and accessing the cluster |
+| psc\_service\_attachments | The PSC service attachments of the cluster |
 | redis\_cluster | The redis cluster created |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -16,7 +16,7 @@
 
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 12.0"
+  version = "~> 13.0"
 
   name           = "memorystore"
   project_id     = "memorystore"

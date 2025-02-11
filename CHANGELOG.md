@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [13.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.1.0...v13.2.0) (2025-02-10)
+
+
+### Features
+
+* Added psc_service_attachments to outputs of  redis-cluster module ([#276](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/276)) ([82fa4bd](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/82fa4bd3bb6dfcd95a7ee433676e63f5c69e78b9))
+
 ## [13.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.0.2...v13.1.0) (2025-01-24)
 
 

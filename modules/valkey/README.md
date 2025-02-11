@@ -10,7 +10,7 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "valkey_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  version = "~> 13.1"
+  version = "~> 13.2"
 
   instance_id                 = "test-valkey-cluster"
   project                     = var.project_id

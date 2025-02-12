@@ -132,7 +132,8 @@ spec:
         description: The maintenance policy for an instance.
         varType: |-
           object({
-              day = string
+              description = optional(string)
+              day         = string
               start_time = object({
                 hours   = number
                 minutes = number
@@ -151,6 +152,12 @@ spec:
               rdb_snapshot_period = string
             })
     outputs:
+      - name: apphub_service_uri
+        description: Service URI in CAIS style to be used by Apphub.
+        type:
+          - object
+          - service_id: string
+            service_uri: string
       - name: auth_string
         description: AUTH String set on the instance. This field will only be populated if auth_enabled is true.
         type: string

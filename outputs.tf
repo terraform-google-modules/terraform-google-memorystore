@@ -68,3 +68,11 @@ output "env_vars" {
     "REDIS_PORT" : tostring(google_redis_instance.default.port)
   }
 }
+
+output "apphub_service_uri" {
+  value = {
+    service_uri = "//redis.googleapis.com/${google_redis_instance.default.id}"
+    service_id  = substr("${var.name}-${md5("${google_redis_instance.default.region}-${var.project_id}")}", 0, 63)
+  }
+  description = "Service URI in CAIS style to be used by Apphub."
+}

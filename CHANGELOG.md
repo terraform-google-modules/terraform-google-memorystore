@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [13.3.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.2.0...v13.3.0) (2025-02-13)
+
+
+### Features
+
+* add output required for apphub registration ([#278](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/278)) ([148a911](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/148a911b0792b2ac237f5a43026f1960731773cc))
+
 ## [13.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.1.0...v13.2.0) (2025-02-10)
 
 

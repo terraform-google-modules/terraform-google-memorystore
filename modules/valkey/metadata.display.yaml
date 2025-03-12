@@ -15,67 +15,64 @@
 apiVersion: blueprints.cloud.google.com/v1alpha1
 kind: BlueprintMetadata
 metadata:
-  name: terraform-google-memorystore-display
+  name: terraform-google-memorystore-valkey-display
   annotations:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: Memorystore Redis Cluster Terraform Module
+    title: Memorystore Valkey Terraform Module
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
-      dir: /modules/redis-cluster
+      dir: /modules/valkey
   ui:
     input:
       variables:
         authorization_mode:
           name: authorization_mode
           title: Authorization Mode
-        cluster_role:
-          name: cluster_role
-          title: Cluster Role
         deletion_protection_enabled:
           name: deletion_protection_enabled
           title: Deletion Protection Enabled
         enable_apis:
           name: enable_apis
           title: Enable Apis
-        kms_key:
-          name: kms_key
-          title: Kms Key
-        name:
-          name: name
-          title: Name
+        engine_configs:
+          name: engine_configs
+          title: Engine Configs
+        engine_version:
+          name: engine_version
+          title: Engine Version
+        instance_id:
+          name: instance_id
+          title: Instance Id
+        labels:
+          name: labels
+          title: Labels
+        location:
+          name: location
+          title: Location
+        mode:
+          name: mode
+          title: Mode
         network:
           name: network
           title: Network
+        network_project:
+          name: network_project
+          title: Network Project
         node_type:
           name: node_type
           title: Node Type
         persistence_config:
           name: persistence_config
           title: Persistence Config
-        primary_cluster:
-          name: primary_cluster
-          title: Primary Cluster
-        project:
-          name: project
-          title: Project
         project_id:
           name: project_id
           title: Project Id
-        redis_configs:
-          name: redis_configs
-          title: Redis Configs
-        region:
-          name: region
-          title: Region
         replica_count:
           name: replica_count
           title: Replica Count
-        secondary_clusters:
-          name: secondary_clusters
-          title: Secondary Clusters
         service_connection_policies:
           name: service_connection_policies
           title: Service Connection Policies
@@ -85,9 +82,6 @@ spec:
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
-        weekly_maintenance_window:
-          name: weekly_maintenance_window
-          title: Weekly Maintenance Window
         zone_distribution_config_mode:
           name: zone_distribution_config_mode
           title: Zone Distribution Config Mode

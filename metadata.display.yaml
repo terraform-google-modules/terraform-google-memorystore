@@ -71,9 +71,10 @@ spec:
         maintenance_policy:
           name: maintenance_policy
           title: Maintenance Policy
+          level: 1
         memory_size_gb:
           name: memory_size_gb
-          title: Memory Size Gb
+          title: Memory Size GB
           level: 1
         name:
           name: name
@@ -83,13 +84,13 @@ spec:
         persistence_config:
           name: persistence_config
           title: Persistence Config
+          level: 1
         project_id:
           name: project_id
           title: Project Id
         read_replicas_mode:
           name: read_replicas_mode
           title: Read Replicas Mode
-          level: 1
           enumValueLabels:
             - label: READ_REPLICAS_DISABLED
               value: READ_REPLICAS_DISABLED
@@ -102,6 +103,8 @@ spec:
           name: redis_version
           title: Redis Version
           enumValueLabels:
+            - label: REDIS_7_2
+              value: REDIS_7_2
             - label: REDIS_7_0
               value: REDIS_7_0
             - label: REDIS_6_X

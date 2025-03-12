@@ -74,17 +74,18 @@ spec:
       - name: memory_size_gb
         description: Redis memory size in GiB. Defaulted to 1 GiB
         varType: number
-        defaultValue: 1
+        defaultValue: 16
       - name: redis_version
         description: The version of Redis software.
         varType: string
+        defaultValue: REDIS_7_2
       - name: connect_mode
         description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
         varType: string
       - name: read_replicas_mode
         description: "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
         varType: string
-        defaultValue: READ_REPLICAS_DISABLED
+        defaultValue: READ_REPLICAS_ENABLED
       - name: replica_count
         description: The number of replicas.
         varType: number
@@ -123,11 +124,11 @@ spec:
       - name: auth_enabled
         description: Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance.
         varType: bool
-        defaultValue: false
+        defaultValue: true
       - name: transit_encryption_mode
         description: The TLS mode of the Redis instance, If not provided, TLS is enabled for the instance.
         varType: string
-        defaultValue: SERVER_AUTHENTICATION
+        defaultValue: DISABLED
       - name: maintenance_policy
         description: The maintenance policy for an instance.
         varType: |-
@@ -150,6 +151,11 @@ spec:
           object({
               persistence_mode    = string
               rdb_snapshot_period = string
+            })
+        defaultValue: |-
+          object({
+              persistence_mode    = RDB
+              rdb_snapshot_period = ONE_HOUR
             })
     outputs:
       - name: apphub_service_uri

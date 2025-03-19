@@ -35,7 +35,7 @@ module "enable_apis" {
 
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 13.0"
+  version = "~> 14.0"
 
   name                        = "test-redis-cluster"
   project_id                  = var.project_id
@@ -44,6 +44,7 @@ module "redis_cluster" {
   node_type                   = "REDIS_STANDARD_SMALL"
   deletion_protection_enabled = false
   enable_apis                 = false
+  kms_key                     = google_kms_crypto_key.key_region_central.id
 
 
   service_connection_policies = {
@@ -61,9 +62,23 @@ module "redis_cluster" {
     maxmemory-policy = "volatile-ttl"
   }
 
+  persistence_config = {
+    mode = "RDB"
+    rdb_config = {
+      rdb_snapshot_period     = "ONE_HOUR"
+      rdb_snapshot_start_time = "2027-10-02T15:01:23Z"
+    }
+  }
+
+  weekly_maintenance_window = {
+    day_of_the_week = "MONDAY"
+    hours           = 1
+  }
+
   depends_on = [
     module.test_vpc,
     module.enable_apis,
     google_project_iam_member.network_connectivity_sa,
+    google_kms_crypto_key_iam_member.redis_sa_iam
   ]
 }

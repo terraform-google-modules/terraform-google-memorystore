@@ -20,16 +20,11 @@ terraform {
 
     google = {
       source  = "hashicorp/google"
-      version = ">= 6.0, < 7"
+      version = ">= 6.22, < 7"
     }
   }
 
   provider_meta "google" {
     module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v13.3.0"
   }
-
-  provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v13.3.0"
-  }
-
 }

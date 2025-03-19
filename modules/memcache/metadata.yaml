@@ -1,17 +1,3 @@
-# Copyright 2024 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 apiVersion: blueprints.cloud.google.com/v1alpha1
 kind: BlueprintMetadata
 metadata:
@@ -46,53 +32,24 @@ spec:
         location: examples/valkey
   interfaces:
     variables:
-      - name: region
-        description: The GCP region to use.
-        varType: string
-        required: true
-      - name: project_id
-        description: The ID of the project in which the resource belongs to.
-        varType: string
-        required: true
-      - name: enable_apis
-        description: Flag for enabling memcache.googleapis.com in your project
-        varType: bool
-        defaultValue: true
-      - name: name
-        description: The ID of the instance or a fully qualified identifier for the instance.
-        varType: string
-        required: true
-      - name: memcache_version
-        description: The major version of Memcached software.
-        varType: string
       - name: authorized_network
         description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
         varType: string
-      - name: node_count
-        description: Number of nodes in the memcache instance.
-        varType: number
-        defaultValue: 1
       - name: cpu_count
         description: Number of CPUs per node
         varType: number
         defaultValue: 1
-      - name: memory_size_mb
-        description: Memcache memory size in MiB. Defaulted to 1024
-        varType: number
-        defaultValue: 1024
-      - name: zones
-        description: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
-        varType: list(string)
       - name: display_name
         description: An arbitrary and optional user-provided name for the instance.
         varType: string
+      - name: enable_apis
+        description: Flag for enabling memcache.googleapis.com in your project
+        varType: bool
+        defaultValue: true
       - name: labels
         description: The resource labels to represent user provided metadata.
         varType: map(string)
         defaultValue: {}
-      - name: params
-        description: Parameters for the memcache process
-        varType: map(string)
       - name: maintenance_policy
         description: The maintenance policy for an instance.
         varType: |-
@@ -106,6 +63,35 @@ spec:
                 nanos   = number
               })
             })
+      - name: memcache_version
+        description: The major version of Memcached software.
+        varType: string
+      - name: memory_size_mb
+        description: Memcache memory size in MiB. Defaulted to 1024
+        varType: number
+        defaultValue: 1024
+      - name: name
+        description: The ID of the instance or a fully qualified identifier for the instance.
+        varType: string
+        required: true
+      - name: node_count
+        description: Number of nodes in the memcache instance.
+        varType: number
+        defaultValue: 1
+      - name: params
+        description: Parameters for the memcache process
+        varType: map(string)
+      - name: project_id
+        description: The ID of the project in which the resource belongs to.
+        varType: string
+        required: true
+      - name: region
+        description: The GCP region to use.
+        varType: string
+        required: true
+      - name: zones
+        description: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        varType: list(string)
     outputs:
       - name: discovery
         description: The memorystore discovery endpoint.
@@ -124,6 +110,8 @@ spec:
           - roles/memcache.admin
           - roles/compute.networkAdmin
           - roles/resourcemanager.projectIamAdmin
+          - roles/cloudkms.admin
+          - roles/cloudkms.cryptoKeyEncrypterDecrypter
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
@@ -133,8 +121,7 @@ spec:
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
       - memorystore.googleapis.com
+      - cloudkms.googleapis.com
     providerVersions:
       - source: hashicorp/google
-        version: ">= 4.23.0, < 7"
-      - source: hashicorp/google-beta
-        version: ">= 4.23.0, < 7"
+        version: ">= 4.74.0, < 7"

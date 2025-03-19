@@ -1,17 +1,3 @@
-# Copyright 2025 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 apiVersion: blueprints.cloud.google.com/v1alpha1
 kind: BlueprintMetadata
 metadata:
@@ -52,42 +38,13 @@ spec:
         location: examples/valkey
   interfaces:
     variables:
-      - name: project_id
-        description: The ID of the project in which the resource belongs to.
+      - name: alternative_location_id
+        description: The alternative zone where the instance will be provisioned.
         varType: string
-        required: true
-      - name: region
-        description: The GCP region to use.
-        varType: string
-        required: true
-      - name: name
-        description: The ID of the instance or a fully qualified identifier for the instance.
-        varType: string
-        required: true
-      - name: display_name
-        description: An arbitrary and optional user-provided name for the instance.
-        varType: string
-      - name: tier
-        description: The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier
-        varType: string
-        defaultValue: STANDARD_HA
-      - name: memory_size_gb
-        description: Redis memory size in GiB. Defaulted to 1 GiB
-        varType: number
-        defaultValue: 1
-      - name: redis_version
-        description: The version of Redis software.
-        varType: string
-      - name: connect_mode
-        description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
-        varType: string
-      - name: read_replicas_mode
-        description: "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
-        varType: string
-        defaultValue: READ_REPLICAS_DISABLED
-      - name: replica_count
-        description: The number of replicas.
-        varType: number
+      - name: auth_enabled
+        description: Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance.
+        varType: bool
+        defaultValue: false
       - name: authorized_network
         description: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
         varType: string
@@ -97,37 +54,25 @@ spec:
               version: ">= 9.1.0"
             spec:
               outputExpr: network_name
+      - name: connect_mode
+        description: The connection mode of the Redis instance. Can be either DIRECT_PEERING or PRIVATE_SERVICE_ACCESS. The default connect mode if not provided is DIRECT_PEERING.
+        varType: string
+      - name: customer_managed_key
+        description: Default encryption key to apply to the Redis instance. Defaults to null (Google-managed).
+        varType: string
+      - name: display_name
+        description: An arbitrary and optional user-provided name for the instance.
+        varType: string
       - name: enable_apis
         description: Flag for enabling redis.googleapis.com in your project
         varType: bool
         defaultValue: true
-      - name: location_id
-        description: The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId].
-        varType: string
-      - name: alternative_location_id
-        description: The alternative zone where the instance will be provisioned.
-        varType: string
-      - name: redis_configs
-        description: The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs)
-        varType: map(any)
-        defaultValue: {}
-      - name: reserved_ip_range
-        description: The CIDR range of internal addresses that are reserved for this instance.
-        varType: string
-      - name: secondary_ip_range
-        description: Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance.
-        varType: string
       - name: labels
         description: The resource labels to represent user provided metadata.
         varType: map(string)
-      - name: auth_enabled
-        description: Indicates whether OSS Redis AUTH is enabled for the instance. If set to true AUTH is enabled on the instance.
-        varType: bool
-        defaultValue: false
-      - name: transit_encryption_mode
-        description: The TLS mode of the Redis instance, If not provided, TLS is enabled for the instance.
+      - name: location_id
+        description: The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId].
         varType: string
-        defaultValue: SERVER_AUTHENTICATION
       - name: maintenance_policy
         description: The maintenance policy for an instance.
         varType: |-
@@ -141,9 +86,14 @@ spec:
                 nanos   = number
               })
             })
-      - name: customer_managed_key
-        description: Default encryption key to apply to the Redis instance. Defaults to null (Google-managed).
+      - name: memory_size_gb
+        description: Redis memory size in GiB. Defaulted to 1 GiB
+        varType: number
+        defaultValue: 1
+      - name: name
+        description: The ID of the instance or a fully qualified identifier for the instance.
         varType: string
+        required: true
       - name: persistence_config
         description: The Redis persistence configuration parameters. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig
         varType: |-
@@ -151,54 +101,65 @@ spec:
               persistence_mode    = string
               rdb_snapshot_period = string
             })
+      - name: project_id
+        description: The ID of the project in which the resource belongs to.
+        varType: string
+        required: true
+      - name: read_replicas_mode
+        description: "Read replicas mode. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#readreplicasmode "
+        varType: string
+        defaultValue: READ_REPLICAS_DISABLED
+      - name: redis_configs
+        description: The Redis configuration parameters. See [more details](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs)
+        varType: map(any)
+        defaultValue: {}
+      - name: redis_version
+        description: The version of Redis software.
+        varType: string
+      - name: region
+        description: The GCP region to use.
+        varType: string
+        required: true
+      - name: replica_count
+        description: The number of replicas.
+        varType: number
+      - name: reserved_ip_range
+        description: The CIDR range of internal addresses that are reserved for this instance.
+        varType: string
+      - name: secondary_ip_range
+        description: Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance.
+        varType: string
+      - name: tier
+        description: The service tier of the instance. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Tier
+        varType: string
+        defaultValue: STANDARD_HA
+      - name: transit_encryption_mode
+        description: The TLS mode of the Redis instance, If not provided, TLS is enabled for the instance.
+        varType: string
+        defaultValue: SERVER_AUTHENTICATION
     outputs:
       - name: apphub_service_uri
         description: Service URI in CAIS style to be used by Apphub.
-        type:
-          - object
-          - location: string
-            service_id: string
-            service_uri: string
       - name: auth_string
         description: AUTH String set on the instance. This field will only be populated if auth_enabled is true.
-        type: string
       - name: current_location_id
         description: The current zone where the Redis endpoint is placed.
-        type: string
       - name: env_vars
         description: Exported environment variables
-        type:
-          - object
-          - REDIS_HOST: string
-            REDIS_PORT: string
       - name: host
         description: The IP address of the instance.
-        type: string
       - name: id
         description: The memorystore instance ID.
-        type: string
       - name: persistence_iam_identity
         description: Cloud IAM identity used by import/export operations. Format is 'serviceAccount:'. May change over time
-        type: string
       - name: port
         description: The port number of the exposed Redis endpoint.
-        type: number
       - name: read_endpoint
         description: " The IP address of the exposed readonly Redis endpoint."
-        type: string
       - name: region
         description: The region the instance lives in.
-        type: string
       - name: server_ca_certs
         description: List of server CA certificates for the instance
-        type:
-          - list
-          - - object
-            - cert: string
-              create_time: string
-              expire_time: string
-              serial_number: string
-              sha1_fingerprint: string
   requirements:
     roles:
       - level: Project
@@ -208,6 +169,8 @@ spec:
           - roles/memcache.admin
           - roles/compute.networkAdmin
           - roles/resourcemanager.projectIamAdmin
+          - roles/cloudkms.admin
+          - roles/cloudkms.cryptoKeyEncrypterDecrypter
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
@@ -217,6 +180,7 @@ spec:
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
       - memorystore.googleapis.com
+      - cloudkms.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 4.74.0, < 7"

@@ -15,11 +15,7 @@ If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-13.html) and
 
 ## Version
 
-Current version is 11.0. Upgrade guides:
-
-- [7.X -> 8.0](/docs/upgrading_to_v8.0.md)
-- [8.X -> 9.0](/docs/upgrading_to_v9.0.md)
-- [10.X -> 11.0](/docs/upgrading_to_v11.0.md)
+Current version is 14.0. Upgrade guides are available [here](https://github.com/terraform-google-modules/terraform-google-memorystore/tree/main/docs)
 
 ## Usage
 
@@ -28,7 +24,7 @@ Check the [examples/](https://github.com/terraform-google-modules/terraform-goog
 ```hcl
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 13.3"
+  version = "~> 14.0"
 
   name           = "memorystore"
   project_id     = "memorystore"

@@ -138,4 +138,4 @@ spec:
       - cloudkms.googleapis.com
     providerVersions:
       - source: hashicorp/google
-        version: ">= 4.74.0, < 7"
+        version: ">= 4.23, < 7"

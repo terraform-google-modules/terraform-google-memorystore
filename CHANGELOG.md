@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [14.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.3.0...v14.0.0) (2025-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG>6.22:** added persistence_config, weekly_maintenance_window and kms_key in redis cluster sub-module ([#286](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/286))
+
+### Features
+
+* **TPG>6.22:** added persistence_config, weekly_maintenance_window and kms_key in redis cluster sub-module ([#286](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/286)) ([f0aed83](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/f0aed83679f3707bd1e507aa4c16ebcab8003aed))
+
 ## [13.3.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.2.0...v13.3.0) (2025-02-13)
 
 

@@ -27,17 +27,17 @@ module "test_vpc" {
 
   subnets = [
     {
-      subnet_name   = "subnet-100"
+      subnet_name   = "subnet-us-central1-100"
       subnet_ip     = "10.10.100.0/24"
       subnet_region = "us-central1"
     },
     {
-      subnet_name   = "subnet-101"
+      subnet_name   = "subnet-us-central1-101"
       subnet_ip     = "10.10.101.0/24"
       subnet_region = "us-central1"
     },
     {
-      subnet_name   = "subnet-102"
+      subnet_name   = "subnet-us-east1-102"
       subnet_ip     = "10.10.102.0/24"
       subnet_region = "us-east1"
     },

@@ -15,10 +15,11 @@
  */
 
 resource "google_memorystore_instance" "valkey_cluster" {
-  provider    = google-beta
-  project     = var.project_id
-  instance_id = var.instance_id
-  shard_count = var.shard_count
+  project        = var.project_id
+  instance_id    = var.instance_id
+  shard_count    = var.shard_count
+  engine_version = var.engine_version
+  mode           = var.mode
 
   desired_psc_auto_connections {
     network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
@@ -40,7 +41,6 @@ resource "google_memorystore_instance" "valkey_cluster" {
     }
   }
 
-  engine_version              = var.engine_version
   deletion_protection_enabled = var.deletion_protection_enabled
 
   dynamic "persistence_config" {

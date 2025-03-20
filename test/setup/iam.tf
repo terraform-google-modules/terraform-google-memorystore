@@ -20,7 +20,9 @@ locals {
     "roles/redis.admin",
     "roles/memcache.admin",
     "roles/compute.networkAdmin",
-    "roles/resourcemanager.projectIamAdmin"
+    "roles/resourcemanager.projectIamAdmin",
+    "roles/cloudkms.admin",
+    "roles/cloudkms.cryptoKeyEncrypterDecrypter",
   ]
 }
 

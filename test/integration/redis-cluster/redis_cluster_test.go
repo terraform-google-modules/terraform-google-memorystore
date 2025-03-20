@@ -35,6 +35,10 @@ func TestRedisCluster(t *testing.T) {
 		replicaCount := rc.GetStringOutput("replica_count")
 		authorizationMode := rc.GetStringOutput("authorization_mode")
 		nodeType := rc.GetStringOutput("node_type")
+		secondaryClusterName := rc.GetStringOutput("secondary_cluster_name")
+		secondaryClusterRegion := rc.GetStringOutput("secondary_cluster_region")
+		secondaryClusterRole := rc.GetStringOutput("secondary_cluster_role")
+		secondaryClusterId := rc.GetStringOutput("secondary_cluster_id")
 
 		op := gcloud.Runf(t, "redis clusters describe %s --project %s --region %s", clusterName, projectId, clusterRegion)
 		assert.Equal(op.Get("name").String(), clusterId)
@@ -44,6 +48,11 @@ func TestRedisCluster(t *testing.T) {
 		assert.Equal(op.Get("authorizationMode").String(), authorizationMode)
 		assert.Equal(op.Get("nodeType").String(), nodeType)
 		assert.Equal(op.Get("redisConfigs.maxmemory-policy").String(), "volatile-ttl")
+
+		ops := gcloud.Runf(t, "redis clusters describe %s --project %s --region %s", secondaryClusterName, projectId, secondaryClusterRegion)
+		assert.Equal(ops.Get("name").String(), secondaryClusterId)
+		assert.Equal(ops.Get("crossClusterReplicationConfig.clusterRole").String(), secondaryClusterRole)
+
 	})
 
 	rc.Test()

@@ -114,3 +114,54 @@ variable "deletion_protection_enabled" {
   type        = bool
   default     = true
 }
+
+variable "kms_key" {
+  description = "The KMS key used to encrypt the at-rest data of the cluster"
+  type        = string
+  default     = null
+}
+
+variable "weekly_maintenance_window" {
+  description = "Configure Redis Cluster behavior using a subset of native Redis configuration parameters"
+  type = object({
+    day_of_the_week = optional(string, "DAY_OF_WEEK_UNSPECIFIED")
+    hours           = optional(string)
+    minutes         = optional(string)
+    seconds         = optional(string)
+    nanos           = optional(number)
+  })
+  default = null
+}
+
+variable "persistence_config" {
+  description = "Persistence config (RDB, AOF) for the cluster"
+  type = object({
+    mode = optional(string, "PERSISTENCE_MODE_UNSPECIFIED")
+    rdb_config = optional(object({
+      rdb_snapshot_period     = optional(string)
+      rdb_snapshot_start_time = optional(string)
+    }), null)
+    aof_config = optional(object({
+      append_fsync = optional(string)
+    }))
+  })
+  default = null
+}
+
+variable "cluster_role" {
+  description = "The role of the cluster in cross cluster replication. Possible values are: CLUSTER_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+  type        = string
+  default     = null
+}
+
+variable "primary_cluster" {
+  description = "primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type SECONDARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+  type        = string
+  default     = null
+}
+
+variable "secondary_clusters" {
+  description = "List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type PRIMARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+  type        = list(string)
+  default     = []
+}

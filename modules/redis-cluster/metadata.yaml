@@ -1,4 +1,4 @@
-# Copyright 2024 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -46,42 +46,78 @@ spec:
         location: examples/valkey
   interfaces:
     variables:
-      - name: name
-        description: The ID of the instance or a fully qualified identifier for the instance. must be 1 to 63 characters and use only lowercase letters, numbers, or hyphens. It must start with a lowercase letter and end with a lowercase letter or number
-        varType: string
-        required: true
-      - name: project_id
-        description: The ID of the project in which the resource belongs to.
-        varType: string
-        required: true
-      - name: region
-        description: The name of the region of the Redis cluster
-        varType: string
-        required: true
-      - name: enable_apis
-        description: Flag for enabling memcache.googleapis.com in your project
-        varType: bool
-        defaultValue: true
-      - name: shard_count
-        description: Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards
-        varType: number
-        defaultValue: 3
-      - name: replica_count
-        description: The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones
-        varType: number
-        defaultValue: 0
-      - name: transit_encryption_mode
-        description: "The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT_ENCRYPTION_MODE_DISABLED. Possible values are: TRANSIT_ENCRYPTION_MODE_UNSPECIFIED, TRANSIT_ENCRYPTION_MODE_DISABLED, TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
-        varType: string
-        defaultValue: TRANSIT_ENCRYPTION_MODE_DISABLED
       - name: authorization_mode
         description: "The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH_MODE_DISABLED. Possible values are: AUTH_MODE_UNSPECIFIED, AUTH_MODE_IAM_AUTH, AUTH_MODE_DISABLED"
         varType: string
         defaultValue: AUTH_MODE_DISABLED
+      - name: cluster_role
+        description: "The role of the cluster in cross cluster replication. Possible values are: CLUSTER_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+        varType: string
+      - name: deletion_protection_enabled
+        description: " Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true"
+        varType: bool
+        defaultValue: true
+      - name: enable_apis
+        description: Flag for enabling memcache.googleapis.com in your project
+        varType: bool
+        defaultValue: true
+      - name: kms_key
+        description: The KMS key used to encrypt the at-rest data of the cluster
+        varType: string
+      - name: name
+        description: The ID of the instance or a fully qualified identifier for the instance. must be 1 to 63 characters and use only lowercase letters, numbers, or hyphens. It must start with a lowercase letter and end with a lowercase letter or number
+        varType: string
+        required: true
       - name: network
         description: List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network_project_id_or_number}/global/networks/{network_id}. Currently, only one item is supported
         varType: list(string)
         required: true
+      - name: node_type
+        description: "The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values are: REDIS_SHARED_CORE_NANO, REDIS_HIGHMEM_MEDIUM, REDIS_HIGHMEM_XLARGE, REDIS_STANDARD_SMALL."
+        varType: string
+      - name: persistence_config
+        description: Persistence config (RDB, AOF) for the cluster
+        varType: |-
+          object({
+              mode = optional(string, "PERSISTENCE_MODE_UNSPECIFIED")
+              rdb_config = optional(object({
+                rdb_snapshot_period     = optional(string)
+                rdb_snapshot_start_time = optional(string)
+              }), null)
+              aof_config = optional(object({
+                append_fsync = optional(string)
+              }))
+            })
+      - name: primary_cluster
+        description: "primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type SECONDARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+        varType: string
+      - name: project_id
+        description: The ID of the project in which the resource belongs to.
+        varType: string
+        required: true
+      - name: redis_configs
+        description: Configure Redis Cluster behavior using a subset of native Redis configuration parameters
+        varType: |-
+          object({
+              maxmemory-clients       = optional(string)
+              maxmemory               = optional(string)
+              maxmemory-policy        = optional(string)
+              notify-keyspace-events  = optional(string)
+              slowlog-log-slower-than = optional(number)
+              maxclients              = optional(number)
+            })
+      - name: region
+        description: The name of the region of the Redis cluster
+        varType: string
+        required: true
+      - name: replica_count
+        description: The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones
+        varType: number
+        defaultValue: 0
+      - name: secondary_clusters
+        description: "List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type PRIMARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+        varType: list(string)
+        defaultValue: []
       - name: service_connection_policies
         description: The Service Connection Policies to create
         varType: |-
@@ -94,19 +130,23 @@ spec:
               labels          = optional(map(string), {})
             }))
         defaultValue: {}
-      - name: node_type
-        description: "The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values are: REDIS_SHARED_CORE_NANO, REDIS_HIGHMEM_MEDIUM, REDIS_HIGHMEM_XLARGE, REDIS_STANDARD_SMALL."
+      - name: shard_count
+        description: Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards
+        varType: number
+        defaultValue: 3
+      - name: transit_encryption_mode
+        description: "The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT_ENCRYPTION_MODE_DISABLED. Possible values are: TRANSIT_ENCRYPTION_MODE_UNSPECIFIED, TRANSIT_ENCRYPTION_MODE_DISABLED, TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
         varType: string
-      - name: redis_configs
+        defaultValue: TRANSIT_ENCRYPTION_MODE_DISABLED
+      - name: weekly_maintenance_window
         description: Configure Redis Cluster behavior using a subset of native Redis configuration parameters
         varType: |-
           object({
-              maxmemory-clients       = optional(string)
-              maxmemory               = optional(string)
-              maxmemory-policy        = optional(string)
-              notify-keyspace-events  = optional(string)
-              slowlog-log-slower-than = optional(number)
-              maxclients              = optional(number)
+              day_of_the_week = optional(string, "DAY_OF_WEEK_UNSPECIFIED")
+              hours           = optional(string)
+              minutes         = optional(string)
+              seconds         = optional(string)
+              nanos           = optional(number)
             })
       - name: zone_distribution_config_mode
         description: "The mode for zone distribution for Memorystore Redis cluster (Immutable). If not provided, MULTI_ZONE will be used as default value. Possible values are: MULTI_ZONE, SINGLE_ZONE"
@@ -115,10 +155,6 @@ spec:
       - name: zone_distribution_config_zone
         description: The zone for single zone Memorystore Redis cluster (Immutable)
         varType: string
-      - name: deletion_protection_enabled
-        description: " Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true"
-        varType: bool
-        defaultValue: true
     outputs:
       - name: discovery_endpoints
         description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
@@ -126,6 +162,8 @@ spec:
         description: The redis cluster instance ID
       - name: psc_connections
         description: PSC connections for discovery of the cluster topology and accessing the cluster
+      - name: psc_service_attachments
+        description: The PSC service attachments of the cluster
       - name: redis_cluster
         description: The redis cluster created
   requirements:
@@ -137,6 +175,8 @@ spec:
           - roles/memcache.admin
           - roles/compute.networkAdmin
           - roles/resourcemanager.projectIamAdmin
+          - roles/cloudkms.admin
+          - roles/cloudkms.cryptoKeyEncrypterDecrypter
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
@@ -146,6 +186,7 @@ spec:
       - networkconnectivity.googleapis.com
       - compute.googleapis.com
       - memorystore.googleapis.com
+      - cloudkms.googleapis.com
     providerVersions:
       - source: hashicorp/google
-        version: ">= 6.0, < 7"
+        version: ">= 6.22, < 7"

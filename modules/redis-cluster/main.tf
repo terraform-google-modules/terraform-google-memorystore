@@ -1,5 +1,5 @@
 /**
- * Copyright 2024 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ resource "google_redis_cluster" "redis_cluster" {
   node_type                   = var.node_type
   redis_configs               = var.redis_configs
   deletion_protection_enabled = var.deletion_protection_enabled
+  kms_key                     = var.kms_key
 
   dynamic "psc_configs" {
     for_each = var.network
@@ -38,6 +39,60 @@ resource "google_redis_cluster" "redis_cluster" {
     content {
       mode = var.zone_distribution_config_mode
       zone = var.zone_distribution_config_mode == "SINGLE_ZONE" ? var.zone_distribution_config_zone : null
+    }
+  }
+
+  dynamic "maintenance_policy" {
+    for_each = var.weekly_maintenance_window == null ? [] : ["maintenance_policy"]
+    content {
+      weekly_maintenance_window {
+        day = var.weekly_maintenance_window.day_of_the_week
+        start_time {
+          hours   = var.weekly_maintenance_window.hours
+          minutes = var.weekly_maintenance_window.minutes
+          seconds = var.weekly_maintenance_window.seconds
+          nanos   = var.weekly_maintenance_window.nanos
+        }
+      }
+    }
+  }
+
+  dynamic "persistence_config" {
+    for_each = var.persistence_config == null ? [] : ["persistence_config"]
+    content {
+      mode = var.persistence_config.mode
+      dynamic "rdb_config" {
+        for_each = var.persistence_config.mode == "RDB" ? ["rdb_config"] : []
+        content {
+          rdb_snapshot_period     = var.persistence_config.rdb_config.rdb_snapshot_period
+          rdb_snapshot_start_time = var.persistence_config.rdb_config.rdb_snapshot_start_time
+        }
+      }
+      dynamic "aof_config" {
+        for_each = var.persistence_config.mode == "AOF" ? ["aof_config"] : []
+        content {
+          append_fsync = var.persistence_config.aof_config.append_fsync
+        }
+      }
+    }
+  }
+
+  dynamic "cross_cluster_replication_config" {
+    for_each = var.cluster_role == null ? [] : ["cross_cluster_replication_config"]
+    content {
+      cluster_role = var.cluster_role
+      dynamic "primary_cluster" {
+        for_each = var.cluster_role == "SECONDARY" ? ["primary_cluster"] : []
+        content {
+          cluster = var.primary_cluster
+        }
+      }
+      dynamic "secondary_clusters" {
+        for_each = var.cluster_role == "PRIMARY" && length(var.secondary_clusters) > 0 ? var.secondary_clusters : []
+        content {
+          cluster = secondary_clusters.value
+        }
+      }
     }
   }
 

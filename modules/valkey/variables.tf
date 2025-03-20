@@ -41,6 +41,12 @@ variable "labels" {
   default     = {}
 }
 
+variable "mode" {
+  description = "cluster or cluster-disabled. Possible values: CLUSTER, CLUSTER_DISABLED"
+  type        = string
+  default     = null
+}
+
 variable "replica_count" {
   description = "Number of replica nodes per shard. If omitted the default is 0 replicas"
   type        = number
@@ -84,7 +90,7 @@ variable "zone_distribution_config_zone" {
 }
 
 variable "engine_version" {
-  description = "Immutable. Engine version of the instance"
+  description = "Engine version of the instance"
   type        = string
   default     = "VALKEY_8_0"
 }

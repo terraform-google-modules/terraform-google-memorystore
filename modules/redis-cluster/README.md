@@ -1,6 +1,6 @@
 # Memorystore Redis Cluster Terraform Module
 
-A Terraform module for creating Google [Memorystore Redis Cluster](https://cloud.google.com/memorystore/docs/cluster/memorystore-for-redis-cluster-overview). It can also create [service connection policies](https://cloud.google.com/vpc/docs/about-service-connection-policies). You can also create service connection policy outside of this module. If you are not creating service connection policy as part of this module then make sure they exist before creating redis cluster. You can find more details [here](https://cloud.google.com/memorystore/docs/cluster/networking)
+A Terraform module for creating Google [Memorystore Redis Cluster](https://cloud.google.com/memorystore/docs/cluster/memorystore-for-redis-cluster-overview). It can also create [service connection policies](https://cloud.google.com/vpc/docs/about-service-connection-policies). You can also create service connection policy outside of this module. If you are not creating service connection policy as part of this module then make sure they exist before creating redis cluster. You can find more details [here](https://cloud.google.com/memorystore/docs/cluster/networking).
 
 ## Compatibility
 This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+. If you find incompatibilities using Terraform >=1.3, please open an issue.
@@ -25,12 +25,16 @@ module "redis_cluster" {
 }
 ```
 
+Check the [example/](https://github.com/terraform-google-modules/terraform-google-memorystore/tree/master/examples/redis-cluster) directory for more on how to create an encrypted cluster and cross region replica.
+
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | authorization\_mode | The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH\_MODE\_DISABLED. Possible values are: AUTH\_MODE\_UNSPECIFIED, AUTH\_MODE\_IAM\_AUTH, AUTH\_MODE\_DISABLED | `string` | `"AUTH_MODE_DISABLED"` | no |
+| cluster\_role | The role of the cluster in cross cluster replication. Possible values are: CLUSTER\_ROLE\_UNSPECIFIED, NONE, PRIMARY, SECONDARY | `string` | `null` | no |
 | deletion\_protection\_enabled | Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true | `bool` | `true` | no |
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `true` | no |
 | kms\_key | The KMS key used to encrypt the at-rest data of the cluster | `string` | `null` | no |
@@ -38,10 +42,12 @@ module "redis_cluster" {
 | network | List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network\_project\_id\_or\_number}/global/networks/{network\_id}. Currently, only one item is supported | `list(string)` | n/a | yes |
 | node\_type | The nodeType for the Redis cluster. If not provided, REDIS\_HIGHMEM\_MEDIUM will be used as default Possible values are: REDIS\_SHARED\_CORE\_NANO, REDIS\_HIGHMEM\_MEDIUM, REDIS\_HIGHMEM\_XLARGE, REDIS\_STANDARD\_SMALL. | `string` | `null` | no |
 | persistence\_config | Persistence config (RDB, AOF) for the cluster | <pre>object({<br>    mode = optional(string, "PERSISTENCE_MODE_UNSPECIFIED")<br>    rdb_config = optional(object({<br>      rdb_snapshot_period     = optional(string)<br>      rdb_snapshot_start_time = optional(string)<br>    }), null)<br>    aof_config = optional(object({<br>      append_fsync = optional(string)<br>    }))<br>  })</pre> | `null` | no |
+| primary\_cluster | primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type SECONDARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id} | `string` | `null` | no |
 | project\_id | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
 | redis\_configs | Configure Redis Cluster behavior using a subset of native Redis configuration parameters | <pre>object({<br>    maxmemory-clients       = optional(string)<br>    maxmemory               = optional(string)<br>    maxmemory-policy        = optional(string)<br>    notify-keyspace-events  = optional(string)<br>    slowlog-log-slower-than = optional(number)<br>    maxclients              = optional(number)<br>  })</pre> | `null` | no |
 | region | The name of the region of the Redis cluster | `string` | n/a | yes |
 | replica\_count | The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones | `number` | `0` | no |
+| secondary\_clusters | List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type PRIMARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id} | `list(string)` | `[]` | no |
 | service\_connection\_policies | The Service Connection Policies to create | <pre>map(object({<br>    description     = optional(string)<br>    network_name    = string<br>    network_project = string<br>    subnet_names    = list(string)<br>    limit           = optional(number)<br>    labels          = optional(map(string), {})<br>  }))</pre> | `{}` | no |
 | shard\_count | Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards | `number` | `3` | no |
 | transit\_encryption\_mode | The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. Default value is TRANSIT\_ENCRYPTION\_MODE\_DISABLED. Possible values are: TRANSIT\_ENCRYPTION\_MODE\_UNSPECIFIED, TRANSIT\_ENCRYPTION\_MODE\_DISABLED, TRANSIT\_ENCRYPTION\_MODE\_SERVER\_AUTHENTICATION | `string` | `"TRANSIT_ENCRYPTION_MODE_DISABLED"` | no |

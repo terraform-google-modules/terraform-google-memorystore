@@ -1,3 +1,17 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 apiVersion: blueprints.cloud.google.com/v1alpha1
 kind: BlueprintMetadata
 metadata:
@@ -36,6 +50,9 @@ spec:
         description: "The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH_MODE_DISABLED. Possible values are: AUTH_MODE_UNSPECIFIED, AUTH_MODE_IAM_AUTH, AUTH_MODE_DISABLED"
         varType: string
         defaultValue: AUTH_MODE_DISABLED
+      - name: cluster_role
+        description: "The role of the cluster in cross cluster replication. Possible values are: CLUSTER_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+        varType: string
       - name: deletion_protection_enabled
         description: " Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true"
         varType: bool
@@ -71,6 +88,9 @@ spec:
                 append_fsync = optional(string)
               }))
             })
+      - name: primary_cluster
+        description: "primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type SECONDARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+        varType: string
       - name: project_id
         description: The ID of the project in which the resource belongs to.
         varType: string
@@ -94,6 +114,10 @@ spec:
         description: The number of replica nodes per shard. Each shard can have 0, 1, or 2 replica nodes. Replicas provide high availability and additional read throughput, and are evenly distributed across zones
         varType: number
         defaultValue: 0
+      - name: secondary_clusters
+        description: "List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type PRIMARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+        varType: list(string)
+        defaultValue: []
       - name: service_connection_policies
         description: The Service Connection Policies to create
         varType: |-

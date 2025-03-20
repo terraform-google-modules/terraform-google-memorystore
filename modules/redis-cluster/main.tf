@@ -77,6 +77,25 @@ resource "google_redis_cluster" "redis_cluster" {
     }
   }
 
+  dynamic "cross_cluster_replication_config" {
+    for_each = var.cluster_role == null ? [] : ["cross_cluster_replication_config"]
+    content {
+      cluster_role = var.cluster_role
+      dynamic "primary_cluster" {
+        for_each = var.cluster_role == "SECONDARY" ? ["primary_cluster"] : []
+        content {
+          cluster = var.primary_cluster
+        }
+      }
+      dynamic "secondary_clusters" {
+        for_each = var.cluster_role == "PRIMARY" && length(var.secondary_clusters) > 0 ? var.secondary_clusters : []
+        content {
+          cluster = secondary_clusters.value
+        }
+      }
+    }
+  }
+
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,

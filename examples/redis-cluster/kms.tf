@@ -51,3 +51,23 @@ resource "google_kms_crypto_key_iam_member" "redis_sa_iam" {
 
   depends_on = [time_sleep.wait_for_redis_sa_ready_state]
 }
+
+resource "google_kms_key_ring" "keyring_region_east" {
+  project  = var.project_id
+  name     = "keyring-us-east1-${random_string.key_suffix.result}"
+  location = "us-east1"
+}
+
+resource "google_kms_crypto_key" "key_region_east" {
+  name     = "key-us-east1-${random_string.key_suffix.result}"
+  key_ring = google_kms_key_ring.keyring_region_east.id
+}
+
+
+resource "google_kms_crypto_key_iam_member" "redis_sa_iam_east" {
+  crypto_key_id = google_kms_crypto_key.key_region_east.id
+  role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  member        = "serviceAccount:${google_project_service_identity.redis_sa.email}"
+
+  depends_on = [time_sleep.wait_for_redis_sa_ready_state]
+}

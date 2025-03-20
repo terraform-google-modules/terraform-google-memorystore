@@ -147,3 +147,21 @@ variable "persistence_config" {
   })
   default = null
 }
+
+variable "cluster_role" {
+  description = "The role of the cluster in cross cluster replication. Possible values are: CLUSTER_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+  type        = string
+  default     = null
+}
+
+variable "primary_cluster" {
+  description = "primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type SECONDARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+  type        = string
+  default     = null
+}
+
+variable "secondary_clusters" {
+  description = "List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type PRIMARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
+  type        = list(string)
+  default     = []
+}

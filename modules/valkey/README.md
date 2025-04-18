@@ -10,7 +10,7 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "valkey_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  version = "~> 13.3"
+  version = "~> 14.0"
 
   instance_id                 = "test-valkey-cluster"
   project                     = var.project_id
@@ -45,10 +45,11 @@ module "valkey_cluster" {
 | deletion\_protection\_enabled | If set to true deletion of the instance will fail | `bool` | `true` | no |
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `false` | no |
 | engine\_configs | User-provided engine configurations for the instance | <pre>object({<br>    maxmemory               = optional(string)<br>    maxmemory-clients       = optional(string)<br>    maxmemory-policy        = optional(string)<br>    notify-keyspace-events  = optional(string)<br>    slowlog-log-slower-than = optional(number)<br>    maxclients              = optional(number)<br>  })</pre> | `null` | no |
-| engine\_version | Immutable. Engine version of the instance | `string` | `"VALKEY_8_0"` | no |
+| engine\_version | Engine version of the instance | `string` | `"VALKEY_8_0"` | no |
 | instance\_id | The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location | `string` | n/a | yes |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | location | The region where valkey cluster will be created | `string` | n/a | yes |
+| mode | cluster or cluster-disabled. Possible values: CLUSTER, CLUSTER\_DISABLED | `string` | `null` | no |
 | network | Name of the consumer network where the network address of the discovery endpoint will be reserved | `string` | n/a | yes |
 | network\_project | project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host | `string` | `null` | no |
 | node\_type | The nodeType for the valkey cluster. Possible values are: SHARED\_CORE\_NANO, HIGHMEM\_MEDIUM, HIGHMEM\_XLARGE, STANDARD\_SMALL | `string` | `null` | no |
@@ -81,7 +82,7 @@ These sections describe requirements for using this module.
 The following dependencies must be available:
 
 - [Terraform][terraform] v1.3+
-- [Terraform Provider for GCP][terraform-provider-gcp] plugin v6.3+
+- [Terraform Provider for GCP][terraform-provider-gcp] plugin v6.20+
 
 ### Service Account
 

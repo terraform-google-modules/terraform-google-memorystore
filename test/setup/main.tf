@@ -25,6 +25,7 @@ module "project" {
   billing_account         = var.billing_account
   default_service_account = "delete"
   auto_create_network     = true
+  deletion_policy         = "DELETE"
 
   activate_apis = [
     "cloudresourcemanager.googleapis.com",
@@ -35,6 +36,7 @@ module "project" {
     "networkconnectivity.googleapis.com",
     "compute.googleapis.com",
     "memorystore.googleapis.com",
+    "cloudkms.googleapis.com"
   ]
 }
 

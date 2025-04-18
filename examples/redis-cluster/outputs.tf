@@ -21,45 +21,65 @@ output "project_id" {
 
 output "cluster_id" {
   description = "The redis cluster instance ID"
-  value       = module.redis_cluster.id
+  value       = module.redis_cluster_central.id
 }
 
 output "size_gb" {
   description = "The redis cluster size"
-  value       = module.redis_cluster.redis_cluster.size_gb
+  value       = module.redis_cluster_central.redis_cluster.size_gb
 }
 
 output "cluster_region" {
   description = "The redis cluster region"
-  value       = module.redis_cluster.redis_cluster.region
+  value       = module.redis_cluster_central.redis_cluster.region
 }
 
 output "replica_count" {
   description = "The redis cluster replica count"
-  value       = module.redis_cluster.redis_cluster.replica_count
+  value       = module.redis_cluster_central.redis_cluster.replica_count
 }
 
 output "transit_encryption_mode" {
   description = "The redis cluster transit encryption mode"
-  value       = module.redis_cluster.redis_cluster.transit_encryption_mode
+  value       = module.redis_cluster_central.redis_cluster.transit_encryption_mode
 }
 
 output "cluster_name" {
   description = "The redis cluster name"
-  value       = module.redis_cluster.redis_cluster.name
+  value       = module.redis_cluster_central.redis_cluster.name
 }
 
 output "shard_count" {
   description = "The redis cluster shard count"
-  value       = module.redis_cluster.redis_cluster.shard_count
+  value       = module.redis_cluster_central.redis_cluster.shard_count
 }
 
 output "authorization_mode" {
   description = "The redis cluster authorization mode"
-  value       = module.redis_cluster.redis_cluster.authorization_mode
+  value       = module.redis_cluster_central.redis_cluster.authorization_mode
 }
 
 output "node_type" {
   description = "The redis cluster node type"
-  value       = module.redis_cluster.redis_cluster.node_type
+  value       = module.redis_cluster_central.redis_cluster.node_type
+}
+
+output "secondary_cluster_id" {
+  description = "The secondary redis cluster instance ID"
+  value       = module.redis_cluster_east.id
+}
+
+output "secondary_cluster_region" {
+  description = "The secondary redis cluster region"
+  value       = module.redis_cluster_east.redis_cluster.region
+}
+
+output "secondary_cluster_name" {
+  description = "The secondary redis cluster name"
+  value       = module.redis_cluster_east.redis_cluster.name
+}
+
+output "secondary_cluster_role" {
+  description = "The secondary redis cluster name"
+  value       = module.redis_cluster_east.redis_cluster.cross_cluster_replication_config[0].cluster_role
 }

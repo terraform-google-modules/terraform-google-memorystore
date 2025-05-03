@@ -112,6 +112,18 @@ variable "network_project" {
   default     = null
 }
 
+variable "gcs_source_uri" {
+  description = "Backups that stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the instances, conflicts with managed_backup_source_backup"
+  type        = list(string)
+  default     = null
+}
+
+variable "managed_backup_source_backup" {
+  description = "Backups that generated and managed by memorystore, conflicts with gcs_source_uri"
+  type        = string
+  default     = null
+}
+
 variable "service_connection_policies" {
   description = "The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist"
   type = map(object({

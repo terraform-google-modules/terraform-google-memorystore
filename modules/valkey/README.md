@@ -46,9 +46,11 @@ module "valkey_cluster" {
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `false` | no |
 | engine\_configs | User-provided engine configurations for the instance | <pre>object({<br>    maxmemory               = optional(string)<br>    maxmemory-clients       = optional(string)<br>    maxmemory-policy        = optional(string)<br>    notify-keyspace-events  = optional(string)<br>    slowlog-log-slower-than = optional(number)<br>    maxclients              = optional(number)<br>  })</pre> | `null` | no |
 | engine\_version | Engine version of the instance | `string` | `"VALKEY_8_0"` | no |
+| gcs\_source\_uri | Backups that stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the instances, conflicts with managed\_backup\_source\_backup | `list(string)` | `null` | no |
 | instance\_id | The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location | `string` | n/a | yes |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | location | The region where valkey cluster will be created | `string` | n/a | yes |
+| managed\_backup\_source\_backup | Backups that generated and managed by memorystore, conflicts with gcs\_source\_uri | `string` | `null` | no |
 | mode | cluster or cluster-disabled. Possible values: CLUSTER, CLUSTER\_DISABLED | `string` | `null` | no |
 | network | Name of the consumer network where the network address of the discovery endpoint will be reserved | `string` | n/a | yes |
 | network\_project | project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host | `string` | `null` | no |

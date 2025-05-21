@@ -66,7 +66,7 @@ variable "read_replicas_mode" {
 }
 
 variable "replica_count" {
-  description = "The number of replicas."
+  description = "The number of replicas. If the tier is STANDARD_HA, it defaults to 1 when unspecified."
   type        = number
   default     = null
 }

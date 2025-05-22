@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [14.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v14.0.0...v14.0.1) (2025-05-22)
+
+
+### Bug Fixes
+
+* update defaults and level for certain fields [#282](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/282) ([22e8ec9](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/22e8ec90c8517e517b323f96294c2982c3fa2c6c))
+
 ## [14.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v13.3.0...v14.0.0) (2025-03-20)
 
 

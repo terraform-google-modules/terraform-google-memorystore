@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [14.0.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v14.0.1...v14.0.2) (2025-05-23)
+
+
+### Bug Fixes
+
+* Update display metadata to add alt default for replica_count ([#296](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/296)) ([84c4af3](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/84c4af3191ea2c049253ef11c886c304d3b78471))
+
 ## [14.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v14.0.0...v14.0.1) (2025-05-22)
 
 

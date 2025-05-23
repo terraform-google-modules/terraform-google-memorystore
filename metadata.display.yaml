@@ -133,6 +133,9 @@ spec:
           name: replica_count
           title: Replica Count
           level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: 1
         reserved_ip_range:
           name: reserved_ip_range
           title: Reserved Ip Range

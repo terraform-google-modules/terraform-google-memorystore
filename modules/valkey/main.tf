@@ -33,6 +33,20 @@ resource "google_memorystore_instance" "valkey_cluster" {
   authorization_mode      = var.authorization_mode
   engine_configs          = var.engine_configs
 
+  dynamic "managed_backup_source" {
+    for_each = var.managed_backup_source_backup != null ? ["managed_backup_source"] : []
+    content {
+      backup = var.managed_backup_source_backup
+    }
+  }
+
+  dynamic "gcs_backup_source" {
+    for_each = var.gcs_source_uri != null ? ["gcs_source"] : []
+    content {
+      uri = var.gcs_source_uri
+    }
+  }
+
   dynamic "zone_distribution_config" {
     for_each = var.zone_distribution_config_mode != null ? ["zone_distribution_config"] : []
     content {

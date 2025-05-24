@@ -67,6 +67,11 @@ resource "google_redis_instance" "default" {
       rdb_snapshot_period = persistence_config.value["rdb_snapshot_period"]
     }
   }
+  timeouts {
+    create = var.redis_create_timeout
+    update = var.redis_update_timeout
+    delete = var.redis_delete_timeout
+  }
 }
 
 module "enable_apis" {

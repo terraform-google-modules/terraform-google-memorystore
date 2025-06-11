@@ -31,6 +31,9 @@ spec:
         authorization_mode:
           name: authorization_mode
           title: Authorization Mode
+        automated_backup_config:
+          name: automated_backup_config
+          title: Automated Backup Config
         deletion_protection_enabled:
           name: deletion_protection_enabled
           title: Deletion Protection Enabled
@@ -43,6 +46,9 @@ spec:
         engine_version:
           name: engine_version
           title: Engine Version
+        gcs_source:
+          name: gcs_source
+          title: Gcs Source
         instance_id:
           name: instance_id
           title: Instance Id
@@ -52,6 +58,9 @@ spec:
         location:
           name: location
           title: Location
+        managed_backup_source:
+          name: managed_backup_source
+          title: Managed Backup Source
         mode:
           name: mode
           title: Mode
@@ -82,6 +91,9 @@ spec:
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
+        weekly_maintenance_window:
+          name: weekly_maintenance_window
+          title: Weekly Maintenance Window
         zone_distribution_config_mode:
           name: zone_distribution_config_mode
           title: Zone Distribution Config Mode

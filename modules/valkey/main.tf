@@ -26,6 +26,11 @@ resource "google_memorystore_instance" "valkey_cluster" {
     project_id = var.project_id
   }
 
+  # desired_auto_created_endpoints {
+  #   network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
+  #   project_id = var.project_id
+  # }
+
   location                = var.location
   replica_count           = var.replica_count
   node_type               = var.node_type
@@ -63,6 +68,47 @@ resource "google_memorystore_instance" "valkey_cluster" {
     }
   }
   labels = var.labels
+
+  dynamic "managed_backup_source" {
+    for_each = var.managed_backup_source != null ? ["managed_backup_source"] : []
+    content {
+      backup = var.managed_backup_source
+    }
+  }
+
+  dynamic "gcs_source" {
+    for_each = var.gcs_source != null ? ["gcs_source"] : []
+    content {
+      uris = var.gcs_source
+    }
+  }
+
+  dynamic "automated_backup_config" {
+    for_each = var.automated_backup_config == null ? [] : ["automated_backup_config"]
+    content {
+      retention = var.automated_backup_config.retention
+      fixed_frequency_schedule {
+        start_time {
+          hours = var.automated_backup_config.start_time
+        }
+      }
+    }
+  }
+
+  dynamic "maintenance_policy" {
+    for_each = var.weekly_maintenance_window == null ? [] : ["weekly_maintenance_window"]
+    content {
+      weekly_maintenance_window {
+        day = var.weekly_maintenance_window.day_of_week
+        start_time {
+          hours   = var.weekly_maintenance_window.start_time_hour
+          minutes = var.weekly_maintenance_window.start_time_minutes
+          seconds = var.weekly_maintenance_window.start_time_seconds
+          nanos   = var.weekly_maintenance_window.start_time_nanos
+        }
+      }
+    }
+  }
 
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,

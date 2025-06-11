@@ -26,11 +26,6 @@ resource "google_memorystore_instance" "valkey_cluster" {
     project_id = var.project_id
   }
 
-  # desired_auto_created_endpoints {
-  #   network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
-  #   project_id = var.project_id
-  # }
-
   location                = var.location
   replica_count           = var.replica_count
   node_type               = var.node_type
@@ -99,12 +94,12 @@ resource "google_memorystore_instance" "valkey_cluster" {
     for_each = var.weekly_maintenance_window == null ? [] : ["weekly_maintenance_window"]
     content {
       weekly_maintenance_window {
-        day = var.weekly_maintenance_window.day_of_week
+        day = try(var.weekly_maintenance_window[0].day_of_week, null)
         start_time {
-          hours   = var.weekly_maintenance_window.start_time_hour
-          minutes = var.weekly_maintenance_window.start_time_minutes
-          seconds = var.weekly_maintenance_window.start_time_seconds
-          nanos   = var.weekly_maintenance_window.start_time_nanos
+          hours   = try(var.weekly_maintenance_window[0].start_time_hour, null)
+          minutes = try(var.weekly_maintenance_window[0].start_time_minutes, null)
+          seconds = try(var.weekly_maintenance_window[0].start_time_seconds, null)
+          nanos   = try(var.weekly_maintenance_window[0].start_time_nanos, null)
         }
       }
     }

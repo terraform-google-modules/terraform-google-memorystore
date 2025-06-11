@@ -67,6 +67,18 @@ module "valkey_cluster" {
     maxmemory-policy = "volatile-ttl"
   }
 
+  weekly_maintenance_window = [
+    {
+      day_of_week     = "MONDAY"
+      start_time_hour = "23"
+    }
+  ]
+
+  automated_backup_config = {
+    start_time = "20"
+    retention  = "86400s"
+  }
+
   depends_on = [
     module.test_vpc,
     module.enable_apis,

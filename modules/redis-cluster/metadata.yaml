@@ -156,7 +156,7 @@ spec:
         varType: list(string)
         defaultValue: []
     outputs:
-      - name: discovery_endpoints
+      - name: endpoints
         description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
       - name: id
         description: The redis cluster instance ID

@@ -169,8 +169,6 @@ spec:
               start_time_nanos   = optional(string)
             }))
     outputs:
-      - name: discovery_endpoints
-        description: (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead
       - name: endpoints
         description: Endpoints for the instance
       - name: id

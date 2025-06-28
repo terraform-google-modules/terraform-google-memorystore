@@ -21,7 +21,7 @@ resource "google_memorystore_instance" "valkey_cluster" {
   engine_version = var.engine_version
   mode           = var.mode
 
-  desired_psc_auto_connections {
+  desired_auto_created_endpoints {
     network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
     project_id = var.project_id
   }

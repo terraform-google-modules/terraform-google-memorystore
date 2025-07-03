@@ -94,3 +94,7 @@ spec:
         zone_distribution_config_zone:
           name: zone_distribution_config_zone
           title: Zone Distribution Config Zone
+    runtime:
+      outputs:
+        discovery_endpoints:
+          visibility: VISIBILITY_ROOT

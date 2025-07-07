@@ -157,6 +157,8 @@ spec:
         defaultValue: []
     outputs:
       - name: discovery_endpoints
+        description: (Deprecated) Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
+      - name: endpoints
         description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
         type:
           - list

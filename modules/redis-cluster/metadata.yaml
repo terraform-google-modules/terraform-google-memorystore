@@ -77,7 +77,7 @@ spec:
       - name: authorization_mode
         description: "The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH_MODE_DISABLED. Possible values are: AUTH_MODE_UNSPECIFIED, AUTH_MODE_IAM_AUTH, AUTH_MODE_DISABLED"
         varType: string
-        defaultValue: AUTH_MODE_DISABLED
+        defaultValue: AUTH_MODE_IAM_AUTH
       - name: network
         description: List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network_project_id_or_number}/global/networks/{network_id}. Currently, only one item is supported
         varType: list(string)

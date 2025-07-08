@@ -42,7 +42,7 @@ output "redis_cluster" {
 output "apphub_service_uri" {
   value = {
     service_uri = "//redis.googleapis.com/${google_redis_cluster.redis_cluster.id}"
-    service_id  = substr("${var.name}-${md5("${var.region}-${var.project_id}")}", 0, 63)
+    service_id  = substr("${var.name}-${md5("MRC-${var.region}-${var.project_id}")}", 0, 63)
     location    = var.region
   }
   description = "Service URI in CAIS style to be used by Apphub."

@@ -20,8 +20,13 @@ output "id" {
 }
 
 output "discovery_endpoints" {
-  description = "Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported"
+  description = "(Deprecated) Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported"
   value       = google_redis_cluster.redis_cluster.discovery_endpoints
+}
+
+output "endpoints" {
+  description = "Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported"
+  value       = google_redis_cluster.redis_cluster.endpoints
 }
 
 output "psc_connections" {

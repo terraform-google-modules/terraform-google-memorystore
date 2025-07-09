@@ -70,11 +70,8 @@ module "valkey_cluster" {
 
 | Name | Description |
 |------|-------------|
-| discovery\_endpoints | (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead |
-| endpoints | Endpoints for the instance |
+| endpoints | Endpoints created on each given network, for valkey clients to connect to the cluster. |
 | id | The valkey cluster instance ID |
-| psc\_auto\_connection | Detailed information of a PSC connection that is created through service connectivity automation |
-| psc\_connections | (Deprecated) PSC connections for discovery of the cluster topology and accessing the cluster. Use psc\_auto\_connection instead |
 | valkey\_cluster | The valkey cluster created |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

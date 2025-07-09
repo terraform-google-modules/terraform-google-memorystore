@@ -158,6 +158,11 @@ spec:
     outputs:
       - name: apphub_service_uri
         description: Service URI in CAIS style to be used by Apphub.
+        type:
+          - object
+          - location: string
+            service_id: string
+            service_uri: string
       - name: discovery_endpoints
         description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
         type:

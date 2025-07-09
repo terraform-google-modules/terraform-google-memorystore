@@ -87,7 +87,7 @@ spec:
               source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
               version: ">= 9.1.0"
             spec:
-              outputExpr: projects/${project_id}/global/networks/${network_id}
+              outputExpr: network_id
       - name: service_connection_policies
         description: The Service Connection Policies to create
         varType: |-

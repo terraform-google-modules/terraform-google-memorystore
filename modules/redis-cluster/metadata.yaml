@@ -173,6 +173,12 @@ spec:
                 - list
                 - - object
                   - network: string
+      - name: env_vars
+        description: Environment variables for Redis cluster connection, including address and port.
+        type:
+          - object
+          - REDIS_CLUSTER_HOST: string
+            REDIS_CLUSTER_PORT: string
       - name: id
         description: The redis cluster instance ID
         type: string

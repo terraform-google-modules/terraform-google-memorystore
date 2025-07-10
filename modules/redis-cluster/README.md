@@ -60,6 +60,7 @@ Check the [example/](https://github.com/terraform-google-modules/terraform-googl
 | Name | Description |
 |------|-------------|
 | discovery\_endpoints | Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported |
+| env\_vars | Environment variables for Redis cluster connection, including address and port. |
 | id | The redis cluster instance ID |
 | psc\_connections | PSC connections for discovery of the cluster topology and accessing the cluster |
 | psc\_service\_attachments | The PSC service attachments of the cluster |

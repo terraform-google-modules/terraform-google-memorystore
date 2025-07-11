@@ -10,7 +10,7 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 15.0"
+  version = "~> 15.1"
 
   name    = "test-redis-cluster"
   project_id = var.project_id

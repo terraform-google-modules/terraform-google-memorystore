@@ -39,6 +39,14 @@ output "redis_cluster" {
   value       = google_redis_cluster.redis_cluster
 }
 
+output "env_vars" {
+  description = "Environment variables for Redis cluster connection, including address and port."
+  value = {
+    "REDIS_CLUSTER_HOST" = google_redis_cluster.redis_cluster.discovery_endpoints[0].address
+    "REDIS_CLUSTER_PORT" = tostring(google_redis_cluster.redis_cluster.discovery_endpoints[0].port)
+  }
+}
+
 output "apphub_service_uri" {
   value = {
     service_uri = "//redis.googleapis.com/${google_redis_cluster.redis_cluster.id}"

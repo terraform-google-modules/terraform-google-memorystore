@@ -31,6 +31,9 @@ spec:
         authorization_mode:
           name: authorization_mode
           title: Authorization Mode
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: AUTH_MODE_IAM_AUTH
         cluster_role:
           name: cluster_role
           title: Cluster Role

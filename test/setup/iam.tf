@@ -34,6 +34,7 @@ locals {
       "roles/redis.admin",
       "roles/iam.serviceAccountUser",
       "roles/logging.logWriter",
+      "roles/compute.networkAdmin",
     ]
     root = [
       "roles/resourcemanager.projectIamAdmin",

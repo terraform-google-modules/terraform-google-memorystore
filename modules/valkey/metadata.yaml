@@ -185,10 +185,10 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/cloudkms.cryptoKeyEncrypterDecrypter
           - roles/redis.admin
           - roles/iam.serviceAccountUser
           - roles/logging.logWriter
+          - roles/cloudkms.cryptoKeyEncrypterDecrypter
     services:
       - cloudkms.googleapis.com
       - redis.googleapis.com

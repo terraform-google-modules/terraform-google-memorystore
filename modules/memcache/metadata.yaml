@@ -123,6 +123,7 @@ spec:
           - roles/redis.admin
           - roles/iam.serviceAccountUser
           - roles/logging.logWriter
+          - roles/compute.networkAdmin
     services:
       - memcache.googleapis.com
       - redis.googleapis.com

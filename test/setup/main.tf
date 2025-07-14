@@ -14,6 +14,33 @@
  * limitations under the License.
  */
 
+locals {
+  per_module_services = {
+    valkey = [
+      "redis.googleapis.com",
+      "cloudkms.googleapis.com",
+      "serviceusage.googleapis.com",
+    ]
+    redis-cluster = [
+      "redis.googleapis.com",
+      "cloudkms.googleapis.com",
+      "serviceusage.googleapis.com",
+    ]
+    memcache = [
+      "memcache.googleapis.com",
+      "redis.googleapis.com",
+      "serviceusage.googleapis.com",
+    ]
+    root = [
+      "redis.googleapis.com",
+      "memcache.googleapis.com",
+      "serviceusage.googleapis.com",
+      "iam.googleapis.com",
+      "cloudresourcemanager.googleapis.com",
+    ]
+  }
+}
+
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 18.0"
@@ -27,17 +54,12 @@ module "project" {
   auto_create_network     = true
   deletion_policy         = "DELETE"
 
-  activate_apis = [
-    "cloudresourcemanager.googleapis.com",
-    "serviceusage.googleapis.com",
-    "redis.googleapis.com",
-    "memcache.googleapis.com",
+  activate_apis = concat([
     "serviceconsumermanagement.googleapis.com",
     "networkconnectivity.googleapis.com",
     "compute.googleapis.com",
     "memorystore.googleapis.com",
-    "cloudkms.googleapis.com"
-  ]
+  ], flatten(values(local.per_module_services)))
 }
 
 

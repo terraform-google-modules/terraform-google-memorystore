@@ -24,7 +24,7 @@ Check the [examples/](https://github.com/terraform-google-modules/terraform-goog
 ```hcl
 module "memorystore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 15.0"
+  version = "~> 15.1"
 
   name           = "memorystore"
   project_id     = "memorystore"

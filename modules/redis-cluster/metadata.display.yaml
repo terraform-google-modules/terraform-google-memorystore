@@ -31,15 +31,25 @@ spec:
         authorization_mode:
           name: authorization_mode
           title: Authorization Mode
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: AUTH_MODE_IAM_AUTH
         cluster_role:
           name: cluster_role
           title: Cluster Role
         deletion_protection_enabled:
           name: deletion_protection_enabled
           title: Deletion Protection Enabled
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: true
         enable_apis:
           name: enable_apis
           title: Enable Apis
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: true
         kms_key:
           name: kms_key
           title: Kms Key
@@ -49,12 +59,27 @@ spec:
         network:
           name: network
           title: Network
+          regexValidation: ^(?:http(?:s)?://.+/)?projects/((?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?)))/global/networks/((?:[a-z](?:[-a-z0-9]*[a-z0-9])?))$
+          validation: Invalid format. Expected a valid Google Cloud network in the form of projects/{network_project_id_or_number}/global/networks/{network_id}.
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: projects/${project_id}/global/networks/default
         node_type:
           name: node_type
           title: Node Type
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: REDIS_HIGHMEM_MEDIUM
         persistence_config:
           name: persistence_config
           title: Persistence Config
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value:
+                mode: AOF
+                append_fsync: EVERYSEC
         primary_cluster:
           name: primary_cluster
           title: Primary Cluster
@@ -73,6 +98,10 @@ spec:
         replica_count:
           name: replica_count
           title: Replica Count
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: 1
         secondary_clusters:
           name: secondary_clusters
           title: Secondary Clusters
@@ -82,15 +111,30 @@ spec:
         shard_count:
           name: shard_count
           title: Shard Count
+          regexValidation: ^(?:[1-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|250)$
+          validation: Must be an integer value betweeen 1 and 250 [inclusive]
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: 10
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: TRANSIT_ENCRYPTION_MODE_DISABLED
         weekly_maintenance_window:
           name: weekly_maintenance_window
-          title: Weekly Maintenance Window
+          title: Maintenance Window
+          level: 1
         zone_distribution_config_mode:
           name: zone_distribution_config_mode
           title: Zone Distribution Config Mode
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: MULTI_ZONE
         zone_distribution_config_zone:
           name: zone_distribution_config_zone
           title: Zone Distribution Config Zone

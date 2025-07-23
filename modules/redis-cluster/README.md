@@ -10,7 +10,7 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "redis_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
-  version = "~> 14.0"
+  version = "~> 15.1"
 
   name    = "test-redis-cluster"
   project_id = var.project_id
@@ -59,7 +59,9 @@ Check the [example/](https://github.com/terraform-google-modules/terraform-googl
 
 | Name | Description |
 |------|-------------|
+| apphub\_service\_uri | Service URI in CAIS style to be used by Apphub. |
 | discovery\_endpoints | Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported |
+| env\_vars | Environment variables for Redis cluster connection, including address and port. |
 | id | The redis cluster instance ID |
 | psc\_connections | PSC connections for discovery of the cluster topology and accessing the cluster |
 | psc\_service\_attachments | The PSC service attachments of the cluster |

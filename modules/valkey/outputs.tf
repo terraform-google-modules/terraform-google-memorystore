@@ -20,16 +20,26 @@ output "id" {
 }
 
 output "discovery_endpoints" {
-  description = "Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported"
+  description = "(Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead"
   value       = google_memorystore_instance.valkey_cluster.discovery_endpoints
 }
 
 output "psc_connections" {
-  description = "PSC connections for discovery of the cluster topology and accessing the cluster"
+  description = "(Deprecated) PSC connections for discovery of the cluster topology and accessing the cluster. Use psc_auto_connection instead"
   value       = google_memorystore_instance.valkey_cluster.psc_auto_connections
 }
 
 output "valkey_cluster" {
   description = "The valkey cluster created"
   value       = google_memorystore_instance.valkey_cluster
+}
+
+output "endpoints" {
+  description = "Endpoints for the instance"
+  value       = google_memorystore_instance.valkey_cluster.endpoints
+}
+
+output "psc_auto_connection" {
+  description = "Detailed information of a PSC connection that is created through service connectivity automation"
+  value       = google_memorystore_instance.valkey_cluster.endpoints[0].connections[0]
 }

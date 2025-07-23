@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [15.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.0.0...v15.1.0) (2025-07-15)
+
+
+### Features
+
+* add "apphub_services_uri" in outputs.tf for redis-cluster ([#308](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/308)) ([47910c2](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/47910c20ef81973e0d7933474b3c822611f310aa))
+
+## [15.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v14.0.2...v15.0.0) (2025-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG>6.30:** added weekly_maintenance_window, automated_backup_config and managed_backup_source/gcs_source in Valkey sub-module ([#300](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/300))
+
+### Features
+
+* **TPG>6.30:** added weekly_maintenance_window, automated_backup_config and managed_backup_source/gcs_source in Valkey sub-module ([#300](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/300)) ([e6b75a6](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/e6b75a6c6ca4d8312ae2467e42f67e443a8be11b))
+
 ## [14.0.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v14.0.1...v14.0.2) (2025-05-23)
 
 

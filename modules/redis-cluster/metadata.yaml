@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
       dir: /modules/redis-cluster
-    version: 14.0.2
+    version: 15.1.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -82,6 +82,12 @@ spec:
         description: List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network_project_id_or_number}/global/networks/{network_id}. Currently, only one item is supported
         varType: list(string)
         required: true
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
+              version: ">= 9.1.0"
+            spec:
+              outputExpr: network_id
       - name: service_connection_policies
         description: The Service Connection Policies to create
         varType: |-
@@ -156,16 +162,203 @@ spec:
         varType: list(string)
         defaultValue: []
     outputs:
+      - name: apphub_service_uri
+        description: Service URI in CAIS style to be used by Apphub.
+        type:
+          - object
+          - location: string
+            service_id: string
+            service_uri: string
       - name: discovery_endpoints
         description: Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported
+        type:
+          - list
+          - - object
+            - address: string
+              port: number
+              psc_config:
+                - list
+                - - object
+                  - network: string
+      - name: env_vars
+        description: Environment variables for Redis cluster connection, including address and port.
+        type:
+          - object
+          - REDIS_CLUSTER_HOST: string
+            REDIS_CLUSTER_PORT: string
       - name: id
         description: The redis cluster instance ID
+        type: string
       - name: psc_connections
         description: PSC connections for discovery of the cluster topology and accessing the cluster
+        type:
+          - list
+          - - object
+            - address: string
+              forwarding_rule: string
+              network: string
+              project_id: string
+              psc_connection_id: string
       - name: psc_service_attachments
         description: The PSC service attachments of the cluster
+        type:
+          - list
+          - - object
+            - connection_type: string
+              service_attachment: string
       - name: redis_cluster
         description: The redis cluster created
+        type:
+          - object
+          - authorization_mode: string
+            automated_backup_config:
+              - list
+              - - object
+                - fixed_frequency_schedule:
+                    - list
+                    - - object
+                      - start_time:
+                          - list
+                          - - object
+                            - hours: number
+                  retention: string
+            backup_collection: string
+            create_time: string
+            cross_cluster_replication_config:
+              - list
+              - - object
+                - cluster_role: string
+                  membership:
+                    - list
+                    - - object
+                      - primary_cluster:
+                          - list
+                          - - object
+                            - cluster: string
+                              uid: string
+                        secondary_clusters:
+                          - list
+                          - - object
+                            - cluster: string
+                              uid: string
+                  primary_cluster:
+                    - list
+                    - - object
+                      - cluster: string
+                        uid: string
+                  secondary_clusters:
+                    - list
+                    - - object
+                      - cluster: string
+                        uid: string
+                  update_time: string
+            deletion_protection_enabled: bool
+            discovery_endpoints:
+              - list
+              - - object
+                - address: string
+                  port: number
+                  psc_config:
+                    - list
+                    - - object
+                      - network: string
+            gcs_source:
+              - list
+              - - object
+                - uris:
+                    - set
+                    - string
+            id: string
+            kms_key: string
+            maintenance_policy:
+              - list
+              - - object
+                - create_time: string
+                  update_time: string
+                  weekly_maintenance_window:
+                    - list
+                    - - object
+                      - day: string
+                        duration: string
+                        start_time:
+                          - list
+                          - - object
+                            - hours: number
+                              minutes: number
+                              nanos: number
+                              seconds: number
+            maintenance_schedule:
+              - list
+              - - object
+                - end_time: string
+                  schedule_deadline_time: string
+                  start_time: string
+            managed_backup_source:
+              - list
+              - - object
+                - backup: string
+            name: string
+            node_type: string
+            persistence_config:
+              - list
+              - - object
+                - aof_config:
+                    - list
+                    - - object
+                      - append_fsync: string
+                  mode: string
+                  rdb_config:
+                    - list
+                    - - object
+                      - rdb_snapshot_period: string
+                        rdb_snapshot_start_time: string
+            precise_size_gb: number
+            project: string
+            psc_configs:
+              - list
+              - - object
+                - network: string
+            psc_connections:
+              - list
+              - - object
+                - address: string
+                  forwarding_rule: string
+                  network: string
+                  project_id: string
+                  psc_connection_id: string
+            psc_service_attachments:
+              - list
+              - - object
+                - connection_type: string
+                  service_attachment: string
+            redis_configs:
+              - map
+              - string
+            region: string
+            replica_count: number
+            shard_count: number
+            size_gb: number
+            state: string
+            state_info:
+              - list
+              - - object
+                - update_info:
+                    - list
+                    - - object
+                      - target_replica_count: number
+                        target_shard_count: number
+            timeouts:
+              - object
+              - create: string
+                delete: string
+                update: string
+            transit_encryption_mode: string
+            uid: string
+            zone_distribution_config:
+              - list
+              - - object
+                - mode: string
+                  zone: string
   requirements:
     roles:
       - level: Project

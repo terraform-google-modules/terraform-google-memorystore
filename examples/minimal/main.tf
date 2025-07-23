@@ -16,7 +16,7 @@
 
 module "memstore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 14.0"
+  version = "~> 15.0"
 
   name               = "test-minimal"
   project_id         = var.project_id

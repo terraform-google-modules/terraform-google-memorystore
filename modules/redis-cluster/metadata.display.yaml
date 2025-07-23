@@ -109,8 +109,6 @@ spec:
         shard_count:
           name: shard_count
           title: Shard Count
-          regexValidation: ^(?:[1-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|250)$
-          validation: Must be an integer value betweeen 1 and 250 [inclusive]
           level: 1
           altDefaults:
             - type: ALTERNATE_TYPE_DC

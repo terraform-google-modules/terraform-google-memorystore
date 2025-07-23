@@ -94,3 +94,10 @@ spec:
         zone_distribution_config_zone:
           name: zone_distribution_config_zone
           title: Zone Distribution Config Zone
+    runtime:
+      outputs:
+        env_vars.REDIS_CLUSTER_HOST:
+          visibility: VISIBILITY_ROOT
+        env_vars.REDIS_CLUSTER_PORT:
+          visibility: VISIBILITY_ROOT  
+

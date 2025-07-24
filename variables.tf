@@ -161,3 +161,18 @@ variable "persistence_config" {
   })
   default = null
 }
+
+variable "redis_create_timeout" {
+  description = "Timeout for creating a redis memorystore instance"
+  default     = "40m"
+}
+
+variable "redis_update_timeout" {
+  description = "Timeout for updating a redis memorystore instance"
+  default     = "40m"
+}
+
+variable "redis_delete_timeout" {
+  description = "Timeout for deleting a redis memorystore instance"
+  default     = "40m"
+}

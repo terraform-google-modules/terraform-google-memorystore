@@ -35,7 +35,7 @@ module "enable_apis" {
 
 module "valkey_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  version = "~> 14.0"
+  version = "~> 15.0"
 
   instance_id                 = "test-valkey-cluster"
   project_id                  = var.project_id
@@ -65,6 +65,18 @@ module "valkey_cluster" {
 
   engine_configs = {
     maxmemory-policy = "volatile-ttl"
+  }
+
+  weekly_maintenance_window = [
+    {
+      day_of_week     = "MONDAY"
+      start_time_hour = "23"
+    }
+  ]
+
+  automated_backup_config = {
+    start_time = "20"
+    retention  = "86400s"
   }
 
   depends_on = [

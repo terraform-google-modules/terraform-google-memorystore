@@ -10,7 +10,7 @@ This module is meant for use with Terraform 1.3+ and tested using Terraform 1.3+
 ```
 module "valkey_cluster" {
   source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  version = "~> 14.0"
+  version = "~> 15.1"
 
   instance_id                 = "test-valkey-cluster"
   project                     = var.project_id
@@ -42,13 +42,16 @@ module "valkey_cluster" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | authorization\_mode | The Immutable. Authorization mode of the instance. Possible values: AUTH\_DISABLED IAM\_AUTH | `string` | `"AUTH_DISABLED"` | no |
+| automated\_backup\_config | The automated backup config for a instance | <pre>object({<br>    start_time = string<br>    retention  = string<br>  })</pre> | `null` | no |
 | deletion\_protection\_enabled | If set to true deletion of the instance will fail | `bool` | `true` | no |
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `false` | no |
 | engine\_configs | User-provided engine configurations for the instance | <pre>object({<br>    maxmemory               = optional(string)<br>    maxmemory-clients       = optional(string)<br>    maxmemory-policy        = optional(string)<br>    notify-keyspace-events  = optional(string)<br>    slowlog-log-slower-than = optional(number)<br>    maxclients              = optional(number)<br>  })</pre> | `null` | no |
 | engine\_version | Engine version of the instance | `string` | `"VALKEY_8_0"` | no |
+| gcs\_source | GCS source for the instance. Format gs://bucket1/object1, gs://bucket2/folder2/object2 | `string` | `null` | no |
 | instance\_id | The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location | `string` | n/a | yes |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | location | The region where valkey cluster will be created | `string` | n/a | yes |
+| managed\_backup\_source | Managed backup source for the instance. Format projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} | `string` | `null` | no |
 | mode | cluster or cluster-disabled. Possible values: CLUSTER, CLUSTER\_DISABLED | `string` | `null` | no |
 | network | Name of the consumer network where the network address of the discovery endpoint will be reserved | `string` | n/a | yes |
 | network\_project | project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host | `string` | `null` | no |
@@ -59,6 +62,7 @@ module "valkey_cluster" {
 | service\_connection\_policies | The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist | <pre>map(object({<br>    subnet_names = list(string)<br>    description  = optional(string)<br>    limit        = optional(number)<br>    labels       = optional(map(string), {})<br>  }))</pre> | `{}` | no |
 | shard\_count | Number of shards for the instance | `number` | `3` | no |
 | transit\_encryption\_mode | Immutable. In-transit encryption mode of the instance. Possible values: TRANSIT\_ENCRYPTION\_DISABLED SERVER\_AUTHENTICATION | `string` | `"TRANSIT_ENCRYPTION_DISABLED"` | no |
+| weekly\_maintenance\_window | Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly\_window is expected to be one. Possible values for day\_of\_the\_week are: DAY\_OF\_WEEK\_UNSPECIFIED, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY | <pre>list(object({<br>    day_of_week        = string<br>    start_time_hour    = optional(string)<br>    start_time_minutes = optional(string)<br>    start_time_seconds = optional(string)<br>    start_time_nanos   = optional(string)<br>  }))</pre> | `null` | no |
 | zone\_distribution\_config\_mode | The mode for zone distribution for Memorystore valkey cluster (Immutable). If not provided, MULTI\_ZONE will be used as default value. Possible values are: MULTI\_ZONE, SINGLE\_ZONE | `string` | `"MULTI_ZONE"` | no |
 | zone\_distribution\_config\_zone | The zone for single zone Memorystore valkey cluster (Immutable) | `string` | `null` | no |
 
@@ -66,9 +70,11 @@ module "valkey_cluster" {
 
 | Name | Description |
 |------|-------------|
-| discovery\_endpoints | Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported |
+| discovery\_endpoints | (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead |
+| endpoints | Endpoints for the instance |
 | id | The valkey cluster instance ID |
-| psc\_connections | PSC connections for discovery of the cluster topology and accessing the cluster |
+| psc\_auto\_connection | Detailed information of a PSC connection that is created through service connectivity automation |
+| psc\_connections | (Deprecated) PSC connections for discovery of the cluster topology and accessing the cluster. Use psc\_auto\_connection instead |
 | valkey\_cluster | The valkey cluster created |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

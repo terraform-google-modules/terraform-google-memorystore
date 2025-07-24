@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
       dir: /modules/valkey
-    version: 14.0.2
+    version: 15.1.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -145,13 +145,40 @@ spec:
               }), null)
             })
         defaultValue: {}
+      - name: managed_backup_source
+        description: Managed backup source for the instance. Format projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}
+        varType: string
+      - name: gcs_source
+        description: GCS source for the instance. Format gs://bucket1/object1, gs://bucket2/folder2/object2
+        varType: string
+      - name: automated_backup_config
+        description: The automated backup config for a instance
+        varType: |-
+          object({
+              start_time = string
+              retention  = string
+            })
+      - name: weekly_maintenance_window
+        description: "Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one. Possible values for day_of_the_week are: DAY_OF_WEEK_UNSPECIFIED, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY"
+        varType: |-
+          list(object({
+              day_of_week        = string
+              start_time_hour    = optional(string)
+              start_time_minutes = optional(string)
+              start_time_seconds = optional(string)
+              start_time_nanos   = optional(string)
+            }))
     outputs:
       - name: discovery_endpoints
-        description: Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported
+        description: (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead
+      - name: endpoints
+        description: Endpoints for the instance
       - name: id
         description: The valkey cluster instance ID
+      - name: psc_auto_connection
+        description: Detailed information of a PSC connection that is created through service connectivity automation
       - name: psc_connections
-        description: PSC connections for discovery of the cluster topology and accessing the cluster
+        description: (Deprecated) PSC connections for discovery of the cluster topology and accessing the cluster. Use psc_auto_connection instead
       - name: valkey_cluster
         description: The valkey cluster created
   requirements:
@@ -177,4 +204,4 @@ spec:
       - cloudkms.googleapis.com
     providerVersions:
       - source: hashicorp/google
-        version: ">= 6.20, < 7"
+        version: ">= 6.30, < 7"

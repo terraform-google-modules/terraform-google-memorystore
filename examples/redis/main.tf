@@ -14,9 +14,23 @@
  * limitations under the License.
  */
 
+module "enable_apis" {
+  source  = "terraform-google-modules/project-factory/google//modules/project_services"
+  version = "~> 18.0"
+
+  project_id                  = var.project_id
+  enable_apis                 = true
+  disable_services_on_destroy = false
+  disable_dependent_services  = false
+
+  activate_apis = [
+    "redis.googleapis.com",
+  ]
+}
+
 module "memstore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 14.0"
+  version = "~> 15.0"
 
   name = "test-redis"
 
@@ -24,7 +38,7 @@ module "memstore" {
   region                  = "us-east1"
   location_id             = "us-east1-b"
   alternative_location_id = "us-east1-d"
-  enable_apis             = true
+  enable_apis             = false
   auth_enabled            = true
   transit_encryption_mode = "SERVER_AUTHENTICATION"
   authorized_network      = module.test-vpc-module.network_id

@@ -25,6 +25,6 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v14.0.2"
+    module_name = "blueprints/terraform/terraform-google-memorystore:redis-cluster/v15.1.0"
   }
 }

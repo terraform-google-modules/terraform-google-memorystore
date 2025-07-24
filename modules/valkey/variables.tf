@@ -151,3 +151,36 @@ variable "persistence_config" {
   })
   default = {}
 }
+
+variable "managed_backup_source" {
+  type        = string
+  description = "Managed backup source for the instance. Format projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}"
+  default     = null
+}
+
+variable "gcs_source" {
+  type        = string
+  description = "GCS source for the instance. Format gs://bucket1/object1, gs://bucket2/folder2/object2"
+  default     = null
+}
+
+variable "automated_backup_config" {
+  description = "The automated backup config for a instance"
+  type = object({
+    start_time = string
+    retention  = string
+  })
+  default = null
+}
+
+variable "weekly_maintenance_window" {
+  description = "Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one. Possible values for day_of_the_week are: DAY_OF_WEEK_UNSPECIFIED, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY"
+  type = list(object({
+    day_of_week        = string
+    start_time_hour    = optional(string)
+    start_time_minutes = optional(string)
+    start_time_seconds = optional(string)
+    start_time_nanos   = optional(string)
+  }))
+  default = null
+}

@@ -105,5 +105,6 @@ spec:
           title: Zone Distribution Config Zone
     runtime:
       outputs:
-        discovery_endpoints:
+        env_vars:
           visibility: VISIBILITY_ROOT
+

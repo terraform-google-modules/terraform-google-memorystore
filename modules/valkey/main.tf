@@ -64,6 +64,47 @@ resource "google_memorystore_instance" "valkey_cluster" {
   }
   labels = var.labels
 
+  dynamic "managed_backup_source" {
+    for_each = var.managed_backup_source != null ? ["managed_backup_source"] : []
+    content {
+      backup = var.managed_backup_source
+    }
+  }
+
+  dynamic "gcs_source" {
+    for_each = var.gcs_source != null ? ["gcs_source"] : []
+    content {
+      uris = var.gcs_source
+    }
+  }
+
+  dynamic "automated_backup_config" {
+    for_each = var.automated_backup_config == null ? [] : ["automated_backup_config"]
+    content {
+      retention = var.automated_backup_config.retention
+      fixed_frequency_schedule {
+        start_time {
+          hours = var.automated_backup_config.start_time
+        }
+      }
+    }
+  }
+
+  dynamic "maintenance_policy" {
+    for_each = var.weekly_maintenance_window == null ? [] : ["weekly_maintenance_window"]
+    content {
+      weekly_maintenance_window {
+        day = try(var.weekly_maintenance_window[0].day_of_week, null)
+        start_time {
+          hours   = try(var.weekly_maintenance_window[0].start_time_hour, null)
+          minutes = try(var.weekly_maintenance_window[0].start_time_minutes, null)
+          seconds = try(var.weekly_maintenance_window[0].start_time_seconds, null)
+          nanos   = try(var.weekly_maintenance_window[0].start_time_nanos, null)
+        }
+      }
+    }
+  }
+
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,

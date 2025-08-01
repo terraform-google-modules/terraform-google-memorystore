@@ -203,23 +203,18 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/memorystore.admin
-          - roles/redis.admin
-          - roles/memcache.admin
           - roles/compute.networkAdmin
           - roles/resourcemanager.projectIamAdmin
-          - roles/cloudkms.admin
-          - roles/cloudkms.cryptoKeyEncrypterDecrypter
+          - roles/serviceusage.serviceUsageAdmin
+          - roles/redis.admin
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
     services:
       - cloudresourcemanager.googleapis.com
-      - serviceusage.googleapis.com
-      - redis.googleapis.com
+      - iam.googleapis.com
       - memcache.googleapis.com
-      - serviceconsumermanagement.googleapis.com
-      - networkconnectivity.googleapis.com
-      - compute.googleapis.com
-      - memorystore.googleapis.com
-      - cloudkms.googleapis.com
+      - redis.googleapis.com
+      - serviceusage.googleapis.com
     providerVersions:
       - source: hashicorp/google
         version: ">= 4.74, < 7"

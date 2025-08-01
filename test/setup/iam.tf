@@ -42,6 +42,7 @@ locals {
       "roles/redis.admin",
       "roles/iam.serviceAccountAdmin",
       "roles/iam.serviceAccountUser",
+      "roles/compute.networkAdmin",
     ]
   }
 

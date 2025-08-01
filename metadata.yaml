@@ -203,6 +203,7 @@ spec:
     roles:
       - level: Project
         roles:
+          - roles/compute.networkAdmin
           - roles/resourcemanager.projectIamAdmin
           - roles/serviceusage.serviceUsageAdmin
           - roles/redis.admin

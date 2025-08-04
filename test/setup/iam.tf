@@ -15,15 +15,43 @@
  */
 
 locals {
-  int_required_roles = [
+
+  per_module_roles = {
+    valkey = [
+      "roles/redis.admin",
+      "roles/iam.serviceAccountUser",
+      "roles/logging.logWriter",
+      "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ]
+    redis-cluster = [
+      "roles/redis.admin",
+      "roles/iam.serviceAccountUser",
+      "roles/logging.logWriter",
+      "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ]
+    memcache = [
+      "roles/redis.viewer",
+      "roles/redis.admin",
+      "roles/iam.serviceAccountUser",
+      "roles/logging.logWriter",
+      "roles/compute.networkAdmin",
+    ]
+    root = [
+      "roles/resourcemanager.projectIamAdmin",
+      "roles/serviceusage.serviceUsageAdmin",
+      "roles/redis.admin",
+      "roles/iam.serviceAccountAdmin",
+      "roles/iam.serviceAccountUser",
+      "roles/compute.networkAdmin",
+    ]
+  }
+
+  int_required_roles = concat([
     "roles/memorystore.admin",
     "roles/redis.admin",
     "roles/memcache.admin",
-    "roles/compute.networkAdmin",
-    "roles/resourcemanager.projectIamAdmin",
     "roles/cloudkms.admin",
-    "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-  ]
+  ], flatten(values(local.per_module_roles)))
 }
 
 resource "google_service_account" "int_test" {

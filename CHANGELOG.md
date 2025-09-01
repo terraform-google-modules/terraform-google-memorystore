@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [15.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.1.0...v15.2.0) (2025-09-01)
+
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v7 (major) ([#325](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/325)) ([8e97694](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/8e97694fb895fe03c168d3332d29b3ee741c4092))
+* per module requirements configs ([#315](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/315)) ([cce7172](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/cce7172ca02260e57b84acbef60c6528ad740ff2))
+* Update Visibility of Output variables for Redis Cluster ([#317](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/317)) ([d6370b5](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/d6370b50d054a2b3688bcedf3f9f3b5c7b9b8f64))
+
+
+### Bug Fixes
+
+* added missing validations ([#327](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/327)) ([4b41eba](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/4b41eba57626f63ad2a5e0a85bbc8e8f96cd2d25))
+
 ## [15.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.0.0...v15.1.0) (2025-07-15)
 
 

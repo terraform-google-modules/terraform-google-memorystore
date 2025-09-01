@@ -30,6 +30,8 @@ spec:
         alternative_location_id:
           name: alternative_location_id
           title: Alternative Location Id
+          regexValidation: ^[a-z]+(?:-[a-z0-9]+)*[0-9]-[a-z]$
+          validation: Must be a lowercase Google Cloud zone (e.g., us-central1-b), different from locationId
         auth_enabled:
           name: auth_enabled
           title: Auth Enabled
@@ -40,6 +42,8 @@ spec:
         authorized_network:
           name: authorized_network
           title: Authorized Network
+          regexValidation: "^(projects/[a-z][a-z0-9-]{4,28}[a-z0-9]/global/networks/[a-zA-Z0-9-_]+|[a-zA-Z0-9-_]+)$"
+          validation: Network must be a valid network name or a full resource path.
         connect_mode:
           name: connect_mode
           title: Connect Mode
@@ -55,6 +59,8 @@ spec:
         customer_managed_key:
           name: customer_managed_key
           title: Customer Managed Key
+          regexValidation: "^projects/[a-z][a-z0-9-]{4,28}[a-z0-9]/locations/[a-z0-9-]+/keyRings/[a-z0-9-_]+/cryptoKeys/[a-z0-9-_]+$"
+          validation: Must follow the Cloud KMS CryptoKey format like projects/my-project/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key
         display_name:
           name: display_name
           title: Display Name
@@ -68,10 +74,31 @@ spec:
         location_id:
           name: location_id
           title: Location Id
+          regexValidation: ^[a-z]+(?:-[a-z0-9]+)*[0-9]-[a-z]$
+          validation: Must be a lowercase GCP zone like us-central1-b
         maintenance_policy:
           name: maintenance_policy
           title: Maintenance Policy
           level: 1
+          properties:
+            day:
+              name: day
+              title: Day
+              enumValueLabels:
+                - label: MONDAY
+                  value: MONDAY
+                - label: TUESDAY
+                  value: TUESDAY
+                - label: WEDNESDAY
+                  value: WEDNESDAY
+                - label: THURSDAY
+                  value: THURSDAY
+                - label: FRIDAY
+                  value: FRIDAY
+                - label: SATURDAY
+                  value: SATURDAY
+                - label: SUNDAY
+                  value: SUNDAY
         memory_size_gb:
           name: memory_size_gb
           title: Memory Size GiB
@@ -93,6 +120,27 @@ spec:
               value:
                 persistence_mode: RDB
                 rdb_snapshot_period: ONE_HOUR
+          properties:
+            persistence_mode:
+              name: persistence_mode
+              title: Persistence Mode
+              enumValueLabels:
+                - label: RDB
+                  value: RDB
+                - label: DISABLED
+                  value: DISABLED
+            rdb_snapshot_period:
+              name: rdb_snapshot_period
+              title: RDB Snapshot Period
+              enumValueLabels:
+                - label: ONE_HOUR
+                  value: ONE_HOUR
+                - label: SIX_HOURS
+                  value: SIX_HOURS
+                - label: TWELVE_HOURS
+                  value: TWELVE_HOURS
+                - label: TWENTY_FOUR_HOURS
+                  value: TWENTY_FOUR_HOURS
         project_id:
           name: project_id
           title: Project Id
@@ -139,9 +187,13 @@ spec:
         reserved_ip_range:
           name: reserved_ip_range
           title: Reserved Ip Range
+          regexValidation: "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])/([0-9]|[1-2][0-9]|3[0-2])$"
+          validation: Must be a valid CIDR range (e.g., 10.0.0.0/29)
         secondary_ip_range:
           name: secondary_ip_range
           title: Secondary Ip Range
+          regexValidation: "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])/([0-9]|[1-2][0-9]|3[0-2])$"
+          validation: Must be a valid CIDR range (e.g., 10.0.0.0/29)
         tier:
           name: tier
           title: Tier

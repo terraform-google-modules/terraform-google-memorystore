@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [15.2.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.2.0...v15.2.1) (2025-09-30)
+
+
+### Bug Fixes
+
+* Add min max validation ([#329](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/329)) ([0fecd9f](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/0fecd9fc7c3d5c2643a3b389772ebd7a502cd61a))
+
 ## [15.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.1.0...v15.2.0) (2025-09-01)
 
 

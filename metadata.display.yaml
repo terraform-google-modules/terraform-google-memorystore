@@ -81,6 +81,9 @@ spec:
           title: Maintenance Policy
           level: 1
           properties:
+            description:
+              name: description
+              title: Description
             day:
               name: day
               title: Day
@@ -99,6 +102,34 @@ spec:
                   value: SATURDAY
                 - label: SUNDAY
                   value: SUNDAY
+            start_time:
+              name: start_time
+              title: Start Time
+              properties:
+                hours:
+                  name: hours
+                  title: Hours
+                  min: 0
+                  max: 23
+                  validation: Hours of day in 24 hour format. Must be from 0 to 23.
+                minutes:
+                  name: minutes
+                  title: Minutes
+                  min: 0
+                  max: 59
+                  validation: Minutes of hour of day. Must be from 0 to 59.
+                seconds:
+                  name: seconds
+                  title: Seconds
+                  min: 0
+                  max: 59
+                  validation: Seconds of minutes of the time. Must be from 0 to 59.
+                nanos:
+                  name: nanos
+                  title: Nanos
+                  min: 0
+                  max: 999999999
+                  validation: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         memory_size_gb:
           name: memory_size_gb
           title: Memory Size GiB
@@ -181,6 +212,8 @@ spec:
           name: replica_count
           title: Replica Count
           level: 1
+          min: 0
+          max: 5
           altDefaults:
             - type: ALTERNATE_TYPE_DC
               value: 1

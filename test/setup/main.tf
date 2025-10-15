@@ -39,9 +39,23 @@ locals {
       "cloudresourcemanager.googleapis.com",
     ]
   }
+  extra_services_for_tests = {
+    /*
+    "serviceconsumermanagement.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "compute.googleapis.com",
+    "memorystore.googleapis.com",
+    */
+  }
+  per_module_test_services = {
+    for module, services in local.per_module_services :
+    module => setunion(services, lookup(local.extra_services_for_tests, module, []))
+  }
 }
 
 module "project" {
+  for_each = local.per_module_test_services
+
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 18.0"
 
@@ -54,12 +68,7 @@ module "project" {
   auto_create_network     = true
   deletion_policy         = "DELETE"
 
-  activate_apis = concat([
-    "serviceconsumermanagement.googleapis.com",
-    "networkconnectivity.googleapis.com",
-    "compute.googleapis.com",
-    "memorystore.googleapis.com",
-  ], flatten(values(local.per_module_services)))
+  activate_apis = each.value
 }
 
 

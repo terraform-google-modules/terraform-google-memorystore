@@ -54,7 +54,7 @@ Check the [example/](https://github.com/terraform-google-modules/terraform-googl
 | weekly\_maintenance\_window | Configure Redis Cluster behavior using a subset of native Redis configuration parameters | <pre>object({<br>    day_of_the_week = optional(string, "DAY_OF_WEEK_UNSPECIFIED")<br>    hours           = optional(string)<br>    minutes         = optional(string)<br>    seconds         = optional(string)<br>    nanos           = optional(number)<br>  })</pre> | `null` | no |
 | zone\_distribution\_config\_mode | The mode for zone distribution for Memorystore Redis cluster (Immutable). If not provided, MULTI\_ZONE will be used as default value. Possible values are: MULTI\_ZONE, SINGLE\_ZONE | `string` | `"MULTI_ZONE"` | no |
 | zone\_distribution\_config\_zone | The zone for single zone Memorystore Redis cluster (Immutable) | `string` | `null` | no |
-
+| labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 ## Outputs
 
 | Name | Description |

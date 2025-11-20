@@ -169,16 +169,10 @@ spec:
               start_time_nanos   = optional(string)
             }))
     outputs:
-      - name: discovery_endpoints
-        description: (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead
       - name: endpoints
-        description: Endpoints for the instance
+        description: Endpoints created on each given network, for valkey clients to connect to the cluster.
       - name: id
         description: The valkey cluster instance ID
-      - name: psc_auto_connection
-        description: Detailed information of a PSC connection that is created through service connectivity automation
-      - name: psc_connections
-        description: (Deprecated) PSC connections for discovery of the cluster topology and accessing the cluster. Use psc_auto_connection instead
       - name: valkey_cluster
         description: The valkey cluster created
   requirements:

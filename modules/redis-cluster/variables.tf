@@ -30,7 +30,7 @@ variable "region" {
 }
 
 variable "enable_apis" {
-  description = "Flag for enabling memcache.googleapis.com in your project"
+  description = "Flag for enabling redis.googleapis.com in your project"
   type        = bool
   default     = true
 }

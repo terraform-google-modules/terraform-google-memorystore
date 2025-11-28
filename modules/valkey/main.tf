@@ -74,7 +74,7 @@ resource "google_memorystore_instance" "valkey_cluster" {
   dynamic "gcs_source" {
     for_each = var.gcs_source != null ? ["gcs_source"] : []
     content {
-      uris = var.gcs_source
+      uris = [for uri in split(",", var.gcs_source) : trimspace(uri)]
     }
   }
 

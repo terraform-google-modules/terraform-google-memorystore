@@ -96,6 +96,20 @@ resource "google_redis_cluster" "redis_cluster" {
     }
   }
 
+  lifecycle {
+    ignore_changes = var.cluster_role == "SECONDARY" ? [
+      shard_count,
+      node_type,
+      transit_encryption_mode,
+      authorization_mode,
+      redis_configs,
+      kms_key,
+      psc_configs,
+      zone_distribution_config,
+      persistence_config,
+    ] : []
+  }
+
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,

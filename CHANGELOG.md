@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [15.2.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.2.1...v15.2.2) (2026-01-15)
+
+
+### Bug Fixes
+
+* convert gcs_source string to list for uris attribute in valkey module ([#337](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/337)) ([2939d48](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/2939d482079d669415fc3dc9e603d31bd311ea48))
+
 ## [15.2.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.2.0...v15.2.1) (2025-09-30)
 
 

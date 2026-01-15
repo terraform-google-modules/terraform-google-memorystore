@@ -144,6 +144,12 @@ spec:
       - name: customer_managed_key
         description: Default encryption key to apply to the Redis instance. Defaults to null (Google-managed).
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-kms
+              version: ">= 4.1.1"
+            spec:
+                outputExpr: key_id_list[0]
       - name: persistence_config
         description: The Redis persistence configuration parameters. https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#persistenceconfig
         varType: |-

@@ -15,11 +15,12 @@
  */
 
 resource "google_memorystore_instance" "valkey_cluster" {
-  project        = var.project_id
-  instance_id    = var.instance_id
-  shard_count    = var.shard_count
-  engine_version = var.engine_version
-  mode           = var.mode
+  project             = var.project_id
+  instance_id         = var.instance_id
+  shard_count         = var.shard_count
+  engine_version      = var.engine_version
+  mode                = var.mode
+  maintenance_version = var.maintenance_version
 
   desired_psc_auto_connections {
     network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"

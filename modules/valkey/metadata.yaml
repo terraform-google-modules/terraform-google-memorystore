@@ -1,4 +1,4 @@
-# Copyright 2025 Google LLC
+# Copyright 2026 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/terraform-google-modules/terraform-google-memorystore.git
       sourceType: git
       dir: /modules/valkey
-    version: 15.2.2
+    version: 15.2.1
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -168,7 +168,22 @@ spec:
               start_time_seconds = optional(string)
               start_time_nanos   = optional(string)
             }))
+      - name: instance_role
+        description: "The role of the instance in cross instance replication. Possible values are: INSTANCE_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+        varType: string
+      - name: primary_instance
+        description: "primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for instances whose instance role is of type SECONDARY. Format: projects/{project}/locations/{region}/instances/{instance-id}"
+        varType: string
+      - name: secondary_instance
+        description: "List of secondary instances that are replicating from this primary instance. This is allowed to be set only for instances whose instance role is of type PRIMARY. Format: projects/{project}/locations/{region}/instances/{instance-id}"
+        varType: list(string)
+        defaultValue: []
+      - name: maintenance_version
+        description: "This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field. Note: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!"
+        varType: string
     outputs:
+      - name: available_maintenance_versions
+        description: This field is used to determine the available maintenance versions for the self service update
       - name: discovery_endpoints
         description: (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead
       - name: endpoints

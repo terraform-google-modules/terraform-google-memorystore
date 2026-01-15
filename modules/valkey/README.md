@@ -49,16 +49,20 @@ module "valkey_cluster" {
 | engine\_version | Engine version of the instance | `string` | `"VALKEY_8_0"` | no |
 | gcs\_source | GCS source for the instance. Format gs://bucket1/object1, gs://bucket2/folder2/object2 | `string` | `null` | no |
 | instance\_id | The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location | `string` | n/a | yes |
+| instance\_role | The role of the instance in cross instance replication. Possible values are: INSTANCE\_ROLE\_UNSPECIFIED, NONE, PRIMARY, SECONDARY | `string` | `null` | no |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | location | The region where valkey cluster will be created | `string` | n/a | yes |
+| maintenance\_version | This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available\_maintenance\_versions field. Note: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported! | `string` | `null` | no |
 | managed\_backup\_source | Managed backup source for the instance. Format projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} | `string` | `null` | no |
 | mode | cluster or cluster-disabled. Possible values: CLUSTER, CLUSTER\_DISABLED | `string` | `null` | no |
 | network | Name of the consumer network where the network address of the discovery endpoint will be reserved | `string` | n/a | yes |
 | network\_project | project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host | `string` | `null` | no |
 | node\_type | The nodeType for the valkey cluster. Possible values are: SHARED\_CORE\_NANO, HIGHMEM\_MEDIUM, HIGHMEM\_XLARGE, STANDARD\_SMALL | `string` | `null` | no |
 | persistence\_config | User-provided persistence configurations for the instance | <pre>object({<br>    mode = optional(string)<br>    rdb_config = optional(object({<br>      rdb_snapshot_period     = optional(string)<br>      rdb_snapshot_start_time = optional(string)<br>    }), null)<br>    aof_config = optional(object({<br>      append_fsync = string<br>    }), null)<br>  })</pre> | `{}` | no |
+| primary\_instance | primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for instances whose instance role is of type SECONDARY. Format: projects/{project}/locations/{region}/instances/{instance-id} | `string` | `null` | no |
 | project\_id | The ID of the project in which the resource belongs to. | `string` | n/a | yes |
 | replica\_count | Number of replica nodes per shard. If omitted the default is 0 replicas | `number` | `0` | no |
+| secondary\_instance | List of secondary instances that are replicating from this primary instance. This is allowed to be set only for instances whose instance role is of type PRIMARY. Format: projects/{project}/locations/{region}/instances/{instance-id} | `list(string)` | `[]` | no |
 | service\_connection\_policies | The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist | <pre>map(object({<br>    subnet_names = list(string)<br>    description  = optional(string)<br>    limit        = optional(number)<br>    labels       = optional(map(string), {})<br>  }))</pre> | `{}` | no |
 | shard\_count | Number of shards for the instance | `number` | `3` | no |
 | transit\_encryption\_mode | Immutable. In-transit encryption mode of the instance. Possible values: TRANSIT\_ENCRYPTION\_DISABLED SERVER\_AUTHENTICATION | `string` | `"TRANSIT_ENCRYPTION_DISABLED"` | no |
@@ -70,6 +74,7 @@ module "valkey_cluster" {
 
 | Name | Description |
 |------|-------------|
+| available\_maintenance\_versions | This field is used to determine the available maintenance versions for the self service update |
 | discovery\_endpoints | (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead |
 | endpoints | Endpoints for the instance |
 | id | The valkey cluster instance ID |

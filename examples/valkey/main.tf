@@ -106,8 +106,8 @@ module "valkey_cluster_east1" {
       ]
     }
   }
-  instance_role = "SECONDARY"
-  primary_instance    = module.valkey_cluster_central1.id
+  instance_role    = "SECONDARY"
+  primary_instance = module.valkey_cluster_central1.id
 
   persistence_config = {
     mode = "RDB"

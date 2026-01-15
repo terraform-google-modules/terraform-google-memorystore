@@ -1,4 +1,4 @@
-# Copyright 2025 Google LLC
+# Copyright 2026 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ spec:
         authorized_network:
           name: authorized_network
           title: Authorized Network
-          regexValidation: "^(projects/[a-z][a-z0-9-]{4,28}[a-z0-9]/global/networks/[a-zA-Z0-9-_]+|[a-zA-Z0-9-_]+)$"
+          regexValidation: ^(projects/[a-z][a-z0-9-]{4,28}[a-z0-9]/global/networks/[a-zA-Z0-9-_]+|[a-zA-Z0-9-_]+)$
           validation: Network must be a valid network name or a full resource path.
         connect_mode:
           name: connect_mode
@@ -59,7 +59,7 @@ spec:
         customer_managed_key:
           name: customer_managed_key
           title: Customer Managed Key
-          regexValidation: "^projects/[a-z][a-z0-9-]{4,28}[a-z0-9]/locations/[a-z0-9-]+/keyRings/[a-z0-9-_]+/cryptoKeys/[a-z0-9-_]+$"
+          regexValidation: ^projects/[a-z][a-z0-9-]{4,28}[a-z0-9]/locations/[a-z0-9-]+/keyRings/[a-z0-9-_]+/cryptoKeys/[a-z0-9-_]+$
           validation: Must follow the Cloud KMS CryptoKey format like projects/my-project/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key
         display_name:
           name: display_name
@@ -81,9 +81,6 @@ spec:
           title: Maintenance Policy
           level: 1
           properties:
-            description:
-              name: description
-              title: Description
             day:
               name: day
               title: Day
@@ -102,6 +99,9 @@ spec:
                   value: SATURDAY
                 - label: SUNDAY
                   value: SUNDAY
+            description:
+              name: description
+              title: Description
             start_time:
               name: start_time
               title: Start Time
@@ -109,27 +109,23 @@ spec:
                 hours:
                   name: hours
                   title: Hours
-                  min: 0
                   max: 23
                   validation: Hours of day in 24 hour format. Must be from 0 to 23.
                 minutes:
                   name: minutes
                   title: Minutes
-                  min: 0
                   max: 59
                   validation: Minutes of hour of day. Must be from 0 to 59.
-                seconds:
-                  name: seconds
-                  title: Seconds
-                  min: 0
-                  max: 59
-                  validation: Seconds of minutes of the time. Must be from 0 to 59.
                 nanos:
                   name: nanos
                   title: Nanos
-                  min: 0
-                  max: 999999999
+                  max: 1000000000
                   validation: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+                seconds:
+                  name: seconds
+                  title: Seconds
+                  max: 59
+                  validation: Seconds of minutes of the time. Must be from 0 to 59.
         memory_size_gb:
           name: memory_size_gb
           title: Memory Size GiB
@@ -211,21 +207,20 @@ spec:
         replica_count:
           name: replica_count
           title: Replica Count
-          level: 1
-          min: 0
           max: 5
+          level: 1
           altDefaults:
             - type: ALTERNATE_TYPE_DC
               value: 1
         reserved_ip_range:
           name: reserved_ip_range
           title: Reserved Ip Range
-          regexValidation: "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])/([0-9]|[1-2][0-9]|3[0-2])$"
+          regexValidation: ^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])/([0-9]|[1-2][0-9]|3[0-2])$
           validation: Must be a valid CIDR range (e.g., 10.0.0.0/29)
         secondary_ip_range:
           name: secondary_ip_range
           title: Secondary Ip Range
-          regexValidation: "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])/([0-9]|[1-2][0-9]|3[0-2])$"
+          regexValidation: ^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])/([0-9]|[1-2][0-9]|3[0-2])$
           validation: Must be a valid CIDR range (e.g., 10.0.0.0/29)
         tier:
           name: tier

@@ -38,6 +38,7 @@ Check the [example/](https://github.com/terraform-google-modules/terraform-googl
 | deletion\_protection\_enabled | Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true | `bool` | `true` | no |
 | enable\_apis | Flag for enabling memcache.googleapis.com in your project | `bool` | `true` | no |
 | kms\_key | The KMS key used to encrypt the at-rest data of the cluster | `string` | `null` | no |
+| labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | name | The ID of the instance or a fully qualified identifier for the instance. must be 1 to 63 characters and use only lowercase letters, numbers, or hyphens. It must start with a lowercase letter and end with a lowercase letter or number | `string` | n/a | yes |
 | network | List of consumer network where the network address of the discovery endpoint will be reserved, in the form of projects/{network\_project\_id\_or\_number}/global/networks/{network\_id}. Currently, only one item is supported | `list(string)` | n/a | yes |
 | node\_type | The nodeType for the Redis cluster. If not provided, REDIS\_HIGHMEM\_MEDIUM will be used as default Possible values are: REDIS\_SHARED\_CORE\_NANO, REDIS\_HIGHMEM\_MEDIUM, REDIS\_HIGHMEM\_XLARGE, REDIS\_STANDARD\_SMALL. | `string` | `null` | no |

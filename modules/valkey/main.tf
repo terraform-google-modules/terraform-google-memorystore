@@ -105,6 +105,25 @@ resource "google_memorystore_instance" "valkey_cluster" {
     }
   }
 
+  dynamic "cross_instance_replication_config" {
+    for_each = var.instance_role == null ? [] : ["cross_instance_replication_config"]
+    content {
+      instance_role = var.instance_role
+      dynamic "primary_instance" {
+        for_each = var.instance_role == "SECONDARY" ? ["primary_instance"] : []
+        content {
+          instance = var.primary_instance
+        }
+      }
+      dynamic "secondary_instances" {
+        for_each = var.instance_role == "PRIMARY" && length(var.secondary_instance) > 0 ? var.secondary_instance : []
+        content {
+          instance = secondary_instances.value
+        }
+      }
+    }
+  }
+
   depends_on = [
     google_network_connectivity_service_connection_policy.service_connection_policies,
     module.enable_apis,

@@ -43,3 +43,8 @@ output "psc_auto_connection" {
   description = "Detailed information of a PSC connection that is created through service connectivity automation"
   value       = google_memorystore_instance.valkey_cluster.endpoints[0].connections[0]
 }
+
+output "available_maintenance_versions" {
+  description = "This field is used to determine the available maintenance versions for the self service update"
+  value       = google_memorystore_instance.valkey_cluster.available_maintenance_versions
+}

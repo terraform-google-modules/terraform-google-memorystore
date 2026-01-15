@@ -16,50 +16,50 @@
 
 output "cluster_id" {
   description = "The valkey cluster instance ID"
-  value       = module.valkey_cluster.id
+  value       = module.valkey_cluster_central1.id
 }
 
 output "size_gb" {
   description = "The valkey cluster size"
-  value       = module.valkey_cluster.valkey_cluster.node_config[0].size_gb
+  value       = module.valkey_cluster_central1.valkey_cluster.node_config[0].size_gb
 }
 
 output "cluster_region" {
   description = "The valkey cluster region"
-  value       = module.valkey_cluster.valkey_cluster.location
+  value       = module.valkey_cluster_central1.valkey_cluster.location
 }
 
 output "replica_count" {
   description = "The valkey cluster replica count"
-  value       = module.valkey_cluster.valkey_cluster.replica_count
+  value       = module.valkey_cluster_central1.valkey_cluster.replica_count
 }
 
 output "transit_encryption_mode" {
   description = "The valkey cluster transit encryption mode"
-  value       = module.valkey_cluster.valkey_cluster.transit_encryption_mode
+  value       = module.valkey_cluster_central1.valkey_cluster.transit_encryption_mode
 }
 
 output "cluster_name" {
   description = "The valkey cluster name"
-  value       = module.valkey_cluster.valkey_cluster.instance_id
+  value       = module.valkey_cluster_central1.valkey_cluster.instance_id
 }
 
 output "shard_count" {
   description = "The valkey cluster shard count"
-  value       = module.valkey_cluster.valkey_cluster.shard_count
+  value       = module.valkey_cluster_central1.valkey_cluster.shard_count
 }
 
 output "authorization_mode" {
   description = "The valkey cluster authorization mode"
-  value       = module.valkey_cluster.valkey_cluster.authorization_mode
+  value       = module.valkey_cluster_central1.valkey_cluster.authorization_mode
 }
 
 output "node_type" {
   description = "The valkey cluster node type"
-  value       = module.valkey_cluster.valkey_cluster.node_type
+  value       = module.valkey_cluster_central1.valkey_cluster.node_type
 }
 
 output "cluster" {
   description = "The valkey cluster created"
-  value       = module.valkey_cluster
+  value       = module.valkey_cluster_central1
 }

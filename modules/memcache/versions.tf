@@ -29,11 +29,11 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:memcache/v15.2.2"
+    module_name = "blueprints/terraform/terraform-google-memorystore:memcache/v16.0.0"
   }
 
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:memcache/v15.2.2"
+    module_name = "blueprints/terraform/terraform-google-memorystore:memcache/v16.0.0"
   }
 
 }

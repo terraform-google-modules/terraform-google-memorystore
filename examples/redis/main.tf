@@ -30,7 +30,7 @@ module "enable_apis" {
 
 module "memstore" {
   source  = "terraform-google-modules/memorystore/google"
-  version = "~> 15.0"
+  version = "~> 16.0"
 
   name = "test-redis"
 

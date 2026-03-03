@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.0.0...v16.0.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* Update KMS connection version ([#349](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/349)) ([347727f](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/347727f8f09b8cf8500268531b7e89a0b552a8d6))
+
 ## [16.0.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v15.2.2...v16.0.0) (2026-01-15)
 
 

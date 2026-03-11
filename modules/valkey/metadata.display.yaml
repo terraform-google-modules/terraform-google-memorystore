@@ -1,4 +1,4 @@
-# Copyright 2025 Google LLC
+# Copyright 2026 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -52,12 +52,18 @@ spec:
         instance_id:
           name: instance_id
           title: Instance Id
+        instance_role:
+          name: instance_role
+          title: Instance Role
         labels:
           name: labels
           title: Labels
         location:
           name: location
           title: Location
+        maintenance_version:
+          name: maintenance_version
+          title: Maintenance Version
         managed_backup_source:
           name: managed_backup_source
           title: Managed Backup Source
@@ -76,12 +82,18 @@ spec:
         persistence_config:
           name: persistence_config
           title: Persistence Config
+        primary_instance:
+          name: primary_instance
+          title: Primary Instance
         project_id:
           name: project_id
           title: Project Id
         replica_count:
           name: replica_count
           title: Replica Count
+        secondary_instance:
+          name: secondary_instance
+          title: Secondary Instance
         service_connection_policies:
           name: service_connection_policies
           title: Service Connection Policies

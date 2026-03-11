@@ -165,3 +165,9 @@ variable "secondary_clusters" {
   type        = list(string)
   default     = []
 }
+
+variable "labels" {
+  description = "The resource labels to represent user provided metadata."
+  type        = map(string)
+  default     = {}
+}

@@ -26,6 +26,7 @@ resource "google_redis_cluster" "redis_cluster" {
   redis_configs               = var.redis_configs
   deletion_protection_enabled = var.deletion_protection_enabled
   kms_key                     = var.kms_key
+  labels                      = var.labels
 
   dynamic "psc_configs" {
     for_each = var.network

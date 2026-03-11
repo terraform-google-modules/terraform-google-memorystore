@@ -33,11 +33,11 @@ module "enable_apis" {
 }
 
 
-module "valkey_cluster" {
+module "valkey_cluster_central1" {
   source  = "terraform-google-modules/memorystore/google//modules/valkey"
-  version = "~> 15.0"
+  version = "~> 16.0"
 
-  instance_id                 = "test-valkey-cluster"
+  instance_id                 = "test-valkey-cluster-central1"
   project_id                  = var.project_id
   location                    = "us-central1"
   node_type                   = "HIGHMEM_MEDIUM"
@@ -83,5 +83,60 @@ module "valkey_cluster" {
     module.test_vpc,
     module.enable_apis,
     google_project_iam_member.network_connectivity_sa,
+  ]
+}
+
+module "valkey_cluster_east1" {
+  source  = "terraform-google-modules/memorystore/google//modules/valkey"
+  version = "~> 16.0"
+
+  instance_id                 = "test-valkey-cluster-east1"
+  project_id                  = var.project_id
+  location                    = "us-east1"
+  node_type                   = "HIGHMEM_MEDIUM"
+  deletion_protection_enabled = false
+  engine_version              = "VALKEY_8_0"
+
+  network = local.network_name
+
+  service_connection_policies = {
+    test-net-valkey-cluster-scp = {
+      subnet_names = [
+        "valkey-subnet-102",
+      ]
+    }
+  }
+  instance_role    = "SECONDARY"
+  primary_instance = module.valkey_cluster_central1.id
+
+  persistence_config = {
+    mode = "RDB"
+    rdb_config = {
+      rdb_snapshot_period     = "ONE_HOUR"
+      rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+    }
+  }
+
+  engine_configs = {
+    maxmemory-policy = "volatile-ttl"
+  }
+
+  weekly_maintenance_window = [
+    {
+      day_of_week     = "MONDAY"
+      start_time_hour = "23"
+    }
+  ]
+
+  automated_backup_config = {
+    start_time = "20"
+    retention  = "86400s"
+  }
+
+  depends_on = [
+    module.test_vpc,
+    module.enable_apis,
+    google_project_iam_member.network_connectivity_sa,
+    module.valkey_cluster_central1,
   ]
 }

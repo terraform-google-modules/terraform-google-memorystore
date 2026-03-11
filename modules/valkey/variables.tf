@@ -184,3 +184,27 @@ variable "weekly_maintenance_window" {
   }))
   default = null
 }
+
+variable "instance_role" {
+  description = "The role of the instance in cross instance replication. Possible values are: INSTANCE_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+  type        = string
+  default     = null
+}
+
+variable "primary_instance" {
+  description = "primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for instances whose instance role is of type SECONDARY. Format: projects/{project}/locations/{region}/instances/{instance-id}"
+  type        = string
+  default     = null
+}
+
+variable "secondary_instance" {
+  description = "List of secondary instances that are replicating from this primary instance. This is allowed to be set only for instances whose instance role is of type PRIMARY. Format: projects/{project}/locations/{region}/instances/{instance-id}"
+  type        = list(string)
+  default     = []
+}
+
+variable "maintenance_version" {
+  description = "This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field. Note: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!"
+  type        = string
+  default     = null
+}

@@ -15,11 +15,12 @@
  */
 
 resource "google_memorystore_instance" "valkey_cluster" {
-  project        = var.project_id
-  instance_id    = var.instance_id
-  shard_count    = var.shard_count
-  engine_version = var.engine_version
-  mode           = var.mode
+  project             = var.project_id
+  instance_id         = var.instance_id
+  shard_count         = var.shard_count
+  engine_version      = var.engine_version
+  mode                = var.mode
+  maintenance_version = var.maintenance_version
 
   desired_psc_auto_connections {
     network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
@@ -100,6 +101,25 @@ resource "google_memorystore_instance" "valkey_cluster" {
           minutes = try(var.weekly_maintenance_window[0].start_time_minutes, null)
           seconds = try(var.weekly_maintenance_window[0].start_time_seconds, null)
           nanos   = try(var.weekly_maintenance_window[0].start_time_nanos, null)
+        }
+      }
+    }
+  }
+
+  dynamic "cross_instance_replication_config" {
+    for_each = var.instance_role == null ? [] : ["cross_instance_replication_config"]
+    content {
+      instance_role = var.instance_role
+      dynamic "primary_instance" {
+        for_each = var.instance_role == "SECONDARY" ? ["primary_instance"] : []
+        content {
+          instance = var.primary_instance
+        }
+      }
+      dynamic "secondary_instances" {
+        for_each = var.instance_role == "PRIMARY" && length(var.secondary_instance) > 0 ? var.secondary_instance : []
+        content {
+          instance = secondary_instances.value
         }
       }
     }

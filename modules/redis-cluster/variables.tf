@@ -36,7 +36,7 @@ variable "enable_apis" {
 }
 
 variable "shard_count" {
-  description = "Required. Number of shards for the Redis cluster. The minimum number of shards in a Memorystore cluster is 3 shards"
+  description = "Required. Number of shards for the Redis cluster"
   type        = number
   default     = 3
 }

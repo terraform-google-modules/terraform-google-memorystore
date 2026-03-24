@@ -151,16 +151,6 @@ spec:
                 append_fsync = optional(string)
               }))
             })
-      - name: cluster_role
-        description: "The role of the cluster in cross cluster replication. Possible values are: CLUSTER_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
-        varType: string
-      - name: primary_cluster
-        description: "primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type SECONDARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
-        varType: string
-      - name: secondary_clusters
-        description: "List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type PRIMARY. Format: projects/{project}/locations/{region}/clusters/{cluster-id}"
-        varType: list(string)
-        defaultValue: []
       - name: labels
         description: The resource labels to represent user provided metadata.
         varType: map(string)
@@ -228,34 +218,6 @@ spec:
                   retention: string
             backup_collection: string
             create_time: string
-            cross_cluster_replication_config:
-              - list
-              - - object
-                - cluster_role: string
-                  membership:
-                    - list
-                    - - object
-                      - primary_cluster:
-                          - list
-                          - - object
-                            - cluster: string
-                              uid: string
-                        secondary_clusters:
-                          - list
-                          - - object
-                            - cluster: string
-                              uid: string
-                  primary_cluster:
-                    - list
-                    - - object
-                      - cluster: string
-                        uid: string
-                  secondary_clusters:
-                    - list
-                    - - object
-                      - cluster: string
-                        uid: string
-                  update_time: string
             deletion_protection_enabled: bool
             discovery_endpoints:
               - list

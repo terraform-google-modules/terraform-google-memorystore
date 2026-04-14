@@ -22,7 +22,7 @@ resource "google_memorystore_instance" "valkey_cluster" {
   mode                = var.mode
   maintenance_version = var.maintenance_version
 
-  desired_psc_auto_connections {
+  desired_auto_created_endpoints {
     network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
     project_id = var.project_id
   }

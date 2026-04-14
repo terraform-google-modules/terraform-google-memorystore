@@ -21,7 +21,7 @@ output "id" {
 
 output "discovery_endpoints" {
   description = "(Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead"
-  value       = google_memorystore_instance.valkey_cluster.discovery_endpoints
+  value       = google_memorystore_instance.valkey_cluster.endpoints
 }
 
 output "psc_connections" {

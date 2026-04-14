@@ -35,6 +35,9 @@ spec:
           altDefaults:
             - type: ALTERNATE_TYPE_DC
               value: AUTH_MODE_IAM_AUTH
+        cluster_role:
+          name: cluster_role
+          title: Cluster Role
         deletion_protection_enabled:
           name: deletion_protection_enabled
           title: Deletion Protection Enabled
@@ -75,6 +78,9 @@ spec:
           name: persistence_config
           title: Persistence Config
           level: 1
+        primary_cluster:
+          name: primary_cluster
+          title: Primary Cluster
         project:
           name: project
           title: Project
@@ -94,6 +100,9 @@ spec:
           altDefaults:
             - type: ALTERNATE_TYPE_DC
               value: 1
+        secondary_clusters:
+          name: secondary_clusters
+          title: Secondary Clusters
         service_connection_policies:
           name: service_connection_policies
           title: Service Connection Policies

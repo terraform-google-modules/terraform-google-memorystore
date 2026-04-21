@@ -24,7 +24,7 @@ resource "google_memorystore_instance" "valkey_cluster" {
 
   desired_psc_auto_connections {
     network    = "projects/${coalesce(var.network_project, var.project_id)}/global/networks/${var.network}"
-    project_id = var.project_id
+    project_id = coalesce(var.network_project, var.project_id)
   }
 
   location                = var.location

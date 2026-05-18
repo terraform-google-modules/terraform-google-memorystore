@@ -149,7 +149,7 @@ variable "persistence_config" {
 }
 
 variable "cluster_role" {
-  description = "The role of the cluster in cross cluster replication. Possible values are: CLUSTER_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+  description = "The role of the cluster in cross cluster replication. Possible values are: NONE, PRIMARY, SECONDARY"
   type        = string
   default     = null
 }

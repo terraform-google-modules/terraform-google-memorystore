@@ -34,7 +34,7 @@ Check the [example/](https://github.com/terraform-google-modules/terraform-googl
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | authorization\_mode | The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value is AUTH\_MODE\_DISABLED. Possible values are: AUTH\_MODE\_UNSPECIFIED, AUTH\_MODE\_IAM\_AUTH, AUTH\_MODE\_DISABLED | `string` | `"AUTH_MODE_DISABLED"` | no |
-| cluster\_role | The role of the cluster in cross cluster replication. Possible values are: CLUSTER\_ROLE\_UNSPECIFIED, NONE, PRIMARY, SECONDARY | `string` | `null` | no |
+| cluster\_role | The role of the cluster in cross cluster replication. Possible values are: NONE, PRIMARY, SECONDARY | `string` | `null` | no |
 | deletion\_protection\_enabled | Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster operation will fail. Default value is true | `bool` | `true` | no |
 | enable\_apis | Flag for enabling redis.googleapis.com in your project | `bool` | `true` | no |
 | kms\_key | The KMS key used to encrypt the at-rest data of the cluster | `string` | `null` | no |

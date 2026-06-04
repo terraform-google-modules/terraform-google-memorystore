@@ -63,7 +63,8 @@ resource "google_memorystore_instance" "valkey_cluster" {
       }
     }
   }
-  labels = var.labels
+  kms_key = var.kms_key
+  labels  = var.labels
 
   dynamic "managed_backup_source" {
     for_each = var.managed_backup_source != null ? ["managed_backup_source"] : []

@@ -50,6 +50,7 @@ module "valkey_cluster" {
 | gcs\_source | GCS source for the instance. Format gs://bucket1/object1, gs://bucket2/folder2/object2 | `string` | `null` | no |
 | instance\_id | The ID to use for the instance, which will become the final component of the instance's resource name. Must be 4-63 characters in length with lowercase letters, digits, and hyphens. Must not end with a hyphen. Must be unique within a location | `string` | n/a | yes |
 | instance\_role | The role of the instance in cross instance replication. Possible values are: INSTANCE\_ROLE\_UNSPECIFIED, NONE, PRIMARY, SECONDARY | `string` | `null` | no |
+| kms\_key | The KMS key used to encrypt the at-rest data of the cluster | `string` | `null` | no |
 | labels | The resource labels to represent user provided metadata. | `map(string)` | `{}` | no |
 | location | The region where valkey cluster will be created | `string` | n/a | yes |
 | maintenance\_version | This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available\_maintenance\_versions field. Note: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported! | `string` | `null` | no |
@@ -109,4 +110,5 @@ In order to operate with the Service Account you must activate the following API
 - Service Consumer Management API - `serviceconsumermanagement.googleapis.com`
 - Network Connectivity API - `networkconnectivity.googleapis.com`
 - Compute Engine API - `compute.googleapis.com`
+- Cloud KMS API - `cloudkms.googleapis.com`
 

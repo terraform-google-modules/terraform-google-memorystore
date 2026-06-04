@@ -208,3 +208,9 @@ variable "maintenance_version" {
   type        = string
   default     = null
 }
+
+variable "kms_key" {
+  description = "The KMS key used to encrypt the at-rest data of the cluster"
+  type        = string
+  default     = null
+}

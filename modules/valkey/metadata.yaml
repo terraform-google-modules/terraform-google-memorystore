@@ -181,6 +181,9 @@ spec:
       - name: maintenance_version
         description: "This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field. Note: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!"
         varType: string
+      - name: kms_key
+        description: The KMS key used to encrypt the at-rest data of the cluster
+        varType: string
     outputs:
       - name: available_maintenance_versions
         description: This field is used to determine the available maintenance versions for the self service update

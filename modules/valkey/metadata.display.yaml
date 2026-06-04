@@ -55,6 +55,9 @@ spec:
         instance_role:
           name: instance_role
           title: Instance Role
+        kms_key:
+          name: kms_key
+          title: Kms Key
         labels:
           name: labels
           title: Labels

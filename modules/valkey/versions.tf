@@ -25,11 +25,11 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:valkey/v16.0.1"
+    module_name = "blueprints/terraform/terraform-google-memorystore:valkey/v16.1.0"
   }
 
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-memorystore:valkey/v16.0.1"
+    module_name = "blueprints/terraform/terraform-google-memorystore:valkey/v16.1.0"
   }
 
 }

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.0.1...v16.1.0) (2026-06-04)
+
+
+### Features
+
+* Release 16.0.2 ([#364](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/364)) ([2e37b40](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/2e37b40701ac2c398acef568bdc97570882ba47d))
+
 ## [16.0.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.0.0...v16.0.1) (2026-03-24)
 
 

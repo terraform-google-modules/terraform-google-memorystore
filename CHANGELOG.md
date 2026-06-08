@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.1.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.1.0...v16.1.1) (2026-06-08)
+
+
+### Bug Fixes
+
+* crr detach operation ([#367](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/367)) ([a6e0c0d](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/a6e0c0d6383468d0c1869261093eb3971ddfc33a))
+
 ## [16.1.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.0.1...v16.1.0) (2026-06-04)
 
 

@@ -44,6 +44,23 @@ output "psc_auto_connection" {
   value       = google_memorystore_instance.valkey_cluster.endpoints[0].connections[0]
 }
 
+output "env_vars" {
+  description = "Environment variables for Valkey instance connection, including address and port."
+  value = {
+    "VALKEY_HOST" = google_memorystore_instance.valkey_cluster.endpoints[0].connections[0].psc_auto_connection[0].ip_address
+    "VALKEY_PORT" = tostring(google_memorystore_instance.valkey_cluster.endpoints[0].connections[0].psc_auto_connection[0].port)
+  }
+}
+
+output "apphub_service_uri" {
+  value = {
+    service_uri = "//memorystore.googleapis.com/${google_memorystore_instance.valkey_cluster.id}"
+    service_id  = substr("${var.instance_id}-${md5("MVC-${var.location}-${var.project_id}")}", 0, 63)
+    location    = var.location
+  }
+  description = "Service URI in CAIS style to be used by Apphub."
+}
+
 output "available_maintenance_versions" {
   description = "This field is used to determine the available maintenance versions for the self service update"
   value       = google_memorystore_instance.valkey_cluster.available_maintenance_versions

@@ -66,7 +66,7 @@ variable "transit_encryption_mode" {
 }
 
 variable "node_type" {
-  description = "The nodeType for the valkey cluster. Possible values are: SHARED_CORE_NANO, HIGHMEM_MEDIUM, HIGHMEM_XLARGE, STANDARD_SMALL"
+  description = "The nodeType for the valkey cluster. Possible values are: SHARED_CORE_NANO, HIGHMEM_MEDIUM, HIGHMEM_XLARGE, STANDARD_SMALL, CUSTOM_MICRO, CUSTOM_MINI, HIGHCPU_MEDIUM, STANDARD_LARGE, HIGHMEM_2XLARGE, CUSTOM_PICO"
   type        = string
   default     = null
 }
@@ -96,7 +96,7 @@ variable "engine_version" {
 }
 
 variable "enable_apis" {
-  description = "Flag for enabling memcache.googleapis.com in your project"
+  description = "Flag for enabling memorystore.googleapis.com in your project"
   type        = bool
   default     = false
 }

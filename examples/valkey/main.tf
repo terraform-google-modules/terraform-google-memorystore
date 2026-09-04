@@ -34,7 +34,7 @@ module "enable_apis" {
 }
 
 module "valkey_cluster_south1" {
-  source  = "../../modules/valkey"
+  source = "../../modules/valkey"
 
   instance_id             = "test-valkey-cluster-south1"
   project_id              = var.project_id
@@ -88,7 +88,7 @@ module "valkey_cluster_south1" {
 }
 
 module "valkey_cluster_east1" {
-  source  = "../../modules/valkey"
+  source = "../../modules/valkey"
 
   instance_id             = "test-valkey-cluster-east1"
   project_id              = var.project_id
@@ -145,7 +145,7 @@ module "valkey_cluster_east1" {
 }
 
 module "valkey_cluster_west1" {
-  source  = "../../modules/valkey"
+  source = "../../modules/valkey"
 
   instance_id             = "test-valkey-cluster-west1"
   project_id              = var.project_id

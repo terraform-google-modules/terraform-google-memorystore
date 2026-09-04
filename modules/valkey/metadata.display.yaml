@@ -31,33 +31,59 @@ spec:
         authorization_mode:
           name: authorization_mode
           title: Authorization Mode
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: IAM_AUTH
         automated_backup_config:
           name: automated_backup_config
           title: Automated Backup Config
         deletion_protection_enabled:
           name: deletion_protection_enabled
           title: Deletion Protection Enabled
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: true
         enable_apis:
           name: enable_apis
           title: Enable Apis
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: true
         engine_configs:
           name: engine_configs
           title: Engine Configs
+          level: 1
         engine_version:
           name: engine_version
           title: Engine Version
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: VALKEY_9_0
         gcs_source:
           name: gcs_source
           title: Gcs Source
         instance_id:
           name: instance_id
           title: Instance Id
+          regexValidation: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$
+          validation: Instance ID must use only lowercase letters, numbers, and hyphens. It must also start with a letter and be unique in its region.
         instance_role:
           name: instance_role
           title: Instance Role
+          enumValueLabels:
+            - label: NONE
+              value: NONE
+            - label: PRIMARY
+              value: PRIMARY
+            - label: SECONDARY
+              value: SECONDARY
+          level: 1
         kms_key:
           name: kms_key
           title: Kms Key
+          level: 1
         labels:
           name: labels
           title: Labels
@@ -73,41 +99,57 @@ spec:
         mode:
           name: mode
           title: Mode
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: CLUSTER
         network:
           name: network
           title: Network
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: default
         network_project:
           name: network_project
           title: Network Project
         node_type:
           name: node_type
           title: Node Type
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: HIGHMEM_MEDIUM
         persistence_config:
           name: persistence_config
           title: Persistence Config
+          level: 1
         primary_instance:
           name: primary_instance
           title: Primary Instance
+          level: 1
         project_id:
           name: project_id
           title: Project Id
         replica_count:
           name: replica_count
           title: Replica Count
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: 1
         secondary_instance:
           name: secondary_instance
           title: Secondary Instance
+          level: 1
         server_ca_mode:
           name: server_ca_mode
           title: Server Ca Mode
           enumValueLabels:
-            - label: Google Managed Per Instance CA
+            - label: GOOGLE_MANAGED_PER_INSTANCE_CA
               value: GOOGLE_MANAGED_PER_INSTANCE_CA
-            - label: Google Managed Shared CA
+            - label: GOOGLE_MANAGED_SHARED_CA
               value: GOOGLE_MANAGED_SHARED_CA
-            - label: Customer Managed CAS CA
+            - label: CUSTOMER_MANAGED_CAS_CA
               value: CUSTOMER_MANAGED_CAS_CA
-            - label: TLS Disabled
+            - label: SERVER_CA_MODE_UNSPECIFIED
               value: SERVER_CA_MODE_UNSPECIFIED
           altDefaults:
             - type: ALTERNATE_TYPE_DC
@@ -115,23 +157,40 @@ spec:
         server_ca_pool:
           name: server_ca_pool
           title: Server Ca Pool
-          regexValidation: "^projects/((?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?)))/locations/((?:[a-z](?:[-a-z0-9]*[a-z0-9])?))/caPools/((?:[a-z](?:[-a-z0-9]*[a-z0-9])?))$"
+          regexValidation: ^(?:(?:http(?:s)?://.+/)|(?://[a-zA-Z0-9-.]+/))?projects/((?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?)))/locations/((?:[a-z](?:[-a-z0-9]*[a-z0-9])?))/caPools/((?:[a-z](?:[-a-z0-9]*[a-z0-9])?))$
           validation: Invalid format. Expected a valid Google Cloud CA Pool in the form of projects/{project_id}/locations/{location}/caPools/{ca_pool_id}.
         service_connection_policies:
           name: service_connection_policies
           title: Service Connection Policies
+          level: 1
         shard_count:
           name: shard_count
           title: Shard Count
+          regexValidation: ^(?:[1-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|250)$
+          validation: Must be an integer value between 1 and 250.
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: 10
         transit_encryption_mode:
           name: transit_encryption_mode
           title: Transit Encryption Mode
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: TRANSIT_ENCRYPTION_DISABLED
         weekly_maintenance_window:
           name: weekly_maintenance_window
           title: Weekly Maintenance Window
         zone_distribution_config_mode:
           name: zone_distribution_config_mode
           title: Zone Distribution Config Mode
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: MULTI_ZONE
         zone_distribution_config_zone:
           name: zone_distribution_config_zone
           title: Zone Distribution Config Zone
+    runtime:
+      outputs:
+        env_vars:
+          visibility: VISIBILITY_ROOT

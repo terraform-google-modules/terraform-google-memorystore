@@ -82,7 +82,7 @@ spec:
         varType: string
         defaultValue: TRANSIT_ENCRYPTION_DISABLED
       - name: node_type
-        description: "The nodeType for the valkey cluster. Possible values are: SHARED_CORE_NANO, HIGHMEM_MEDIUM, HIGHMEM_XLARGE, STANDARD_SMALL"
+        description: "The nodeType for the valkey cluster. Possible values are: SHARED_CORE_NANO, HIGHMEM_MEDIUM, HIGHMEM_XLARGE, STANDARD_SMALL, CUSTOM_MICRO, CUSTOM_MINI, HIGHCPU_MEDIUM, STANDARD_LARGE, HIGHMEM_2XLARGE, CUSTOM_PICO"
         varType: string
       - name: deletion_protection_enabled
         description: If set to true deletion of the instance will fail
@@ -100,7 +100,7 @@ spec:
         varType: string
         defaultValue: VALKEY_8_0
       - name: enable_apis
-        description: Flag for enabling memcache.googleapis.com in your project
+        description: Flag for enabling memorystore.googleapis.com in your project
         varType: bool
         defaultValue: false
       - name: network
@@ -191,12 +191,25 @@ spec:
         description: "The customer-managed CA pool resource name. Format: projects/{project}/locations/{location}/caPools/{caPoolId}"
         varType: string
     outputs:
+      - name: apphub_service_uri
+        description: Service URI in CAIS style to be used by Apphub.
+        type:
+          - object
+          - location: string
+            service_id: string
+            service_uri: string
       - name: available_maintenance_versions
         description: This field is used to determine the available maintenance versions for the self service update
       - name: discovery_endpoints
         description: (Deprecated) Endpoints created on each given network, for valkey clients to connect to the cluster. Currently only one endpoint is supported. Use endpoints instead
       - name: endpoints
         description: Endpoints for the instance
+      - name: env_vars
+        description: Environment variables for Valkey instance connection, including address and port.
+        type:
+          - object
+          - VALKEY_HOST: string
+            VALKEY_PORT: string
       - name: id
         description: The valkey cluster instance ID
       - name: psc_auto_connection

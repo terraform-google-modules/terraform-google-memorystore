@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.1.1...v16.2.0) (2026-09-04)
+
+
+### Features
+
+* add server_ca_pool and server_ca_mode in valkey sub-module ([#372](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/372)) ([59df60e](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/59df60ed92b9eca315520695966e33e5a4231a2f))
+* added kms_key in valkey sub-module ([#366](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/366)) ([a6c68e0](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/a6c68e041cadd836a21cd0bf2f7b972e2f2c3b76))
+* update defaults for valkey and add UI levels ([#373](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/373)) ([273d202](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/273d202c350088c3cff2c03e252a56b4660f21e5))
+
 ## [16.1.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.1.0...v16.1.1) (2026-06-08)
 
 

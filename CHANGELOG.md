@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.3.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.2.0...v16.3.0) (2026-09-14)
+
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v8 ([#374](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/374)) ([8898b53](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/8898b53ad1828f8ce2e96436884a591dfec5a80a))
+
 ## [16.2.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.1.1...v16.2.0) (2026-09-04)
 
 

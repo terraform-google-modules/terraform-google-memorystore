@@ -37,9 +37,9 @@ module "test_vpc" {
       subnet_region = "us-south1"
     },
     {
-      subnet_name   = "subnet-us-east1-102"
+      subnet_name   = "subnet-us-west2-102"
       subnet_ip     = "10.10.102.0/24"
-      subnet_region = "us-east1"
+      subnet_region = "us-west2"
     },
   ]
 }

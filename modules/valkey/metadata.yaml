@@ -107,9 +107,23 @@ spec:
         description: Name of the consumer network where the network address of the discovery endpoint will be reserved
         varType: string
         required: true
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network
+              version: ">= 9.1.0"
+            spec:
+              outputExpr: network_name
+              inputPath: network
       - name: network_project
         description: project ID of the consumer network where the network address of the discovery endpoint will be reserved. Required for Shared VPC host
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network
+              version: ">= 9.1.0"
+            spec:
+              outputExpr: project_id
+              inputPath: network_project
       - name: service_connection_policies
         description: The Service Connection Policies to create. Required to create service connection policy. Not needed if service connection policy already exist
         varType: |-
@@ -130,6 +144,8 @@ spec:
               notify-keyspace-events  = optional(string)
               slowlog-log-slower-than = optional(number)
               maxclients              = optional(number)
+              databases               = optional(number)
+              cluster-databases       = optional(number)
             })
       - name: persistence_config
         description: User-provided persistence configurations for the instance
@@ -169,7 +185,7 @@ spec:
               start_time_nanos   = optional(string)
             }))
       - name: instance_role
-        description: "The role of the instance in cross instance replication. Possible values are: INSTANCE_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY"
+        description: "The role of the instance in cross instance replication. Possible values are: INSTANCE_ROLE_UNSPECIFIED, NONE, PRIMARY, SECONDARY.  Learn more at https://docs.cloud.google.com/application-design-center/docs/configure-memorystore-for-valkey#cross_region_replication_parameters"
         varType: string
       - name: primary_instance
         description: "primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for instances whose instance role is of type SECONDARY. Format: projects/{project}/locations/{region}/instances/{instance-id}"
@@ -184,6 +200,13 @@ spec:
       - name: kms_key
         description: The KMS key used to encrypt the at-rest data of the cluster
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-kms
+              version: ">= 4.1.2"
+            spec:
+              outputExpr: key_id_list[0]
+              inputPath: kms_key
       - name: server_ca_mode
         description: "The Server CA mode of the instance. Possible values: GOOGLE_MANAGED_PER_INSTANCE_CA, GOOGLE_MANAGED_SHARED_CA, CUSTOMER_MANAGED_CAS_CA, SERVER_CA_MODE_UNSPECIFIED"
         varType: string
@@ -222,13 +245,13 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/redis.admin
+          - roles/memorystore.admin
           - roles/iam.serviceAccountUser
           - roles/logging.logWriter
           - roles/cloudkms.cryptoKeyEncrypterDecrypter
     services:
       - cloudkms.googleapis.com
-      - redis.googleapis.com
+      - memorystore.googleapis.com
       - serviceusage.googleapis.com
     providerVersions:
       - source: hashicorp/google

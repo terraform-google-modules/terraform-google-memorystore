@@ -82,18 +82,18 @@ module "redis_cluster_central" {
   ]
 }
 
-module "redis_cluster_east" {
+module "redis_cluster_west2" {
   source  = "terraform-google-modules/memorystore/google//modules/redis-cluster"
   version = "~> 16.0"
 
-  name                        = "test-redis-cluster-secondary-east"
+  name                        = "test-redis-cluster-secondary-west2"
   project_id                  = var.project_id
-  region                      = "us-east1"
+  region                      = "us-west2"
   network                     = ["projects/${var.project_id}/global/networks/${local.network_name}"]
   node_type                   = "REDIS_STANDARD_SMALL"
   deletion_protection_enabled = false
   enable_apis                 = false
-  kms_key                     = google_kms_crypto_key.key_region_east.id
+  kms_key                     = google_kms_crypto_key.key_region_west2.id
 
   cluster_role    = "SECONDARY"
   primary_cluster = module.redis_cluster_central.id
@@ -104,7 +104,7 @@ module "redis_cluster_east" {
       network_name    = local.network_name
       network_project = var.project_id
       subnet_names = [
-        "subnet-us-east1-102",
+        "subnet-us-west2-102",
       ]
     }
   }
@@ -130,7 +130,7 @@ module "redis_cluster_east" {
     module.test_vpc,
     module.enable_apis,
     google_project_iam_member.network_connectivity_sa,
-    google_kms_crypto_key_iam_member.redis_sa_iam_east,
+    google_kms_crypto_key_iam_member.redis_sa_iam_west2,
     module.redis_cluster_central,
   ]
 }

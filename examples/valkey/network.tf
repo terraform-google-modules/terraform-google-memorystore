@@ -39,7 +39,7 @@ module "test_vpc" {
     {
       subnet_name   = "valkey-subnet-102"
       subnet_ip     = "10.10.102.0/24"
-      subnet_region = "us-east1"
+      subnet_region = "us-west2"
     },
     {
       subnet_name   = "valkey-subnet-103"

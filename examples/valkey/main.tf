@@ -34,7 +34,8 @@ module "enable_apis" {
 }
 
 module "valkey_cluster_south1" {
-  source = "../../modules/valkey"
+  source  = "terraform-google-modules/memorystore/google//modules/valkey"
+  version = "~> 16.2.0"
 
   instance_id             = "test-valkey-cluster-south1"
   project_id              = var.project_id
@@ -87,12 +88,13 @@ module "valkey_cluster_south1" {
   ]
 }
 
-module "valkey_cluster_east1" {
-  source = "../../modules/valkey"
+module "valkey_cluster_west2" {
+  source  = "terraform-google-modules/memorystore/google//modules/valkey"
+  version = "~> 16.2.0"
 
-  instance_id             = "test-valkey-cluster-east1"
+  instance_id             = "test-valkey-cluster-west2"
   project_id              = var.project_id
-  location                = "us-east1"
+  location                = "us-west2"
   node_type               = "STANDARD_SMALL"
   transit_encryption_mode = "SERVER_AUTHENTICATION"
 
@@ -145,7 +147,8 @@ module "valkey_cluster_east1" {
 }
 
 module "valkey_cluster_west1" {
-  source = "../../modules/valkey"
+  source  = "terraform-google-modules/memorystore/google//modules/valkey"
+  version = "~> 16.2.0"
 
   instance_id             = "test-valkey-cluster-west1"
   project_id              = var.project_id

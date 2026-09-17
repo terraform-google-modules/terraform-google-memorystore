@@ -133,6 +133,8 @@ variable "engine_configs" {
     notify-keyspace-events  = optional(string)
     slowlog-log-slower-than = optional(number)
     maxclients              = optional(number)
+    databases               = optional(number)
+    cluster-databases       = optional(number)
   })
   default = null
 }

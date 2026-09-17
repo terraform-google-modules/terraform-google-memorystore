@@ -66,20 +66,20 @@ output "node_type" {
 
 output "secondary_cluster_id" {
   description = "The secondary redis cluster instance ID"
-  value       = module.redis_cluster_east.id
+  value       = module.redis_cluster_west2.id
 }
 
 output "secondary_cluster_region" {
   description = "The secondary redis cluster region"
-  value       = module.redis_cluster_east.redis_cluster.region
+  value       = module.redis_cluster_west2.redis_cluster.region
 }
 
 output "secondary_cluster_name" {
   description = "The secondary redis cluster name"
-  value       = module.redis_cluster_east.redis_cluster.name
+  value       = module.redis_cluster_west2.redis_cluster.name
 }
 
 output "secondary_cluster_role" {
   description = "The secondary redis cluster name"
-  value       = module.redis_cluster_east.redis_cluster.cross_cluster_replication_config[0].cluster_role
+  value       = module.redis_cluster_west2.redis_cluster.cross_cluster_replication_config[0].cluster_role
 }

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.4.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.3.0...v16.4.0) (2026-09-17)
+
+
+### Features
+
+* add missing parameters in engine configs ([#376](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/376)) ([ea75d45](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/ea75d456f1bf7881ed7b066d9c799903d5d9145d))
+
 ## [16.3.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.2.0...v16.3.0) (2026-09-14)
 
 

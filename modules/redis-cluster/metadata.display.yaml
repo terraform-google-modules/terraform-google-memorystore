@@ -97,6 +97,11 @@ spec:
         redis_configs:
           name: redis_configs
           title: Redis Configs
+          properties:
+            slowlog-log-slower-than:
+              name: slowlog-log-slower-than
+              title: Slowlog-log-slower-than
+              min: -1
         region:
           name: region
           title: Region

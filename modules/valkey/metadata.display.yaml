@@ -55,6 +55,11 @@ spec:
           name: engine_configs
           title: Engine Configs
           level: 1
+          properties:
+            slowlog-log-slower-than:
+              name: Slowlog-log-slower-than
+              title: Slowlog-log-slower-than
+              min: -1
         engine_version:
           name: engine_version
           title: Engine Version

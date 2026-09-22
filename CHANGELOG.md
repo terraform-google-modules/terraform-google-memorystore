@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.4.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.4.0...v16.4.1) (2026-09-22)
+
+
+### Bug Fixes
+
+* correct ADC UI warning for valid value of field slowlog-log-slow… ([#379](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/379)) ([59be27b](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/59be27bd79173eb993192b17e4cd0677ff9df667))
+
 ## [16.4.0](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.3.0...v16.4.0) (2026-09-17)
 
 

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [16.4.2](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.4.1...v16.4.2) (2026-10-08)
+
+
+### Bug Fixes
+
+* populate null defaultValue in memorystore-for-redis-cluster blueprint metadata ([#381](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/381)) ([5415d5c](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/5415d5ccca280b1ae9f85835e4af0bb28186c9ab))
+* populate null defaultValue in redis-memorystore blueprint metadata ([#382](https://github.com/terraform-google-modules/terraform-google-memorystore/issues/382)) ([1504b7a](https://github.com/terraform-google-modules/terraform-google-memorystore/commit/1504b7a3719e0a8a09b518b76da551482fa5ce1e))
+
 ## [16.4.1](https://github.com/terraform-google-modules/terraform-google-memorystore/compare/v16.4.0...v16.4.1) (2026-09-22)
 
 
